@@ -1,0 +1,160 @@
+\documentclass{article}
+\input{../../definitions}
+
+\title{Combinatorics E
+	xam 2}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\newtheorem{theorem}{Theorem}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+
+\begin{document}
+	\maketitle
+	\section{}
+	\subsection{What is the OGF for integer partitions where each part occurs an even number of times?}
+	Any integer partition, $p$ on $n$ may be written as a sequence $(a_1, a_2, a_3, \ldots, a_k)$. If $p$ has the property that every part in it appears an even number of times then we may order it's sequence representation such that $a_i = a_{i+k/2}$ for all $i\in\cannonicalSet{k/2}$. Now look at the partition composed of $(a_1, a_2, a_3, \ldots, a_{k/2})$ and we find that this is a partition on $\frac n2$. Additionally if $(a_1, a_2, a_3, \ldots, a_k)$ is a partition on $\frac n2$ then $(a_1, a_2, a_3, \ldots, a_k, a_1, a_2, a_3, \ldots, a_k)$ will be a partition with an even number of each part on $n$. Now we have constructed a bijection from partitions on $n$ to partitions on $2n$ with an even number of each part. We know that the number of partitions on $n$ has an OGF of $$f(x) = \prodacross{i\in\mathbb N}{\frac1{1-x^i}}$$ thus the number of partitions on $2n$ with only even parts would have the same OGF and the number of partitions on $n$ with only even parts would have an OGF of $$A(x) = f(x^2) = \prodacross{i\in\mathbb N}{\frac{1}{1-x^{2i}}}$$
+	
+	\subsection{What is the OGF for integer partitions where each part is even?}
+	We know the OGF for integer partitions on $n$ using only parts of size $k$ is $\frac1{1-x^k}$ as it is only doable one way and only if $n$ is a multiple of $k$. Thus to get the number of partitions on $n$ using only parts that are even in size we get $$B(x) = \frac1{1-x^2} + \frac1{1-x^4} + \frac1{1-x^6} \ldots = \prodacross{i \in\mathbb N}{\frac1{1-x^{2i}}}$$
+	
+	\subsection{What conclusions may be drawn?}
+	Notice that $A(x) = B(x)$ where $A(x)$ is the number of partitions on $n$ where each part occurs an even number of times and $B(x)$ is the number of partitions on $n$ where each part is even. This means that there are the same number of partitions on $n$ that are composed solely of even parts as there are if each part occurs an even number of times.
+	
+	\section{}
+	\begin{definition}{Words}
+		are formed using the letters $A, B, C$ and digits $1,2,3,4$. Set $a_0= 0$ and for $n\ge1$, let $a_n$ be the number of words made up of $n$ of these symbols in which there are not two letters in succession. (Two numbers in succession are okay.)
+	\end{definition}
+	
+	\subsection{find $a_1$ and $a_2$}
+	For a word of length $1$ we simply may choose any valid symbol to be the first character and there are $7$ of them and then we are done, thus $a_1 = 7$.
+	
+	For a word of length $2$ we simply find all words of length two where we allow for any string of symbols to be valid and the remove the bad ones. There are $7^2$ strings on our $7$ symbols and $3^2$ strings containing two letters. Thus we have $a_2 = 7^2-3^2=40$.
+	
+	\subsection{Show that $a_n = 4a_{n-1} + 12a_{n-2}$ for $n\ge3$}
+	For any word with length $n > 2$ we may either end with a number or letter. 
+	
+	If it ends in a number then it may be composed by taking a word of length $n-1$ and appending a number. There are $4$ numbers that may be appended $a_{n-1}$ words of length $n-1$ thus we have $4a_{n-1}$ words of length $n$ that end in a number.
+	
+	If the word ends with a letter then the character before it must be a number giving use a $4$ numbers followed by $3$ letters that are possible and then before the number we may have any word of length $n-2$, which there are $a_{n-2}$ of. Thus we have $3\cdot4\cdot a_{n-2}$ words of length $n$ that end with a letter.
+	
+	Now we may put this together and we find $a_n = 4a_{n-1}+12a_{n-2}$.
+	
+	\subsection{Show that the OGF, $A(x) = \frac{7x+12x^2}{1-4x-12x^2}$}
+	
+	\def\tail{a_2x^2 + a_1x+a_0}
+	
+	\begin{align*}
+		a_0 &= 0 \\ a_1 &= 7 \\ a_2 &= 40 \\
+		A(x) &= \sumfrom{n=0}{\infty}{a_nx^n} \\
+		&= \sumfrom{n=3}{\infty}{a_nx^n} + \tail \\
+		&= \sumfrom{n=3}{\infty}{(4a_{n-1}+12a_{n-2})x^n} + \tail \\
+		&= \sumfrom{n=3}{\infty}{4a_{n-1}x^n + 12a_{n-2}x^n} + \tail \\
+		&= \sumfrom{n=3}{\infty}{4a_{n-1}x^n}+\sumfrom{n=3}{\infty}{12a_{n-2}x^n} + \tail \\
+		&= 4x\sumfrom{n=2}{\infty}{a_nx^n} + 12x^2\sumfrom{n=1}{\infty}{a_nx^n} + \tail \\
+		&= 4x(A(x) - a_1x - a_0) + 12x^2(A(x) - a_0) + \tail \\
+		&= 4xA(x) - 4a_1x^2 - 4a_0x + 12x^2A(x) - 12a_0x^2 + \tail \\
+		&= A(x)(4x+12x^2) + (-4a_1-12a_0+a_2)x^2+(-4a_0+a_1)x+a_0 \\
+		&= A(x)(4x + 12x^2) + (-4(7)-12(0)+40)x^2+(-4(0)+7)x+0 \\
+		&= A(x)(4x + 12x^2) + 12x^2 + 7x \\
+		A(x) - A(x)(4x+12x^2) &= 12x^2 + 7x\\
+		A(x)(-4x-12x^2+1) &= 12x^2+7x \\
+		A(x) &= \frac{12x^2+7x}{-4x-12x^2+1} = \frac{7x+12x^2}{1-4x-12x^2}
+	\end{align*}
+	
+	\subsection{Determine a simple cosed formula for $a_n$}
+	
+	\begin{align*}
+		A(x) + 1 &= \frac{7x+12x^2 + 1 -4x-12x^2}{1-4x-12x^2} \\
+		&= \frac{1+3x}{(-6x+1)(2x+1)} \\
+		&= \frac a{-6x+1} + \frac b{2x+1} \\
+		&= \frac {a(2x+1) + b(-6x+1)}{(-6x+1)(2x+1)}
+	\end{align*}
+	
+	Thus $2a - 6b = 3$ and $a + b = 1$. Mathematica then is nice enough to tell us that $a = \frac98$ and $b = -\frac18$. Now armed with that we find
+	
+	\begin{align*}
+		A(x) + 1 &= \frac{9/8}{-6x+1} + \frac{-1/8}{2x+1} \\
+		&= \frac98\sumfrom{n=0}{\infty}{(6x)^n} - \frac18\sumfrom{n=0}{\infty}{(-2x)^n} \\
+		&= \sumfrom{n=0}{\infty}{\left(\frac98(6)^n-\frac18(-2)^n\right)x^n}
+	\end{align*}
+	
+	We only need find $a_n$ for $n \ge 1$ thus we don't care that we added $1$ to $A(x)$ as that would only effect the $x^0$ term. Thus $$a_n = \frac98(6)^n-\frac18(-2)^n$$ for all $n\ge 1$.
+	
+	
+	\section{Vandermonde's formula}
+	\begin{definition}{Vandermonde's formula}
+		$$\sumfrom{j=0}{k}{\binom{m}{j}\binom{n}{k-j}}=\binom{m+n}{k}$$
+	\end{definition}
+	\subsection{Show that both sides of Vandermonde's formula are $0$ if $k > m + n$}
+	
+	Let $k > m + n$.
+	
+	First $\binom{m+n}k = 0$ as $k > m+n$.
+	
+	Now for all $j \in \ccint0m$ we find that $\binom n{k-j} = 0$ as $m \ge j$ thus $k - j \ge k - m > n$. For all $j > m$ we find that $\binom mj=0$ and thus for all $j \in \ccint0k$, $\binom mj\binom n{k-j} = 0$ and by extension $\sumfrom{n=0}{j}{\binom mj\binom n{k-j}} = 0$.
+	
+	\subsection{Give a combinatorial proof for Vandermode's formula}
+	
+	You have $n$ blue marbles, numbered $1$ through $n$, and $m$ red marbles, numbered $1$ through $m$, all in a bin. You want to take out $k$ marbles. Well you have a set of $n+m$ unique objects and you wish to choose $k$ of them, then this must simply be $\binom{n+m}k$. 
+	
+	You also however could break this up into cases. You could pick $j$ of the red marbles, and thus would have picked $k-j$ of the blue marbles, where $0 \le j \le k$ (as you can not pick less than $0$ red marbles or more than $k$ red marbles and result in $k$ marbles at the end). Thus we would find that you have $\binom mj$ ways to pick red marbles and $\binom n{k-j}$ ways to pick blue marbles for a fixed $j$. We thus must take the sum for all possible $j$ and we find you have $\sumfrom{n=0}{k}{\binom mj\binom n{k-j}}$ ways to do this.
+	
+	Thus Vandermonde's formula must be true as we found that the right hand side and left hand side are both counting the same thing.
+	
+	\subsection{Prove using OGF}
+	
+	Let our task $\mathcal{H}$ be choosing some number of elements from a set of cardinality $m+n$. We obviously have $h_k = \binom {m+n}k$ ways of doing this, and thus a generating function $$H(x) = \sumfrom{k=0}{\infty}{h_kx^k} = \sumfrom{k=0}{\infty}{\binom{m+n}kx^k}$$
+	
+	We may also split $\mathcal H$ into two tasks by first doing task $\mathcal F$ (choosing some number of elements from a set of size $m$) and $\mathcal G$ (choosing some number of elements from a set of size $n$). There are $f_k = \binom nk$ ways to do task $\mathcal F$, where $k$ is the number of elements being chosen.  There are $g_k = \binom mk$ ways to do task $\mathcal G$, where $k$ is the number of elements being chosen. Thus $\mathcal F$ has OGF $$\sumfrom{k=0}{\infty}{\binom nkx^k}$$ and $\mathcal G$ has OGF $$\sumfrom{k=0}{\infty}{\binom mkx^k}$$ By the product formula for OGF we know that 
+	\begin{align*}
+		H(x) &= F(x)G(x) \\
+		\sumfrom{k=0}{\infty}{\binom{m+n}kx^k}	&= \sumfrom{k=0}{\infty}{\sumfrom{j=0}{k}{\binom mk\binom n{k-j}}x^k}
+	\end{align*}
+	Thus Vandermonde's theorem must be true.
+	
+\section{Find the exponential generating function for the number of partitions of $\cannonicalSet{n}$ into an even number of odd-sized blocks. (You can only use odd-sized blocks. So the number of even-sized blocks is zero.}
+
+%LOOK in notebook and bestarium generandi and use composition
+
+First let us have a zero-indexed sequence $a = (0,1,0,1,0,1,\ldots)$, which has EGF $A(x) = \sinh x$. This sequence can be thought of as 'accepting' any set with odd cardinality and 'rejecting' a set of even cardinality.
+
+Second let us have another zero-indexed sequence $b = (1,0,1,0,1,0,\ldots)$, which has EGF $B(x) = \cosh x$. This sequence can be thought of as 'accepting' any set with even cardinality and 'rejecting' any other finite set.
+
+Now we can use the composition rule for EGF and find $H(x) = B(A(x)) = \cosh(\sinh x)$ and it would represent splitting a set into any number of blocks, if a block is even in size then the configuration is 'rejected' and otherwise do nothing to it. Then on the set of blocks reject it if it is not an even sized set and accept if it is even sized.
+
+\[\cosh(\sinh x)\]
+
+\section{Let $r_n$ be the number of ways to partition $\cannonicalSet{n}$ without any singleton blocks}
+\subsection{Give combinatorial proof that $r_n=\sumfrom{k=0}{n-2}{\binom{n-1}kr_k}$}
+
+The element $n$ will be in a block with some number of other elements. Let $k$ be the number of elements not in the block with $n$. Thus $k\in\ccint0{n-2}$ as $n$ must be joined by at least $1$ other element. Now choose the $k$ elements out of $\cannonicalSet n\setminus \set n = \cannonicalSet{n-1}$ to not be in a block with $n$ (n must be in it's own block, and thus is excluded from this), and partition them such that there are no singleton blocks. There are $\binom{n-1}k$ ways to make the choice and $r_k$ ways to partition them, thus we have $\binom{n-1}kr_k$ ways to partition when there are exactly $k$ elements not in the block with $n$.
+
+Now sum across all possible values for $k$ and find $r_n=\sumfrom{k=0}{n-2}{\binom{n-1}{k}r_k}$
+
+\subsection{Prove that $r_{n+1}$ counts the number of partitions on $\cannonicalSet{n}$ with at least $1$ singleton block.}
+Let $t=n+1$. Now to partition $\cannonicalSet{n}$ such that it has some number of singleton sets we find that there must be some number of elements, $k \in \ccint0{n-1}$, not in singleton blocks. We simply choose those $k$ elements and then partition them into a set without any singleton blocks and find that we $\binom nkr_k$ ways to do this for a fixed $k$. We have only $1$ way of distributing the remaining elements as they all go into singletons. Thus we simply sum across all possible values of $k$ and find that we have $\sumfrom{k=0}{n-1}{\binom nk r_k}$ ways to partition $\cannonicalSet{n}$ such that it has at least one singleton block. If we change over to using $t=n+1$ we find $\sumfrom{k=0}{t-2}{\binom {t-1}kr_k}$ and that is the equation for $r_t = r_{n+1}$ thus $r_{n+1}$ is the number of ways to partition $\cannonicalSet{n}$ such that there is at least one singleton block.
+
+\subsection{Show that $B(n) = r_n + r_{n+1}$.}
+$B(n)$ is the number of partitions on $\cannonicalSet{n}$. Now either there is or there is not a singleton block in a partition. If there is at least one singleton block we have $r_{n+1}$ ways to partition as shown above, and if there are no singleton sets then we have $r_n$ ways to do this by definition of $r_n$. Thus $B(n) = r_n + r_{n+1}$.
+
+\subsection{Find a closed formula for the EGF for $r_n$.}
+Consider the zero-indexed sequence $a = (1,0,1,1,1, \ldots)$ for task $\mathcal A$, which may be thought of 'accepting' any finite set whose cardinality is non-empty and it has EGF of $A(x) = e^x-x$. We now use theorem 3.30 from the book and set $a_0 = 0$ thus changing our EGF to $\hat A(x) = e^x-x-1$. Then we would find that $\exp(e^x-x-1)$ would be the EGF for splitting a set $\cannonicalSet{n}$ into as many blocks as we like and then doing task $\mathcal A$ to it. This thus must be the EGF for $r_n$ it would split a set into any number of blocks and reject any singleton blocks.
+
+\[R(x) = \exp\left(e^x-x-1\right)\]
+
+\subsection{Use the EGF to show that $r_n = \sumfrom{k=0}{n}{\binom nk (-1)^{n-k}B(k)}$}
+
+Let us denote the $n^{\text{th}}$ bell number as $B(n)$ and let $\mathcrl B(x)$ be the EGF for $B(n)$. We find that $\mathcrl B(x)$ by using the exponential rule for EGF and we end with \[\mathcrl B(x) = \exp(e^x-1)\] We also will denote
+
+Now we do the following work
+\begin{align*}
+	R(x) &= \exp(e^x-x-1) \\
+	&= \exp(e^x-1)e^{-x} \\
+	&= \mathcrl B(x)e^{-x} \\
+	&= \sumfrom{n=0}{\infty}{ B(n)\frac{x^n}{n!}}\sumfrom{n=0}{\infty}{(-1)^n\frac{x^n}{n!}}
+\end{align*}
+
+By proposition 3.18 from the book we find that $R(x) = \sumacross{n\ge0}{\sumfrom{k=0}{n}{\binom{n}{k}B(k)(-1)^{n-k}}\frac{x^n}{n!}}$ and thus we find \[r_n = \sumfrom{k=0}{n}{\binom{n}{k}B(k)(-1)^{n-k}}\]
+\end{document}

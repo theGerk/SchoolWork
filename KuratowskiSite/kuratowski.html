@@ -1,0 +1,395 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.61 (Macintosh; I; PPC) [Netscape]">
+   <title>Kuratowski's Theorem</title>
+</head>
+<body>
+
+<h2>
+Kuratowski's Theorem</h2>
+
+<p><br><i><font size=+1>A necessary and sufficient condition for planarity
+of a graph.</font></i>
+<br>&nbsp;
+<br>&nbsp;
+<p>Our presentation is adapted from Section 7.2 of Douglas B. West's 1996
+textbook, <i>Introduction to Graph Theory</i>.
+<p>A <b>planar graph</b> is one which has a drawing in the plane without
+edge crossings.&nbsp; (Of course, we also require that the only vertices
+that lie on any given edge are its endpoints.)&nbsp; Any drawing of a planar
+graph that satisfies this condition is called a <b>plane drawing</b> of
+the graph.
+<p>A plane drawing divides the plane into disjoint connected <b>regions</b>,
+also called <b>faces</b> of the graph, so that every point in the plane
+that is not an element of the graph lies in just one of these regions.&nbsp;
+Exactly one region is <b>unbounded</b>, also called the <b>outer face</b>,
+and the others are bounded by cycles in the graph.&nbsp; In particular,
+every edge in a plane drawing of a planar graph either bounds the outer
+face, or bounds exactly two inner faces.&nbsp; It turns out that in this
+latter case, we can always redraw the graph so that a given edge bounds
+the outer face.
+<br>&nbsp;
+<p><b>Lemma 1.</b>&nbsp; If <i>G</i> is a planar graph and <i>e</i> is
+an edge in <i>G</i>, then there is a plane drawing of <i>G</i> in which
+<i>e</i>
+bounds the outer face.
+<p><b>Proof.</b>&nbsp; Consider any plane drawing of <i>G</i>.&nbsp; Stereographically
+project the drawing onto a sphere tangent to the plane that contains this
+drawing (see <a href="http://www.ms.uky.edu/~cvl/General_Teaching/stereographic.html">this
+page</a> to find out what stereographic projection is).&nbsp; This drawing
+on the sphere also has no edge crossings and divides the surface of the
+sphere into disjoint connected regions (all of which are bounded!).&nbsp;
+Pick a point <i>p</i> in some region of the sphere whose boundary contains
+the image of <i>e</i> and consider the plane tangent to the sphere at the
+point opposite to <i>p</i>.&nbsp; Now stereographically project the drawing
+of <i>G</i> on the sphere onto this new plane.&nbsp; Since <i>p</i> is
+the pole of this projection, the region on the sphere containing <i>p</i>
+is projected onto the unbounded region in the plane, so this new plane
+drawing of <i>G</i> has <i>e</i> on the outer face. //
+<br>&nbsp;
+<p>To begin the analysis of planarity of graphs, we note first that the
+two special graphs
+<i>K</i><sub>5</sub> and <i>K</i><sub>3,3</sub> are
+nonplanar.&nbsp; Surprisingly, they are fundamental in determining the
+planarity of <i>any</i> graph.
+<br>&nbsp;
+<p><b>Lemma 2.</b>&nbsp; <i>K</i><sub>5</sub> and <i>K</i><sub>3,3</sub>
+are nonplanar graphs.
+<p><b>Proof.</b>&nbsp; (This is the argument given as Theorem 12.1 in Wilson's
+<i>Introduction
+to Graph Theory</i>, 4th ed.)&nbsp; For <i>K</i><sub>5</sub>: Label the
+vertices <i>v</i>, <i>w</i>, <i>x</i>, <i>y</i>, <i>z</i>.&nbsp; The graph
+contains the cycle <i>vwxyzv</i> and any plane drawing of <i>K</i><sub>5</sub>
+must display the cycle in the form of a pentagon.&nbsp; The edge <i>zw</i>
+either lies inside or outside the pentagon.&nbsp; If <i>zw</i> lies inside
+the pentagon, then the edges <i>vx</i> and <i>vy</i> must lie outside the
+pentagon else they would cross <i>zw</i>.&nbsp; Consequently, <i>xz</i>
+must lie inside the pentagon else it would cross <i>vy</i>.&nbsp; But now
+there is no way to draw edge <i>wy</i> without forcing a crossing.&nbsp;
+If <i>zw</i> lies outside the pentagon, then the edges <i>vx</i> and <i>vy</i>
+must lie inside, and so <i>xz</i> must lie outside, forcing the edge <i>wy</i>
+into a crossing.&nbsp; Thus, <i>K</i><sub>5 </sub>is nonplanar.
+<br>&nbsp;
+<br>&nbsp;
+<br>
+<br>
+<center>
+<p><img SRC="k5nonplanar.gif" NOSAVE BORDER=0 height=161 width=411>
+<p><img SRC="k33nonplanar.gif" NOSAVE BORDER=0 height=179 width=431></center>
+
+<p>For <i>K</i><sub>3,3</sub>: label the vertices of one side of the bipartition
+<i>u</i>,
+<i>w</i>,
+<i>y</i>,
+and those of the other side <i>v</i>,
+<i>x</i>,
+<i>z</i>.&nbsp; Then the
+graph contains the cycle <i>uvwxyzu</i>.&nbsp; So any plane drawing of
+<i>K</i><sub>3,3</sub>
+must display the cycle in the form of a hexagon.&nbsp; The edge <i>zw</i>
+either lies inside or outside the hexagon.&nbsp; If
+<i>zw</i> lies inside
+the hexagon, then the edge
+<i>ux</i> must lie outside to avoid a crossing
+with <i>zw</i>.&nbsp; But then there is no way to draw
+<i>vy</i> without
+forcing a crossing.&nbsp; If <i>zw</i> lies outside the hexagon, then the
+edge <i>ux</i> must lie inside to avoid a crossing with
+<i>zw</i> and there
+is again no way to draw <i>vy</i> without forcing a crossing.&nbsp; Thus,
+<i>K</i><sub>3,3</sub>
+is nonplanar. //
+<br>&nbsp;
+<p>It is now clear that if <i>G</i> is a planar graph, it cannot <i>contain</i>
+a subgraph isomorphic to either <i>K</i><sub>5</sub> or <i>K</i><sub>3,3</sub>,
+else a plane drawing of <i>G</i> would contain inside it a plane drawing
+of either <i>K</i><sub>5</sub> or <i>K</i><sub>3,3</sub>.&nbsp; But there
+are many graphs that do not contain either of these graphs and still are
+nonplanar.&nbsp; Consider for instance the graph pictured below.
+<center>
+<p><img SRC="contractible.gif" NOSAVE BORDER=0 height=137 width=142></center>
+
+<p>These can be handled by means of a particularly useful process: if <i>H</i>
+is a graph and <i>e</i> is an edge in <i>H</i>, the <b>contraction</b>
+of <i>H</i> by <i>e</i> is the graph we denote <i>H</i> \ <i>e</i>, obtained
+by removing <i>e</i> from <i>H</i> and fusing its endpoints together (maintaining
+all the edges incident with these vertices).&nbsp; (See pp. 13-14 of Wilson.)&nbsp;
+As a result, <nobr><i>H</i> \ <i>e</i></nobr> has order one less and size
+one less than <i>H</i>.&nbsp; Note that if <i>e</i> lies in a triangle
+in H, then the other two edges of the triangle become repeated edges in
+<i>H</i>
+\ <i>e</i>.&nbsp; That is, <i>H</i> \ <i>e</i> is not a simple graph.&nbsp;
+However, if <i>e</i> does not lie in a triangle, <i>H</i> \ <i>e</i> is
+simple.&nbsp; Most importantly, however, is the following simple result:
+<br>&nbsp;
+<p><b>Lemma 3.&nbsp; </b>If<i> H</i> is a planar graph, then so is any
+graph (simple or not) obtained from <i>H</i> by contracting an edge. //
+<br>&nbsp;
+<p>So any graph that is <b>contractible</b> to either <i>K</i><sub>5</sub>
+or <i>K</i><sub>3,3</sub>--that is, can be reduced to one of these two
+graphs by a sequence of edge contractions--is also nonplanar.&nbsp; (The
+graph pictured here above is easily seen to be contractible to <i>K</i><sub>5</sub>.)&nbsp;
+We call such a graph a <b>Kuratowski</b> graph.
+<p>We may now state
+<br>&nbsp;
+<center><table BORDER=3 CELLSPACING=3 CELLPADDING=3 >
+<tr>
+<td><b>Kuratowski's Theorem.</b>&nbsp; The graph <i>G</i> is planar if
+and only if it does not contain a Kuratowski subgraph.</td>
+</tr>
+</table></center>
+
+<p>Of course, we have just proved that possession of a Kuratowski subgraph
+is a <i>necessary</i> condition that a graph be planar.&nbsp; Unfortunately,
+this is the easy half of the proof of the theorem!&nbsp; The proof of sufficiency
+is much more involved.
+<p>We will proceed by contradiction: suppose there is some graph that contains
+no Kuratowski subgraph, yet is nonplanar.&nbsp; Then, of all such graphs,
+there must be one of minimal size; call it <i>G</i>.&nbsp; We continue
+by considering the connectivity
+<font face="Symbol">k</font>(<i>G</i>)
+of the graph (the smallest number of vertices whose removal from <i>G</i>
+disconnects <i>G</i>).
+<p>If <font face="Symbol">k</font>(<i>G</i>) = 0, then <i>G</i> is disconnected,
+and since <i>G</i> is nonplanar, at least one of its components must be
+nonplanar.&nbsp; But then any of its nonplanar components contains no subgraph
+isomorphic to either <i>K</i><sub>5</sub> or <i>K</i><sub>3,3 </sub>and
+is of smaller size than <i>G</i>, violating the minimality condition.&nbsp;
+Thus, <font face="Symbol">k</font>(<i>G</i>) > 0 and <i>G</i> must be connected.
+<p>If <font face="Symbol">k</font>(<i>G</i>) = 1, then <i>G</i> has a cut-vertex
+<i>v</i>;
+that is, <i>G</i> <font face="Symbol">-</font> <i>v</i> breaks up into
+<i>k</i>
+components.&nbsp; Let <i>G</i><sub>1</sub>, <i>G</i><sub>2</sub>, ... ,
+<i>G<sub>k</sub></i>
+be the corresponding subgraphs of <i>G</i> formed from these components
+by adding <i>v</i> and all the edges of <i>G</i> incident with <i>v</i>
+whose other endpoint lies within that component.&nbsp; Since each <i>G<sub>i</sub></i>
+is of smaller size than <i>G</i>, they are planar graphs.&nbsp; So there
+are plane drawings of each <i>G<sub>i</sub></i>, and by applying Lemma
+1 to each <i>G<sub>i</sub></i> with respect to some edge in <i>G<sub>i</sub></i>
+incident with <i>v</i>, we can arrange that these plane drawings all have
+<i>v</i>
+on the outer face.&nbsp; In fact, we can easily force each plane drawing
+to lie entirely within an angle of measure 360/<i>k</i> degrees with <i>v</i>
+at the vertex of the angle.&nbsp; These plane drawings can now be arranged
+around <i>v</i> in consecutive sectors of measure 360/<i>k</i> degrees
+each to obtain a plane drawing of <i>G</i>, contradiction.&nbsp; Thus,
+<font face="Symbol">k</font>(<i>G</i>)
+> 1.
+<p>If <font face="Symbol">k</font>(<i>G</i>) = 2, then it contains a vertex
+cutset consisting of 2 vertices: <i>S</i> = {<i>u</i>, <i>v</i>}.&nbsp;
+Thus, <i>G</i> <font face="Symbol">-</font> <i>S</i> breaks up into components.&nbsp;
+Let <i>G</i><sub>1</sub> be the graph formed from one of these components
+by adding to it the vertices <i>u</i>and&nbsp; <i>v</i>, all the edges
+of <i>G</i> incident with either <i>u</i> or <i>v</i> whose other endpoint
+lies within that component, and the edge <i>uv</i> (even if <i>uv</i> is
+not an edge in <i>G</i>).&nbsp; Let <i>G</i><sub>2</sub> be the graph formed
+from the other components of <i>G</i> <font face="Symbol">-</font> <i>S</i>
+by adding the vertices <i>u</i>and&nbsp; <i>v</i>, all the edges of <i>G</i>
+incident with either <i>u</i> or <i>v</i> whose other endpoint lies within
+any of the these components, and the edge <i>uv</i>.&nbsp; Since <i>G</i><sub>1
+</sub>and
+<i>G</i><sub>2</sub>
+are of smaller size than <i>G</i>, they are planar graphs.&nbsp; So there
+are plane drawings of each, and by applying Lemma 1, we can arrange that
+both of these plane drawings have <i>uv</i> on the outer face.&nbsp; We
+can now "glue" the two drawings together along the edge <i>uv</i> to obtain
+a plane drawing of <i>G</i> (by deleting <i>uv</i> if it does not belong
+to <i>G</i>), a contradiction.&nbsp; Thus, <font face="Symbol">k</font>(<i>G</i>)
+> 2.&nbsp; That is, <i>G</i> is 3-connected.
+<p>Since <i>G</i> is 3-connected, it must contain more than 3 vertices.&nbsp;
+But the only 3-connected graph of order 4 is <i>K</i><sub>4</sub>, which
+is planar.&nbsp; So <i>G</i> must have order at least 5.&nbsp; Also, since
+<i>G</i>
+is 3-connected, the minimum degree in <i>G</i> is at least 3 (the neighbors
+of any vertex of degree less than 2 would form a separating set with fewer
+than 3 vertices).
+<br>&nbsp;
+<p><b>Lemma 4.</b>&nbsp; A 3-connected graph must contain an edge whose
+contraction produces a 3-connected graph.
+<p><b>Proof.</b>&nbsp; Suppose not.&nbsp; Then there is some 3-connected
+graph <i>H</i> so that no contraction of it is also 3-connected.&nbsp;
+Let <i>e</i> be some edge in <i>H</i>.&nbsp; To say that <i>H</i> \ <i>e</i>
+is not 3-connected means that it contains a separating set with fewer than
+3 vertices.&nbsp; This separating set must contain the vertex <i>a</i>
+obtained by fusing the endpoints <i>x</i> and <i>y</i> of <i>e</i>; otherwise
+it would contain no vertex incident with <i>e</i> in <i>H</i> and this
+same set of vertices would be a separating set in <i>H</i>, contradicting
+that <i>H</i> is 3-connected.&nbsp; In fact, any separating set in <i>H</i>
+\ <i>e</i> must contain <i>a</i> and some other vertex <i>z</i>, else {<i>x</i>,
+<i>y</i>}
+would be a separating set in <i>H</i>, contradicting again that
+<i>H</i>
+is 3-connected.&nbsp; Therefore, {<i>x</i>, <i>y</i>, <i>z</i>} is a separating
+set in <i>H</i>.&nbsp; Since <i>z</i> need not be the only vertex in <i>H</i>
+\ <i>e</i> which forms a separating set with <i>a</i>, let us settle on
+a choice of <i>e</i> and <i>z</i> so that the resulting separating set
+{<i>x</i>, <i>y</i>,
+<i>z</i>} in <i>H</i> is one whose removal from
+<i>H</i>
+leaves a component
+<i>K</i> of maximal order, and let <i>L</i> denote some
+component different from
+<i>K</i> in this graph.
+<p>If <i>z</i> had no neighbor in <i>L</i>, then <i>L</i> could be separated
+from the rest of <i>H</i> simply by removing <i>x</i> and <i>y</i>, violating
+once again the 3-connectedness of <i>H</i>.&nbsp; So <i>z</i> must have
+a neighbor in <i>L </i>which we will call <i>u</i>; similarly, it has a
+neighbor in <i>K</i>.&nbsp; The same argument shows that both <i>x</i>
+and <i>y</i> must have neighbors in <i>K</i> and neighbors in <i>L</i>.
+<br>&nbsp;
+<br>&nbsp;
+<br>
+<br>
+<center>
+<p><i>H</i>
+<br><img SRC="thomassen.gif" NOSAVE BORDER=0 height=147 width=291 align=ABSCENTER></center>
+
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>Applying the same argument to the edge <i>zu</i> that we used on
+<i>e</i>
+above, we must be able to find another vertex <i>v</i> in <i>H</i> so that
+<nobr>{<i>z</i>,
+<i>u</i>,
+<i>v</i>}</nobr>
+forms a separating set in <i>H</i>.
+<p>If <i>K</i>&acute; is the connected subgraph of <i>H</i> obtained by
+adding to <i>K</i> the vertices
+<i>x</i> and <i>y</i> together with any
+edges connecting these two vertices to each other or any vertex in <i>K</i>,
+then consider the question of whether <i>v</i> lies in <i>K</i>&acute;.&nbsp;
+If so, then we claim that <i>K</i>&acute; <font face="Symbol">-</font><i>v</i>
+must also be connected, otherwise <nobr><i>H</i> <font face="Symbol">-</font>
+{<i>z</i>, <i>v</i>}</nobr> would be disconnected, in violation of the
+3-connectedness of <i>H</i>.&nbsp; Therefore, <i>K</i>&acute; <font face="Symbol">-</font><i>v</i>
+lies in a component of <nobr><i>H</i> <font face="Symbol">-</font> {<i>z</i>,
+<i>u</i>,
+<i>v</i>}</nobr>
+which has larger order than <i>K</i>.&nbsp; But this violates the condition
+that defined our choice of <i>K</i>.&nbsp; So v cannot lie in <nobr><i>K</i>&acute;</nobr>.&nbsp;
+But then it follows that <nobr><i>K</i>&acute;</nobr> lies in a component
+of <nobr><i>H</i><font face="Symbol">-</font> {<i>z</i>,
+<i>u</i>, <i>v</i>}</nobr>
+which has larger order than <i>K</i> and the same contradiction occurs.&nbsp;
+The lemma has now been proved.&nbsp; //
+<br>&nbsp;
+<p>By this lemma, <i>G</i> must have an edge <i>e = vw</i> whose contraction
+<nobr><i>G</i>&acute;</nobr>
+= <nobr><i>G</i> \ <i>e</i></nobr> is also 3-connected.&nbsp; Let <i>u</i>
+be the vertex in <nobr><i>G</i>&acute;</nobr> formed by the contraction
+of <i>e</i> in <i>G</i>.
+<br>&nbsp;
+<p><b>Lemma 5.</b>&nbsp; <nobr><i>G</i>&acute;</nobr> contains no Kuratowski
+subgraph.
+<p><b>Proof.</b>&nbsp; By contradiction.&nbsp; Let <i>K</i> be a Kuratowski
+subgraph of <nobr><i>G</i>&acute;</nobr>.&nbsp; If <i>u</i> were not a
+vertex of
+<i>K</i>, then <i>K</i> would be a subgraph of
+<i>G</i>.&nbsp;
+But <i>G</i>contains no Kuratowski subgraph, so <i>u</i> must lie in
+<i>K</i>.&nbsp;
+Let <i>H</i> be the subgraph of <i>G</i> whose edges are those of <i>K</i>
+together with the edge <i>e</i> (and whose vertices are precisely the endpoints
+of these edges in <i>G</i>); that is,
+<nobr><i>H</i> \ <i>e</i> = <i>K</i></nobr>.&nbsp;
+Since <i>H</i> is contractible to <i>K</i> and <i>K</i> is a Kuratowski
+graph, so is <i>H</i>, whence
+<i>G</i> contains a Kuratowski subgraph,
+contradiction.&nbsp; //
+<br>&nbsp;
+<p>Since <i>G</i> contains no Kuratowski subgraph, is nonplanar and is
+of minimal size with these properties, it follows that <nobr><i>G</i>&acute;</nobr>,
+a graph of size smaller than that of <i>G</i> which also contains no Kuratowski
+subgraph, must be planar.&nbsp; Consider a plane drawing of <nobr><i>G</i>&acute;</nobr>.&nbsp;
+Deleting the edges of <nobr><i>G</i>&acute;</nobr> which are incident with
+<i>u</i>
+leaves a planar graph one of whose faces contains the vertex <i>u</i>;
+let <i>C</i> be the cycle bounding this face.&nbsp; The vertices of <i>C</i>
+are precisely the neighbors of <i>v</i> and <i>w</i> in <i>G</i>.&nbsp;
+Denote the neighbors of <i>v</i> by <i>x</i><sub>1</sub>, <nobr><i>x</i><sub>2</sub>,
+... , <i>x<sub>r</sub></i>, labeling them clockwise around <i>C</i>.</nobr>&nbsp;
+Since the minimum degree in <i>G</i> is at least 3, <i>v</i> has at least
+two neighbors besides <i>w</i>, so we have <nobr><i>r</i> <u>></u> 2.</nobr>
+<p>Suppose all of the neighbors of <i>w</i> lie strictly between some one
+pair of consecutive <i>x</i>'s along <i>C</i>; without loss of generality,
+we may assume that they lie between <i>x<sub>r</sub></i> and <i>x</i><sub>1</sub>.&nbsp;
+Working clockwise around <i>C</i>, we label them <i>y</i><sub>1</sub>,
+<nobr><i>y</i><sub>2</sub>,
+... , <i>y<sub>s</sub></i></nobr>.&nbsp; We also have <i>s</i> <u>></u>
+2.&nbsp; Then from the plane drawing of <nobr><i>G</i>&acute;
+</nobr>we
+can obtain a plane drawing of <i>G</i> by (1) deleting <i>u</i>, and putting
+in its place the vertex <i>v</i> together with the edges joining it to
+the <i>x</i>'s, (2) placing a new vertex labeled <i>w</i> in the resulting
+face which has <i>v</i> and all the <i>y</i>'s on its boundary, (3) adding
+the edges from <i>w</i> to each of the <i>y</i>'s.&nbsp; So
+<i>G</i> is
+planar, contradiction.&nbsp; The same argument can be used if as many as
+two of the neighbors of <i>w</i> are among the <i>x</i>'s; in this case,
+we label them <i>y</i><sub>1</sub> = <i><nobr>x<sub>r</sub></nobr></i>
+and <i><nobr>y<sub>s</sub></nobr></i> = <i>x</i><sub>1</sub>.
+<br>&nbsp;
+<br>&nbsp;
+<br>
+<br>
+<center>
+<p><img SRC="Gdrawing.gif" NOSAVE BORDER=0 height=161 width=342></center>
+
+<p><br>
+<br>
+<p>If as many as three of the neighbors of <i>w</i> are among the <i>x</i>'s,
+say <i><nobr>x<sub>i</sub></nobr></i>, <i><nobr>x<sub>j</sub></nobr></i>,
+and <i><nobr>x<sub>k</sub></nobr></i> (<i>i</i> &lt; <i>j</i> &lt; <i>k</i>),
+then let <i>K</i> be the subgraph of <i><nobr>G</nobr></i> consisting of
+<i>C</i>,the
+vertices <i>v</i> and <i>w</i> and the edge <i>vw</i>, and the six edges
+<i><nobr>vx<sub>i</sub></nobr></i>,
+<i><nobr>vx<sub>j</sub></nobr></i>,
+<i><nobr>vx<sub>k</sub></nobr></i>,
+<i><nobr>wx<sub>i</sub></nobr></i>,
+<i><nobr>wx<sub>j</sub></nobr></i>,
+and <i><nobr>wx<sub>k</sub></nobr></i>.&nbsp; Then <i>K</i> is a Kuratowski
+subgraph, contractible to <i>K</i><sub>5</sub>, contradiction.
+<br>&nbsp;
+<p><br>
+<center>
+<p><img SRC="subgraphk5.gif" NOSAVE BORDER=0 height=196 width=163></center>
+
+<p><br>
+<p>Thus, no more than two of the neighbors of <i>w</i> are among the
+<i>x</i>'s
+and not all the neighbors of <i>w</i> lie between some pair of consecutive
+<i>x</i>'s along <i>C</i>.&nbsp; Consequently, there are two neighbors
+of <i>w</i>, say <i>y</i> and <i>y&acute;</i>, and two neighbors, <i>x</i>
+and <i>x&acute;</i>, of <i>v</i>, which are <i>not</i> neighbors of <i>w</i>
+also, so that <i>x</i>, <i>y</i>, <i>x&acute;</i>, <i>y&acute;</i>occur
+in this order moving clockwise around <i>C</i>.&nbsp; Let <i>K</i> be the
+subgraph of <i><nobr>G</nobr></i> consisting of <i>C</i>together with the
+vertices <i>v</i> and <i>w</i>, and the four edges <i>vx</i>,
+<i>vx&acute;</i>,
+<i>wy</i>,
+and <i>wy&acute;</i>.&nbsp; By successively contracting all the edges of
+<i>K</i> which do not have one of these six vertices (<i>v</i>, <i>w</i>,
+<i>x</i>, <i>y</i>, <i>x&acute;</i>, <i>y&acute;</i>) as an endpoint, we
+find that <i>K</i> is contractible to <i>K</i><sub>3,3</sub>, a contradiction.
+<br>&nbsp;
+<center>
+<p>
+<img SRC="subgraphk33.gif" NOSAVE BORDER=0 height=163 width=325></p></center>
+
+<p><br>This exhausts all possibilities, so no such graph <i>G</i> can exist.&nbsp;
+The proof is now complete.
+</body>
+</html>

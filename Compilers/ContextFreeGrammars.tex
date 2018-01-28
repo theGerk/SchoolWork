@@ -1,0 +1,139 @@
+\documentclass{article}
+\input{../definitions.tex}
+\title{Context Free Gramers}
+\begin{document}
+\maketitle
+
+\question{4.2.1:a)} $S \Rightarrow SS* \Rightarrow SS+S* \Rightarrow aS+S* \Rightarrow aa+S* \Rightarrow aa+a*$
+
+\question{b)} $S \Rightarrow SS* \Rightarrow Sa* \Rightarrow SS+a* \Rightarrow Sa+a* \Rightarrow aa+a*$
+
+\question{c)}
+\Tree
+[.$S$
+	[.$S$
+		[.$S$ $a$ ]
+		[.$S$ $a$ ]
+		$+$
+	]
+	[.$S$ $a$ ]
+	$*$
+]
+
+\question{d)} This is unambiguous, because you can always match with whatever character is on the right side of the string, and work your way back. That is to say if one starts at the end of the string and works your way back you may create a production for any string in the language by following these rules:
+\begin{enumerate}
+\item If you see $*$, then convert your rightmost $S$ to $SS*$.
+\item If you see $+$, then convert your rightmost $S$ to $SS+$.
+\item If you see $a$, then convert your rightmost $S$ to $a$.
+\end{enumerate}
+
+\question{e)} This language will be the subset of the language given by the regular expression $a(a\vert*\vert+)^*$ such that the following two conditions are met.
+\begin{enumerate}
+\item $a_i - +_i - *_i \ge 1$ for all $i \in \coint0{\mathscr L}$.
+\item $a_{\mathscr L} - +_{\mathscr L} - *_{\mathscr L} = 1$.
+\end{enumerate}
+Where $k_i$ is the number of times that a character $k$ appears in the string in any index in the range $\ccint0k$, given $0$ based indexing on the string, and $\mathscr L$ is the number of symbols in the string. For example $+_{\mathscr L}$ is the number of times $+$ appears in the string in the range of indicies $\ccint0{\mathscr L}$, a set that includes all indicies the given string, thus $+_{\mathscr L}$ is the number of times $+$ apears in the entire string.
+
+\question{4.2.2:a)a)} $S \Rightarrow 0S1 \Rightarrow 00S11 \Rightarrow 000111$
+
+\question{b)} $S \Rightarrow 0S1 \Rightarrow 00S11 \Rightarrow 000111$
+
+\question{c)}
+\Tree
+[.$S$
+	$0$
+	[.$S$
+		$0$
+		[.$S$ $0$ $1$ ]
+		$1$
+	]
+	$1$
+]
+
+\question{d)} This language is unambigous as you must always make $n - 1$ conversions from $S$ to $0S1$ followed by a conversion from $S$ to $01$, where $n$ is the number of $0$s there are in the string. There is only ever $1$ $S$, and thus this is trivially unambigous.
+
+\question{e)} This language is $\setbuilder{0^n1^n}{n \ge 1}$
+
+\question{b)a)} $S \Rightarrow +SS \Rightarrow +*SSS\Rightarrow +*aSS\Rightarrow +*aaS\Rightarrow+*aaa$
+
+\question{b)} $S\Rightarrow +SS \Rightarrow +Sa\Rightarrow +*SSa\Rightarrow+*Saa\Rightarrow+*aaa$
+
+\question{c)}
+\Tree
+[.$S$
+	$+$
+	[.$S$
+		$*$
+		[.$S$ $a$ ]
+		[.$S$ $a$ ]
+	]
+	[.$S$ $a$ ]
+]
+
+\question{d)} This is unambigious for much the same reason as in question 4.2.1, although this time we parse through the string in the opposite direction and the conversions must be changed to the corrosponding conversions for this grammer.
+
+\question{e)} This language is the set of all strings that are in the language given by the grammer in question 4.2.1, but the ordering of all the characters in the string is flipped.
+
+\question{d)a)} $S \Rightarrow SS\Rightarrow S*S\Rightarrow (S)*S\Rightarrow(S+S)*S \Rightarrow(a+S)*S\Rightarrow(a+a)*S\Rightarrow(a+a)*a$
+
+\question{b)} $S \Rightarrow SS \Rightarrow Sa \Rightarrow S*a \Rightarrow (S)*a \Rightarrow (S+S)*a \Rightarrow (S+a)*a \Rightarrow (a+a)*a$
+
+\question{c)}
+\Tree
+[.$S$
+	[.$S$
+		[.$S$
+			$($
+			[.$S$
+				[.$S$ $a$ ]
+				$+$
+				[.$S$ $a$ ]
+			]
+			$)$
+		]
+		$*$
+	]
+	[.$S$ $a$ ]
+]
+
+\question{d)} This grammer is ambigious, due to the equivlency of these two valid parse trees: 
+
+\Tree
+[.$S$
+	[.$S$
+		[.$S$ $a$ ]
+		[.$S$ $a$ ]
+	]
+	$*$
+]
+\Tree
+[.$S$
+	[.$S$ $a$ ]
+	[.$S$
+		[.$S$ $a$ ]
+		$*$
+	]
+]
+	
+	
+
+
+\question{e)} Think of $*$ as a postfixed unary opperator. Think of nothing between two terms as a binary operator on them, like multiplication in normal mathematical notation. Think of $+$ as an infixed binary operation, like it normally is. Think of parentheses as one normally does. Think of $a$ as the only allowed value, and then any well formed formula with these rules is valid in this language and this language is the set of all of these well formed formulas.
+
+\question{4.2.3:a)}
+\begin{align*}
+S \quad &\to \quad 1\ S\ \vert\ 0\ 1\ S\ \vert\ \lambda
+\end{align*}
+
+\question{b)}
+\begin{align*}
+S \quad &\to \quad 1\ S\ 1\ \vert\ 0\ S\ 0\ \vert\ \lambda
+\end{align*}
+
+\question{c)}
+\begin{align*}
+S \quad &\to \quad 0\ S\ 1\ S\ \vert\ 1\ S\ 0\ S\ \vert\ \lambda
+\end{align*}
+
+
+\end{document}

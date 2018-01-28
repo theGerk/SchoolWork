@@ -1,0 +1,13 @@
+\documentclass{article}
+\input{../definitions}
+\begin{document}
+
+Let \(H(x)\) be a generating function for the series \[h_n=5h_{n-1}-6h_{n-2}\] where \(h_0=1\) and \(h_1=2\). Find a simple closed formula for \(H(x)\).
+
+\begin{align*}
+	H(x) - h_1x - h_0 
+	&= \sumfrom2\infty{h_nx^n} \\
+	&= \sumfrom2\infty{5h_{n-1}x^n} + \sumfrom2\infty{-6h_{n-2}x^n}
+\end{align*}
+
+\end{document}

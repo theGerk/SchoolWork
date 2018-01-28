@@ -1,0 +1,73 @@
+\usepackage{amsmath,amssymb,graphicx,algpseudocode,algorithm,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathrsfs}
+\let\mathcrl\mathscr
+\usepackage[mathscr]{euscript}
+\usepackage{marginnote}
+\usepackage{hyperref}
+\usepackage{qtree}
+\usepackage{graphicx}
+\usepackage{tikz}
+\geometry{reversemarginpar}
+
+
+\author{Benji Altman}
+
+\def\latex{\LaTeX\ }
+
+\def\useLim{\limits}
+\newcommand{\question}[1]{\marginnote{#1}}
+\let\union\cup
+\let\inter\cap
+\let\emptyset\varnothing
+\let\bigunion\bigcup
+\let\biginter\bigcap
+\let\composed\circ
+\let\cross\times
+\def\And{\textit{ and }}
+\def\Or{\textit{ or }}
+\def\sbSeperator{:}
+\def\Return{\State\textbf{return}\par}
+\newcommand{\setcomp}[1]{{#1}^{\mathsf{c}}}
+\newcommand{\prodfrom}[3]{\prod\useLim_{#1}^{#2}\LB {#3} \RB}
+\newcommand{\sumfrom}[3]{\sum\useLim_{#1}^{#2} \LB {#3} \RB}
+\newcommand{\unionfrom}[3]{\bigunion\useLim_{#1}^{#2} \LB {#3} \RB}
+\newcommand{\interfrom}[3]{\biginter\useLim_{#1}^{#2} \LB {#3} \RB}
+\newcommand{\interacross}[2]{\interfrom{#1}{}{#2}}
+\newcommand{\unionacross}[2]{\unionfrom{#1}{}{#2}}
+\newcommand{\sumacross}[2]{\sumfrom{#1}{}{#2}}
+\newcommand{\prodacross}[2]{\prodfrom{#1}{}{#2}}
+\newcommand{\Lim}[3]{\lim\useLim_{{#1} \to {#2}}\LB {#3} \RB}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setbuilder}[2]{\set{{#1} \sbSeperator {#2}}}
+\newcommand{\derivative}[2]{\frac{d}{d{#2}}\LB {#1} \RB}
+\newcommand{\Exists}[2]{\exists_{#1}\left( {#2} \right)}
+\newcommand{\All}[2]{\forall_{#1}\LB {#2} \RB}
+\newcommand{\abs}[1]{\left|{#1}\right|}
+\newcommand{\card}[1]{\textit{Card}\left( {#1} \right)}
+\newcommand{\range}[1]{\textit{\textbf{Rng}}\left( {#1} \right)}
+\newcommand{\domain}[1]{\textit{\textbf{Dom}}\left( {#1} \right)}
+\newcommand{\pset}[1]{\mathcal P\left( {#1} \right)}
+\newcommand{\pair}[2]{\left( {#1} , {#2} \right)}
+\def\closure{\overline}
+\newcommand{\limpts}[1]{{#1} '}
+\newcommand{\ooint}[2]{\left( {#1} , {#2} \right)}
+\newcommand{\ocint}[2]{\left( {#1} , {#2} \right]}
+\newcommand{\coint}[2]{\left[ {#1} , {#2} \right)}
+\newcommand{\ccint}[2]{\left[ {#1} , {#2} \right]}
+\newcommand{\eqclass}[1]{\bar{#1}}
+\newcommand{\ceil}[1]{\left\lceil {#1} \right\rceil}
+\newcommand{\floor}[1]{\left\lfloor {#1} \right\rfloor}
+\newcommand{\inv}[1]{{#1}^{-1}}
+\def\true{\text{True}}
+\def\false{\text{False}}
+\newcommand{\ball}[2]{B_{#1}\left({#2}\right)}
+\def\LB{}
+\def\RB{}
+\newcommand{\cannonicalSet}[1]{\left[ #1 \right]}
+\let\lxor\oplus
+
+
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]

@@ -1,0 +1,91 @@
+\documentclass{article}
+
+\input{../../definitions.tex}
+\def\useLim{}
+\def\sbSeperator{\ |\ }
+
+\title{Topology Homework 5}
+
+
+\begin{document}
+\maketitle
+
+\question{18.2.} Suppose that $f:X\to Y$ is continuous. If $x$ is a limit point of the subset $A$ of $X$, is it necessarily true that $f(x)$ is a limit point of $f(A)$?
+
+No, it is not true. Suppose $X = Y = \mathbb R$ and we give $X$ and $Y$ the standard topology on $\mathbb R$. Then define $f$ to be the zero function and let $A = \ooint89$. Then we can choose $x$ to be a limit point of $A$, for example $x = 9$, and then $f(A) = \set0$ and $f(x) = 0$ and $0$ is not a limit point of $\set 0$.
+
+\question{6.} Find a function $f:\mathbb R \to \mathbb R$ that is continuous at precisely one point.
+
+We assume the standard topology on $\mathbb R$. Now consider $$f(x) = \begin{cases}0 & x \not\in \mathbb Q\\x & x \in \mathbb Q\end{cases}$$
+
+Let us first show that $f$ is continuous at $0$. $f(0) = 0$, so let $V$ be an open set containing $0$. Now because $V$ is an open set in the standard topology on $\mathbb R$ containing $0$ there will some $a > 0$ such that the interval $\ooint {-a}{a} \subset V$. Now let $U = \ooint{-a}{a}$, then find that $f(U) \subset V$ as for any $x\in U$, $f(x) = 0 \in V$ or $f(x) = x \in U \subset V$. Thus by our definition of point continuity $f$ is continuous at the point $0$.
+
+Let us now consider a point $x\not=0$ in $\mathbb R$. We will show that there exists some nhood $V$ of $f(x)$, such that for any nhood $U$ of $x$, we have $U \not\subset V$. Now if $x\in\mathbb Q$ then we will let $V$ be an nhood of $x$ not containing $0$ and because the irrational's are dense on $\mathbb R$ there exists some irrational number in any nhood $U$ of $x$, thus $0 \in f(U)$. If $x\not\in\mathbb Q$ then $f(x) = 0$ so we may let $V= \ooint{-\abs x}{\abs x}$. Now we will find that any nhood, $U$, of $x$ contains some rational, $q$, such that $\abs{q} > \abs{x}$ and thus $f(q) = q \not\in V$ and thus $f(U)\not\subset V$.
+
+\question{7.(a)} First before we embark upon this little adventure let us give a rigorous definition for the limit from above, as I could not find any in this book. This definition is not complete as it does not deal with function of subsets of $\mathbb R$ and it does not deal with limits that tend to $\infty$ or $-\infty$, however it will be all we need.
+
+\begin{definition}[Limit from above]
+	Let $f:\mathbb R \to\mathbb R$, then $$\Lim x{c^+}{f(x)} = a \in\mathbb R$$ if for every $\epsilon > 0$ there exists some $\delta > 0$ such that for any $x \in\ooint c{c+\delta}$, $f(x) \in\ooint{a-\epsilon}{a+\epsilon}$.
+\end{definition}
+
+Now let $f:\mathbb R \to \mathbb R$ be continuous from above. Now choose $r\in\mathbb R$, and let $V$ be a nhood of $f(r)$. Because $V$ is open in $\mathbb R$ and contains $f(r)$, there must be some $\epsilon > 0$ such that $\ooint{f(r)-\epsilon}{f(r)+\epsilon} \subset V$. Now by definition of continuity from above we know that $\Lim{x}{r^+}{f(x)} = f(r)$, thus we have some $\delta > 0$ such that for any $x \in\ooint r{r+\delta}$, $f(x)\in\ooint{f(r)-\epsilon}{f(r)+\epsilon}$; this may also be written as $f(\ooint r{r+\delta}) \subset \ooint{f(r) - \epsilon}{f(r)+\epsilon}$. It is also trivial that $f(r) \in \ooint{f(r) - \epsilon}{f(r)+\epsilon}$ so we may say that $f(\coint{r}{r+\delta}) \subset \ooint{f(r) - \epsilon}{f(r)+\epsilon} \subset V$. If we consider $f$ then as a map from $\mathbb R_\ell$ to $\mathbb R$ we get that for any point $r\in\mathbb R$ and any nhood of $V$ of $f(r)$, there exists a nhood $U = \coint r{r+\delta}$ of $r$ such that $f(U) \subset f(V)$. Now by the powers vested in me by theorem 18.1 part 4 in the book I hereby declare $f$ continuous when thought of as a map from $\mathbb R_\ell$ to $\mathbb R$.
+
+\question{(b)} Notice how this section merely asks for conjectures, not proofs nor even for the conjectures to be correct.
+
+Now I state this without proof as I really do not know how to prove it, but from what I can tell it seems to be right. First there are no continuous function from $\mathbb R$ to $\mathbb R_\ell$, in some sense there seems to be 'to many' open sets in $\mathbb R_\ell$ for each one to have an inverse that is open in $\mathbb R$. My next statement I have less of a feel for, but I feel that continuous functions from $\mathbb R$ to $\mathbb R$ are the same as continuous function from $\mathbb R_\ell$ to $\mathbb R_\ell$. I would like to talk to you more about this and see if we can't come up with a proof or a disproof of either of these statements.
+
+\question{19.2.} Let $A_\alpha$ be a subspace of $X_\alpha$, for each $\alpha \in J$. Show that that $\prod A_\alpha$ is a subspace of $\prod X_\alpha$ if both products are given the box topology, or if both products are given the product topology.
+
+\textbf{Box topology:}
+
+Let $B$ be a basis element of $\prod A_\alpha$ as a box topology, then for each $\alpha \in J$ there exists $B_\alpha$ open in $A_\alpha$ such that $\prod B_\alpha = B$. For any given $\alpha\in J$ there must be some open $C_\alpha$ in $X_\alpha$ such that $B_\alpha = C_\alpha \inter A_\alpha$ because $B_\alpha$ is open in $A_\alpha$ which is a subspace of $C_\alpha$. Now we find that $B = \prod B_\alpha = \prod\left[C_\alpha \inter A_\alpha\right] = \prod C_\alpha \inter \prod A_\alpha$ which is a basis element in $\prod A_\alpha$ as a subspace of $\prod X_\alpha$.
+
+Let $B$ now be a basis element of $\prod A_\alpha$ as a subspace of $\prod X_\alpha$, then there exists an open $C \in \prod X_\alpha$ such that $\prod A_\alpha \inter C = B$. By virtue of $C$ being open in $\prod X_\alpha$ there exists some open $C_\alpha \subset X_\alpha$ for each $\alpha \in J$ such that $\prod C_\alpha = C$ Thus we have $B = \prod A_\alpha \inter C = \prod A_\alpha \inter \prod C_\alpha = \prod\left[A_\alpha \inter C_\alpha\right]$, which is a basis element of $\prod A_\alpha$ as the box topology of all $A_\alpha$.
+
+\textbf{Product topology:}
+
+Let $B$ be an open set in $\prod A_\alpha$ as a product topology, then (by theorem 19.1) for each $\alpha \in J$ there exists some $B_\alpha$ that is open in $A_\alpha$, such that $\prod B_\alpha = B$. We also know (by theorem 19.1) that for only finitely many $\alpha \in J$, $B_\alpha \not= A_\alpha$. Now for any $\alpha \in J$ such that $B_\alpha = A_\alpha$ we let $C_\alpha = X_\alpha$ and for all other $\alpha \in J$ there must be some open set, $C_\alpha$ in $X_\alpha$ such that $A_\alpha \inter C_\alpha = B_\alpha$. Now for all but finitely many $\alpha \in J$, $C_\alpha = X_\alpha$, thus $\prod C_\alpha$ is an open set in $\prod X_\alpha$. Finally we say $B = \prod B_\alpha = \prod\left[C_\alpha \inter X_\alpha\right] = \prod C_\alpha \inter \prod X_\alpha$, thus $B$ would be open in $\prod A_\alpha$ as a subspace topology.
+
+Now let $B$ be an open set in $\prod A_\alpha$ as a subspace of $\prod X_\alpha$, then there exists some open $C\subset\prod X_\alpha$ such that $C \inter \prod A_\alpha = \prod B_\alpha$. Because $C$ is open in $\prod X_\alpha$ then for each $\alpha\in J$ there exists $C_\alpha$ open in $X_\alpha$ such that $\prod C_\alpha = C$ and for all but finitely many $\alpha \in J$, $C_\alpha = X_\alpha$. Now for each $\alpha \in J$ we let $B_\alpha = C_\alpha \inter A_\alpha$, thus $B_\alpha$ will be open in $A_\alpha$ and there may be only finitely many $B_\alpha \not= A_\alpha$. Finally we say that $B = C\inter\prod A_\alpha = \prod C_\alpha \inter \prod A_\alpha = \prod\left[C_\alpha \inter A_\alpha\right] = \prod B_\alpha$ which must be open in $\prod A_\alpha$ with a product topology.
+
+\question{3.} Show that if for all $\alpha\in J$, $X_\alpha$ is Hausdorff then $\prod X_\alpha$ is Hausdorff given either a box or product topology.
+
+
+First we will state and prove a theorem to help us in this proof.
+
+\begin{theorem} \label{Comparable Hausdorff}
+	Let a space $X$ has two topologies $\mathscr T$ and $\mathscr S$ with $\mathscr S$ finer than $\mathscr T$. If $\mathscr T$ is Hausdorff then so must $\mathscr S$ be.
+\end{theorem}
+
+\begin{proof}
+	Let us choose $x,y\in X$ such that $x\not=y$. As $\mathscr T$ is Hausdorff there exists a nhood $U$ of $x$ and nhood $V$ of $y$ in $\mathscr T$ such that $U$ and $V$ are disjoint. $\mathscr S$ is finer than $\mathscr T$ so $U$ and $V$ must also be in $\mathscr S$, thus for arbitrary point $x,y\in X$ there is are disjoint nhoods of them in $\mathscr S$.
+\end{proof}
+
+First we notice that the box topology is finer then the product topology, thus because of theorem \ref{Comparable Hausdorff} if we show that the product topology on $\prod X_\alpha$ is Hausdorff then so is the box topology on $\prod X_\alpha$.
+
+Consider $\prod X_\alpha$ given the product topology, with $X_\alpha$ Hausdorff for all $\alpha \in J$. Let $x,y\in \prod X_\alpha$ be given with $x\not=y$. For each $\alpha\in J$ there exists some $x_\alpha,y_\alpha \in X_\alpha$ such that $\prod x_\alpha = x$ and $\prod y_\alpha = y$. There then must be some $\beta \in J$ for which $x_\beta \not= y_\beta$ as if there was not then we would have $x=y$. We have that $X_\beta$ is Hausdorff, thus we may choose an nhoods of $U_\beta$ of $x_\beta$ and $V_\beta$ of $y_\beta$ such that $U_\beta \inter V_\beta = \emptyset$. Now for all $\alpha \in J\setminus\set\beta$ let us define $U_\alpha = V_\alpha = X_\alpha$. Now we have $\prod U_\alpha$ and $\prod V_\alpha$ open in $\prod X_\alpha$ with $\prod U_\alpha$ disjoint from $\prod V_\alpha$, and $x \in \prod U_\alpha$ and $y \in \prod V_\alpha$. Thus $\prod X_\alpha$ is Hausdorff.
+
+Now by theorem \ref{Comparable Hausdorff} we have $\prod X_\alpha$ with the box topology as Hausdorff.
+
+\question{5.}
+If $f$ is continuous then all $\alpha \in J$,  $f_\alpha$ is continuous.
+
+\begin{proof}
+	Let there be some $\beta \in J$ such that $f_\beta$ is not continuous. Let us also define $B_\alpha = X_\alpha$ for all $\alpha\not= \beta$, and let $B_\beta$ an open set in $X_\beta$ such that $f_\beta^{-1}(B_\beta)$ is not open in $A$. Now for each $\alpha \not= \beta$ we have $f_\alpha^{-1}(B_\alpha) = A$ by definition of a function (it must be defined at all points on $A$). Now we have
+	\def\LB{\left[}
+	\def\RB{\right]}
+	\begin{align*}
+		f^{-1}\left(\prod B_\alpha\right) &= \setbuilder{a\in A}{f(a) \in \prod B_\alpha} \\
+		&= \setbuilder{a \in A}{\prod f_\alpha(a) \in \prod B_\alpha} \\
+		&= \setbuilder{a \in A}{\All {\alpha \in J}{f_\alpha(a) \in B_\alpha}} \\
+		&= \interacross{\alpha\in J}{\setbuilder{a\in A}{f_\alpha(a) \in B_\alpha}} \\
+		&= \interacross{\alpha\in J}{f_\alpha^{-1}(B_\alpha)} \\
+		&= \interacross{\alpha \in J\setminus \set\beta}{f_\alpha^{-1}(B_\alpha)} \inter f_\beta^{-1}(B_\beta) \\
+		&= A \inter f_\beta^{-1}(B_\beta) \\
+		&= f_\beta^{-1}(B_\beta)
+	\end{align*}
+	and we know that $f_\beta^{-1}(B_\beta)$ is closed, thus $f$ is not continuous. Now by contrapositive we have shown that for $f$ to be continuous $\prod f_\alpha$ must be continuous for each $\alpha \in J$ when we consider the box topology. 
+\end{proof}
+
+\end{document}
+

@@ -1,0 +1,106 @@
+\documentclass{article}
+\input{../../definitions}
+
+\title{Combinatorics Final Exam}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\newtheorem{theorem}{Theorem}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+
+\begin{document}
+	\maketitle
+	\section{}
+	\subsection{Let $G$ be an $r$-regular graph on $n$ vertices, meaning that we have $\deg(v) = r$ for every vertex $v$. Prove that $\chi(G) \ge n/(n-r)$}
+	
+	First we color $G$ minimally and we can now split the vertices into color sets, which would be the set of all vertices in $G$ with a specific color. Now as there are $\chi(G)$ color sets, and $n$ vertices, then there must exist some color set $B$, such that $$\cardinality{B} \ge \frac{n}{\chi(G)}$$. We also know that each vertex in $B$ connects to $r$ vertices outside of $B$ (as $B$ is an independent set), thus there must be at least $r$ vertices outside of $B$. $$n-\cardinality B \ge r$$
+	
+	We now will do some algebraic manipulation:
+	\begin{align*}
+		\frac n{\chi(G)} \le \cardinality B \;\And\; n-\cardinality B \ge r &\implies n-\frac n{\chi(G)} \ge n-\cardinality B \ge r\\
+		&\implies r-n \le -\frac n{\chi(G)} \\
+		&\implies n-r \ge \frac n{\chi(G)} \\
+		&\implies \frac 1{n-r} \le \frac{\chi(G)}n \\
+		&\implies \frac n{n-r} \le \chi(G) \\
+		&\iff \chi(G) \ge \frac n{n-r}
+	\end{align*}
+	
+	
+	\subsection{Instead of coloring the vertices of  graph, we could color the \textbf{edges}. A proper edge coloring is one where any edges that share a vertex must get different colors. The \textbf{edge chromatic number} $\chi'(G)$ of a graph is the minimum number of colors needed to properly edge-color the graph. Prove that $$\Delta(G) \le \chi'(G) \le 2\Delta(G) - 1$$ where $\Delta(G) = \max_{v\in V(G)}\deg(v)$}
+	
+	Let us start by considering $V$ to be the vertex in $G$ with greatest degree (or at least one tied for the title).
+	$V$ must have $\Delta(G)$ edges, each of those edges are going to have a different color, thus $\chi'(G) \ge \Delta(G)$.
+	
+	Now we can also try and color these edges with a greedy algorithm, that was for an edge to given the $k^{\text{th}}$ color it would need to share a vertex with $k-1$ other edges. Well any edge can at most be connected to two vertices and each of those vertices has at most $\Delta(G) - 1$ other edges. Then any edge may share a vertex with at most $2(\Delta(G) - 1)$ and then we would at most get that edge colored with color $2(\Delta(G) -1) + 1 = 2\Delta(G) - 1$, resulting in an upper bound of $\chi'(G) \le 2\Delta(G) - 1$.
+	
+	Now finally: $$\Delta(G) \le \chi'(G) \le 2\Delta(G) -1$$
+	
+	\section{}
+	\subsection{Let $\mathcal F_n$ denote the set of permutations of the multiset $\set{1,1,2,2,3,3,\ldots,n,n}$ with the following special property: for $1 \le m \le n$, all numbers between the two occurrences of $m$ are greater than $m$, For example, $\mathcal F_1 = \set{11}$ and $\mathcal F_2 = \set{1122,1221,2211}$. Let $F_n = \cardinality{\mathcal F_n}$. Prove that for $n\ge 2$, we have $$F_n = (2n-1)\cdot F_{n-1}$$}
+	
+	We can construct any element of $\mathcal F_{n+1}$ using an element of $\mathcal F_{n}$. For any element in $\mathcal F_n$ we have $2n$ indices and thus $2n+1$ places we may add an element. To go from something in $\mathcal F_n$ to something in $\mathcal F_{n+1}$ we have to add two elements, but they must be next to each-other, as otherwise there would be some element between and all the elements other then $n+1$ are less then $n+1$, thus breaking our rule that between to same elements everything must be greater than it. We also can put it anywhere as it is greater then anything else. Additionally all constructions produce a unique element of $\mathcal F_{n+1}$. Now we have $(2n+1)$ ways to construct unique elements in $\mathcal F_{n+1}$ from any element of $\mathcal F_{n}$, thus we get the equation: $$F_{n+1} = (2n+1)F_n$$ and this will work for all $n\ge 1$. This is logically equivalent to the statement we are trying to prove, to show this simply replace $n$ with $\eta$ and then let $\eta = n-1$ and we find: $$F_{\eta + 1} = (2\eta + 1)F_\eta \iff F_{n} = (2n-1)F_{n-1}$$ and because before this would have worked for $\eta \ge 1$ now it would be $n-1 \ge 1$, thus $n\ge 2$
+	
+	\subsection{Use part (a) to explain why $F_n = (2n-1)!!$}
+	
+	Now we just do some weak induction. It is trivial that $F_1 = 1 = (2\cdot 1 -1)!!$, especially because it's given to us in part (a). Now we will assume that this holds for some $n \in\mathbb N$ and show that it also holds for $\eta = n+1$.
+	
+	\begin{align*}
+		F_\eta &= F_{n+1} \\
+		&= (2n+1)F_n \\
+		&= (2n+1)(2n-1)!! \\
+		&= (2n+1)!! \\
+		&= (2\eta-1)!!
+	\end{align*}
+	
+	\textbf{Ta-dah!} Now by the powers of weak induction we are confident that $F_n = (2n-1)!!$ for all $n\in\mathbb N$.
+	
+	\subsection{Let $\mathcal F_{n,k} \subset \mathcal F_n$ be the set of such permutations that have $k$ ascents. For example $$\mathcal F_{3,1} = \set{113322, 133221, 221331, 221133, 223311, 233211, 331122, 331221}$$ Let $F(n,k) = \cardinality{\mathcal F_{n.k}}$. Prove that $$F(n,k) = (k+1)F(n-1,k)+(2n-1-k)F(n-1,k-1)$$}
+	
+	Now to construct something in $\mathcal F_{n,k}$ we may take an element of $\mathcal F{n-1,k}$ and then insert a pair of $n$ in at any viable indices. The viable indices in this case are going to be any place in which we don't add a new assent and the two elements must be adjacent for reasons discussed in part (a). This means we can put the new elements at the beginning of the string or we may put them anywhere there is already an assent, this gives us $k+1$ places, thus yielding $(k+1)F(n-1,k)$ ways to create an element of $\mathcal F_{n,k}$ so far.
+	
+	We also may construct this element by taking a string missing $n+1$ and that needs one more assent, so an element of $\mathcal F_{n-1,k-1}$ and adding in the new element to create a new assent, this would be anywhere that it was not viable last time, so anywhere that is not already an assent and not the beginning. We have $k-1$ assents this time and $2n-2$ spots so we have $2n-2-(k+1) = 2n-1-k$ spots to put our new elements this time. Now we get our recursive equation of: 
+	
+	$$F(n,k) = (k+1)F(n-1,k)+(2n-1-k)F(n-1,k-1)$$
+	
+	The only issue left to show this is true is to show that each thing created is different, that is that there is no double counting. To show this simply consider two distinct strings in $\mathcal F_{n-1,k} \union \mathcal F_{n-1,k-1}$ these strings can't possible both generate the same string when a pair of $n$ is added as simply removing the $n$ would get back to the distinct strings. Additionally notice that $\mathcal F_{n-1,k} \inter \mathcal F_{n-1,k-1} = \emptyset$.
+	
+	\section{}
+	
+	\subsection{Given $2\le k \le n-1$, let $T(n,k)$ be the number of labeled trees on $n$ vertices with exactly $k$ leaves. Find a simple formula for $T(n,k)$.}
+	
+	Consider the Pr\"ufer codes for these trees. If a vertex is a leaf then there will be no other vertices going to that element, with the exception of if $1$ is a leaf, in which case there would only be one vertex going to it, however in the simplified Pr\"ufer codes this isn't an issue as we remove a $1$ at the end. In the Pr\"ufer codes for trees counted by $T(n,k)$ means that there will be $k$ numbers that do not appear in the Pr\"ufer code. The valid Pr\"ufer codes will then be a string of length $n-2$ on the symbol set $[n]$ that does not include $k$ of the symbols. Well first choose those $k$ symbols from $[n]$ (done in $\binom nk$ ways), and second create a string on the remaining symbols (done in $(n-k)^{n-2}$ ways). This results in $$T(n,k) = \binom nk(n-k)^{n-2}$$
+	
+	\subsection{How many rooted trees are there on $[n]$ vertices such that the root is \textbf{not} a leaf?}
+	
+	Here we will use beveridge's theorem. There are $n^{n-2}$ non-rooted trees on $[n]$ and thus we simply choose a root to get the number of rooted trees giving us $n^{n-2}\cdot n = n^{n-1}$ rooted trees on $[n]$.
+	
+	To find the number of trees with a root that is a leaf we simply choose an element of $[n]$ to be the root and then create all the Pr\"ufer codes that don't have that element giving us $n(n-1)^{n-2}$ different trees with a leaf as a root.
+	
+	Now $n^{n-1} - n(n-1)^{n-2}$ is the solution for how many rooted trees there are on $[n]$ such that the root is not a leaf.
+	
+	\section{Suppose that we have a set of $n$ building blocks with height $[n]$. How many ways can we line up the blocks so that we see exactly $r$ blocks when looking from the right, and we can se exactly $s$ blocks when looking from the left?}
+	
+	First we notice that the tallest block (one with height $n$) divides this problem into two separate, but identical subproblems. That is once we place the tallest block somewhere, no mater what is to the right or left of it, it can be seen from both sides; additionally nothing on the left of it can be seen from the right and vice-versa.
+	
+	To tackle this problem we are first going to fix where the tallest block is and put and say there are $k$ blocks 'in-front' of it, and in-front depends on what way we are looking at it from, so this way when this is solved we may use this on both sides of the building. Now if there are $k$ blocks in-front of the tallest building then we must start by choosing which $k$ they are, notice that when we choose which $k$ blocks are on one side of the building we uniquely choose what is on the other side. Because the tallest block is already placed we have $\binom{n-1}k$ different blocks to choose to put in-front of the tallest building.
+	
+	Now that we have the block set we may re-label it with labels from $[k]$, and just make sure that we maintain the order between blocks. This is because we don't really care how tall a block is, just if it's taller or shorter then the other blocks in the set, and this will maintain that property. Now if we wanted to see $p+1$ blocks from whatever direction we are looking (we do the plus one because we already know that we can see the tallest building), then we can place a valid arrangement for this by permuting the blocks now with labels from $[k]$ such that there are $p$ cycles, we write these cycles in our canonical cycle notation, then remove parentheses and we will find a new permutation that has exactly $p$ indices with the greatest element so far in the permutation. Now we have $c(k,p)$ valid orderings of our blocks, where $c$ is the signless Sterling number of the first kind.
+	
+	Now to bring this all home we have bounds on $k$ of $r-1 \le k \le n-s+1$ and then choose the $k$ elements on one side (I go with the right side in this) and then permute with $s-1$ and $r-1$ cycles on both sides and we get:
+	
+	$$\sumfrom{k=r-1}{n-s+1}{\binom{n-1}{k} c(k,r-1) \cdot c(n-1-k,s-1)}$$
+	
+	\section{The stars and stripes graph EGF question}
+	
+	Alright, to make a star graph we just choose a vertex to be the center and then everything else is determined, thus there are always $n$ ways for this to be done on an $n$ vertex star graph, however when $n=2$ you get an odd case as no mater which vertex you choose you get the same graph, thus we get the EGF:$$ \sumfrom{n=1}{\infty}{n\frac{x^n}{n!}} - \frac{x^2}2 $$, all stars are the same color so we are now done.
+	
+	Now we make all our stripes which are just paths, a path on $[n]$ can be made in $\frac{n!}2$ ways as you may put any permutation but then you double count as a complete reversal of an ordering generates the same path so just divide by two. Now because we don't like that we divides by two we simply multiply back by two to account for the choice of a color between red or white. Also we must account for the issue of the case on one vertex as there is only one possible graph not $\frac{1!}2 = \frac 12$ graphs, thus meaning there are two when colored. This gives us an EGF: $$2x + \sumfrom{n=2}{\infty}{n!\frac{x^n}{n!}}$$
+	
+	Now each of these we exponentiate then multiply together as we are choosing two subsets, one to be stars and one to be stripes, then we create as many stars one one as we like and then we create as many red and white stripes on the other as we like, this gives us an EGF of: \begin{align*}
+		\exp\left(\sumfrom{n=1}{\infty}{n\frac{x^n}{n!}}-\frac{x^2}2\right)\cdot\exp\left(2x+\sumfrom{n=2}\infty{n!\frac{x^n}{n!}}\right)
+	\end{align*}
+	
+	This can be simplified, but I'll leave that as an exercise for the reader.
+	
+\end{document}

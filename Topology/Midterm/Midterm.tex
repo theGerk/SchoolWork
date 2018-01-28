@@ -1,0 +1,125 @@
+\documentclass{article}
+\input{../../definitions.tex}
+\input{../topology.tex}
+
+\title{Topology Midterm}
+
+
+
+\begin{document}
+\maketitle
+
+In \question{17.5} order to show that, for any order topology, $\closure{\ooint ab} \subset \ccint ab$ we first notice that $\ccint ab \supset \ooint ab$ and that $\ccint ab$ is closed. By definition we know $\closure{\ooint ab} = \biginter \text{all closed supersets of }\ooint ab$. We now notice that $\ccint ab$ is one such closed superset of $\ooint ab$, thus $\closure{\ooint ab} \subset \ccint ab$.
+
+We now will look to see when $\closure{\ooint ab} = \ccint ab$. We already know that $\closure{\ooint ab} \subset \ccint ab$, and to have equality we only need $\ccint ab \subset \closure{\ooint ab}$. Let us start by noticing that $\ccint ab$ is the union of disjoint sets $\ooint ab$ and $\set{a,b}$. Now if $\ccint ab$ is to be a subset of $\closure{\ooint ab}$ then that would be the same as saying $\ooint ab\union\set{a,b}\subset\closure{\ooint ab}$ thus both $\ooint ab$ and $\set{a,b}$ must be subsets of $\closure{\ooint ab}$. We know that $\ooint ab\subset\closure{\ooint ab}$ as $\closure{\ooint ab} = \ooint ab \union \limpts{\ooint ab}$, and because we know that $\set{a,b}$ is disjoint from $\ooint ab$ we can then say $\ccint ab \subset \closure{\ooint ab} \implies \set{a,b} \subset \limpts{\ooint ab}$. We also can say
+\begin{align*}
+\set{a,b} \subset \limpts{\ooint ab} &\implies \set{a,b} \subset \closure{\ooint ab} \\
+&\implies \set{a,b} \union \ooint ab \subset \closure{\ooint ab} \\
+&\implies \ccint ab \subset \closure{\ooint ab}
+\end{align*}
+and thus, iff $a$ and $b$ are limit points for the interval $\ooint ab$, then our equality ($\ccint ab = \closure{\ooint ab}$) holds.
+
+\bigskip
+
+\question{17.17}Consider the lower limit topology on $\mathbb R$, and the topology given by the basis $\mathscr C$ of Exercise 8 \S 13. Determine the closures of the intervals $A = \ooint0{\sqrt{2}}$ and $B=\ooint{\sqrt2}3$ in these two topologies.
+
+Basis $\mathscr C$ of Exercise 8 \S 13:\[\mathscr C = \setbuilder{\coint ab}{a<b \And a,b\in\mathbb Q}\]
+\medskip
+
+First we will consider our topology to be $\mathbb R_{\ell}$:
+\smallskip
+
+Let $C$ be an interval in the form $\ooint ab$, where $a,b\in\mathbb R$. By definition we know that $\closure C $ is the intersection of all closed sets that contain $C$. We know that $\ooint{-\infty}a\union\coint b\infty \in \mathbb R_\ell$ and thus $\coint ab$ is closed in $\mathbb R_\ell$, thus $\closure C \subset \left[a,b\right)$.
+
+Now if we can show that $[a,b)\subset\closure C$ then we will know that $[a,b)=\closure C$.
+
+First we note that by theorem 17.6 $\closure C = C \union \limpts C$, now because we know $C \subset \closure C$ then we can say if $\coint ab\setminus C\subset \closure C \setminus C$ then $ [a,b) = \closure C$. We also know that $\closure C \setminus C \subset \limpts C$, thus we can say that if $\coint ab \setminus C \subset \limpts C$ then $[a,b) = \closure C$. Next we find that $[a,b) \setminus C = \set a$ so if $a \in \limpts C$ then $[a,b) = \closure C$. We will show $a\in\limpts C$ by contradiction.
+
+Let us assume $a \not\in\limpts C$ then there is an interval $[x,y)$, where $x,y\in \mathbb R$, that contains $a$ but no elements in $C$. By definition $[x,y) = \setbuilder{k}{x\le k<y}$, so if $a\in[x,y)$ then $x\le a<y$. Now we can construct an interval $(a,y) \subset [x,y)$ which is not empty as $y > a$ and thus it will contain some elements of $C$. We now have a contradiction, thus $a \in \limpts C$, thus
+\[
+[a,b) = \closure C
+\]
+
+Now if we let $a = 0$ and $b = \sqrt2$ then we know $\closure{\ooint{0}{\sqrt2}} = \closure A = \coint{0}{\sqrt2}$.
+
+Now if we let $a = \sqrt2$ and $b = 3$ then we know $\closure{\ooint{\sqrt2}3} = \closure B = \coint{\sqrt2}3$.
+\medskip
+
+Now we will to continue on to the topology $\mathcrl C$, which is given by basis $\mathscr C$.
+
+Let us first attempt to find $\closure{\ooint{0}{\sqrt2}}$. We will consider the set $\ccint0{\sqrt2}$, and attempt to show that it is closed by showing it's compliment is open.
+\begin{align*}
+\setcomp{\ccint0{\sqrt2}} &= \ooint{-\infty}0 \union \ooint{\sqrt2}{\infty} \\
+&= \left(\unionacross{a<b<0 \And a,b \in \mathbb Q}{\coint ab} \union \unionacross{\sqrt2<a<b \And a,b \in \mathbb Q}{\coint ab}\right) \in \mathcrl C
+\end{align*}
+Thus $\ccint 0{\sqrt2}$ is closed, and thus $\closure{\ooint0{\sqrt2}}\subset\ccint0{\sqrt2}=\ooint{0}{\sqrt2}\union\set{0,\sqrt2}$. Now to find $\closure{\ooint{0}{\sqrt2}}$ we simply must determine if $0$ is a limit point of $\ooint 0{\sqrt2}$ and if $\sqrt2$ is a limit point of $\ooint 0{\sqrt2}$.
+
+Any open interval around $0$ must have an upper bound greater then $0$, and thus $0$ is a limit point for $\ooint 0{\sqrt2}$.
+
+Any open interval around $\sqrt2$ must have a lower bound that is a rational number, $\sqrt2$ is not rational, thus there must be a rational number less then $\sqrt2$ in the interval, and thus $\sqrt2$ is a limit point for $\ooint 0{\sqrt2}$.
+
+Thus we have shown \[\ccint{0}{\sqrt2} = \closure{\ooint{0}{\sqrt2}}\]
+
+Next we will find $\closure{\ooint{\sqrt2}3}$. We first will check if $\sqrt2$ and $3$ are limit points of $\ooint{\sqrt2}3$.
+
+For an open interval in $\mathcrl C$ to include $\sqrt2$ there must a rational number greater then $\sqrt2$ as the upper bound, thus there is some value between $\sqrt2$ and that upper bound that is in $\ooint{\sqrt2}3$. Thus $\closure{\ooint{\sqrt2}3} \supset \coint{\sqrt2}3$.
+
+The interval $\coint34$ includes $3$ and is in $\mathscr C$, thus it is a nood\footnote{nood = neighborhood} of $3$ which contains no values in $\ooint{\sqrt2}3$. Thus we know $3 \not\in \closure{\ooint{\sqrt2}3}$.
+
+Now we wish to show that $\coint{\sqrt2}3$ is closed, if we can do that then we know that $\coint{\sqrt2}3 \subset \closure{\ooint{\sqrt2}3} \subset \coint{\sqrt2}3$ or $\coint{\sqrt2}3 = \closure{\ooint{\sqrt2}3}$.
+\begin{align*}
+\setcomp{\coint{\sqrt2}3} &= \ooint{-\infty}{\sqrt2} \union \coint3\infty \\
+&= \left( \unionacross{a<b<\sqrt2 \And a,b\in\mathbb Q}{\coint ab} \union \unionacross{3 \le a < b \And a,b \in \mathbb Q}{\coint ab} \right) \in \mathcrl C
+\end{align*}
+Thus we have shown $\coint{\sqrt2}3$ is closed, and thus have shown
+\[\coint{\sqrt2}3 = \closure{\ooint{\sqrt2}3}\]
+
+
+\bigskip
+Consider \question{18.5}the linear function $f:\mathbb R \to \mathbb R$ defined as $f(x) = \frac{x-a}{b-a}$. We know all linear functions are continuous, we have the homeomorphisms
+\begin{align*}
+f(\ooint ab) &= \ooint{\frac{a-a}{b-a}}{\frac{b-a}{b-a}} \\
+&= \ooint01
+\end{align*}
+\begin{align*}
+f(\ccint ab) &= \ccint{\frac{a-a}{b-a}}{\frac{b-a}{b-a}} \\
+&= \ccint01
+\end{align*}
+thus we have shown homeomorphism between $\ooint ab$ and $\ooint01$, and between $\ccint ab$ and $\ccint01$ for any $a<b\in\mathbb R$.
+
+\bigskip
+\question{18.8(a)} Consider first $\setcomp{\setbuilder{x\in X}{f(x)\le g(x)}} = \setbuilder{x\in X}{f(x)>g(g)} = S$. Let us now choose $x\in S$.
+
+By theorem 17.11 we know that $Y$ is Hausdorff, thus there exists disjoint open sets $\mathfrak A$ and $\mathfrak B$ such that $f(x)\in\mathfrak A$ and $g(x)\in\mathfrak B$. Let $A \subset\mathfrak A$ be a basis element in $Y$'s order topology such that $f(x)\in A$ and let $B\subset\mathfrak B$ be a basis element in $Y$'s order topology such that $g(x)\in B$. Now we have $\All{a\in A}{\All{b\in B}{[a>b]}}$ due to the definition of the order topology.
+
+Next we notice that $\inv{g}(B)$ is open by continuity of $g$ and $\inv{f}(A)$ is open by continuity of $f$. Finite intersections are open so $\inv g(B) \inter \inv f(A)$ must be open. Now for any $\hat x\in \inv g(B) \inter \inv f(A)$ we have $g(\hat x) \in B$ and $f(\hat x) \in A$ thus $g(\hat x) < f(\hat x)$. We now have shown that for every $x \in S$ there exists a nood of $x$ that is completely contained in $S$. We may now take the union of a nood for each $x$ and we get that $S$ is the union of open sets, thus $S$ is open. We now conclude that $\setbuilder{x\in X}{f(x)\le g(x)}$ is closed.
+
+\medskip
+\question{(b)}
+Let $A = \setbuilder{x\in X}{f(x) \le g(x)}$ and $B = \setbuilder{x\in X}{g(x) \le f(x)}$, thus $\All{a \in A}{f(a) = h(a)}$ and $\All{b \in B}{g(b) = h(b)}$; additionally $X = A \union B$. Notice that if $x\in A\inter B$ then $f(x) \le g(x)$ and $g(x) \le f(x)$, thus $g(x) = f(x)$. Now the final thing we must show is that $A$ and $B$ are both closed, however we just showed that in part a of this problem, so we may use the pasting lemma and we know that $h(x)$ is continuous.
+
+\bigskip
+\question{19.7}
+\textbf{Box topology:} Let $x\in \mathbb R^\omega\setminus\mathbb R^\infty$, therefore $x = (x_\alpha)_{\alpha\in J}$ where $x_a\not=0$ for infinitely many $\alpha\in J$. For each $\alpha\in J$ such that $x_\alpha\not=0$ let $A_\alpha$ be a nood of $x_\alpha$ that does not include $0$, for all other $\alpha\in J$ let $A_\alpha$ be a nood of $0$. We find that $\prodacross{\alpha\in J}{A_\alpha}$ is open in $\mathbb R^\omega$ as it is a basis element. We have now shown that for any $x \in\mathbb R^\omega\setminus\mathbb R^\infty$ there is an open set $A(x)$ such that $x \in A(x) \subset\mathbb R^\omega\setminus\mathbb R^\infty$, thus we may take the union and find $\unionacross{x\in\mathbb R^\omega\setminus\mathbb R^\infty}{A(x)} =\mathbb R^\omega\setminus\mathbb R^\infty$, thus $\mathbb R^\omega\setminus\mathbb R^\infty$ is open, and thus $\mathbb R^\infty$ is closed so $\mathbb R^\infty = \closure{\mathbb R^\infty}$.
+
+\textbf{Product topology:} Let $x \in\mathbb R^\omega$ and let $N$ be a nood of $x$, thus there exists some basis element of $\mathbb R^\omega$, $A$ such that $x \in A \subset N$. There must then exists $(x_\alpha)_{\alpha\in J} = x$ and $\prodacross{\alpha \in J}{A_\alpha} = A$ with $x_\alpha \in \mathbb R$ for all $\alpha \in J$ and $A_\alpha$ open in $\mathbb R$ for all $\alpha \in J$. We also know that for only finitely many $\alpha\in J$, $A_\alpha \not= \mathbb R$. We will now let $y_\alpha = 0$ for all $\alpha \in J$ where $A_\alpha=\mathbb R$, and let $y_\alpha = x_\alpha$ for all $\alpha\in J$ where $A_\alpha\not= \mathbb R$, thus $y = (y_\alpha)_{\alpha\in J} \in A$. We also notice that there are at most finitely many $\alpha \in J$ such that $y_\alpha\not=0$ thus $y \in \mathbb R^\infty$. This means that for any $x\in\mathbb R^\omega$ and any nood of $x$, there is some point $y\in\mathbb R^\infty$ such that $y$ is in the chosen nood of $x$, thus all points in $\mathbb R^\omega$ are limit points of $\mathbb R^\infty$. Finally we conclude that $\closure{\mathbb R^\infty} = \mathbb R^\omega$.
+
+\bigskip
+
+
+\question{20.4} 
+\begin{center}
+	\begin{tabular}{r|c c c}
+		&box topology&uniform topology &product topology\\
+		\hline\question{(a)}
+		$f$&not continuous&not continuous&continuous \\
+		$g$&not continuous&continuous&continuous\\
+		$h$&not continuous&continuous&continuous\\
+		\hline\question{(b)}
+		$\mathbf w$&does not converge&does not converge&converges\\
+		$\mathbf x$&does not converge&converges&converges\\
+		$\mathbf y$&does not converge&converges&converges\\
+		$\mathbf z$&converges&converges&converges
+	\end{tabular}
+\end{center}
+\end{document}

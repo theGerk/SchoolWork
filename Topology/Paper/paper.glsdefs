@@ -1,0 +1,30 @@
+\ifglsentryexists{set}{}%
+{%
+\gls@defglossaryentry{set}%
+{%
+name={set},%
+sort={set},%
+type={main},%
+first={set},%
+firstplural={sets},%
+text={set},%
+plural={sets},%
+description={A collection of objects.},%
+descriptionplural={A collection of objects.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

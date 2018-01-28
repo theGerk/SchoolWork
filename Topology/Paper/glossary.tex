@@ -1,0 +1,50 @@
+\usepackage[toc,xindy]{glossaries}
+
+\makenoidxglossaries
+
+\newglossaryentry{set}
+{
+	name={set},
+	description={A collection of objects}
+}
+\newglossaryentry{vertex}
+{
+	name={vertex},
+	description={A point or node in a graph},
+	plural={verticies}
+}
+\newglossaryentry{edge}
+{
+	name={edge},
+	description={A connection or line between points in a graph}
+}
+\newglossaryentry{connected}
+{
+	name={connected},
+	description={A graph where one may start at any point and could follow edges and eventually get to any other point}
+}
+\newglossaryentry{multigraph}
+{
+	name={multigraph},
+	description={Like a graph, but multiple \glspl{edge} may connect the same \gls{vertex} pair, and an edge may connect a \glx{vertex} to itself}
+}
+\newglossaryentry{complete}
+{
+	name={complete graph},
+	description={A graph with all possible \glspl{edge} included, the notation $k_n$ is used to denote the \gls{complete} with $n$ \glspl{vertex}}
+}
+\newglossaryentry{face}
+{
+	name={face},
+	description={An section of the space we are embedding our graph in that is separated from the rest of the space by \glspl{edge}}
+}
+\newglossaryentry{contraction}
+{
+	name={contraction},
+	description={A graph operation where one removes an edge by fusing two \glspl{vertex} together}
+}
+\newglossaryentry{subgraph}
+{
+	name={subgraph},
+	description={$A$ is a \gls{subgraph} of $B$ if $A$'s \gls{vertex} \gls{set} and \gls{edge} \gls{set} are subsets of $B$'s \gls{vertex} \gls{set} and \gls{edge} \gls{set} respectively}
+}

@@ -1,0 +1,20 @@
+\BOOKMARK [1][-]{section.1}{}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{What is the OGF for integer partitions where each part occurs an even number of times?}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{What is the OGF for integer partitions where each part is even?}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{What conclusions may be drawn?}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{find a1 and a2}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Show that an = 4an-1 + 12an-2 for n3}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Show that the OGF, A\(x\) = 7x+12x21-4x-12x2}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.4}{Determine a simple cosed formula for an}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Vandermonde's formula}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Show that both sides of Vandermonde's formula are 0 if k > m + n}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Give a combinatorial proof for Vandermode's formula}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{Prove using OGF}{section.3}% 13
+\BOOKMARK [1][-]{section.4}{Find the exponential generating function for the number of partitions of [ n ] into an even number of odd-sized blocks. \(You can only use odd-sized blocks. So the number of even-sized blocks is zero.}{}% 14
+\BOOKMARK [1][-]{section.5}{Let rn be the number of ways to partition [ n ] without any singleton blocks}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{Give combinatorial proof that rn=k=0n-2 \( \040repstopdf\(\)n-1krk \)}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.2}{Prove that rn+1 counts the number of partitions on [ n ] with at least 1 singleton block.}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.3}{Show that B\(n\) = rn + rn+1.}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.4}{Find a closed formula for the EGF for rn.}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.5}{Use the EGF to show that rn = k=0n \( \040repstopdf\(\)nk \(-1\)n-kB\(k\) \)}{section.5}% 20

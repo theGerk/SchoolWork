@@ -1,0 +1,257 @@
+\documentclass{article}
+
+\input{../../definitions.tex}
+\input{../algebra.tex}
+
+
+\title{Algebra Homework}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Chapter 1}
+\subsection{Section 1}
+\subsubsection{Question 1}
+
+Choose $a,b\in S$. We find $$a = a * b = b * a = b$$, and thus all elements in $S$ must be the same element, so there is most one element of $S$.
+
+\subsubsection{Question 2}
+Let us choose $a,b,c \in S$.
+
+\question{(a)} We have $$a*b = a - b = -(b-a) = -(b*a)$$, thus iff $0 = a*b = a-b$ we have $a*b = b*a$ as $0=-0$, however for any other value of $a*b$, $a*b\not=b*a$. We also may notice that iff $a=b$, then $a*b=a-b=0$. Thus for all $a\not= b$, $a*b \not=b*a$.
+
+\question{(b)} We have
+\begin{align*}
+a*(b*c) &= a-(b-c) \\
+&= a+(c-b) \\
+&= a+c-b \\
+&= a-b+c \\
+&= a-b-(-c) \\
+&= (a-b)-(-c) \\
+&= (a*b)*-c
+\end{align*} so $a*(b*c) = (a*b)*c$ iff $c=-c$ which is only true if $c = 0$.
+
+\question{(c)} We have $a*0 = a-0 = a$.
+
+\question{(d)} We have $a*a = a-a = 0$.
+
+\subsection{Section 2}
+
+\subsubsection{Question 8}
+
+Let $x \in (A\setminus B) \union (B\setminus A)$ then either $x \in A \setminus B$ or $x \in B\setminus A$. If $x \in A\setminus B$ then we get that $x \in A$ and $x \not\in B$, thus $x \in A\union B$ and $x \not\in A \inter B$, which would mean $x \in (A\union B)\setminus(A\inter B)$. If $x\in B\setminus A$ then we get that $x\in B$ and $x\not\in A$, thus $x\in A \union B$ and $x\not\in A\inter B$, which would mean $x \in (A\union B)\setminus(A\inter B)$. It has now been demonstrated that $(A\setminus B) \union (B\setminus A) \subset (A \union B) \setminus (B\inter A)$.
+
+Now let $x\in(A\union B)\setminus(A\inter B)$. We have that $x \in A\union B$ and $x \not\in A\inter B$. It follows that either $x \in A$ or $x\in B$, however, $x$ is not in both $A$ and $B$. This may be written as: $x \in A$ and $x \not\in B$, or $x\in B$ and $x\not\in A$. This then translates to $x \in A\setminus B$ or $x\in B\setminus A$, therefore, $x\in (A\setminus B) \union (B\setminus A)$. It has now been demonstrated that $(A\union B) \setminus (B\inter A) \subset (A\setminus B)\union (B\setminus A)$.
+
+Now it has been shown that both sets are subsets of each-other, thus $(A\setminus B)\union(B\setminus A) = (A\union B) \setminus (A\inter B)$.
+
+
+
+This may be displayed pictorially as follows:
+
+%TODO figure out pictures
+
+\def\secondcircle{(210:0.95cm) circle (1.5cm)}
+\def\thirdcircle{(330:0.95cm) circle (1.5cm)}
+\begin{tikzpicture}
+	\begin{scope}
+		\clip \secondcircle;
+		\fill[cyan] \thirdcircle;
+	\end{scope}
+	\draw \secondcircle node [text=black,below left] {$A$};
+	\draw \thirdcircle node [text=black,below right] {$B$};
+\end{tikzpicture}
+
+
+\subsubsection{Question 9}
+
+Let $x \in A \inter (B \union C)$, thus $x \in A$ and $x\in B\union C$. We then have that $x \in B$ or $x \in C$. Now as we already know that $x\in A$ then we get that either $x \in B \inter A$ or $x \in C \inter A$ and therefore $x \in (A\inter B) \union (A \inter C)$. Thus it has been shown that $A \inter (B\union C) \subset (A\inter B)\union (A\inter C)$.
+
+Let $x \in (A\inter B) \union (A\inter C)$, thus $x \in (A\inter B)$ or $x\in (A\inter C)$. We then get that either $x \in A$ and $x \in B$ or that $x\in A$ and $x\in C$, either way $x\in A$, thus we may write that $x \in A$ and either $x\in B$ or $x\in C$. This would be the same as $x\in A$ and $x\in B\union C$, which then translates to $x \in A \inter (B\union C)$. Thus it has been shown that $(A\inter B)\union (A\inter C) \subset A\inter (B\union C)$.
+
+We have now shown that both sets are subsets of each-other, thus $A\inter(B\union C) = (A\inter B)\union (A\inter C)$.
+
+\subsubsection{Question 10}
+
+Let $x\in A\union (B\inter C)$, assume then for the sake of contradiction that $x\not\in(A\union B)\inter (A\union C)$. Because $x \in A\union (B\inter C)$ we have that $x \in A$ or $x\in B\inter C$. Because $x\not\in (A\union B)\inter (A\union C)$ we have that $x\not\in A\union B$ or $x\not\in A\union C$. We then get that either $x \not\in A$ and $x\not\in B$ or $x\not\in A$ and $x\not\in C$, either way $x\not\in A$, so we have $x\in B\inter C$. We know that $x\not\in B$ or $x\not\in C$, however we also have that $x\in B$ and $x\in C$ due to $x\in B\inter C$, thus we have a contradiction. Thus $A\union(B\inter C) \subset (A\union B)\inter(A \union C)$.
+
+Let $x\in (A \union B) \inter (A\union C)$ and assume for the sake of contradiction that $x\not\in A\union(B \inter C)$. We then get that $x\not\in A$ and $x\not\in B\inter C$. We also have that $x\in A \union B$ and $x\in A \union C$, so if $x\not\in A$ then we get $x\in B$ and $x\in C$. This is then translated to $x\in B\inter C$ which is a direct contradiction with $x\not\in B\inter C$ and again we have a contradiction. Thus $(A\union B)\inter(A\union C)\subset A\union (B\inter C)$.
+
+We have now shown that both sets are subsets of each other, thus $A\inter(B\union C) = (A\union B)\inter(A\union C)$.
+
+\subsubsection{Question 12}
+
+\question{(a)}
+\begin{align*}
+	\setcomp{(A\union B)} &= \setbuilder{x\in S}{x\not\in A\union B} \\
+	&= \setbuilder{x\in S}{x\not\in A \And x\not\in B} \\
+	&= \setbuilder{x\in S}{x \in \setcomp A \And x\in \setcomp B} \\
+	&= \setcomp A \inter \setcomp B
+\end{align*}
+
+\question{(b)}
+\begin{align*}
+	\setcomp{(A\inter B)} &= \setbuilder{x\in S}{x\not\in A\inter B} \\
+	&= \setbuilder{x\in S}{x\not\in A \Or x\not\in B} \\
+	&= \setbuilder{x\in S}{x \in \setcomp A \Or x\in \setcomp B} \\
+	&= \setcomp A \union \setcomp B
+\end{align*}
+
+\subsubsection{Question 13}
+\question{(a)}
+\begin{align*}
+	A + B &= (A\setminus B) \union (B\setminus A) \\
+	&= (B\setminus A) \union (A\setminus B) \\
+	&= B + A
+\end{align*}
+
+\question{(b)}
+First notice that for any set $X$, $X\setminus \emptyset = A$ and that $\emptyset \setminus X = \emptyset$.
+\begin{align*}
+	A + \emptyset &= (A \setminus \emptyset) \union (\emptyset \setminus A)\\
+	&= A \union \emptyset \\
+	&= A \\
+\end{align*}
+
+\question{(c)}
+\begin{align*}
+	A\cdot A &= A\inter A\\
+	&= A
+\end{align*}
+
+\question{(d)}
+\begin{align*}
+	A + A &= (A\setminus A)\union (A\setminus A) \\
+	&= \emptyset \union \emptyset \\
+	&= \emptyset
+\end{align*}
+
+\question{(e)} To simplify this question let me introduce the logical operation, $a \lxor b$ which is defined as either $a$ or $b$ but not both, and we will show that $a \lxor (b\lxor c) = (a\lxor b)\lxor c$ using truth tables.
+
+\begin{center}
+	\begin{tabular}{c|c|c|c|c|c|c}
+		$a$&$b$&$c$&$a\lxor b$&$b\lxor c$&$a\lxor(b\lxor c)$&$(a\lxor b)\lxor c$ \\
+		\false&\false&\false&\false&\false&\false&\false\\
+		\false&\false&\true&\false&\true&\true&\true\\
+		\false&\true&\false&\true&\true&\true&\true\\
+		\false&\true&\true&\true&\false&\false&\false\\
+		\true&\false&\false&\true&\false&\true&\true\\
+		\true&\false&\true&\true&\true&\false&\false\\
+		\true&\true&\false&\false&\true&\false&\false\\
+		\true&\true&\true&\false&\false&\true&\true
+	\end{tabular}
+\end{center}
+
+Now we wish to show that $A + B = \setbuilder{x\in S}{x \in A \lxor x \in B}$. To do this we will first show that $a\lxor b = (a\land\lnot b) \lor (b\land\lnot a)$, where $\lnot$ is a logical not, $\land$ is a logical and, and $\lor$ is a logical or. We again show this by the following truth table:
+\begin{center}
+	\begin{tabular}{c|c|c|c|c|c|c|c}
+		$a$&$b$&$\lnot b$&$a\land\lnot b$&$\lnot a$&$b\land\lnot a$&$(a\land\lnot b)\lor(b\land\lnot a)$&$a\lxor b$\\
+		\false&\false&\true&\false&\true&\false&\false&\false\\
+		\false&\true&\false&\false&\true&\true&\true&\true\\
+		\true&\false&\true&\true&\false&\false&\true&\true\\
+		\true&\true&\false&\false&\false&\false&\false&\false\\
+	\end{tabular}
+\end{center}
+Now we find
+\begin{align*}
+A + B &= \setbuilder{x\in S}{x\in A+B} \\
+&= \setbuilder{x\in S}{x \in (A\setminus B)\union(B\setminus A)}\\
+&= \setbuilder{x\in S}{x\in (A\setminus B) \lor x\in(B\setminus A)}\\
+&=\setbuilder{x\in S}{(x\in A \land x\not\in B)\lor(x\in B\land x\not\in A)}\\
+&=\setbuilder{x\in S}{x\in A\lxor x\in B}\\
+\end{align*}
+so we then have
+\begin{align*}
+A+(B+C)&=\setbuilder{x\in S}{x\in A\lxor x\in B+C} \\
+&=\setbuilder{x\in S}{x\in A\lxor(x\in B\lxor x\in C)}\\
+&=\setbuilder{x\in S}{(x\in A \lxor x\in B)\lxor x\in C}\\
+&=\setbuilder{x\in S}{x \in A + B\lxor x \in C}\\
+&=(A+B)+C
+\end{align*}
+
+\question{(f)}
+Suppose $B\not= C$. Because $B\not= C$ there exists some $x\in S$ such that either $x\in B$ and $x\not\in C$ or $x\in C$ and $x\not\in B$, we will assume without loss of generality that $x\in B$ and $x\not\in C$. Now if $x\in A$ then we would find $x\not\in A+B$ and $x\in A+C$. If $x\not\in A$ we would find that $x\in A+B$ and $x\not\in A+C$. We now have shown that $B\not= C\implies A+B\not=A+C$, thus by contrapositive we have $A+B=A+C \implies B=C$.
+
+\question{(g)}
+First we will want to show logical equivalence between the statement $a\land(b\lxor c)$ and $(a\land b)\lxor(a\land c)$.
+\begin{center}
+	\begin{tabular}{c|c|c|c|c|c|c|c}
+		$a$&$b$&$c$&$b\lxor c$&$a\land b$&$a\land c$&$a\land(b\lxor c)$&$(a\land b)\lxor(a\land c)$\\
+		\false&\false&\false&\false&\false&\false&\false&\false\\
+		\false&\false&\true&\true&\false&\false&\false&\false\\
+		\false&\true&\false&\true&\false&\false&\false&\false\\
+		\false&\true&\true&\false&\false&\false&\false&\false\\
+		\true&\false&\false&\false&\false&\false&\false&\false\\
+		\true&\false&\true&\true&\false&\true&\true&\true\\
+		\true&\true&\false&\true&\true&\false&\true&\true\\
+		\true&\true&\true&\false&\true&\true&\false&\false
+	\end{tabular}
+\end{center}
+now we may show
+\begin{align*}
+A\cdot(B+C) &= A\inter(B+C)\\
+&=\setbuilder{x\in S}{x \in A\inter(B+C)}\\
+&= \setbuilder{x\in S}{x\in A\land x\in(B+C)} \\
+&= \setbuilder{x\in S}{x\in A\land (x\in B \lxor x\in C)}\\
+&=\setbuilder{x\in S}{(x\in A\land x\in B)\lxor(x\in A\land x\in C)}\\
+&=\setbuilder{x\in S}{x\in A\inter B\lxor x\in A\inter C}\\
+&=\setbuilder{x\in S}{x\in (A\inter B)+(A\inter C)}\\
+&=(A\inter B)+(A\inter C)\\
+&=(A\cdot B)+(A\cdot C)
+\end{align*}
+
+\subsubsection{Question 14}
+First notice that if $A$ and $B$ are disjoint then $m(A\union B) = m(A) + m(B)$. So now we get the three disjoint sets $A\setminus B$, $A\inter B$, and $B\setminus A$, notice that $A =( A\setminus B) \union (A\inter B)$, that $B =(B\setminus A)\union(A\inter B)$, and $A\union B = (A\setminus B)\union (A\inter B)\union (B\setminus A)$. Now we get $m(A) = m(A\setminus B) + m(A\inter B)$, $m(B) = m(B\setminus A) + m(A\inter B)$, and $m(A\union B) = m(A\setminus B)+(A\inter B)+m(B\setminus A)$. We then get \begin{align*}
+m(A) + m(B) &= m(A\setminus B)+m(A \inter B)+m(B\setminus A)+m(A\inter B)\\
+&= m(A\union B) + m(A\inter B)\\
+m(A) + m(B) - m(A \inter B) &= m(A \union B)
+\end{align*}
+
+\subsubsection{Question 22}
+\question{(a)} To construct a subset of any set we go through each element and choose to include it or not to, this gives us two possibilities per element. For a set of size $n$ then there are $n$ independent choices to be made in constructing a subset, thus $2^n$ subsets.
+
+\question{(b)} There are exactly $\binom nm = \frac{n!}{m!(n-m)!}$ subsets of a set with $n$ elements that have $m$ elements.
+
+\begin{proof}
+	Let us start by defining $\binom nm$ as the number of ways to choose a subset with $m$ elements from a set with $n$ elements. Now we must recognize that $k!$ is the number of ways to order a set with $k$ elements. Then we get that $\binom nmm!(n-m)! = n!$ as we may order our set with $n$ elements by choosing the first $m$ elements in our order ($\binom nm$ possible ways), then ordering those elements ($m!$ ways), and finally ordering the rest of the elements ($(m-n!)$ ways). This gives us $\binom nmm!(n-m)!=n!$ and from there we divide and get $\binom nm=\frac{n!}{m!(n-m)!}$.
+\end{proof}
+
+\subsection{Section 3}
+\subsubsection{Question 7}
+Let $g:S\to T$, $h:S\to T$ and $f:T\to U$ be functions such that $f$ is 1-1 and $f\composed g = f\composed h$. Assume for the sake of contradiction that $g\not=h$, then there exists some $s \in S$ such that $g(s) \not= h(s)$. We know that $f\composed g(s) = f\composed h(s)$, thus $f(g(s)) = f(h(s))$ so $g(s) = h(s)$ by $f$ being 1-1. Thus we have a contradiction and we know that $g=h$.
+
+\subsubsection{Question 8}
+\question{(a)} Yes, as all integers are either even or odd and none are both even and odd.
+
+\question{(b)} Let us break this into cases:
+\begin{itemize}
+	\item If $s_1$ and $s_2$ are even, then there exists $k_1\in\mathbb Z$ and $k_2\in\mathbb Z$ such that $2k_1 = s_1$ and $2k_2 = s_1$. Thus $s_1 + s_2 = 2k_1 + 2k_2 = 2(k_1 + k_2)$, thus $f(s_1 + s_2) = 1$. We also find that $f(s_1) \cdot f(s_2) = 1 \cdot 1 = 1$.
+	\item If $s_1$ is even and $s_2$ is odd, then there exists $k_1\in\mathbb Z$ and $k_2\in\mathbb Z$ such that $s_1 = 2k_1$ and $s_2 = 2k_2 + 1$. Thus $s_1 + s_2 = 2k_1 + 2k_2 + 1 = 2(k_1 + k_2) + 1$ so $f(s_1 + s_2) = -1$. We also find that $f(s_1) f(s_2) = 1\cdot -1 = -1$.
+	\item If $s_1$ is odd and $s_2$ is even we may write that $f(s_1 + s_2) = f(s_2 + s_1)$ and that $f(s_1)f(s_2) = f(s_2)f(s_1)$ because both addition and multiplication are commutative. Now we see that we have reproduced our previous case and thus in this case the equality holds.
+	\item If $s_1$ and $s_2$ are odd, then there exists $k_1\in\mathbb Z$ and $k_2\in\mathbb Z$ such that $2k_1 + 1 = s_1$ and $2k_2 + 1 = s_2$, thus $s_1 + s_2 = 2k_1 + 1 + 2k_2 + 1 = 2(k_1 + k_2 + 1)$ so $f(s_1 + s_2) = 1$. We also find that $f(s_1)f(s_2) = -1\cdot -1 = 1$.
+\end{itemize}
+Thus for all possible integers $s_1$ and $s_2$, we have $f(s_1 + s_2) = f(s_1)f(s_2)$.
+
+This tells us that even integers are closed under addition. that odd integers added together always are even, and finally that an odd added to an even is odd.
+
+\question{(c)} No, as $f(1\cdot 2) = f(2) = 1$ and $f(1)f(2) = -1 \cdot 1 = -1$.
+
+\subsubsection{Question 12}
+
+\question{(a)} No $f$ is not a function as $2/3 = 4/6$ and $f(2/3) = 2^23^3 \not= 2^43^6 = f(4/6)$.
+
+\question{(b)} We may define $f(m/n) = 2^m3^n$ iff $m$ and $n$ are coprime.
+
+\subsubsection{Question 19}
+
+Let $a,b\in\mathbb R$ be given. Now let us investigate the derivative of $x^2 + ax + b$ with respect to $x$. Any student of calculus can tell you $\derivative{x^2+ax+b}{x} = 2x+a$. Now consider that when $x < \frac a2$
+
+\subsubsection{Question 23}
+\subsubsection{Question 28}
+\subsubsection{Question 29}
+
+
+\end{document}
+
