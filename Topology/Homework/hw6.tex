@@ -1,0 +1,25 @@
+\documentclass{article}
+\input{../../definitions.tex}
+\input{../topology.tex}
+
+\title{Homework 6}
+
+
+
+\begin{document}
+\maketitle
+
+\question{23.8} First we will use a theorem from real analysis
+
+\begin{theorem}
+	Let $(a_n)$ be a convergent sequence in $\mathbb R$ with standard topology and $(b_n)0$ be a sequence in $\mathbb R$. The sequence $(a_n+b_n)$ converges iff $(b_n)$ converges.
+\end{theorem}
+
+A proof for this may be provided if desired, however this is considered to be outside the scope of this course.
+
+Let us choose $x\in\mathbb R^\omega$ and let us consider this to be $(b_n)$. Let us also choose $\epsilon\in\ooint 01$, then the open ball around $x$ is defined as $\setbuilder{(s_n)}{\All{n\in\mathbb N}{\abs{s_n-b_n} < \frac\epsilon n}}$. This means that any element $s$ in our open ball may be written as $\left( b_n + \frac\delta n \right)$ for some $\delta \in \ooint 0\epsilon$. We now use our theorem from above consider $\frac\delta n$ to be our sequence $(a_n)$. Thus we may cover $\mathbb R^\omega$ with two open non-intersecting sets, The set of all convergent sequences in $\mathbb R$ with standard topology and the set of all non-convergent sequences in $\mathbb R$ with the standard topology.
+
+\question{23.11}
+
+
+\end{document}

@@ -26,8 +26,9 @@
 \let\cross\times
 \def\And{\textit{ and }}
 \def\Or{\textit{ or }}
-\def\sbSeperator{:}
+\def\sbSeperator{\,\middle|\,}
 \def\Return{\State\textbf{return}\par}
+\def\ZNonNegative{{\mathbb Z_{\ge 0}}}
 \newcommand{\setcomp}[1]{{#1}^{\mathsf{c}}}
 \newcommand{\prodfrom}[3]{\prod\useLim_{#1}^{#2}\LB {#3} \RB}
 \newcommand{\sumfrom}[3]{\sum\useLim_{#1}^{#2} \LB {#3} \RB}
@@ -39,12 +40,12 @@
 \newcommand{\prodacross}[2]{\prodfrom{#1}{}{#2}}
 \newcommand{\Lim}[3]{\lim\useLim_{{#1} \to {#2}}\LB {#3} \RB}
 \newcommand{\set}[1]{\left\{ {#1} \right\}}
-\newcommand{\setbuilder}[2]{\set{{#1} \sbSeperator {#2}}}
+\newcommand{\setbuilder}[2]{\left\{{#1} \sbSeperator {#2}\right\}}
 \newcommand{\derivative}[2]{\frac{d}{d{#2}}\LB {#1} \RB}
-\newcommand{\Exists}[2]{\exists_{#1}\left( {#2} \right)}
+\newcommand{\Exists}[2]{\exists_{#1}\LB {#2} \RB}
 \newcommand{\All}[2]{\forall_{#1}\LB {#2} \RB}
 \newcommand{\abs}[1]{\left|{#1}\right|}
-\newcommand{\card}[1]{\textit{Card}\left( {#1} \right)}
+\newcommand{\card}[1]{\left| {#1} \right|}
 \newcommand{\range}[1]{\textit{\textbf{Rng}}\left( {#1} \right)}
 \newcommand{\domain}[1]{\textit{\textbf{Dom}}\left( {#1} \right)}
 \newcommand{\pset}[1]{\mathcal P\left( {#1} \right)}
@@ -66,7 +67,7 @@
 \def\RB{}
 \newcommand{\cannonicalSet}[1]{\left[ #1 \right]}
 \let\lxor\oplus
-
+\newcommand{\norm}[1]{\left|\left|{#1}\right|\right|}
 
 \newtheorem{theorem}{Theorem}[section]
 \theoremstyle{definition}

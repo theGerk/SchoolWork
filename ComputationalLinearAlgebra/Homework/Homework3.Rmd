@@ -1,0 +1,239 @@
+---
+title: "Homework 3"
+author: "Benji Altman"
+date: "February 19, 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 1
+
+### Part a
+
+So first notice that $L_k = I - E_k$ for some $n\times n$ matrix $E_k$. Notice that $$E_k = 
+\begin{bmatrix}
+0 \\
+ & \ddots \\ 
+ & & 0 \\
+ & & \ell_{k+1,k} & 0 \\
+ & & \ddots& & \ddots \\
+ & & \ell_{n,k} & & & 0
+\end{bmatrix}
+$$
+
+Notice now that $\ell_ke_k^T = E_k$ as $f(\vec v) = e_k^T \vec v$ will take a column vector $\vec v$ and put it into the $k^{\text{th}}$ column of a matrix. Additionally we would like to notice that ${E_k}^2 = 0$ as $E_k$ has zeros on the diagonal and all indicies above it, thus for any index $i,j$ in ${E_k}^2$ the dot product that gives it would contain a zero in either the first or second vector in every index.
+
+Now let $A$ be the matrix that we would like to show is $T_k^{-1}$
+\begin{align*}
+L_k &= I-E_k \\
+A &= I+E_k \\
+L_k A &= (I-E_k)(I+E_k) \\
+&= I^2-(E_k)^2 \\
+&= I
+\end{align*}
+And now by definition $A$ is the inverse of $T_k$.
+
+### Part b
+
+Now notice that 
+\begin{align*}
+\prod_{k=1}^nT_k^{-1} &= \prod_{k=1}^n (I+E_k) \\
+&= (I+E_1)\cdot(I+E_2)\cdots(I+E_n) \\
+&= (I^2+E_1 + E_1 + E_2 + E_1\cdot E_2)(I+E_3)\cdots(I+E_n) \\
+&= (I + E_1 + E_2)(I+E_3)\cdots(I+E_n) \\
+&= \ldots \\
+&= I + E_1 + E_2 + \ldots + E_n
+\end{align*}
+
+Again notice that $E_aE_b = 0_{n\times n}$ as $E_a$ and $E_b$ have zeros on the diagonal and everywhere above it.
+
+## Question 2
+
+### Part a
+
+$$A = 
+\begin{bmatrix}
+4&-1&-1&0&0&0&0&0 \\
+-1&4&0&-1&0&0&0&0 \\
+-1&0&4&-1&-1&0&0&0\\
+0&-1&-1&4&0&-1&0&0\\
+0&0&-1&0&4&-1&-1&0\\
+0&0&0&-1&-1&4&0&-1\\
+0&0&0&0&-1&0&4&-1\\
+0&0&0&0&0&-1&-1&4\\
+\end{bmatrix}
+$$
+ and 
+ 
+$$ 
+b = 
+ \begin{bmatrix}
+ 5 \\ 15 \\ 0 \\ 10 \\ 0 \\ 10 \\ 20 \\ 30
+ \end{bmatrix}
+$$
+
+### Part b
+```{r}
+#Takes in matrix, A, and does a L-U decomposition
+#Complete, tested
+LUDecompose = function(A)
+{
+  if(nrow(A) != ncol(A))
+    return(NULL)
+  out = new.env()
+  out$U = A
+  out$L = diag(nrow(A))
+  
+  #now lets start getting to it
+  i = 1
+  while(i < nrow(A))
+  {
+    #make ith column 0
+    row = i + 1
+    while(row <= nrow(A))
+    {
+      #set row
+      op = out$U[row, i] / out$U[i, i]
+      out$L[row, i] = op
+      out$U[row,] = out$U[row,] - out$U[i,] * op
+      row = row + 1
+    }
+    i = i + 1
+  }
+  return(out)
+}
+#Now to type in A
+A = matrix(
+  c(4,-1,-1,0,0,0,0,0,
+    -1,4,0,-1,0,0,0,0,
+    -1,0,4,-1,-1,0,0,0,
+    0,-1,-1,4,0,-1,0,0,
+    0,0,-1,0,4,-1,-1,0,
+    0,0,0,-1,-1,4,0,-1,
+    0,0,0,0,-1,0,4,-1,
+    0,0,0,0,0,-1,-1,4),
+  nrow = 8, ncol = 8, byrow = TRUE)
+
+
+factorization = LUDecompose(A)
+print(factorization$U)
+print(factorization$L)
+```
+
+
+### Part c
+
+```{r, echo=FALSE}
+mySolve=function(L,U,b,tol=1e-10){
+
+  n=nrow(L)
+  
+  # First solve Ly=b 
+  y = rep(0,n)        # pre-allocate a vector y with 0s in it.
+  if(abs(L[1,1])<tol) stop('There is a zero on the diagonal of L')
+  y[1] = b[1]/L[1,1]  # Fill in the 1st value of y
+  for (j in 2:n ) {
+    if(abs(L[j,j])<tol) stop('There is a zero on the diagonal of L')
+    y[j] = (b[j] - L[j,1:(j-1)]%*%y[1:(j-1)])/L[j,j]
+  }
+
+  # Then solve Ux=y 
+  x = rep(0,n)        # pre-allocate a vector x with 0s in it.
+  if(abs(U[n,n])<tol) stop('There is a zero on the diagonal of U')
+  x[n] = y[n]/U[n,n]  # Fill in the nth value of x
+  for (j in (n-1):1 ) {
+    if(abs(U[j,j])<tol) stop('There is a zero on the diagonal of U')
+    x[j] = (y[j] - U[j,(j+1):n]%*%x[(j+1):n])/U[j,j]
+  }
+  return(x)
+}
+```
+
+
+```{r}
+mySolve(factorization$L, factorization$U, c(5,15,0,10,0,10,20,30))
+```
+
+### Part d
+
+
+
+```{r}
+mySolve(factorization$L, factorization$U, c(5,15,0,10,0,10,30,40))
+```
+
+### Part e
+
+
+```{r}
+solve(A)
+```
+
+## Question 6
+
+Take a matrix $A$, one may define $x_i$ such that $x_i$ maximizes the $i^{\text{th}}$ value in $Ax_i$. One does this by letting ${x_i}_j = \begin{cases} 1 & A_{i,j}\ge0\\-1&A_{i,j}<0\end{cases}$. Now we may maximize $||Ax_i||_\infty$, by letting $i$ be the row in $A$'s sum of absolute values is greatest. This means that $|| A||_\infty$ is the maximum sum of absolute values of rows
+
+## Question 7
+
+let
+$$
+A=\begin{bmatrix}
+-1 & 0 & 1 \\
+3 & 1 & 1 \\
+2 & 0 & 1 
+\end{bmatrix} 
+$$
+Now we will do this in steps
+
+$$
+P_1 = \begin{bmatrix}
+0&1&0\\
+1&0&0\\
+0&0&1
+\end{bmatrix}
+$$
+$$
+A_1 = \begin{bmatrix}
+3&1&1\\
+-\frac13&\frac13&\frac43\\
+\frac23&-\frac23&\frac13
+\end{bmatrix}
+$$
+$$
+P_2 = \begin{bmatrix}
+0&1&0\\
+0&0&1\\
+1&0&0
+\end{bmatrix}
+$$
+$$
+A_2 = \begin{bmatrix}
+3&1&1\\
+\frac23&-\frac23&\frac13\\
+-\frac13&-\frac12&\frac32
+\end{bmatrix}
+$$
+Thus we have 
+$$
+\begin{bmatrix}
+0&1&0\\0&0&1\\1&0&0
+\end{bmatrix}
+\begin{bmatrix}
+-1 & 0 & 1 \\
+3 & 1 & 1 \\
+2 & 0 & 1 
+\end{bmatrix}
+=
+\begin{bmatrix}
+1&0&0\\\frac23&1&0\\-\frac13&-\frac12&1
+\end{bmatrix}
+\begin{bmatrix}
+3&1&1\\0&-\frac23&\frac13\\0&0&\frac32
+\end{bmatrix}
+$$
+
+
+

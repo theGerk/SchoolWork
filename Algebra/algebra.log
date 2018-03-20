@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  29 DEC 2017 15:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  15 MAR 2018 21:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -13,7 +13,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3 \renewcommand\setcomp
+l.4 \renewcommand\setcomp
                          [1]{{#1}'}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -25,7 +25,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4 \renewcommand\question
+l.5 \renewcommand\question
                           [1]{\marginnote{\textbf{#1}}}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -38,10 +38,10 @@ If that doesn't work, type  X <return>  to quit.
 
  
 Here is how much of TeX's memory you used:
- 9 strings out of 493029
- 170 string characters out of 6136234
+ 10 strings out of 493029
+ 163 string characters out of 6136234
  53201 words of memory out of 5000000
- 3645 multiletter control sequences out of 15000+600000
+ 3646 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  7i,0n,5p,74b,14s stack positions out of 5000i,500n,10000p,200000b,80000s

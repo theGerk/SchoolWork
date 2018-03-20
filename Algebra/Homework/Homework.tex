@@ -246,12 +246,69 @@ This tells us that even integers are closed under addition. that odd integers ad
 
 \subsubsection{Question 19}
 
-Let $a,b\in\mathbb R$ be given. Now let us investigate the derivative of $x^2 + ax + b$ with respect to $x$. Any student of calculus can tell you $\derivative{x^2+ax+b}{x} = 2x+a$. Now consider that when $x < \frac a2$
+Let $f(x) = x^2+ax+b$, thus $f'(x) = 2x+a$. $f'(x)$ is linear so there exists only one $x\in\mathbb R$ for which $f'(x) = 0$, and thus this $x$ is a global extrema for $f$, so $f$ can not be surjective. Now consider $x_1 = -\frac a2-1$ and $x_2=-\frac a2+1$, thus
+\begin{align*}
+f(x_1) &= \left(-\frac a2-1\right)^2+a\left(-\frac a2-1\right)+b \\
+&= \frac{a^2}4+2\frac a2+1-\frac{a^2}2-a+b\\
+&=\frac{a^2}4+1+b\\
+f(x_2) &= \left(-\frac a2+1\right)^2+a\left(-\frac a2+1\right)+b \\
+&= \frac{a^2}4-2\frac a2+1-\frac{a^2}2+a+b\\
+&= \frac{a^2}4+1+b
+\end{align*}
+
+so $f$ must be 1-1.
 
 \subsubsection{Question 23}
+
+
+\def\RB{}
+\def\LB{}
+
+\marginnote{Ugly proof:}
+First let us show that there exists some bijection from $\mathbb N$ to $\ZNonNegative^2$. Consider the 1 norm on $\ZNonNegative^2$, defined as $\norm{(a,b)}_1 = a + b$. Then we may partition $\ZNonNegative^2$ into subsets $P_n = \setbuilder{x\in\ZNonNegative^2}{\norm x_1 = n}$, for any $n\in \ZNonNegative$. Notice that for $(a,b)\in P_n$ then $a \le n$ and $b \le n$, thus forcing $P_n$ to be finite. Now we can construct a function mapping from $\mathbb N$ to $\ZNonNegative^2$ by giving each element of $P_1$ a number from $1$ to $\card{P_0}$ (inclusive), then the next $\card{P_1}$ will be given to elements of $P_1$ and so on infinitely. Notice that by construction $x\not= y \implies f(x) \not= f(y)$, so we get this being 1-1, additionally for any $(a,b) \in \ZNonNegative^2$, $(a,b)\in P_{a+b}$ and thus receives a number greater than $\sumfrom{n=0}{a+b-1}{\card{P_n}}$ and less than or equal to $\sumfrom{n=0}{a+b}{\card{P_n}}$. This means that we can label each element of $\ZNonNegative$ with a single natural number and thus have a bijection.
+
+Now we can also construct a trivial bijection, $h:\ZNonNegative^2\to S$ as $h(a,b) = 2^a3^b$. Now we may compose the bijections to get a 1-1 correspondence $\mathbb N = S$ onto $T$.
+
+\bigskip
+
+\marginnote{Nice proof:}
+First notice that $T \subset S$ so there exists the trivial injective function from $T$ to $S$. Second notice that $f:S\to T$ defined as $f(s)=2^s$ is both well defined as injective. By the  \href{https://en.wikipedia.org/wiki/Schr\%C3\%B6der\%E2\%80\%93Bernstein_theorem}{Schr\"oder-Bernstein theorem} there must be some bijection from $S$ to $T$.
+
 \subsubsection{Question 28}
+
+Let $S$ be a finite set, with $f:S\to S$. Now let $f(x) = f(y)$, for some $x\not=y$, then there remain $\card S - 2$ elements in $S\setminus\set{x,y}$ and $\card S - 1$ elements in $S\setminus\set{f(x)}$. This means that for any definition of $f$ on $S\setminus\set{x,y}$ it can not possibly be onto $S\setminus\set{f(x)}$. We have now shown $f$ not being 1-1 implies $f$ not being onto, by contrapositive $f$ being onto implies $f$ is 1-1.
+
 \subsubsection{Question 29}
 
+Let $S$ be a finite set, with $f:S\to S$ injective. Now as $f$ is 1-1 each $s\in S$ has a unique $f(s)\in S$, so $f(S)$ must have exactly $\card S$ unique elements, thus $f(S) \subset S$ with exactly $\card S$ elements.\footnote{$f(A)$ is defined as $\setbuilder{y\in\range{f}}{\Exists{x\in \domain{f}}{f(x) = y}}$ when $A \subset \domain{f}$ and $A\not\in\domain{f}$.} Because $S$ is finite, this implies $f(S) = S$.
+
+\subsection{Section 4}
+
+\subsubsection{Question 5}
+
+\question{(a)} First identity:
+\begin{align*}
+f^2g^2&=ffgg\\
+&=f(fg)g\\
+&=f(gf)f\\
+&=(fg)^2
+\end{align*}
+
+\question{(b)} Second Identity: Let $i$ be the identity function.
+\begin{align*}
+\inv f\inv ggf &= i\\
+\inv f\inv ggf\inv{(gf)} &= i\inv{(gf)}\\
+=\inv f\inv g i&=i\inv{(fg)}\\
+=\inv f\inv g&=\inv{(fg)}
+\end{align*}
+
+\subsubsection{Question 9}
+\subsubsection{Question 10}
+\subsubsection{Question 14}
+\subsubsection{Question 21}
+\subsubsection{Question 27}
+\subsubsection{Question 30}
+\subsubsection{Question 32}
 
 \end{document}
 
