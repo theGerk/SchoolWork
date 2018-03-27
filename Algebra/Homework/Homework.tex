@@ -303,12 +303,75 @@ f^2g^2&=ffgg\\
 \end{align*}
 
 \subsubsection{Question 9}
+
+\question{(a)} 
+\begin{align*}
+f^2&:x_1\to x_3, x_2 \to x_4, x_3 \to x_1, x_4 \to x_2\\
+f^3&:x_1\to x_4, x_2 \to x_1, x_3 \to x_2, x_4 \to x_1\\
+f^4&:x_1\to x_1, x_2 \to x_2, x_3 \to x_3, x_4 \to x_4
+\end{align*}
+
+\question{(b)}
+\begin{align*}
+g^2&:x_1\to x_1, x_2 \to x_2, x_3 \to x_3, x_4 \to x_4\\
+g^3&:x_1\to x_2, x_2 \to x_1, x_3 \to x_3, x_4 \to x_4
+\end{align*}
+
+\question{(c)}
+$$fg:x_1\to x_3, x_2\to x_2, x_3\to x_4, x_4\to x_1$$
+
+\question{(d)}
+$$gf:x_1\to x_1, x_2 \to x_3, x_3 \to x_4, x_4 \to x_2$$
+
+\question{(e)}
+\begin{align*}
+(fg)^3&:x_1\to x_1, x_2 \to x_2, x_3 \to x_3, x_4 \to x_4\\
+(gf)^3&:x_1\to x_1, x_2 \to x_2, x_3 \to x_3, x_4 \to x_4
+\end{align*}
+
+\question{(f)} No, $fg(x_1) \not= gf(x_1)$ as can be seen above, thus $fg\not=gf$.
+
 \subsubsection{Question 10}
+Consider the cycle structure of a permutation $f$. It is obvious that $f^k = i$ if $k$ is the greatest common divisor among all the cycle lengths in $f$. Now for any $f\in S_3$, cycles must be of length one, two, or three. Therefore, as $6 = \gcd(1,2,3)$ for any $f\in S_3$, $f^6=i$.
+
 \subsubsection{Question 14}
+
+Let $F$ be the mapping from $S_m\to S_n$ such that $F(f)$ is defined to be the same as $f$ where $f$ is defined, and acts as the identity elsewhere. Now $F$ is trivially 1-1, so let us show that it satisfies $F(fg) = F(f)F(g)$ for all $f,g \in S_m$. To start let us choose $x$ in the domain of $g$, then $F(g)$ takes $x \to g(x)$ and $F(f)$ takes $g(x) \to fg(x)$, which is obviously the same as what $F(fg)$ does. If $x$ is not in the domain of $g$ then $F(g)$ takes $x\to x$ and $F(f)$ takes $x \to x$ as does $F(fg)$, we can thus conclude that $F(fg) = F(f)F(g)$.
+
 \subsubsection{Question 21}
+
+Let $g_j$ swap $x_1$ and $x_{j+1}$. Now when $n = 1$ this is trivially true as we have $f = i$ which satisfies the definition of $f$. Let us now try and do an induction on this statement. Assume that $g_1g_2g_3\cdots g_{n-1} = f$ when $n$ is some specific fixed constant. Then it follows that for $f'\in S_{n+1}$ where $f'$ is defined just as $f$ was, that is $f': x_1\to x_2, x_2 \to x_3, \ldots, x_n \to x_{n+1}, x_{n+1} \to x_1$, then consider $g_1g_2g_3 \ldots g_n = fg_n$ and this will obviously give us $f'$, so by induction we have shown that this may be done for any $n$.
+
+
 \subsubsection{Question 27}
+For every $b$ in the domain of $f$ there must be exactly one $a$ and $c$ such that $f(a) = b$ and $f(b) = c$. As the domain of $f$ is finite then there must be some $n\in\mathbb N$ such that $f^n(b) = b$. It follows then that if there is some $n$ such that $f^n(s) = t$ then there must also be some $k$ such that $f^k(t) = s$. By symmetry we also know that the converse is true. This means that either $O(s) = O(t)$ or the two are disjoint.
+
 \subsubsection{Question 30}
+Each orbit must be exactly of size $1$. This is because otherwise all $n$ such that $f^n = i$, would have to be a multiple of a number that is not $1$, and thus could not be any prime number.
+
 \subsubsection{Question 32}
+$g\in A(S)$ commutes with $f$ iff $g$ is closed on the set $\set{x_1,x_2}$.
+\begin{proof}
+	First we will show by cases that any $g$ that is closed on $\set{x_1,x_2}$ commutes with $f$, then we will show that no other set does so.
+	
+	\begin{itemize}
+		\item Let $s,t \in \set{x_1,x_2}$ with $s\not=t$
+		\begin{itemize}
+			\item If $g(s) = s$, then $fg(s) = g(t) = t$ and $gf(s) = f(s) = t$.
+			\item If $g(s) = t$, then $fg(s) = g(t) = s$ and $gf(s) = f(t) = s$.
+		\end{itemize}
+		\item Let $s \not\in\set{x_1,x_2}$, then $fg(s) = gf(s)$ as $f$ acts as the identity.
+	\end{itemize}
+	
+	Now if $g$ is not closed on $\set{x_1,x_2}$ then lets say without loss of generality that $g(x_1) = s \not\in\set{x_1,x_2}$ it follows that $fg(x_1) = g(x_2)$ and $gf(x_1) = f(s) = s$. Now $g(x_2) \not= s$ as otherwise both $x_1$ and $x_2$ would map to the same element which is not possible.
+\end{proof}
+
+\subsection{Section 5}
+\subsubsection{Question 1}
+\subsubsection{Question 4}
+\subsubsection{Question 7}
+\subsubsection{Question 13}
+\subsubsection{Question 17}
 
 \end{document}
 
