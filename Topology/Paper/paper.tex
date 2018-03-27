@@ -233,12 +233,18 @@ We can say that a \gls{graph} $A$ is a \gls{subgraph} of another \gls{graph} $B$
 \subsection{Groundwork}
 Here we would like to prove some lemmas that we would like to use while proving Kuratowski's theorem.
 
+Now for some extensions of Kuratowski's theorem 
+
 \begin{theorem}[Spherical and Planar graphs are the same] \label{sphere=plane}
 	If and only if a \gls{graph} may be drawn on a plane with no \glspl{edge} intersection then it may be drawn on a sphere without self intersection.
 \end{theorem}
 
+
+
 \begin{proof}
-	First we know from topology that the punctured sphere is homeomorphic to the plane, planarity of a graph is the same as saying that the graph may be drawn on a punctured sphere without any self intersection. Now it's trivial to say that anything drawn on a punctured sphere may be drawn on the sphere. Now it will suffice to show only that a graph drawing will never cover the entire sphere as then there exists some at which to puncture.
+	First we know from topology that the punctured sphere is homeomorphic to the plane, planarity of a graph is the same as saying that the graph may be drawn on a punctured sphere without any self intersection. Now it's trivial to say that anything drawn on a punctured sphere may be drawn on the sphere. Now it will suffice to show only that a graph drawing will never cover the entire sphere as then there exists some at which to puncture. 
+	
+	To prove this first notice that the unit sphere is connected. Now assume for the sake of contradiction that there exists some graph which when drawn on a sphere covers every point. Then consider any closed loop 
 \end{proof}
 
 \printnoidxglossary
