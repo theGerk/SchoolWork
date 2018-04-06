@@ -367,11 +367,101 @@ $g\in A(S)$ commutes with $f$ iff $g$ is closed on the set $\set{x_1,x_2}$.
 \end{proof}
 
 \subsection{Section 5}
+
 \subsubsection{Question 1}
+For this we use the Euclidean algorithm, rather then do the somewhat tedious math, I will simply employ a program I have written in Python.
+\\
+\question{(a)} $(116, -84) = 4 = 8 \cdot 116 + 11 \cdot -84$.
+\\
+\question{(b)} $(85,65)=5=-3\cdot85+4\cdot65$.
+\\
+\question{(c)} $(72,26)=2=4\cdot72-11\cdot26$.
+\\
+\question{(d)} $(72,25)=1,8\cdot72-23\cdot25$.
+
 \subsubsection{Question 4}
+This shall be nothing but some simple arithmetic, most of these numbers are factorials making them particularly easy to compute.\\
+\question{(a)} $36 = 2^23^2$.\\
+\question{(b)} $120 = 2^33^15^1$.\\
+\question{(c)} $720 = 2^43^25^1$.\\
+\question{(d)} $5040 = 2^43^25^17^1$.
+
 \subsubsection{Question 7}
+
+\question{(a)}First, we write $m = k_1(m,n)$ and $n=k_2(m,n)$ for some $k_1,k_2\in\mathbb Z$. It follows $$\frac{mn}{(m,n)} = k_1k_2(m,n) = mk_2 = nk_1$$ so this satisfies $m|v$ and $n|v$.
+
+\newcommand{\factorize}[2]{\prodacross{{#2}\in\mathbb N}{{p_{#2}}^{{#1}_{#2}}}}
+
+\begin{lemma}
+	For $n = \factorize ni$ and $m = \factorize mi$, if $c_i = \min(n_i,m_i)$ then $$(n,m) = \factorize{c}{i}$$ where $p_i$ is the $i^{\text{th}}$ prime number. 
+\end{lemma}
+
+\begin{proof}
+	For convention we will let $p_i$ be the $i^{\text{th}}$ prime unless otherwise stated. We will also adopt the convention that for any natural number $x$, the sequence $x_i$ will be it's prime factorization, that is $\factorize{x}{i} = x$ unless otherwise stated. Furthermore we will also by convention assume that if a sequence of natural numbers $x_i$ has been defined then $x = \factorize{x}{i}$, unless otherwise stated. As a last note, we will define $\mathbb N = \set{0,1,2,\ldots}$ and $2 = p_0$.
+	
+	Let $n$ and $m$ be natural numbers, and then let $c_i = \min{n_i,m_i}$ for all $i\in\mathbb N$. We would like to show $c=(n,m)$. First it is trivial that $c>0$.
+	
+	Second we must show $c|n$ and $c|m$. To do this let $k_i = n_i - c_i$, notice that $n_i \ge c_i$ for all $i$, therefore $k_i$ is an integer for all $i$.
+	\begin{align*}
+	kc &= \factorize ki \factorize ci \\
+	&= \prodacross{i\in\mathbb N}{{p_i}^{n_i-c_i}}\factorize ci \\
+	&= \prodacross{i\in\mathbb N}{{p_i}^{n_i}} \\
+	&= n
+	\end{align*}
+	The same argument can be made to show that $c|m$.
+	
+	Lastly we must show that if $d|n$ and $d|m$ then $d|c$, we will do this by contrapositive, so assume $d\nmid c$, therefore there does not exist any $k$ st. $dk = c$. Further there exists no sequence of natural numbers $k_i$ st. $d\factorize ki = c$. We know have
+	\begin{align*}
+	\factorize ki \factorize di &= \prodacross{i\in\mathbb N}{{p_i}^{d_i+k_i}} \\
+	&\not= \factorize ci
+	\end{align*}
+	for any sequence $k_i$, therefore there must exists some $i\in\mathbb N$ st. $d_i > c_i$. It follows then that either $d_i > n_i$ or $d_i > m_i$.
+\end{proof}
+
+Now note that $\min(a,b) + \max(a,b) = a + b$ for any $a,b$. Therefore if we define $v_i = \max(n_i,m_i)$ and $c_i = \min(n_i,m_i)$ we get
+\begin{align*}
+\frac{mn}{(m,n)} &= \frac{\factorize mi \factorize ni}{\factorize ci} \\
+&= \prodacross{i\in\mathbb N}{{p_i}^{m_i+n_i-c_i}} \\
+&= \factorize vi \\
+&= v
+\end{align*}
+
+Now we just need to show that $v$ is the least common multiple. If $r < v$ and $\factorize ri = r$, it follows that is some $i$ for which $r_i < v_i$, therefore either $m$ or $n$ can not possibly divide $r$ as either $m_i > r_i$ or $n_i > r_i$.
+
+We now know that $mn/(m,n)$ is the least common multiple of $m$ and $n$.
+
+\question{(b)} As we have already shown $v = \prodacross{i\in\mathbb N}{{p_n}^{\max(n_i,m_i)}}$.
+
 \subsubsection{Question 13}
+
+\question{(a)} If $p = 4n$ then $p$ is divisible by four an not prime. If $p = 4n + 2 = 2(2n + 1)$ then $p$ is divisible by two and not odd. Therefore either $p = 4n+1$ or $p = 4n+3$.
+
+\question{(b)} If $p = 6n$ then $p$ is divisible by six and not prime. If $p = 6n + 2 = 2(3n + 1)$ then $p$ is divisible by two and not odd. If $p = 6n + 3 = 3(2n + 1)$ then $p$ is divisible by three and is either the number 3 or is not prime. If $p = 6n + 4 = 2(3n + 2)$ then $p$ is divisible by two. Therefore if $p$ is an odd prime that is not $3$, then either $p = 6n+1$ or $p = 6n+5$.
+
 \subsubsection{Question 17}
+
+Let $p$ be the $n^{\text{th}}$ prime. Assume for the sake of contradiction that there is some $a,b\in\mathbb N$ st. $a^2=pb^2$, and let $\factorize ai = a$ and $\factorize bi = b$. It follows that $\factorize{2a}i=p\factorize{2b}i$. As $p$ is the $n^{\text{th}}$ prime then $$p^{2a_n}\prodacross{i\in\mathbb N\setminus\set n}{{p_i}^{2a_i}} = p^{2b_n+1}\prodacross{i\in\mathbb N\setminus\set n}{{p_i}^{2a_i}}$$ so the prime factorizations can not possibly be the same, so we have a contradiction.
+
+\subsection{Section 6}
+\subsubsection{Question 1}
+
+\question{(a)} $(6-7i)(8+i) = 48 - 56i + 6i + 7 = 55-50i$
+
+\question{(b)} $(\frac 23 + \frac 32i)(\frac23 - \frac 32i) = \frac49+\frac94=\frac{16+81}{36} = \frac{97}{36}$
+
+\question{(c)} $(6-7i)(8-i) = 48-56i-6i-7 = 41-62i$
+
+\subsubsection{Question 2}
+
+%TODO fix me
+
+\question{(a)} $z^{-1} = -\frac{6}{6^2+8^2} + \frac8{6^2+8^2}i$
+
+\question{(b)} $z^{-1} = -\frac{6}{6^2+8^2} - \frac8{6^2+8^2}i$
+
+\subsubsection{Question 8}
+\subsubsection{Question 14}
+
 
 \end{document}
 

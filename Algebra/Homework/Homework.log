@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  26 MAR 2018 16:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  5 APR 2018 23:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -846,29 +846,29 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 \tf@toc=\write5
 \openout5 = `Homework.toc'.
 
-Package marginnote Info: Margin note 1.1 is on absolute page 2
-(marginnote)              on input line 23.
-Package marginnote Info: right page because not two side mode on input line 23.
-
-Package marginnote Info: xpos seems to be 72.26999pt,
-(marginnote)             \marginnoteleftadjust ignored on input line 23.
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Package marginnote Info: Margin note 2.1 is on absolute page 2
+(marginnote)              on input line 23.
+Package marginnote Info: right page because not two side mode on input line 23.
+
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 23.
+Package marginnote Info: Margin note 2.2 is on absolute page 2
 (marginnote)              on input line 25.
 Package marginnote Info: right page because not two side mode on input line 25.
 
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 25.
-Package marginnote Info: Margin note 2.2 is on absolute page 2
+Package marginnote Info: Margin note 2.3 is on absolute page 2
 (marginnote)              on input line 36.
 Package marginnote Info: right page because not two side mode on input line 36.
 
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 36.
-Package marginnote Info: Margin note 2.3 is on absolute page 2
+Package marginnote Info: Margin note 2.4 is on absolute page 2
 (marginnote)              on input line 38.
 Package marginnote Info: right page because not two side mode on input line 38.
 
@@ -899,32 +899,32 @@ Package marginnote Info: right page because not two side mode on input line 111
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 111.
-Package marginnote Info: Margin note 3.5 is on absolute page 3
+Package marginnote Info: Margin note 3.5 is on absolute page 4
 (marginnote)              on input line 119.
 Package marginnote Info: right page because not two side mode on input line 119
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 119.
-Package marginnote Info: Margin note 3.6 is on absolute page 3
+ [3]
+Package marginnote Info: Margin note 4.1 is on absolute page 4
 (marginnote)              on input line 125.
 Package marginnote Info: right page because not two side mode on input line 125
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 125.
-Package marginnote Info: Margin note 3.7 is on absolute page 3
+Package marginnote Info: Margin note 4.2 is on absolute page 4
 (marginnote)              on input line 131.
 Package marginnote Info: right page because not two side mode on input line 131
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 131.
- [3]
-Package marginnote Info: Margin note 4.1 is on absolute page 4
+Package marginnote Info: Margin note 4.3 is on absolute page 4
 (marginnote)              on input line 175.
 Package marginnote Info: right page because not two side mode on input line 175
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 175.
-Package marginnote Info: Margin note 4.2 is on absolute page 4
+Package marginnote Info: Margin note 4.4 is on absolute page 4
 (marginnote)              on input line 178.
 Package marginnote Info: right page because not two side mode on input line 178
 .
@@ -943,13 +943,14 @@ Package marginnote Info: right page because not two side mode on input line 215
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 215.
-Package marginnote Info: Margin note 5.3 is on absolute page 5
+Package marginnote Info: Margin note 5.3 is on absolute page 6
 (marginnote)              on input line 226.
 Package marginnote Info: right page because not two side mode on input line 226
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 226.
-Package marginnote Info: Margin note 5.4 is on absolute page 5
+ [5]
+Package marginnote Info: Margin note 6.1 is on absolute page 6
 (marginnote)              on input line 228.
 Package marginnote Info: right page because not two side mode on input line 228
 .
@@ -963,109 +964,207 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 230.
- [5]
-Package marginnote Info: Margin note 6.1 is on absolute page 6
+Package marginnote Info: Margin note 6.2 is on absolute page 6
 (marginnote)              on input line 239.
 Package marginnote Info: right page because not two side mode on input line 239
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 239.
-Package marginnote Info: Margin note 6.2 is on absolute page 6
+Package marginnote Info: Margin note 6.3 is on absolute page 6
 (marginnote)              on input line 243.
 Package marginnote Info: right page because not two side mode on input line 243
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 243.
-Package marginnote Info: Margin note 6.3 is on absolute page 6
+Package marginnote Info: Margin note 6.4 is on absolute page 6
 (marginnote)              on input line 245.
 Package marginnote Info: right page because not two side mode on input line 245
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 245.
-Package marginnote Info: Margin note 6.4 is on absolute page 6
+Package marginnote Info: Margin note 6.5 is on absolute page 6
 (marginnote)              on input line 268.
 Package marginnote Info: right page because not two side mode on input line 268
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 268.
-Package marginnote Info: Margin note 6.5 is on absolute page 6
+ [6]
+Package marginnote Info: Margin note 7.1 is on absolute page 7
 (marginnote)              on input line 275.
 Package marginnote Info: right page because not two side mode on input line 275
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 275.
- [6]
-Package marginnote Info: Margin note 7.1 is on absolute page 7
+Package marginnote Info: Margin note 7.2 is on absolute page 7
 (marginnote)              on input line 289.
 Package marginnote Info: right page because not two side mode on input line 289
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 289.
-Package marginnote Info: Margin note 7.2 is on absolute page 7
+Package marginnote Info: Margin note 7.3 is on absolute page 7
 (marginnote)              on input line 297.
 Package marginnote Info: right page because not two side mode on input line 297
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 297.
-Package marginnote Info: Margin note 7.3 is on absolute page 7
+Package marginnote Info: Margin note 7.4 is on absolute page 7
 (marginnote)              on input line 308.
 Package marginnote Info: right page because not two side mode on input line 308
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 308.
-Package marginnote Info: Margin note 7.4 is on absolute page 7
+Package marginnote Info: Margin note 7.5 is on absolute page 7
 (marginnote)              on input line 315.
 Package marginnote Info: right page because not two side mode on input line 315
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 315.
-Package marginnote Info: Margin note 7.5 is on absolute page 7
+Package marginnote Info: Margin note 7.6 is on absolute page 8
 (marginnote)              on input line 321.
 Package marginnote Info: right page because not two side mode on input line 321
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 321.
-Package marginnote Info: Margin note 7.6 is on absolute page 7
+Package marginnote Info: Margin note 7.7 is on absolute page 8
 (marginnote)              on input line 324.
 Package marginnote Info: right page because not two side mode on input line 324
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 324.
-Package marginnote Info: Margin note 7.7 is on absolute page 7
+ [7]
+Package marginnote Info: Margin note 8.1 is on absolute page 8
 (marginnote)              on input line 327.
 Package marginnote Info: right page because not two side mode on input line 327
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 327.
-Package marginnote Info: Margin note 7.8 is on absolute page 7
+Package marginnote Info: Margin note 8.2 is on absolute page 8
 (marginnote)              on input line 332.
 Package marginnote Info: right page because not two side mode on input line 332
 .
 Package marginnote Info: xpos seems to be 72.26999pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 332.
- [7] [8]
-[9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 376.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 376.
+ [8]
+Package marginnote Info: Margin note 9.1 is on absolute page 9
+(marginnote)              on input line 374.
+Package marginnote Info: right page because not two side mode on input line 374
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 374.
+Package marginnote Info: Margin note 9.2 is on absolute page 9
+(marginnote)              on input line 376.
+Package marginnote Info: right page because not two side mode on input line 376
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 376.
+Package marginnote Info: Margin note 9.3 is on absolute page 9
+(marginnote)              on input line 378.
+Package marginnote Info: right page because not two side mode on input line 378
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 378.
+Package marginnote Info: Margin note 9.4 is on absolute page 9
+(marginnote)              on input line 380.
+Package marginnote Info: right page because not two side mode on input line 380
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 380.
+Package marginnote Info: Margin note 9.5 is on absolute page 9
+(marginnote)              on input line 384.
+Package marginnote Info: right page because not two side mode on input line 384
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 384.
+Package marginnote Info: Margin note 9.6 is on absolute page 9
+(marginnote)              on input line 385.
+Package marginnote Info: right page because not two side mode on input line 385
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 385.
+Package marginnote Info: Margin note 9.7 is on absolute page 9
+(marginnote)              on input line 386.
+Package marginnote Info: right page because not two side mode on input line 386
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 386.
+Package marginnote Info: Margin note 9.8 is on absolute page 9
+(marginnote)              on input line 387.
+Package marginnote Info: right page because not two side mode on input line 387
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 387.
+Package marginnote Info: Margin note 9.9 is on absolute page 9
+(marginnote)              on input line 391.
+Package marginnote Info: right page because not two side mode on input line 391
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 391.
+ [9]
+Package marginnote Info: Margin note 10.1 is on absolute page 10
+(marginnote)              on input line 433.
+Package marginnote Info: right page because not two side mode on input line 433
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 433.
+Package marginnote Info: Margin note 10.2 is on absolute page 10
+(marginnote)              on input line 437.
+Package marginnote Info: right page because not two side mode on input line 437
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 437.
+Package marginnote Info: Margin note 10.3 is on absolute page 10
+(marginnote)              on input line 439.
+Package marginnote Info: right page because not two side mode on input line 439
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 439.
+
+[10]
+Package marginnote Info: Margin note 11.1 is on absolute page 11
+(marginnote)              on input line 448.
+Package marginnote Info: right page because not two side mode on input line 448
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 448.
+Package marginnote Info: Margin note 11.2 is on absolute page 11
+(marginnote)              on input line 450.
+Package marginnote Info: right page because not two side mode on input line 450
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 450.
+Package marginnote Info: Margin note 11.3 is on absolute page 11
+(marginnote)              on input line 452.
+Package marginnote Info: right page because not two side mode on input line 452
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 452.
+Package marginnote Info: Margin note 11.4 is on absolute page 11
+(marginnote)              on input line 458.
+Package marginnote Info: right page because not two side mode on input line 458
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 458.
+Package marginnote Info: Margin note 11.5 is on absolute page 11
+(marginnote)              on input line 460.
+Package marginnote Info: right page because not two side mode on input line 460
+.
+Package marginnote Info: xpos seems to be 72.26999pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 460.
+ [11]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 466.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 466.
  (./Homework.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 376.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 376.
-
-
-Package rerunfilecheck Warning: File `Homework.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Homework.out':
-(rerunfilecheck)             Before: E397788AFD356027533ECA50328CC43A;1968
-(rerunfilecheck)             After:  3902185C5D5DAD8840C99298AAC3176F;2379.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 376.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 466.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 466.
+Package rerunfilecheck Info: File `Homework.out' has not changed.
+(rerunfilecheck)             Checksum: CF73A06D7EAA23D23FFAF465097E3D29;2719.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 466.
  ) 
 Here is how much of TeX's memory you used:
- 17498 strings out of 493029
- 320071 string characters out of 6136234
- 412507 words of memory out of 5000000
- 20649 multiletter control sequences out of 15000+600000
+ 17538 strings out of 493029
+ 320632 string characters out of 6136234
+ 410815 words of memory out of 5000000
+ 20681 multiletter control sequences out of 15000+600000
  15314 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,12n,54p,1083b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1075,24 +1174,28 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/symbols/msbm10.pfb>
-Output written on Homework.pdf (9 pages, 231731 bytes).
+st/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
+m10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
+7.pfb>
+Output written on Homework.pdf (11 pages, 273950 bytes).
 PDF statistics:
- 302 PDF objects out of 1000 (max. 8388607)
- 267 compressed objects within 3 object streams
- 47 named destinations out of 1000 (max. 500000)
- 245 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 379 PDF objects out of 1000 (max. 8388607)
+ 337 compressed objects within 4 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 333 words of extra memory for PDF output out of 10000 (max. 10000000)
 
