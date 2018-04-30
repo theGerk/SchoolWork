@@ -443,6 +443,50 @@ We now know that $mn/(m,n)$ is the least common multiple of $m$ and $n$.
 Let $p$ be the $n^{\text{th}}$ prime. Assume for the sake of contradiction that there is some $a,b\in\mathbb N$ st. $a^2=pb^2$, and let $\factorize ai = a$ and $\factorize bi = b$. It follows that $\factorize{2a}i=p\factorize{2b}i$. As $p$ is the $n^{\text{th}}$ prime then $$p^{2a_n}\prodacross{i\in\mathbb N\setminus\set n}{{p_i}^{2a_i}} = p^{2b_n+1}\prodacross{i\in\mathbb N\setminus\set n}{{p_i}^{2a_i}}$$ so the prime factorizations can not possibly be the same, so we have a contradiction.
 
 \subsection{Section 6}
+
+\subsubsection{Question 1}
+
+\begin{proof}
+Base case, we have $\frac161(1+1)(2\cdot 1 + 1) = \frac166 = 1 = 1^2$, when $n = 1$.
+Inductive case we get 
+\begin{align*}
+\frac 16(n-1)((n-1)+1)(2(n-1)+1) + n^2 &=\frac16(n-1)n(2n-1) + n^2 \\
+&= \frac16\left(2n^3 - 3n^2+n\right) + n^2 \\
+&= \frac16\left(2n^3 + 3n^2+n\right) \\
+&= \frac16n(2n^2+3n + 1) \\
+&= \frac16n(n+1)(2n+1)
+\end{align*}
+\end{proof}
+
+\subsubsection{Question 2}
+
+\begin{proof}
+	Base case, we have $\frac141^2(1+1)^2 = \frac144 = 1 = 1^3$, when $n = 1$. Inductive case we get 
+	\begin{align*}
+	\frac14(n-1)^2((n-1)+1)^2 + n^3 &= \frac14n^2(n-1)^2 + n^3 \\
+	&= \frac14\left(n^4-2n^3+n^2\right)+n^3\\
+	&= \frac14\left(n^4+2n^3+n^2\right)\\
+	&= \frac14n^2(n+1)^2
+	\end{align*}
+\end{proof}
+
+\subsubsection{Question 8}
+
+\begin{proof}
+Our base case is trivial when $n=1$. In our inductive case we get
+\begin{align*}
+\frac{(n-1)}{n} + \frac1{n(n+1)} &= \frac{(n-1)(n+1) + 1}{n(n+1)}\\
+&= \frac{n^2}{n(n+1)} \\
+&= \frac n{n+1}
+\end{align*}
+\end{proof}
+
+
+\subsubsection{Question 14}
+%TODO Fermat's little theorem, I have combinatorial proof but inductive evades me
+
+
+\subsection{Section 7}
 \subsubsection{Question 1}
 
 \question{(a)} $(6-7i)(8+i) = 48 - 56i + 6i + 7 = 55-50i$
@@ -453,14 +497,23 @@ Let $p$ be the $n^{\text{th}}$ prime. Assume for the sake of contradiction that 
 
 \subsubsection{Question 2}
 
-%TODO fix me
+In general $z^{-1} = \frac{\bar z}{\abs{z}^2}$
 
-\question{(a)} $z^{-1} = -\frac{6}{6^2+8^2} + \frac8{6^2+8^2}i$
+\question{(a)} $z^{-1} = \frac{6}{6^2+8^2} - \frac8{6^2+8^2}i$
 
-\question{(b)} $z^{-1} = -\frac{6}{6^2+8^2} - \frac8{6^2+8^2}i$
+\question{(b)} $z^{-1} = \frac{6}{6^2+8^2} + \frac8{6^2+8^2}i$
+
+\question{(c)} $z^{-1} = \frac1{\sqrt2} - \frac1{\sqrt 2}i$
 
 \subsubsection{Question 8}
+
+By lemma 1.7.3 from the book we know that $\abs{uv} = \abs u\abs v$, therefore, as $zz^{-1} = 1$ we also have $\abs{zz^{-1}} = 1$ so $\abs z\abs{z^{-1}} = 1$ and it follows $\abs {z^{-1}} = 1 / \abs z$.
+
 \subsubsection{Question 14}
+
+%Get help from Russos?
+By Euler's equation we know that $\cos\theta + i\sin\theta = e^{i\theta}$. We have ${\left(e^{i\theta}\right)}^m = e^{im\theta} = \cos (m\theta) + i\sin (m\theta)$
+
 
 
 \end{document}
