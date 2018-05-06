@@ -24,6 +24,9 @@
 		There are many different types of search engines, the most complicated of which are where you do not initially have knowledge of what is being searched and that information may change. In order to tackle this we need some way of discovering possible results, matching these results to a query and ranking possible results. %TODO come back to
 	\end{abstract}
 	
+	\section{Who this paper is for.}
+	This paper assumes the reader has no special knowledge of Mathematics, Graph theory, or the workings of the Internet. The paper does however use very common terminology from Mathematics and Graph theory without providing definitions. If a reader is unfamiliar with certain terms they are encouraged to look them up as otherwise the paper will spend to much time describing mathematical concepts that are outside the scope of this paper.
+	
 	\section{Introduction}
 	So you want to build a search engine? Now there are a couple different types of search engines and not all search engines need work the same, however there are two steps that are absolutely necessary for any searching to make sense. First you are going to need to have some set $A$ to search through and second you will need a search function $s:Q\to\pset{A}$\footnote{$\pset A$ is the power set of $A$.} where $Q$ is the set of all possible search queries. If we step away from mathematical formalities this makes sense as we simply are finding a way to match a search query to set of possibly results.
 	
@@ -67,19 +70,30 @@
 		\item \textbf{URL} - The URL is the `name' of a webpage and tells us how to get there. We have already seen some example URLs like \verb|https://www.google.com|. We see URLs come in a a few flavors, we will break them into two catagories.
 		\begin{itemize}
 			\item \textbf{absolute URL} - This a URL that has the whole name in it like the ones we have seen. This contains all the information we need to get to the specific page. These often look something like \verb|www.domainName.topLevelDomain/optionalExtraStuff|.
-			\item \textbf{relative URL} - This a URL that works within a website, for example if I'm at \verb|www.example.com/index| and I go to the URL \verb|/home| there is an agreement that this link really refers to \verb|www.example.com/home|.
+			\item \textbf{relative URL} - This a URL that works within a website. If I'm at \verb|www.example.com/index| and I go to the URL \verb|/home| there is an agreement that this link really refers to \verb|www.example.com/home|.
 		\end{itemize}
 		
 		%TODO maybe remove
 		\item \textbf{404 Error} - Sometimes web pages are removed. When we try to go to a URL that is not set to respond with anything, the website will respond with a 404 error. This becomes important as we may find that some pages that used to exist no longer do, and these must be handled in a meaningful way.
 		
-		%TODO add more
+		%TODO add more maybe?
 		
 	\end{itemize}
 	
 	
 	
 	\section{Discovery}
-	Now let us return to the abstract. You want to create a search engine that searches through some set $A$, however you do not have all of $A$, so you need some way to discover as much of $A$ as you can. Now for this we are going to assume you already know some $S\subset A$ and that $A$ has a directed graph structure to it that you may follow to discover new nodes. 
+	
+	You want to create a search engine that searches through some set $A$, however you do not have all of $A$, so you need some way to discover as much of $A$ as you can. Now for this we are going to assume you already know some $S\subset A$ and that $A$ has a directed graph structure to it that you may follow to discover new nodes. In order to do this we will need a graph searching algorithm. There are two basic algorithms available: Depth-First search and Breadth-First search. 
+	
+	A depth-first search starts with a single vertex $v_0$, it finds all children of $v_0$ and then repeats the process recursively on them one at a time. Notice that if $v_1$ is $v_0$'s `first' child then we will find each $v_1$'s children, and then repeat on $v_1$'s first child continuing in this fashion until there are no more children and we are able to work back up to $v_0$'s second child. This is like searching by clicking the first link you find on a page until there is no links on some page and then going back to the last page and clicking it's second link. The obvious problem with this search is that it loop infinitely and to deal with this we make the slight adjustment that we never go to the same vertex twice. 
+	
+	A breadth-first search starts with a seed set $S$ and finds the neighborhood of $S$. In this context we define the neighborhood of a set, $S$, to be all verticies $v\not\in S$ for which there is some vertex $s\in S$ with an edge to $v$. In a breadth-first search, once we find the neighborhood of $S$ we then repeat the process on the union of $S$ with it's neighborhood and continue recursively until the neighborhood of $S$ is empty, at this point we have discovered as much of our graph as possible given our seed set. This is like going to a page and clicking all of it's links and opening them in a new tab, then going through each tab and continually opening links in new tabs.
+	
+	The choice of which search to use is very situational and has much to do with the structure of the graph you are searching. Additionally with more information about the graph you may be able to do some more complicated algorithms that are more suited to your needs, or some combination between the above algorithms.
+	
+	\subsection{On the Internet}
+	There are quite a few useful results that we already know about the structure of the Internet that will help us to explore it. The problem with the Internet however is that it is so large that no one could ever hope to discover all of it, so instead we must find some way of trying to get the most valuable parts discovered and we need to do so efficiently.
+	
 	
 \end{document}

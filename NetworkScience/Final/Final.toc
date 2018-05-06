@@ -1,5 +1,7 @@
-\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
-\contentsline {section}{\numberline {2}The Internet}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}How it works}{2}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Some terminology}{2}{subsection.2.2}
-\contentsline {section}{\numberline {3}Discovery}{3}{section.3}
+\contentsline {section}{\numberline {1}Who this paper is for.}{1}{section.1}
+\contentsline {section}{\numberline {2}Introduction}{1}{section.2}
+\contentsline {section}{\numberline {3}The Internet}{2}{section.3}
+\contentsline {subsection}{\numberline {3.1}How it works}{2}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Some terminology}{3}{subsection.3.2}
+\contentsline {section}{\numberline {4}Discovery}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}On the Internet}{4}{subsection.4.1}
