@@ -28,7 +28,7 @@
 	This paper assumes the reader has no special knowledge of Mathematics, Graph theory, or the workings of the Internet. The paper does however use very common terminology from Mathematics and Graph theory without providing definitions. If a reader is unfamiliar with certain terms they are encouraged to look them up as otherwise the paper will spend to much time describing mathematical concepts that are outside the scope of this paper.
 	
 	\section{Introduction}
-	So you want to build a search engine? Now there are a couple different types of search engines and not all search engines need work the same, however there are two steps that are absolutely necessary for any searching to make sense. First you are going to need to have some set $A$ to search through and second you will need a search function $s:Q\to\pset{A}$\footnote{$\pset A$ is the power set of $A$.} where $Q$ is the set of all possible search queries. If we step away from mathematical formalities this makes sense as we simply are finding a way to match a search query to set of possibly results.
+	So you want to build a search engine? Now there are a couple different types of search engines and not all search engines need to work the same, however there are two steps that are absolutely necessary for any searching to make sense. First you are going to need to have some set $A$ to search through and second you will need a search function $s:Q\to\pset{A}$\footnote{$\pset A$ is the power set of $A$.} where $Q$ is the set of all possible search queries. If we step away from mathematical formalities this makes sense as we simply are finding a way to match a search query to set of possibly results.
 	
 	Now what one might notice is that none of this talks about ranking the results, and this is obviously an important part of any modern search engine. The problem of ordering may, in fact, be the most interesting part of a search engine. This paper however will spend very little time talking about ordering a search result as Page Rank is already well understood and after that most of the complexity really has more to do with understanding the query which we will cover when talking about our search function.
 	
@@ -72,6 +72,7 @@
 			\item \textbf{absolute URL} - This a URL that has the whole name in it like the ones we have seen. This contains all the information we need to get to the specific page. These often look something like \verb|www.domainName.topLevelDomain/optionalExtraStuff|.
 			\item \textbf{relative URL} - This a URL that works within a website. If I'm at \verb|www.example.com/index| and I go to the URL \verb|/home| there is an agreement that this link really refers to \verb|www.example.com/home|.
 		\end{itemize}
+		If which type of URL is not specified it should be assumed that we are referring to an absolute URL.
 		
 		%TODO maybe remove
 		\item \textbf{404 Error} - Sometimes web pages are removed. When we try to go to a URL that is not set to respond with anything, the website will respond with a 404 error. This becomes important as we may find that some pages that used to exist no longer do, and these must be handled in a meaningful way.
@@ -93,7 +94,27 @@
 	The choice of which search to use is very situational and has much to do with the structure of the graph you are searching. Additionally with more information about the graph you may be able to do some more complicated algorithms that are more suited to your needs, or some combination between the above algorithms.
 	
 	\subsection{On the Internet}
-	There are quite a few useful results that we already know about the structure of the Internet that will help us to explore it. The problem with the Internet however is that it is so large that no one could ever hope to discover all of it, so instead we must find some way of trying to get the most valuable parts discovered and we need to do so efficiently.
+	There are quite a few useful results that we already know about the structure of the Internet that will help us to explore it. The problem with the Internet however is that it is so large that no one could ever hope to discover all of it, so instead we must find some way of trying to get the most valuable parts of the Internet discovered.
+	
+	The process we are talking about is often referred to as web crawling and a program that does this is called a web crawler or spider. Our first idea for building one might be as follows:
+	\begin{enumerate}
+		\item Start with some set of URLs $S$ as our seed. 
+		\item Enqueue each element of $S$ to a queue $Q$.
+		\item While $Q$ is not empty do the following:
+		\begin{enumerate}
+			\item Dequeue a URL from $Q$, let us call this URL $u$.
+			\item Make a request to URL $u$.
+			\item When a response is sent back, find all URLs (either absolute or relative) that one may find in that response, convert all relative URLs to absolute URLs. We will refer to this set of discovered URLs as $D$.
+			\begin{itemize}
+				\item On a webpage there are certain places to look, for example an anchor tag may be a link to another page.
+				\item One may also use a regular expression to try and find things anywhere on the page that look like URLs. Even if our system is perfect sometimes pages go away so we should expect not all URLs to be valid.
+			\end{itemize}
+			In practice we may want to use some or all of the information from the web page. This will be important in later sections, but for now just realize that we can keep track of the responses we get and deal with them how we choose.
+			\item For each URL $d\in D$, if $d \not\in S$ then add $d$ to $S$ and enqueue it onto $Q$.
+		\end{enumerate}
+	\end{enumerate}
+	
+	Now this web crawler works perfectly well, however it's going to be incredibly slow. The first step in optimizing this is always looking at 
 	
 	
 \end{document}
