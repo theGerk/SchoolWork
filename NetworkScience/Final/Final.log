@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  6 MAY 2018 17:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  6 MAY 2018 17:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -920,7 +920,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 120.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 120.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 120.
 Package rerunfilecheck Info: File `Final.out' has not changed.
-(rerunfilecheck)             Checksum: 11F45513FC69652C9288D0B9A7B056E6;385.
+(rerunfilecheck)             Checksum: A14710DB14F9CAB99F05F795E7D7EBCE;384.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 120.
  ) 
 Here is how much of TeX's memory you used:
@@ -945,7 +945,7 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Final.pdf (4 pages, 187788 bytes).
+Output written on Final.pdf (4 pages, 187710 bytes).
 PDF statistics:
  146 PDF objects out of 1000 (max. 8388607)
  123 compressed objects within 2 object streams
