@@ -2,6 +2,19 @@
 
 \title{So you want to build a search engine?}
 \input{../../definitions.tex}
+\usepackage{listings}
+\usepackage{xcolor}
+
+
+\lstset{%
+	language=[LaTeX]TeX,
+%	backgroundcolor=\color{gray!25},
+	basicstyle=\ttfamily,
+	breaklines=true,
+	columns=fullflexible
+}
+
+
 \begin{document}
 	\maketitle
 	
@@ -23,8 +36,50 @@
 	
 	
 	
-	\section{}
-	The discovery of $A$ is done through a process called web crawling. We will 
+	\section{The Internet}
 	
+	\subsection{How it works}
+	The Internet itself is a somewhat complex entity and a lot goes into making it work. For this we don't need to know everything  but it would be good to have a rough idea of what happens when you go to a web page.
+	
+	Lets say you open your web browser and go to the \verb|www.google.com|. Now what happens is your computer sends a message out to \verb|www.google.com| and a response is sent back to you. The web browser that you use (ie: Mozilla Firefox, Internet Explorer, Google Chrome, \ldots) will then display that message in a way that makes most sense.
+	
+	The message that is sent to \verb|https://www.google.com| ins't terribly complicated, however we aren't goint to deal with it's entire protocol, instead we will pretend that the message is simply the URL that you type in. Now you might see a somewhat more complicated URL then just \verb|https://www.google.com|, maybe you'll see \verb|https://www.google.com\mail| or even more complicated looking like
+	\begin{lstlisting}[breaklines]
+	https://www.google.com/search?ei=k1TuWuoH0pCaBcvOuIgC\&q=hello+world\&oq=hello+world\&gs\_l=psy-ab.3..0j0i20i264k1l2j0l5j0i10k1j0.2636.3822.0.3932.11.8.0.0.0.0.252.676.2-3.3.0....0...1c.1.64.psy-ab..8.3.676...46j0i67k1j0i46k1j0i131k1.0.2UY03D\_JQgE
+	\end{lstlisting}
+	we can think of this as simply sending that message to \verb|www.google.com|, and them sending back a reply. Now you can see the actual text of the response that is sent back to you, however what is important to note is that this is simply a response. This means that \verb|https://www.google.com| can send me any response it likes and it doesn't need to look like a web page and it does not need to be consistent. This means that there really ins't information on the Interent, just URLs and servers that give responses.
+	
+	When we make a Internet search engine we are making some implicit assumptions about how websites like \verb|https://www.google.com| are going to act. First we assume that most urls will respond with relitivily consistant responses. What is meant by this is that if I have a URL $x$ that produces response $r_0$, the first time I made a request for it, then when I send another request to $x$ and get response $r_1$, then $r_1$ should be similar in content to $r_0$.
+	
+	Now in practice, as of writing this paper, most responses (at least for important web pages) tend to be fairly static, often being exactly the same for a length of time and not changing by a large amount when they do change. For example think of the website \verb|https://www.wikipedia.com| that acts as a communally sourced encyclopedia. Now as anyone may make a change to any particular page on this site you might think it to be rather  volitile, however these changes tend to be very minimal and wont completley change the content of the page. When we talk about crawling we will useing and working within this constraint that pages change, but only gradually.
+	
+	For this section we have thought of web pages simply a responses to a URL. Now that we have justified that these responses are mostly consistent, we will think of them rather as pages.
+	
+	
+	\subsection{Some terminology}
+	In order for us to understand how a search engine like Google operates, there is some terminology pertaining the Internet that we must understand. Admittedly the definitions here are not rigorous, however the quick overview of some ideas is all that is needed for our discussion.
+	\begin{itemize}
+		
+		\item \textbf{Website} - A website might be best though of as a server. Each website has a single computer\footnote{In practice the single computer is actually multiple computers} that deals with incoming requests and makes responses. A website is denoted by \verb|www.google.com|, anything that is appended after that is still on the same website, that is that \verb|www.google.com| is still sending the responses. 
+		
+		\item \textbf{Web page} - A web page is a single page or URL on a web site. More precisely a web page is the response given to you by a website given a specific URL. In this we will think of the URL as being the name of the web page while the page itself being subject to change. That is to say if a page was to be moved from  URL $a$ to URL $b$ we would simply see it as $a$'s web page changing to not exist and $b$'s web page changing to whatever $a$ used to be.
+		
+		\item \textbf{URL} - The URL is the `name' of a webpage and tells us how to get there. We have already seen some example URLs like \verb|https://www.google.com|. We see URLs come in a a few flavors, we will break them into two catagories.
+		\begin{itemize}
+			\item \textbf{absolute URL} - This a URL that has the whole name in it like the ones we have seen. This contains all the information we need to get to the specific page. These often look something like \verb|www.domainName.topLevelDomain/optionalExtraStuff|.
+			\item \textbf{relative URL} - This a URL that works within a website, for example if I'm at \verb|www.example.com/index| and I go to the URL \verb|/home| there is an agreement that this link really refers to \verb|www.example.com/home|.
+		\end{itemize}
+		
+		%TODO maybe remove
+		\item \textbf{404 Error} - Sometimes web pages are removed. When we try to go to a URL that is not set to respond with anything, the website will respond with a 404 error. This becomes important as we may find that some pages that used to exist no longer do, and these must be handled in a meaningful way.
+		
+		%TODO add more
+		
+	\end{itemize}
+	
+	
+	
+	\section{Discovery}
+	Now let us return to the abstract. You want to create a search engine that searches through some set $A$, however you do not have all of $A$, so you need some way to discover as much of $A$ as you can. Now for this we are going to assume you already know some $S\subset A$ and that $A$ has a directed graph structure to it that you may follow to discover new nodes. 
 	
 \end{document}
