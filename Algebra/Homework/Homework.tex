@@ -483,8 +483,19 @@ Our base case is trivial when $n=1$. In our inductive case we get
 
 
 \subsubsection{Question 14}
-%TODO Fermat's little theorem, I have combinatorial proof but inductive evades me
 
+Let $n = 0$, then it is trivial that $n^p - n$ is divisible by $p$ for any prime $p$.
+
+Now let $n$ be a fixed non-negative integer, and assume that $n^p-n$ is divisible by $p$ for any prime $p$. By the binomial theorem we have
+\begin{align*}
+(n+1)^p - (n+1)
+&= \sumfrom{i=0}{p}{\binom{p}{i}n^i}-n-1 \\
+&= \sumfrom{i=1}{p-1}{\binom{p}{i}n^i}+n^p+1-n-1 \\
+&= \sumfrom{i=1}{p-1}{\binom{p}{i}n^i}+\left(n^p-n\right)
+\end{align*}
+By our assumption we have $n^p-n$ is divisible by $p$. Additionally $\binom pi$ must be divisible by $p$ for all $0 < i < p$ because $\binom pi = \frac{p!}{i!(p-i)!}$ and $p$ is prime.
+
+By induction we then know that $n^p-n$ is divisible by $p$ for any prime $p$.
 
 \subsection{Section 7}
 \subsubsection{Question 1}
@@ -505,16 +516,249 @@ In general $z^{-1} = \frac{\bar z}{\abs{z}^2}$
 
 \question{(c)} $z^{-1} = \frac1{\sqrt2} - \frac1{\sqrt 2}i$
 
-\subsubsection{Question 8}
+\subsubsection{Question 3}
+Using Lemma 1.7.1, the fact that $\overline 1 = 1$, and some group axioms, we get.
+\begin{align*}
+1 &= (\overline z)^{-1}\overline z \\
+\therefore \overline 1 &= \overline{(\overline z)^{-1}\overline z} \\
+&= \overline{(\overline z)^{-1}}\cdot\overline{(\overline z)} \\
+&= \overline{(\overline z)^{-1}} \cdot z \\
+\therefore z^{-1} &= \overline{(\overline z)^{-1}} \\
+\therefore \overline{z^{-1}} &= \overline{\left(\overline{(\overline z)^{-1}}\right)} \\
+&= (\overline z)^{-1}
+\end{align*}
 
-By lemma 1.7.3 from the book we know that $\abs{uv} = \abs u\abs v$, therefore, as $zz^{-1} = 1$ we also have $\abs{zz^{-1}} = 1$ so $\abs z\abs{z^{-1}} = 1$ and it follows $\abs {z^{-1}} = 1 / \abs z$.
+\subsubsection{Question 6}
 
-\subsubsection{Question 14}
+For any $z \in\mathbb C$, there exists $a,b\in\mathbb R$ such that $z = a+bi$. Now $\overline z = a-bi$ by definition. Therefore $z = \overline z$ iff $b=0$ as $a-bi = a+bi$ iff $b=0$. Finally if $b=0$ then $z = a$ and therefore $z$ is real, if $b\not=0$ then $z=a+bi$ for some non-zero $b\in\mathbb R$ so $z$ has an imaginary part and is not real. Therefore we have shown that $z = \overline z$ iff $z\in\mathbb R$.
+
+Now if $a=0$ the we say that $z$ is purely imaginary as there is no real part to $z$. So if $z$ is purely imaginary then $z = bi$ and $\overline z = -bi = -z$. If we start with $\overline z = -z$ then we get 
+\begin{align*}
+-(a+bi) &= a-bi \\
+-a-bi &= a-bi \\
+-a = a\\
+a = 0
+\end{align*}
+so $z$ must be purely imaginary. Putting this all together we get that $-z=\overline z$ iff $z$ is purely imaginary.
+
+
+
+%\subsubsection{Question 8}
+
+%By lemma 1.7.3 from the book we know that $\abs{uv} = \abs u\abs v$, therefore, as $zz^{-1} = 1$ we also have $\abs{zz^{-1}} = 1$ so $\abs z\abs{z^{-1}} = 1$ and it follows $\abs {z^{-1}} = 1 / \abs z$.
+
+\subsubsection{Question 11}
+
+\question{(a)} $z = \cos\frac{7\pi}4 + i\sin\frac{7\pi}{4}$
+
+\question{(b)} $z = 4\left(\cos \frac\pi2 + i\sin \frac\pi2\right)$
+
+\question{(c)} $z = 36\left(\cos \frac\pi4 + i\sin \frac\pi4\right)$
+
+\question{(d)} $z = 13\left(\cos \frac{2\pi}3 + i \sin\frac{2\pi}3 \right)$
+
+\subsubsection{Question 13}
+\begin{align*}
+\left(\frac12 + \frac12\sqrt3i\right)^3 &= \left(\frac12\left(1+\sqrt3i\right)\right)^3 \\
+&= \frac18\left(1+\sqrt3i\right)^3 \\
+&= \frac18\left( 1 + 3\sqrt3i+ 3\left(\sqrt3i\right)^2 + \left(\sqrt3i\right)^3 \right) \\
+&= \frac18\left( 1 + 3\sqrt3i - 9 - 3\sqrt3i \right) \\
+&= \frac18\left(-8\right) \\
+&= -1
+\end{align*}
+
+
+%\subsubsection{Question 14}
 
 %Get help from Russos?
-By Euler's equation we know that $\cos\theta + i\sin\theta = e^{i\theta}$. We have ${\left(e^{i\theta}\right)}^m = e^{im\theta} = \cos (m\theta) + i\sin (m\theta)$
+%By Euler's equation we know that $\cos\theta + i\sin\theta = e^{i\theta}$. We have ${\left(e^{i\theta}\right)}^m = e^{im\theta} = \cos (m\theta) + i\sin (m\theta)$
+
+\subsubsection{Question 20}
+
+Let us adopt the notation that for any $c\in\mathbb C$, $$c = c_a + c_bi$$ where $c_a,c_b\in\mathbb R$.
+\begin{align*}
+\abs{z+w}^2+\abs{z-w}^2 &= \abs{z_a+z_bi + w_a+w_bi}^2 + \abs{z_a+z_bi - w_a-w_bi}^2 \\
+&= (z_a+w_a)^2+(z_b+w_b)^2+(z_a-w_a)^2+(z_b-w_b)^2 \\
+&= {z_a}^2+2z_aw_a+{w_a}^2 + {z_b}^2+2z_bw_b+{w_b}^2 +{z_a}^2-2z_aw_a+{w_a}^2 + {z_b}^2-2z_bw_b+{w_b}^2 \\
+&= 2\left({z_a}^2+{a_b}^2+{w_a}^2+{w_b}^2\right)\\
+&= 2\left( \abs{z}^2 + \abs{w}^2 \right)
+\end{align*}
+
+\subsubsection{Question 21}
+
+Our approach here is to partition $A$ into countably many finite sets, this will show that there is a 1-1 and onto correspondence from $A$ to $\mathbb N$ as they are both countably infinite. We define $\abs{a+bi}_1 = \abs a + \abs b$. Now we define the set $Z_k = \setbuilder{z\in A}{\abs{z} = k}$ for $k \in\mathbb N \union\set0$. Now for all $z\in A$, there exists some $k\in\mathbb N \union\set 0$ such that $z\in Z_k$ as for any $z\in A$, $z = a+bi$ for $a,b\in\mathbb Z$ and therefore $\abs{z} = \abs{a} + \abs{b} \in \mathbb N \union \set 0$ so there is some $k\in\mathbb N \union\set 0$ such that $z \in Z_k$. For any $k\in\mathbb N\union\set 0$ we also have $Z_k$ is finite as for all $a+bi \in Z_k$, $\abs a\le k$ and $\abs b \le k$, therefore there are only finitely many possibilities for $a$ and $b$. Now we have $\unionacross{k\in\mathbb N \union\set 0}{Z_k} = A$ with each $Z_k$ finite, so $A$ must be countable.
 
 
+\subsubsection{Question 22}	
+
+First we will prove that $P(\overline x) = \overline{P(x)}$ for any polynomial $P:\mathbb C \to \mathbb C$ with real coefficients, $\alpha_0, \alpha_1,\ldots,\alpha_n$. Let $z \in \mathbb C$ such that $z = a+bi$ with $a$ and $b$ real. Notice that for any $\alpha\in\mathbb R$, 
+\begin{align*}
+\alpha\overline z &= \alpha(a - bi) \\
+&= \alpha a - \alpha bi \\
+&= \overline{\alpha z}
+\end{align*}
+From lemma 1.7.1 we get $\overline{zw} = \overline z \overline w$, so it follows that $\overline{z^n} = \overline{z}^n$. Finally from lemma 1.7.1 we also get $\overline {z + w} = \overline z + \overline w$ so it follows that $\overline{\sum z_j} = \sum \overline{z_j}$. So if $P(x) = \sumfrom{j=0}{n}{\alpha_jx^j}$ then it follows
+\begin{align*}
+P(\overline{x}) &= \sumfrom{j=0}{n}{\alpha_j\overline x^j} \\
+&= \sumfrom{j=0}{n}{\alpha_j\overline{x^j}} \\
+&= \sumfrom{j=0}{n}{\overline{\alpha_jx^j}} \\
+&= \overline{\sumfrom{j=0}{n}{\alpha_jx^j}} \\
+&= \overline{P(x)}
+\end{align*}
+
+Therefore if we have any polynomial $P$ with real coefficients, and $P(x) = 0$ then $P(\overline x) = \overline 0 = 0$.
+
+
+\section{Chapter 2}
+\subsection{Section 1}
+\subsubsection{Question 8}
+Let us start with when $n=0$, then $(a*b)^n = e = a^n*b^n$.
+
+For $n > 0$ we will do induction, so let us assume that $(a*b)^{n-1} = a^{n-1}*b^{n-1}$, therefore 
+\begin{align*}
+(a*b)^n &= (a*b)^{n-1}*(a*b) \\
+&= (a^{n-1}*b^{n-1}) * (a * b) \\
+&= (a^{n-1} * a) * (b^{n-1} * b) \\
+&= a^n * b^n
+\end{align*}
+as we already have the case $n=0$ this induction proves the statement for $n\ge 0$.
+
+Now assume $n<0$, therefore $a^n = \left(a^{-1}\right)^{-n}$ and as $a^{-1} \in G$ and $-n > 0$ then we simply refer to our previous work and conclude that the statement still holds.
+
+\subsubsection{Question 9}
+
+Let $a,b\in G$.
+\begin{align*}
+e &= (a*b)^2 \\
+e &=  a^2 \\
+e &= b^2 \\
+e &= e * e \\
+&= a^2 * b^2\\
+a^2 * b^2 &= (a*b)^2\\
+a*a*b*b &= a*b*a*b \\
+a^{-1}*a*a*b*b*b^{-1} &= a^{-1}*a*b*a*b*b^{-1}\\
+a*b &= b*a
+\end{align*}
+
+\subsubsection{Question 19}
+
+We simply list off all elements of $S_3$ as $S_3$ is small.
+
+\begin{tabular}{c|c|c}
+	$x\in S_3$ & Does $x^2 = e$ & Does $x^3 = e$ \\
+	\hline
+	$(1,2,3)$ & Yes & Yes \\
+	$(1,3,2)$ & Yes & No \\
+	$(2,1,3)$ & Yes & No \\
+	$(2,3,1)$ & No & Yes \\
+	$(3,2,1)$ & Yes & No \\
+	$(3,1,2)$ & No & Yes \\
+\end{tabular}
+
+\subsubsection{Question 20}
+This is all elements $p\in S_4$ such that there does not exist exactly one $x$ such that $p(x) = x$.
+\begin{enumerate}
+	\item $(1,2,3,4)$
+	\item $(1,2,4,3)$
+	\item $(2,1,3,4)$
+	\item $(2,1,4,3)$
+	\item $(1,4,3,2)$
+	\item $(3,2,1,4)$
+	\item $(3,4,1,2)$
+	\item $(1,3,2,4)$
+	\item $(4,2,3,1)$
+	\item $(4,3,2,1)$
+	\item $(2,3,4,1)$
+	\item $(2,4,1,3)$
+	\item $(3,4,2,1)$
+	\item $(3,1,4,2)$
+	\item $(4,1,2,3)$
+	\item $(4,3,1,2)$
+\end{enumerate}
+\subsubsection{Question 26}
+
+Let $G$ be a finite group. Assume for the sake of contradiction that there is some $a\in G$ such that for all $n \in\mathbb N$, $a^n\not= e$. As $G$ is finite there then must be some $n_1\not=n_2$ such that $a^{n_1} = a^{n_2}$ by the pigeon hole principle. Let us assume without loss of generality that $n_2 > n_1$, it follows then that $a^{n_1}*a^{-n_1} = a^{n_2}*a^{-n_1}$ and therefore $e = a^{n_2 - n_1}$. This means we have a contradiction and therefore there exists some $n\in\mathbb N$ such that $a^n=e$ for any $a \in G$.
+
+\subsubsection{Question 27}
+
+We already have shown that each element $a\in G$ has some specific $n_a$ such that $a^n = e$. It follows then that if $m = {\prodacross{a\in G}{n_a}}$ then $a^m = e$ for all $a\in G$.
+\begin{proof}
+	Choose $a \in G$ and let $m = \prodacross{g\in G}{n_g}$. Now $a^m = a^{(m/n_a)(n_a)}$, and for notation let $m_a = \frac m{n_a}$. We now have
+	\begin{align*}
+	a^m &= a^{n_a\cdot m_a} \\
+	&= \left(a^{n_a}\right)^{m_a} \\
+	&= e^{m_a} \\
+	&= e
+	\end{align*}
+\end{proof}
+
+\subsubsection{Question 28}
+
+First we know that for any $a \in G$ there exists some $a^{-1} \in G$ such that $a^{-1} a = e$ We will adopt this notation as well as simply saying $ab = a * b$ for $a,b\in G$. Now we have
+\begin{align*}
+aa^{-1}aa^{-1} &= aea^{-1} \\
+&= aa^{-1} \\
+\therefore \left(aa^{-1}\right)^{-1}aa^{-1} &= \left(aa^{-1}\right)^{-1}aa^{-1}aa^{-1} \\
+\therefore e &= aa^{-1}
+\end{align*}
+
+Next we wish to prove some a lemma. If $ab = ac$ then $b = c$
+\begin{proof}
+	\begin{align*}
+	ab = ac &\implies a^{-1}ab = a^{-1}ac \\
+	&\implies eb=ec \\
+	&\implies b = c
+	\end{align*}
+\end{proof}
+
+Now with this we can say that for all $a \in G$, there exists exactly one inverse as if $ab = e = ac$, then $b = c$. We also can say an element $a\in G$ is the inverse of exactly one element by the exact same proof.
+
+Finally we get
+\begin{align*}
+aea^{-1} &= aa^{-1} \\
+&= e \\
+\therefore a^{-1} &= (ea)^{-1} \\
+\therefore a &= ea
+\end{align*}
+	
+
+\subsection{Section 2}
+\subsubsection{Question 1}
+\subsubsection{Question 2}
+\subsubsection{Question 5}
+
+\subsection{Section 3}
+\subsubsection{Question 4}
+\subsubsection{Question 5}
+\subsubsection{Question 11}
+\subsubsection{Question 22}
+\subsubsection{Question 24}
+\subsubsection{Question 26}
+\subsubsection{Question 28}
+\subsubsection{Question 29}
+
+\subsection{Section 4}
+\subsubsection{Question 1}
+\subsubsection{Question 5}
+\subsubsection{Question 18}
+\subsubsection{Question 24}
+\subsubsection{Question 30}
+\subsubsection{Question 35}
+\subsubsection{Question 37}
+\subsubsection{Question 38}
+\subsubsection{Question 42}
+\subsubsection{Question 43}
+
+\subsection{Section 5}
+\subsubsection{Question 3}
+\subsubsection{Question 17}
+\subsubsection{Question 18}
+\subsubsection{Question 19}
+\subsubsection{Question 24}
+\subsubsection{Question 26}
+\subsubsection{Question 29}
+\subsubsection{Question 38}
+\subsubsection{Question 42}
 
 \end{document}
 
