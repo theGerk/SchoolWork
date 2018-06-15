@@ -1162,12 +1162,32 @@ We know our function $\psi$ is not a monomorphism as $\card G > \card{A(S)}$. Th
 
 \subsection{Section 6}
 \subsubsection{Question 11}
+Suppose $G$ is a group and let $Z(G) = Z$. It is trivial to show that $Z \normsubgroup G$ so suppose further that $G/Z$ is cyclic. As $G/Z$ is cyclic it has some primitive element, $\eqclass g$. Now for any $x,y \in G$ we have $x \in Zg^n$ and $y \in Zg^m$ for some $n,m\in\mathbb N$ as all elements are in some coset of $Z$. We also have then that for some $z,w \in Z$ there is $x = zg^n$ and $y = wg^m$. We now do some manipulation
+\begin{align*}
+xy &= zg^nwg^m \\
+&= zwg^ng^m \\
+&= wzg^mg^n \\
+&= wg^mzg^n \\
+&= yz
+\end{align*}
+and we find $G$ is abelian. This means $Z = Z(G) = G$ so $G/Z = (e)$.
+
 \subsubsection{Question 12}
+If $G/N$ is abelian then we get $Nab = Nba$. This means there is some $n,m \in N$ such that $nab = mba$, and it follows that $(nab)^{-1} = (mba)^{-1} = a^{-1}b^{-1}m^{-1}$. We now get that $e = nab(nab)^{-1} = naba^{-1}b^{-1}m^{-1}$ so $n^{-1}m = aba^{-1}b^{-1}$. It follows from $N$ being a subgroup of $G$ that $aba^{-1}b^{-1} \in N$.
+
 \subsubsection{Question 13}
+Let $a,b\in G$. We get $aba^{-1}b^{-1}\in N$, and therefore $\eqclass e = \eqclass{aba^{-1}b^{-1}} = \eqclass{ab}\eqclass{a^{-1}b^{-1}}$. It follows then that $\eqclass{ab} = \eqclass{a^{-1}b^{-1}}^{-1} = \eqclass{\left(a^{-1}b^{-1}\right)^{-1}} = \eqclass{ba}$ so $G / N$ is abelian.
+
 \subsubsection{Question 18}
+Choose $a,b\in T$ then $a^n = e$ and $b^m = e$ and therefore $(ab)^{nm} = a^{nm}b^{nm} = e$ so $ab \in T$. Choose $a \in T$ and we get $a^n = e$ so $a^{n-1}a = e$ and thus $a^{n-1} = a^{-1} \in T$. We have now shown that $T$ is a subgroup of $G$.
+
+Now for any $\eqclass{a}\in G/T$ if $\eqclass{a}^n = \eqclass{e}$ for some $n > 0$ then we would get $Ta^n = T$ and further for some $u,v\in T$, $va^n = u$. Now we if we let $t =v^{-1}u$ then we get $a^n = t \in T$. By definition of $T$ we get $t^m = e$ for some $m > 1$ and thus $\left(a^n\right)^m = a^{nm} = e$ so $a \in T$. It follows then that $\eqclass{a} = \eqclass{e}$, so only the identity has a finite order in $G/T$.
+
 
 \subsection{Section 7}
 \subsubsection{Question 4}
+We know that the kernel of a homomorphism is a normal subgroup, so let us construct $\varphi:G\to G_2$ as $\varphi(a,b) = b$. $\varphi$ is a homomorphism as $\varphi(a,b)\varphi(c,d) = ac = \varphi(ac,bd)$. Now we will show $\ker(\varphi) = \setbuilder{\pair{e_1}x}{x \in G_2}$.
+
 \subsubsection{Question 5}
 \subsubsection{Question 7}
 
