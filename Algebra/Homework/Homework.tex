@@ -724,41 +724,465 @@ aea^{-1} &= aa^{-1} \\
 
 \subsection{Section 2}
 \subsubsection{Question 1}
+
+Let $a\in G$, therefore there is some $e\in G$ st. $ea = a$ by statement 1. Let $b \in G$ therefore there exists $c\in G$ such that $ca = b$. It follows $be = cae = ca = b$. It has now been shown that there exists $e \in G$ such that for all $x \in G$, $xe = x$.
+
+Now let $a\in G$ then there must exist a $b\in G$ such that $ba = e$. Now we shown that $G$ has the same properties as the set $G$ from Section 1, Question 28, and therefore must be a group.
+
 \subsubsection{Question 2}
+
+Choose $a \in G$, and let us define $f:G\to G$ as $f(x) = ax$ and $g:G\to G$ as $g(x) = xa$. Now the thing to notice is that $f$ is 1-1 as for any $u,v \in G$ we have $f(u) = au$ and $f(v) = av$, so $av = au$ iff $v=u$. The same statement may be made about $g$. As $f$ and $g$ are 1-1 on a finite set $G$ we then also have $f$ and $g$ are onto. This means that for any $a,y\in G$ there is some $x$ such that $ax = f(x) = y$ and for any $a,w\in G$ there is some $u$ such that $ua = g(u) = w$. Therefore we have the conditions from Question 1 and can conclude that $G$ is a group.
+
 \subsubsection{Question 5}
 
+All we need to show that $G$ is abelian is for all $a,b \in G$, $ab = ba$. To start let us choose $a,b \in G$. We know that $a^5b^5 = (ab)^5$ so we get
+\begin{align*}
+a^5b^5 &= (ab)^5 \\
+&= a(ba)^4b \\
+\therefore a^4b^4 &= (ba)^4
+\end{align*}
+and we make a similar argument with $a^3b^3 = (ab)^3$ so
+\begin{align*}
+a^3b^3 &= (ab)^3 \\
+&= a(ba)^2b \\
+\therefore a^2b^2 &= (ba)^2
+\end{align*}
+We combine these to get that
+\begin{align*}
+a^4b^4 &= (ba)^4\\
+ &= \left((ba)^2\right)^2 \\
+ &= \left(a^2b^2\right)^2 \\
+ &= a^2b^2a^2b^2 \\
+ \therefore a^2b^2 &= b^2a^2
+\end{align*}
+ and finally wrap up with
+ \begin{align*}
+ a^2b^2&= b^2a^2 \\
+ &= (ab)^2 \\
+ \therefore a^2b^2 &= (ab)^2 \\
+ &= abab \\
+ \therefore ab &= ba
+ \end{align*}
+ 
+ 
 \subsection{Section 3}
-\subsubsection{Question 4}
+\subsubsection{Question 4}\label{sec:question-4}
+$Z(G)$ is defined as $\setbuilder{z\in G}{x\in G \; \forall\; {zx=xz}}$. First let us choose $a,b\in Z(G)$ therefore for all $x \in G$ we have $ax = xa$ and $bx = xb$. It follows
+\begin{align*}
+(ab)x &= a(bx) \\
+&= a(xb) \\
+&= (ax)b \\
+&= (xa)b \\
+&= x(ab)
+\end{align*}
+so $ab \in Z(G)$.
+
+Now choose $a\in Z(G)$, therefore for all $x\in G$, $ax = xa$. It follows then that
+\begin{align*}
+(xa)a^{-1} &= x \\
+&= a^{-1}ax \\
+&= a^{-1}(xa) \\
+xaa^{-1}a^{-1} &= a^{-1}xaa^{-1} \\
+\therefore xa^{-1} &= a^{-1}x
+\end{align*}
+and by definition $a^{-1} \in Z(G)$. Now by lemma 2.3.1 $Z(G)$ is a subgroup of $G$.
+
 \subsubsection{Question 5}
+Let $x \in Z(G)$, it follows that for all $a \in G$, $ax = xa$, so therefore for all $a \in G$, $x \in C(a)$, thus $Z(G) \subset \interacross{a\in G}{C(a)}$. Let $x \in \interacross{a\in G}{C(A)}$, then $xa = ax$ for all $a \in G$, and thus $x \in Z(G)$ and therefore $\interacross{a\in G}{C(A)} \subset Z(G)$. By definition of set equality $Z(G) = \interacross{a\in G}{C(A)}$.
+
 \subsubsection{Question 11}
+Let $a,b \in H$, therefore $a^{n(a)} = e = b^{n(b)}$. Now it follows that
+\begin{align*}
+(ab)^{n(a)\cdot n(b)} &= a^{n(a)n(b)}b^{n(a)n(b)} \\
+&= e^{n(b)}e^{n(a)} \\
+&= e
+\end{align*}
+thus $ab \in H$.
+
+Let $a \in H$, therefore $a^{n(a)} = e$. It follows that $a^{n(a)-1}a = e$, so $a^{n(a)-1} = a^{-1}$ and as we have already shown $H$ to be closed, then $a^{-1}=a^{n(a)-1}\in H$.
+
+By lemma 2.3.1 it has been demonstrated that $H$ is a subgroup of $G$.
+
 \subsubsection{Question 22}
+
+Let us first show that $AB$ is a group. For any $x,y\in AB$, then let $x_a,y_a \in A$ and $x_b,y_b\in B$ such that $x_ax_b = x$ and $y_ay_b = y$. It follows that $xy = x_ax_by_ay_b = x_ay_ax_by_b \in AB$ as $G$ is abelian. Now for $x \in AB$ then there exists $a\in A$ and $b\in B$ such that $ab = x$. Therefore $a^{-1} \in A$ and $b^{-1}\in B$ as they are both groups, it then follows that $a^{-1}b^{-1} \in AB$ and $a^{-1}b^{-1}ab = e$ by commutativity, so $a^{-1}b^{-1}=(ab)^{-1}$. Thus it has been shown that $AB$ is a group.
+
+Next we will show that $\card{AB}= \frac{\card{A}\card{B}}{\card{A\inter B}}$. 
+
+Let us choose $a \in A$ and $b \in B$ then notice that for all $c \in A\inter B$ then $ac \in A$ and $c^{-1}b \in B$ and therefore $(ac)(c^{-1}b) = ab$. Therefore there are at least as many $(a,b)$ pairs such that $ab$ is equal as there are elements in $A \inter B$. Now assume there is some other $\bar a \in A$ and $\bar b \in B$ such that there is no $\bar c \in A\inter B$ such that $\bar a \bar c = a$ and ${\bar c}^{-1}\bar b = b$. If $\bar a\bar b = ab$ then $a^{-1}\bar a = b\bar b^{-1} \in A\inter B$. We will let $\bar c^{-1} = b\bar b^{-1}$ as we then get $\bar c^{-1}\bar b = b\bar b^{-1}\bar b = b$ we then will also find that $\bar c= \bar a^{-1}a$ and thus $\bar a\bar c = \bar a\bar a^{-1}a = a$. Finally we conclude that for any element $ab \in AB$, there exists exactly $\card{A \inter B}$ pairs $(\bar a,\bar b) \in A\cross B$ such that $ab = \bar a\bar b$.
+
+Finally if $\bar A$ is relatively prime  to $\bar B$ then $A \inter B = \set e$ as for any $a \in A \inter B$ there would be a cyclic set generated by $a$ and that cyclic set's order must divide both $A$ and $B$. Only if the order is one is this possible so the only element may be the identity element.
+
 \subsubsection{Question 24}
+
+First we show $N$ to be a group. Let $n,k \in N$, so if we choose $x \in G$ then there exists $h_1\in H$ such that $n=x^{-1}h_1x$ and $h_2 \in H$ such that $k=x^{-1}h_2x$. It follows that $nk= x^{-1}h_1xx^{-1}h_2x = x^{-1}h_1h_2x$, and therefore is in $N$ as $h_1h_2 \in H$. Now let $n \in N$, and choose $x\in G$ then there exists $h\in H$ such that $n = x^{-1}hx$ then it follows that $n^{-1} = \left(x^{-1}hx\right)^{-1} = x^{-1}h^{-1}x$ and as $h^{-1} \in H$ then $n^{-1} \in N$. This proves $N$ to be a group.
+
+Now let us show that for all $y \in G$, $y^{-1}Ny = N$. Let us choose $n \in N$, and $y \in G$. By $n \in N$ we then choose $x \in G$ and there must exist $h \in H$ such that $n=x^{-1}hx$, then it follows that $y^{-1}ny= y^{-1}x^{-1}hxy$. Now we may choose $z \in G$ and let $x$ be such that $xy = z$ then we find that $y^{-1}x^{-1}hxy = z^{-1}hz$ and therefore $y^{-1}Ny=N$.
+
 \subsubsection{Question 26}
+
+If there exists $h_1, h_2 \in H$ such that $h_1a = h_2b$ then it follows that $ab^{-1} = {h_1}^{-1}h_2 \in H$. Now for any $\bar a \in Ha$ there is some $h \in H$ such that $ha = \bar a$. It then must be so that $hab^{-1}b \in B$ as we know that $ab^{-1} \in H$ and as $hab^{-1}b = ha = \bar a$ then $Ha \subset Hb$. By symmetry we also know that $Hb \subset Ha$, therefore $Ha = Hb$.
+
+We've now shown if $Ha \inter Hb \not= \emptyset$ then $Ha = Hb$ and otherwise obviously $Ha \inter Hb = \emptyset$.
+
 \subsubsection{Question 28}
+
+First let us reference the next question as it will prove that $M = x^{-1}Mx$ and $N = x^{-1}Nx$ for all $x\in G$. Now we will proceed to show that $MN$ is a group.
+
+Let $c \in MN$, therefore there is some $a \in M$ and $b \in N$ such that $ab = c$. Now as $N = x^{-1}Nx$ for all $x \in G$ then there exists some $\bar b \in N$ such that $a^{-1}\bar ba = b$, therefore $ab = aa^{-1}\bar ba = \bar ba$. We now get inverses as $c^{-1} = a^{-1}\bar b^{-1}$ and $a^{-1} \in M$ and $\bar b^{-1} \in N$. Now let $d \in MN$ as well, then there is some $m \in M$ and $n \in N$ such that $d = mn$. Now as $m \in M = x^{-1}Mx$ for all $x \in G$ then there is $\bar m \in M$ such that $b^{-1}\bar mb = m$. It follows that $cd = abmn = abb^{-1}\bar mbn = a\bar mbn\in MN$ as $a,\bar m \in M$ and $b,n \in N$.
+
+Now finally to show that $x^{-1}MNx \subset MN$ for all $x \in G$ we choose $x \in G$ and $d = mn \in MN$ with $m \in M$ and $n \in N$. We then find $x^{-1}mnx = (x^{-1}mx)(x^{-1}nx)$ and of course $x^{-1}mx \in M$ and $x^{-1}nx \in N$.
+
 \subsubsection{Question 29}
+
+Let $m \in M$ and let $x \in G$. We wish to show the existence of $n \in M$ such that $x^{-1}nx = m$. If we let $x^{-1}nx = m$ then we get $n=xmx^{-1}$ and as $x^{-1}\in G$ and $m\in M$ the we get $n \in x^{-1}Mx \subset M$ so $n \in M$. Now we have shown that $m \in x^{-1}Mx$ and thus $x^{-1}Mx = M$.
+
+
+
 
 \subsection{Section 4}
 \subsubsection{Question 1}
+
+\begin{enumerate}
+	\item $a ~ b$ for $a,b \in \mathbb R$ iff $a - b \in\mathbb Q$.
+	\begin{itemize}
+		\item \textbf{Reflexivity} $a - a = 0 \in \mathbb Q$, therefore $a \sim a$.
+		\item \textbf{Symmetry} If $a\sim b$ then $a-b =q \in\mathbb Q$, therefore $b-a=-q\in\mathbb Q$, so $b\sim a$.
+		\item \textbf{Transitivity} If $a\sim b$ and $b \sim c$ then $a-b = q \in\mathbb Q$ and $b - c = p \in\mathbb Q$, therefore $a-c = a-b+b-c = q + p \in\mathbb Q$, so $a \sim c$.
+	\end{itemize}
+	\item $a \sim b$ for $a,b\in\mathbb C$ iff $\abs a = \abs b$.
+	\begin{itemize}
+		\item \textbf{Reflexivity} $a \sim a$ is trivial.
+		\item \textbf{Symmetry} If $a\sim b$ then $\abs a = \abs b$. By symmetry of equality we have $\abs b = \abs a$ and therefore $a \sim b$.
+		\item \textbf{Transitivity} If $a\sim b$ and $b\sim c$ then $\abs a = \abs b = \abs c$ therefore $\abs a = \abs c$ so $a \sim c$.
+	\end{itemize}
+	\item $a \sim b$ for lines $a,b$ in the plane if $a$ is parallel to $b$.
+	\begin{itemize}
+		\item \textbf{Reflexivity} Any line $a$ is parallel to itself.
+		\item \textbf{Symmetry} If $a$ is parallel to $b$ then $b$ must also be parallel to $a$.
+		\item \textbf{Transitivity} If $a$ is parallel to $b$ and $b$ is parallel to $c$ then we would also have $a$ parallel to $c$.
+	\end{itemize}
+	\item $a \sim b$ for people $a,b$ if $a$'s eye color is the same as $b$'s eye color.
+	\begin{itemize}
+		\item \textbf{Reflexivity} You have the same eye color as yourself.
+		\item \textbf{Symmetry} If $a\sim b$ then $a$'s eye color is $b$'s eye color and therefore $b$'s eye color is $a$'s eye color so $b \sim a$.
+		\item \textbf{Transitivity} If $a\sim b$ and $b \sim c$ then $a$'s eye color is $b$'s eye color and $b$'s eye color is $c$'s eye color then it must be that $a$'s eye color is $c$'s eye color so $a \sim c$.
+	\end{itemize}
+\end{enumerate}
+
 \subsubsection{Question 5}
+
+Let us first show that $a\sim b$ is an equivalence relation.
+\begin{itemize}
+	\item \textbf{Reflexivity} For any $a \in G$, $a^{-1}a = e \in H$ therefore $a \sim a$.
+	\item \textbf{Symmetry} For any $a\sim b \in G$ we get $a^{-1}b \in H$. Now $\left(a^{-1}b\right)^{-1} = b^{-1}a$ must also be a member of $H$, so $b \sim a$.
+	\item \textbf{Transitivity} Let $a \sim b$ and $b \sim c$. We get then that $a^{-1}b \in H$ and $b^{-1}c \in H$. It follows then that $\left(a^{-1}b\right)\left(b^{-1}c\right) = a^{-1}c \in H$, so $a \sim c$.
+\end{itemize}
+Now we show that $\eqclass{a} = aH$.
+
+Let $\alpha \in \eqclass a$, therefore $a \sim \alpha$ so $a^{-1}\alpha \in H$. We then get that $aa^{-1}\alpha = \alpha \in aH$, so $\eqclass a \subset aH$.
+
+Now Let $\alpha \in aH$, therefore there is some $h \in H$ such that $\alpha = ah$. It follows then that $a^{-1}\alpha = a^{-1}ah = h \in H$ so $a \sim \alpha$, and therefore $\alpha\in\eqclass a$ so $\eqclass a \supset aH$.
+
+We now conclude $aH = \eqclass a$.
+
 \subsubsection{Question 18}
+
+Consider the group $U_p$ under multiplication. Notice that for all $0 < n < p$, $n$ is relatively prime to $p$, so all $0 < n < p$ is included. This yields $p-1$, an even number of elements so when we multiply them all together we get $(p-1)!$ and from problem 16 we know that this must be some $x \in U_p$ such that $x^2 \equiv 1 \mod p$.
+
+Now there are only two $n \in U_p$ such that $n^2 \equiv 1 \mod p$, $1, -1$. The proof for this is as follows. Obviously $1^2 = (-1)^2 = 1$. Now assume for some $n \in U_p$, $n^2 \equiv 1 \mod p$ therefore $n^2 -1 = (n+1)(n-1) \equiv 0 \mod p$ so $p$ divides $n+1$ or $p$ divides $n-1$ as $p$ is prime. This leaves only $n \equiv -1 \mod p$ or $n \equiv 1 \mod p$.
+
+Now as only $1^2$ and $(-1)^2$ are $1$ in $U_p$ we get that every element $x \in U_p$ that is not $1$ or $-1$ has a compliment in $U_p$, and therefore $(n-1)! \equiv 1\cdot -1 \mod p$ and this obviously leaves $(n-1) \equiv -1 \mod p$.
+
+
 \subsubsection{Question 24}
+
+Let $p = 4n+3$ and let $\mathbb Z/p$ be the set of integers mod $p$, and further let us adopt the notation that $\mathbb Z/p^* = \mathbb Z/p \setminus \set 0$. Now assume $x \in \mathbb Z/p$ such that $x^2 \equiv -1 \mod p$. Now we get $x^4 \equiv 1 \mod p$ so $o(x)$ must divide $4$, either 1, 2, or 4. If $o(x) = 1$ then $x=1$ and $x^2\not \equiv -1 \mod p$ unless $p = 2$ which violates $p = 4n+3$. If $o(x) = 2$ then $x^2 = 1 \not\equiv -1$ as $p\not=2$ again. So it must be that $o(x) = 4$. Now $\mathbb Z/p^*$ forms a group with order $p-1$ under multiplication as $p$ is prime, so if $o(x) = 4$ then the cyclic group generated by $x$ would be a subgroup of $Z/p^*$ with order 4. Now $p-1 = 4n+2$ which is not divisible by 4 so we have a contradiction due to Lagrange's theorem.
+
+This does overlook if $x = 0$, however then $x^2 = 0 \not = -1$.
+
 \subsubsection{Question 30}
+\begin{itemize}
+	\item $b^2 = aba^4$
+	\item $b^4 = \left(b^2\right)^2 = aba^4aba^4 = ab^2a^4 = a^2ba^3$
+	\item $b^8 = \left(b^4\right)^2 = a^2ba^3a^2ba^3 = a^2b^2a^3 = a^3ba^2$
+	\item $b^{16} = \left(b^8\right)^2 = a^3ba^2a^3ba^2 = a^3b^2a^2 = a^4ba$
+	\item $b^{32} = \left(b^{16}\right)^2 = a^4baa^4ba = a^4b^2a = ebe = b$
+\end{itemize}
+
+So we know $b^{32} = b$, then it follows that $b^{32}b^{-1} = bb^{-1} = e$ so $b^{31} = e$. This means $o(b)$ must be a divisor of $31$, however as $31$ is prime and we know $o(b)\not= 1$ as $b \not= e$ then $o(b) = 31$.
 \subsubsection{Question 35}
+
+For any permutation we may find it's order by looking at it's cycle structure and taking the least common multiple of all the cycles in the permutation. Now if a permutation has a prime order then it's cycles may either be length 1 or length $p$, where $p$ is that specific prime. Not all our cycles can be of length $p$ as $\card S$ is not a multiple of $p$. We conclude there must be some cycle of length 1 and thus some element maps to itself.
+
 \subsubsection{Question 37}
+Let $G$ be a cyclic group of order $n$ with $g$ as a primitive element. Choose $m$ such that $m$ is a divisor of $n$ and choose $k \le m$ such that $\gcd(k,m) = 1$. It follows that $\left(g^{k\frac nm}\right)^m = g^{k\frac nmm} = g^{kn} = e$ so $o\left(g^{k\frac nm}\right) | m$. Let us assume for the sake of contradiction now that $o\left(g^{k\frac nm}\right) \not= m$, therefore $o\left(g^{k\frac nm}\right) < m$. Let then $\bar m < m = o\left(g^{k\frac nm}\right)$, therefore we get $\left(g^{k\frac nm}\right)^{\bar m} = g^{k\frac nm \bar m} = e$ so we get that $k\frac nm\bar m \equiv 0 \mod n$ and therefore there is some $\bar k$ such that $k\frac nm\bar m = \bar kn$. Dividing by $n$ e get $\frac {k\bar m}m = \bar kn$. We know that $k$ is relatively prime to $m$ so $\frac{\bar m}m$ is an integer which yields a contradiction as $\bar m < m$ and therefore $\frac{\bar m}{m} < 1$. This means that for all $m$ divisible by $n$, and any $k \le m$ such that $\gcd(k,m) = 1$, we get $o\left(g^{k\frac nm}\right) = m$.
+
+Next we show that for all $a$ with $0 < a \le n$ there is some $m | n$ and $k$ with $\gcd(m,k) = 1$ such that $a = \frac nmk$. For notational sake let for all $x \in\mathbb N$, $x = \factorize{x}{i}$, where $p_i$ is the $i^{\text{th}}$. This means that we wish to show that $$\factorize ai = \frac{\factorize ni}{\factorize mi} \factorize ki$$, we may simplify this and show $$\factorize{a}{i} = \prodacross{i\in\mathbb N}{{p_i}^{n_i-m_i+k_i}}$$ and due to properties of primes we need only show that for all $i\in\mathbb N$, $a_i = n_i-m_i+k_i$. Now we have the restriction that $m|n$ which simply means that for all $i\in\mathbb N$, $m_i \le n_i$. We also have the restriction that $\gcd(m,k) = 1$ this can be taken to mean there are no prime divisors shared between $m$ and $k$ so $k_i\not=0\implies m_i = 0$ and $m_i\not=0\implies k_i=0$ for all $i\in\mathbb N$. With these restrictions we can construct $m$ and $k$. For all $i\in\mathbb N$ we follow these rules:
+\begin{itemize}
+	\item If $0\le a_i \le n_i$, then let $m_i = n_i - a_i$ and $k_i = 0$, therefore we get $n_i-m_i+k_i = n_i - (n_i-a_i) + 0 = a_i$.
+	\item If $n_i < a_i$ then let $k_i = a_i - n_i$ and $m_i = 0$ therefore we get $n_i-m_i+k_i = n_i-0+(a_i-n_i) = a_i$.
+\end{itemize}
+Notice also that $k \ge m$ as otherwise $a = \frac nmk = n \frac km < n$ and we know $a \le n$.
+
+
+Finally this means that for any $\alpha \in G$ we know that there exists $0 < a \le n$ such that $g^a = \alpha$ and therefore there is some $m |n$ such that there is a $k\le m$ where $\gcd(k,m) = 1$ and $\frac mnk = a$ so $\alpha = g^{\frac mnk}$ and therefore as we have already shown $o(\alpha) = m$. This means that for all $m | n$ there are exactly $\varphi(m)$ elements $\alpha \in G$ such that $o(\alpha) = m$.
+
 \subsubsection{Question 38}
+
+Let there be a cyclic group $G$ of order $n$. One must exist for all $n \in\mathbb N$ as the integers mod $n$ under addition are a cyclic group of order $n$ with 1 as their primitive root. For each divisor of $m$ of $n$ there are $\varphi(m)$ elements $\alpha \in G$ such that $o(\alpha) = m$. There can be no elements $\alpha\in G$ such that $o(\alpha)$ does not divide $n$ by Lagrange's theorem so we know that $n = \sumacross{m|n}{\varphi(m)}$.
+
 \subsubsection{Question 42}
+
+Let $p = 4n+1$.
+
+\begin{align*}
+\frac{p-1}2! = \frac{4n}2! &= (2n)! \\
+&= 1 \cdot 2 \cdots 2n \\
+&= (1\cdot (n+1))\cdot (2\cdot(n+2)) \cdots (n\cdot(n+n))\\
+&= (-1\cdot -(n+1)) \cdot (-2\cdot -(n+2)) \cdots (-n\cdot-(n+n))\\
+&\equiv ((p-1)\cdot(p-(n+1)) \cdot ((p-2) \cdot (p-(n+2)) \cdots ((p-n) \cdot (p-(n+n))) \mod p \\
+&\equiv (p - 1) \cdot (p - 2) \cdots (p - n) \cdot (p-(n+1)) \cdot (p - (n+2)) \cdots (p-(n+n)) \mod p \\
+&\equiv (p-1) \cdot (p-2) \cdots (p-2n) \mod p \\
+&\equiv (4n) \cdot (4n-1) \cdots (2n+1) \mod (p = 4n+1) \\
+&\equiv \frac{(4n)!}{(2n)!} \mod p \\
+\therefore \left(\frac{p-1}2!\right)^2 &\equiv (2n)! \cdot \frac{(4n)!}{(2n)!} \mod p \\
+&\equiv (4n)! \mod p \\
+&\equiv (p-1)! \mod p \\
+\end{align*}
+
+Now by wilson's theorem we may state that if $p$ is prime with $p = 4n+1$ then $\frac{p-1}2! \equiv -1 \mod p$
+
 \subsubsection{Question 43}
+
+Let $G$ be an abelian group with order $n$ and elements $a_1,a_2,\ldots,a_n$ and let $x = a_1a_2\cdots a_n$.
+
+\question{(a)} Suppose $G$ has exactly one element $b \not = e$ such that $b^2 = e$. Then it follows that for all elements $g \in G$ with $g \not = b$ and $g \not = e$ we have $g\not=g^{-1}$. This means that every element except $b$ and $e$ has it's inverse in the product that gives us $x$ so this reduces to $x = bee^{\frac{n-1}2} = b$.
+
+\question{(b)} Consider the $B = \setbuilder{b \in G}{b^2 = e} \subset G$. $B$ is a subgroup of $G$ as for any $a,b \in B$, $(ab)^2 = a^2b^2 = e$ and for any $a \in B$, $a = a^{-1}$. Now for our problem we suppose that $\card{B} > 2$ and as this is the case we may take some element $b_1 \in B$ and we get a cyclic subgroup $B_1 = \set{{b_1}^0,{b_1}^1} \subset B$. Now if $B_1 \not = B$ then there exists some $b_2 \in B\setminus B_1$ and this generates $B_2 = \set{{b_2}^0,{b_2}^1}$ and it follows that $B_1B_2 = \setbuilder{{b_1}^{i_1}{b_2}^{i_2}}{\All{k\in\set{1,2}}{i_k \in \set{0,1}}}$. Now by some sort of induction we will find that $B = B_1B_2\cdots B_k$ where $B_i = \set{e, b_i}$ and $b_i \not\in B_1B_2\cdots B_{i-1}$ This means that for all $b \in B$, $b = \prodfrom{r = 1}{k}{{b_r}^{i_r}}$ with $i_r \in \set{0,1}$ for all $r$ and for all $(i_1,i_2,\ldots, i_k)$ with $i_r \in \set{0,1}$, we get a unique $\prodfrom{r=1}{k}{{b_r}^{i_r}} \in B$. That is to say that $f:\set{0,1}^k \to B$ defined as $f(r) = \prodfrom{r=1}{k}{{b_r}^{i_r}}$ is 1-1 and onto. This means that if we take the product of all these elements we get
+\begin{align*}
+\prodacross{b \in B}b &= \prodacross{i \in \set{0,1}^k}{\left[\prodfrom{r=1}{k}{{b_r}^{i_r}}\right]} \\
+&= \prodfrom{r = 1}{k}{\left[\prodacross{i \in \set{0,1}^k}{{b_r}^{i_r}}\right]}\\
+&= \prodfrom{r = 1}{k}{\left[\left({b_r}^0\right)^{2^{k-1}}\left({b_r}^1\right)^{2^{k-1}}\right]} \\
+&= \prodfrom{r = 1}{k}{{b_r}^{2^{k-1}}}
+\end{align*}
+
+If $k=1$ we get the result from part (a) where $B = \set{b_1,e}$ and our product simplifies to just $b_1$. If $k > 1$ then we get ${b_r}^{2^{k-1}} = \left({b_r}^2\right)^{2^{k-2}} = e^{2^{k-2}}$. Now for any $G$ we would have $x = \prodacross{b\in B}{b}$ where $B = \setbuilder{g\in G}{g^2 = e}$ as all other elements will be paired up with inverses and cancel out. So if there is more than one element in $B$ then we get $x = \prodacross{b\in B}{b} = e$.
+
+\question{(c)} If $n$ is odd we get that there can be no subgroup of $G$ with order two, so if there is any element $b\in G$ such that $b = b^{-1}$ we would get the cyclic group $B$ formed by $b$ would be of order two as $b^2 = e$. This means that if $n$ is odd all elements in $G$ have an inverse that is not themselves, unless that element is $e$ itself so we end with $x = e$ after everything has canceled out.
 
 \subsection{Section 5}
 \subsubsection{Question 3}
+
+Let $L_a: G\to G$ be defined as $L_a(x) = xa^{-1}$.
+\question{(a)} Show that $L_a \in A(G)$, this is equivalent to showing that $L_a$ is 1-1 as we already know $L_a:G\to G$.
+
+Let $b,c \in G$ and if $L_a(b)=L_a(b)$ then $ba^{-1} = ca^{-1}$ and it follows by cancellation that $b=c$, therefore $L_a$ is 1-1 and $L_a\in A(G)$
+
+\question{(b)} Show that $L_aL_b = L_aL_b$
+
+Let $a,b,x\in G$. It follows that
+\begin{align*}
+L_aL_b(x) &= L_a(L_b(x)) \\
+&= L_a(xb^{-1})\\
+&=xb^{-1}a^{-1}\\
+&=x(ab)^{-1}\\
+&=L_{ab}(x)
+\end{align*}
+therefore $L_aL_b = L_{ab}$
+
+\question{(c)} Let $\psi:G\to A(G)$ be defined as $\psi(a) = L_a$. Show that $\psi$ is a monomorphism.
+
+\begin{proof}
+	We know $\psi$ is a homomorphism as if $a,b\in G$ then $\psi(a)\psi(b) = L_aL_b = L_{ab} = \psi(ab)$.
+	
+	To show $\psi$ is 1-1 let $a,b\in G$ such that $\psi(a) = \psi(b)$, we then get $L_a=L_b$. If we choose $x\in G$ then
+	\begin{align*}
+	L_a(x) &= L_b(x) \\
+	\therefore xa^{-1}&=xb^{-1} \\
+	\therefore a^{-1}&=b^{-1} \\
+	\therefore a&=b
+	\end{align*}
+	so we may conclude that $\psi$ is 1-1 and thus a monomorphism.
+\end{proof}
+
 \subsubsection{Question 17}
+
+We already know that the intersection of subgroups is a group so we simply need show that $M\inter N$ is normal if $M$ and $N$ are normal subgroups of $G$. This means we need to show that for all $x\in M\inter N$ and for all $g \in G$, $g^{-1}xg \in M\inter N$. Let us start by choosing an arbitrary $x \in M\inter N$ and $g\in G$ We find that $g^{-1}xg \in M$ by the fact that $M$ is normal and $x \in M$ and the same argument goes for $g^{-1}xg \in N$ so $g^{-1}xg \in M\inter N$ and therefore $M\inter N\normsubgroup G$.
+
 \subsubsection{Question 18}
+
+Let $H$ be a subgroup of $G$ and $N = \interacross{a\in G}{a^{-1}Ha}$. We will show that $N\normsubgroup G$.
+
+Let $n\in N$, by definition on $N$ we have $\All{a\in G}{\Exists{h\in H}{\left(a^{-1}ha = n\right)}}$. Now if we choose $g\in G$ and we find that if we choose $a \in H\subset G$ then there exists $h \in H$ such that $n = a^{-1}ha \in H$ and therefore $g^{-1}ng \in N$. We now can conclude that for all $g \in G$, $g^{-1}Ng \subset N$ and therefore $N\normsubgroup G$.
+
 \subsubsection{Question 19}
+
+\question{(a)} First let us show $H\subset N(H)$. Let $h \in H$ and $\ell \in H$ then $h^{-1}\ell h \in H$ and therefore $h^{-1}Hh\subset H$. If $\ell \in h^{-1}Hh$ then there is $k \in H$ such that $\ell=h^{-1}Kh \in H$ and therefore $h^{-1}Hh \subset H$. It follows that $h^{-1}Hh = H$ and thus $H \subset N(H)$.
+
+Now let us show that $N(H)$ is a subgroup of $G$. If $n \in N(H)$ then $n \in a^{-1}Ha$ for all $a \in G$. This implies there is some $h \in H$ such that $n = a^{-1}ha$ and therefore $n^{-1} = \left(a^{-1}ha\right)^{-1} = a^{-1}h^{-1}a$. We then know that for all $n \in N(H)$, $n^{-1}\in N(H)$. If $n,m\in N(H)$ then for any $a\in G$ there is some $h,k\in H$ such that $n = a^{-1}ha$ and $m = a^{-1}ka$ and therefore $nm = a^{-1}haa^{-1}ka = a^{-1}hka$ and as $hk\in H$ then $nm \in N(H)$ so $N(H)$ must be a subgroup of $G$.
+
+\question{(b)} Let us choose an arbitrary $x \in N(H)$, therefore we get $x^{-1}Hx = H$. It follows by definition that $H\normsubgroup N$.
+
+\question{(c)} Let $K$ be a subgroup of $G$ such that $H\normsubgroup K$. If we choose $k \in K$ then we get $k^{-1}Hk = H$ and thus $k \in N(H)$. It follows that $K \subset N(H)$.
+
 \subsubsection{Question 24}
+
+For notation we will adopt the practice that if $x \in A\cross B$ then $x = \pair{x_1}{x_2}$ with $x_1 \in A$ and $x_2 \in B$.
+
+\question{(a)}
+Let $a,b \in G = G_1\cross G_2$, therefore $ab = \pair{a_1}{a_2}\pair{b_1}{b_2} = \pair{a_1b_1}{a_2b_2}$ and as $a_1b_1 \in G_1$ and $a_2b_2 \in G_2$ we get $ab \in G$, so $G$ has closure.
+
+Let $a,b,c\in G$, we find
+\begin{align*}
+(ab)c &= \left(\pair{a_1}{a_2}\pair{b_1}{b_2}\right)\pair{c_1}{c_2} \\
+&= \pair{a_1b_1}{a_2b_2}\pair{c_1}{c_2} \\
+&= \pair{a_1b_1c_1}{a_2b_2c_2} \\
+a(bc) &= \pair{a_1}{a_2}\left(\pair{b_1}{b_2}\pair{c_1}{c_2}\right) \\
+&= \pair{a_1}{a_2}\pair{b_1c_1}{b_2c_2} \\
+&= \pair {a_1b_1c_1}{a_2b_2c_2} \\
+\therefore (ab)c &= a(bc)
+\end{align*}
+so we have associativity.
+
+Consider $\pair{e_1}{e_2}$ where $e_1$ is the identity of $G_1$ and $e_2$ is the identity of $G_2$. Choose $a\in G$ and we find
+\begin{align*}
+a\pair{e_1}{e_2} &= \pair{a_1}{a_2}\pair{e_1}{e_2} \\
+&= \pair{a_1e_1}{a_2e_2} \\
+&= \pair{a_1}{a_2} \\
+&= a \\
+\pair{e_1}{e_2}a &= \pair{e_1}{e_2}\pair{a_1}{a_2} \\
+&= \pair{e_1a_1}{e_2a_2} \\
+&= \pair{a_1}{a_2} \\
+&= a \\
+\end{align*}
+therefore we have an identity $e = \pair{e_1}{e_2}$.
+
+Let $a \in G$. We find that $a\pair{{a_1}^{-1}}{{a_2}^{-1}} = \pair{a_1{a_1}^{-1}}{a_2{a_2}^{-1}} = \pair{e_1}{e_2} = e$ and $\pair{{a_1}^{-1}}{{a_2}^{-1}}a = \pair{{a_1}^{-1}a_1}{{a_2}^{-1}a_2} = \pair{e_1}{e_2} = e$ and therefore we have inverses with $a^{-1} = \pair{{a_1}^{-1}}{{a_2}^{-1}}$.
+
+\question{(b)} Let $x,y\in G_1$. We get $\varphi_1(x)\varphi_1(y) = \pair x{e_2}\pair y{e_2} = \pair{xy}{e_2} = \varphi_1(xy)$, so $\varphi_1$ is a homomorphism.
+
+Let $x,y \in G_1$ such that $\varphi_1(x) = \varphi_1(y)$. It follows that $\pair{x}{e_2} = \pair{y}{e_2}$ and thus $x=y$, so $\varphi_1$ is a monomorphism.
+
+\question{(c)} Let us define $\varphi_2:G_2\to G$ as $\varphi_2(x) = \pair{e_1}x$. Now we can make the exact same argument to show $\varphi_2$ is a monomorphism as we did for $\varphi_1$ and thus $\varphi_2$ is a monomorphism by symmetry.
+
+\question{(d)} It is trivial that $\varphi_1(G_1)\varphi_2(G_2) \subset G$ as $G$ is the co-domain of both $\varphi_1$ and $\varphi_2$ and additionally $G$ is closed.
+
+Choose $g \in G$, therefore $g = \pair{g_1}{g_2}$ with $g_1 \in G_1$ and $g_2 \in G_2$. It follows that $\pair{g_1}{g_2} = \pair{g_1e_1}{e_2g_2} = \pair{g_1}{e_2}\pair{e_1}{g_2} = \varphi_1(g_1)\varphi_2(g_2)$ and thus $G \subset \varphi_1(G_1)\varphi_2(G_2)$ so $G=\varphi_1(G_1)\varphi_2(G_2)$.
+
+Now consider $\pair{g_1}{g_2}\in\varphi_1(G_1)\inter\varphi_2(G_2)$. Now for all $x \in G_1$, $\varphi_1(x) = \pair{x}{e_2}$ and thus $g_2 = e_2$. For all $x \in G_2$, $\varphi_2(x) = \pair{e_1}{x}$ and thus $g_1 = e_1$ so we have $\pair{g_1}{g_2} = e$ for all $\pair{g_1}{g_2} \in \varphi_1(G_1)\inter\varphi_2(G_2)$. It follows that $\set e = \varphi_1(G_1)\inter\varphi_2(G_2)$.
+
+\question{(e)} Let us define $f: G_1\cross G2 \to G_2\cross G_1$ as $f(g) = f(\pair{g_1}{g_2}) = \pair{g_2}{g_1}$. We know $G_1\cross G_2$ is a group and by symmetry $G_2\cross G_1$ must also be a group. Now if we choose $a,b \in G_1\cross G_2$ then we get
+\begin{align*}
+f(a)f(b) &= f(\pair{a_1}{a_2})f(\pair{b_1}{b_2}) \\
+&= \pair{a_2}{a_1}\pair{b_2}{b_1} \\
+&= \pair{a_2b_2}{a_1b_1} \\
+&= f(\pair{a_1b_1}{a_2b_2}) \\
+&= f(ab)
+\end{align*}
+so $f$ is a homomorphism, however we may go a step further as if $f(a) = f(b)$ then we get $f(\pair{a_1}{a_2}) = f(\pair{b_1}{b_2})$. By definition of $f$ we get $\pair{a_2}{a_1} = \pair{b_2}{b_1}$ and therefore we get $a_2 = b_2$ and $a_1 = b_1$ so it must be that $a = b$ yielding $f$ to be a monomorphism. Now we cay say $G_1\cross G_2 \simeq G_2\cross G_1$.
+
 \subsubsection{Question 26}
+\question{(a)} Let $a,b,x \in G$ then
+\begin{align*}
+\sigma_a\sigma_b(x) &= \sigma_a(\sigma_b(x)) \\
+&= \sigma_a\left(bxb^{-1}\right) \\
+&= abxb^{-1}a^{-1} \\
+&= (ab)x(ba)^{-1} \\
+&= \sigma_{ab}(x)
+\end{align*} so it follows that $\psi(a)\psi(b) = \sigma_a\sigma_b = \sigma_{ab} = \psi(ab)$ so $\psi$ is a homomorphism.
+
+Now let us show that $\ker(\psi) = Z(G)$.
+
+First  let $x \in Z(G)$, and $a,y \in G$. We then get 
+\begin{align*}
+\sigma_y\sigma_x(a) &= yxax^{-1}y^{-1}\\
+& = yaxx^{-1}y^{-1}\\
+& = yay^{-1}\\
+& = \sigma_y(a)
+\end{align*}
+and therefore $\psi(y)\psi(x) = \psi(y)$, thus $x\in\ker(\psi)$ and $Z(G) \subset \ker(\psi)$.
+
+Now let $a \in \ker(\psi)$ It follows then that $\psi(a)\psi(e) = \psi(e)$. Therefore if we choose $x \in G$ we get $\sigma_a\sigma_e(x) = aexe^{-1}a^{-1} = exe^{-1} = \psi(e)$. If we simplify somewhat we get $axa^{-1} = x$ and therefore $ax=xa$. This implies $x \in Z(G)$ and thus $\ker(\psi) \subset Z(G)$.
+
+We are now finished with $Z(G) = \ker(\psi)$.
 \subsubsection{Question 29}
+\question{(a)}
+Let $m \in M$ and we must show that for all $a \in G$, $a^{-1}ma\in M$.
+
+We have $T_a(x) = a^{-1}xa$ is an automorphism as 
+\begin{align*}
+T_a(x)T_a(y) &= a^{-1}xaa^{-1}ya \\
+&= a^{-1}xya 
+&= T_a(xy)
+\end{align*}
+and if $T_a(x) = T_a(y)$ then $a^{-1}xa = a^{-1}ya$ and thus $x=y$ and for all $x \in G$ $T_a(axa^{-1})=a^{-1}axa^{-1}a=x$.
+
+It follows that if $m \in M$ then $a^{-1}ma = T_a(m) \in M$ by definition of $M$ and thus $M\normsubgroup G$.
+
+\question{(b)} If $a \in MN$ then $mn = a$ for some $m \in M$ and $n \in N$. Therefore for any automorphism $\varphi$ we have $\varphi(a) = \varphi(mn) = \varphi(m)\varphi(n)$ and we know $\varphi(m) \in M$ and $\varphi(n)\in N$ so $\varphi(a)=\varphi(m)\varphi(n) \in MN$. Thus $MN$ is a characteristic subgroup of $G$.
+
+\question{(c)} Let $A$ be a group. We already have shown then that $A\cross A = A^2$ is a group when $\pair ab\pair xy = \pair{ax}{by}$. We also get that $A\cross\set e$ is a subgroup of $A^2$ as for $\pair ae\in A\cross\set e$, and $\pair be \in A\cross\set e$, we have $\pair ae\pair be = \pair{ab}e\in A\cross\set e$ and $\pair{a^{-1}}e\pair ae = \pair ee$. Additionally $A$ is normal as for any $a =\pair xy\in G$ and $b = \pair ze\in A\cross\set e$ we have $a^{-1}ba = \pair{x^{-1}}{y^{-1}}\pair ze\pair xy = \pair{x^{-1}zx}{y^{-1}ey} = \pair{x^{-1}zx}{e} \in A\cross\set e$. However $A\cross\set e$ is not a characteristic subgroup of $A^2$ as for $\phi:A^2\to A^2$ defined as $\phi(\pair ab) = \pair ba$ we get $\phi(\pair ae) = \pair ea$ and if $A\not=\set e$ then there exists some $a$ for which $\pair ea \not \in A \cross \set e$.
+
 \subsubsection{Question 38}
+\question{(a)}
+Let $a,b \in G $ and $q \in S$ therefore there is some $x \in G$ such that $q = Hx$
+\begin{align*}
+T_aT_b(q) &= T_aT_b(Hx) \\
+&= T_a(T_b(Hx))\\
+&= T_a(Hxb) \\
+&= Hxba \\
+&= T_{ba}(Hx) \\
+&= T_{ba}(q)
+\end{align*}
+So $T_aT_b = T_{ab}$, so if we define $\psi: G\to A(S)$ as $\psi(x) = T_x$ then we get a homomorphism.
+
+\question{(b)} If $x \in \ker(\psi)$ we get $\psi(b) = \psi(ba)$ for all $b\in G$. It follows that $T_b(Hx)=T_{ba}(Hx)$ for all $x\in G$. We then get $Hxb = Hxba$ and therefore $T_{a}(Hxb) = Hxb$ for all $x,b$ so $T_a$ is the identity if $a \in \ker(\psi)$. We also get the converse as if $T_a(Hx) = Hx = T_e(Hx)$ then $\psi(a) = \psi(e)$.
+
+Further then that we may state that if $x \in \ker(\psi)$ then we get $T_x(Ha) = Ha$ as $T_x$ for all $a\in G$ as is the identity. It follows that $Hax = Ha$ and therefore $Haxa^{-1} = H$. Thus for any $h \in H$ there is $\bar h \in H$ such that $haxa^{-1} = \bar h$ and thus $axa^{-1}=h^{-1}\bar h \in H$. This also implies that $x \in a^{-1}Ha$ for all $a \in G$ and thus $\ker(\psi) \subset \interacross{a\in G}{a^{-1}Ha}$. Now if $x \in \interacross{a \in G}{a^{-1}Ha}$ then $x \in a^{-1}Ha$ for all $a \in G$ and therefore $axa^{-1} \in H$. We now can say that $Haxa^{-1} = H$ and thus $Hax = Ha$ so $T_x(Ha) = Ha$ for any $ a\in G$. This means that $T_x$ is the identity and thus $x \in \ker(\psi)$ and we can finish by stating $\ker(\psi) = \interacross{a \in G}{a^{-1}Ha}$
+
+\question{(c)} We know $\ker(\psi) = \interacross{a \in G}{a^{-1}Ha} \subset e^{-1}He = H$ so $\ker(\psi)$ is obviously a subset of $H$. We also know $\ker(\psi) \normsubgroup G$ as it is the kernel of a homomorphism. Now if there is a $K$ such that $K \normsubgroup G$ and $K\subset H$ then for all $k \in K$ and $g \in G$ we have $gkg^{-1} \in K$. It then follows that $gkg^{-1} \in H$, so $k \in g^{-1}Hg$ so $k \in\ker(\psi)$.
+
 \subsubsection{Question 42}
+
+As we did in the last problem let us define $S =\setbuilder{Ha}{a \in G}$ and $T_a:S\to S$ as $T_a(Hx) = Hxa$. We may also define $\psi:G\to A(S)$ as $\psi(a) = T_a$.
+
+Now first we need to show that $\card S = 4$. We know this as we may define $a\sim b$ if $Ha = Hb$. This is nearly trivially an equivalence relation so I won't bother showing that however we will find that $\eqclass{a} = \setbuilder{ha}{h\in G}$. The proof is as follows: Consider $x \in \eqclass{a}$, it then follows that $Hx = Ha$ so if we choose $h \in H$ then there is some $\bar h \in H$ such that $ha = \bar hx$ and therefore $a = (h^{-1}\bar h)x \in \setbuilder{ha}{h \in H}$. Consider $x \in \setbuilder{ha}{h \in H}$, therefore $x = ha$ for some $h\in H$ and thus $Hx = Hha = Ha$ so $x \sim a$. This means that for each $x \in G$, $\card{\eqclass{x}} = \card H = 9$, so there must be $4$ equivalence classes and as each equivalence class corresponds to a co-set of $H$ we get 4 co-sets of $H$.
+
+Now as $\card{S} = 4$ then it follows that $\card{A(S)} = 4!$. Now we need a lemma
+
+\begin{lemma}
+	Let $f:A\to B$ be a homomorphism. If $\ker(f) = (e)$ then $f$ is a monomorphism.
+\end{lemma}
+\begin{proof}
+	Suppose $f$ is not 1-1, therefore there is some $a\not=b \in A$ such that $f(a) = f(b)$. It follows then that $f(ab^{-1}) = f(a)f(b^{-1}) = f(b)f(b^{-1}) = f(bb^{-1}) = f(e)$ so $ab^{-1}\not=e$ is in $\ker(f)$. Therefore by contrapositive we get if $\ker(f) = (e)$ then $f$ is 1-1. 
+\end{proof}
+
+We know our function $\psi$ is not a monomorphism as $\card G > \card{A(S)}$. This means that $\ker(\psi) \not= (e)$. Now the last thing we need to show is $\ker(\psi) \subset H$. We can show this by considering $x \in G \setminus H$ and we find that in order for $x\in \ker(\psi)$ we would expect $\psi(x)\psi(y) = \psi(y)$ for all $y\in G$ which therefore means $T_yT_x(Ha) = T_y(Ha)$ for all $a \in G$. Consider $a = e$ and we get $Hexe = Hee$ so $Hx = H$ and this would mean $x \in H$ contradicting our previous statement. So as we know $\ker(\psi) \subset H$ and $\ker(\psi) \not= (e)$ and we already know that the kernel of a homomorphism is a normal subgroup, so as it is contained in $H$ which is of order 9, then this subgroup must be of order 3 or 9. This concludes our proof that either $H\normsubgroup G$ or there is $N \subset H$ with $\card N = 3$ such that $N \normsubgroup G$.
+
+\subsection{Section 6}
+\subsubsection{Question 11}
+\subsubsection{Question 12}
+\subsubsection{Question 13}
+\subsubsection{Question 18}
+
+\subsection{Section 7}
+\subsubsection{Question 4}
+\subsubsection{Question 5}
+\subsubsection{Question 7}
+
+\subsection{Section 8}
+\subsubsection{Question 4}
+\subsubsection{Question 6}
+\subsubsection{Question 7}
+\subsubsection{Question 8}
+\subsubsection{Question 11}
+\subsubsection{Question 12}
+
+\subsection{Section 9}
+\subsubsection{Question 1}
+\subsubsection{Question 2}
+\subsubsection{Question 3}
 
 \end{document}
 
