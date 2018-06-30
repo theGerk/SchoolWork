@@ -1,5 +1,4 @@
 \documentclass{article}
-
 \input{../../definitions.tex}
 \input{../algebra.tex}
 
@@ -47,22 +46,23 @@ Now let $x\in(A\union B)\setminus(A\inter B)$. We have that $x \in A\union B$ an
 
 Now it has been shown that both sets are subsets of each-other, thus $(A\setminus B)\union(B\setminus A) = (A\union B) \setminus (A\inter B)$.
 
+The pictures I will hand into you separately.
 
+%This may be displayed pictorially as follows:
 
-This may be displayed pictorially as follows:
 
 %TODO figure out pictures
 
-\def\secondcircle{(210:0.95cm) circle (1.5cm)}
-\def\thirdcircle{(330:0.95cm) circle (1.5cm)}
-\begin{tikzpicture}
-	\begin{scope}
-		\clip \secondcircle;
-		\fill[cyan] \thirdcircle;
-	\end{scope}
-	\draw \secondcircle node [text=black,below left] {$A$};
-	\draw \thirdcircle node [text=black,below right] {$B$};
-\end{tikzpicture}
+%\def\secondcircle{(210:0.95cm) circle (1.5cm)}
+%\def\thirdcircle{(330:0.95cm) circle (1.5cm)}
+%\begin{tikzpicture}
+%	\begin{scope}
+%		\clip \secondcircle;
+%		\fill[cyan] \thirdcircle;
+%	\end{scope}
+%	\draw \secondcircle node [text=black,below left] {$A$};
+%	\draw \thirdcircle node [text=black,below right] {$B$};
+%\end{tikzpicture}
 
 
 \subsubsection{Question 9}
@@ -1159,7 +1159,7 @@ Now as $\card{S} = 4$ then it follows that $\card{A(S)} = 4!$. Now we need a lem
 \end{proof}
 
 We know our function $\psi$ is not a monomorphism as $\card G > \card{A(S)}$. This means that $\ker(\psi) \not= (e)$. Now the last thing we need to show is $\ker(\psi) \subset H$. We can show this by considering $x \in G \setminus H$ and we find that in order for $x\in \ker(\psi)$ we would expect $\psi(x)\psi(y) = \psi(y)$ for all $y\in G$ which therefore means $T_yT_x(Ha) = T_y(Ha)$ for all $a \in G$. Consider $a = e$ and we get $Hexe = Hee$ so $Hx = H$ and this would mean $x \in H$ contradicting our previous statement. So as we know $\ker(\psi) \subset H$ and $\ker(\psi) \not= (e)$ and we already know that the kernel of a homomorphism is a normal subgroup, so as it is contained in $H$ which is of order 9, then this subgroup must be of order 3 or 9. This concludes our proof that either $H\normsubgroup G$ or there is $N \subset H$ with $\card N = 3$ such that $N \normsubgroup G$.
-
+%
 \subsection{Section 6}
 \subsubsection{Question 11}
 Suppose $G$ is a group and let $Z(G) = Z$. It is trivial to show that $Z \normsubgroup G$ so suppose further that $G/Z$ is cyclic. As $G/Z$ is cyclic it has some primitive element, $\eqclass g$. Now for any $x,y \in G$ we have $x \in Zg^n$ and $y \in Zg^m$ for some $n,m\in\mathbb N$ as all elements are in some coset of $Z$. We also have then that for some $z,w \in Z$ there is $x = zg^n$ and $y = wg^m$. We now do some manipulation
@@ -1186,23 +1186,1069 @@ Now for any $\eqclass{a}\in G/T$ if $\eqclass{a}^n = \eqclass{e}$ for some $n > 
 
 \subsection{Section 7}
 \subsubsection{Question 4}
-We know that the kernel of a homomorphism is a normal subgroup, so let us construct $\varphi:G\to G_2$ as $\varphi(a,b) = b$. $\varphi$ is a homomorphism as $\varphi(a,b)\varphi(c,d) = ac = \varphi(ac,bd)$. Now we will show $\ker(\varphi) = \setbuilder{\pair{e_1}x}{x \in G_2}$.
+\question{(a)}
+We know that the kernel of a homomorphism is a normal subgroup, so let us construct $\pi_2:G\to G_2$ as $\pi_2(a,b) = b$. $\pi_2$ is a homomorphism as $\pi_2(a,b)\pi_2(c,d) = ac = \pi_2(ac,bd)$.
+
+Now we will show $\ker(\pi_2) = N$. First let $\pair x{e_2} \in N$ and $\pair ab \in G$ and therefore $\pi_2(a,b)\pi_2(x,e_2) = be_2 = b = \pi_2(a,b)$ so $N \subset \ker(\pi_2)$. Now let $\pair xy\in\ker(\pi_2)$ and we get $\pi_2(x,y)\pi_2(a,b) = \pi_2(a,b)$ for $\pair ab \in G$. It follows then that $yb = b$ and therefore $y=e_2$ so $\ker(\pi_2) = N$.
+
+\question{(b)}
+Let $\pi_1:N\to G_1$ be defined as $\pi_1(a,{e_2}) = a$. We find that $\pi_1(a,e_2)\pi_1(b,e_2) = ab = \pi_1(ab,e_2)$ so it a homomorphism. If $\pi_1(a,e_2) = \pi_1(b,e_2)$ then $a =b$ so $\pi_1$ is a monomorphism. If $a \in G_1$ then $\pi_1(a, e_2) = a$ so $\pi_1$ is a isomorphism and thus $N \simeq G_1$.
+
+\question{(c)}
+Now let us define $\psi:G/N \to G_2$ as $\psi(N\pair ab) = b$. First we must show that this is a well defined function. Consider $N\pair ab = N\pair cd$, then it follows that $\pair ab = \pair n{e_2}\pair cd$. We get from this $b = e_2d = d$ so $\psi(N\pair ab) = b = d = \psi(N\pair cd)$. Before we show  We get for any $\pair ab, \pair cd \in G$,  $\psi(N\pair ab)\psi(N\pair cd) = bd = \psi(N\pair ab\pair cd)$ and therefore $\psi$ is a homomorphism. If $\psi(N\pair ab) = \psi(N\pair cd)$ then we get $b = d$. Now if $\pair xy \in N\pair ab$ then $x = na$ and $y = b$ for some $n \in G_1$, and thus $\pair xy \in N\pair cd$ as $x = na = nac^{-1}c$ and $b = d = ed$. This shows that $N\pair ab \subset N\pair cd$ and we get $N\pair cd \subset N\pair ab$ by symmetry so we conclude that if $\psi(N\pair ab)=\psi(N \pair cd)$ then $N\pair ab = N\pair cd$ so $\psi$ is a monomorphism. For any $g \in G_2$ I may construct $\pair ag$ with $a \in G_1$ and find that $\psi(N\pair ag) = g$ so $\psi$ is a isomorphism and thus $G_2 \simeq G/N$.
+
+%Now consider the set $N\pair abN$, where $\pair ab \in G$. We find that for any $\pair nm \in N \pair ab N$, $n = n_1an_2$ and $m=e_2be_2 = b$ therefore as $\pair {n_1an_2}{b} \in N\pair ab$ due to $\pair{n_1an_2a^{-1}}{e_2} \in N$ we have $N\pair ab N \subset N\pair ab$. $N\pair ab \subset N\pair abN$ is trivial as $e\in N$ so $N\pair abe = N\pair ab \subset N\pair ab N$ and thus we get $N\pair abN = N\pair ab$ for any $\pair ab \in G$.
+
 
 \subsubsection{Question 5}
+
+\question{(a)} We know that $H\inter N$ is a subgroup of $H$ as intersections form subgroups. Now consider $x \in H\inter N$ and $h \in H$. We wish to show that $h^{-1}xh \in H\inter N$. We know that $h^{-1}xh \in N$ as $N \normsubgroup G$, and as $h\in H$ and $n \in H$ we get $h^{-1}xh \in H$ so $h^{-1}xh \in H \inter N$ and thus $N\inter H \normsubgroup H$.
+
+\question{(b)} For $x,y \in HN$ we get $x=h_1n_1$ and $y = h_2n_2$ for some $h_1,h_2 \in H$ and $n_1,n_2 \in N$, so $xy = h_1n_1h_2n_2$. Now $N\normsubgroup G$ so for some $\bar n \in N$ we get $h_1h_2\bar n{h_2}^{-1}h_2n_2 = h_1h_2\bar nn_2 \in HN$. For $hn \in HN$ we also have $(hn)^{-1} = n^{-1}h^{-1} = h^{-1}\bar nhh^{-1} = h^{-1}\bar n$ for some $\bar n \in N$. Therefore $HN$ is a subgroup of $G$.
+
+\question{(c)} For all $n \in N$, we have $n = en \in HN$ as $e \in H$, therefore $N \subset HN$. Now as $N\normsubgroup G$ and $HN$ is a subgroup of $G$ then $N\normsubgroup HN$ is implied by $N\normsubgroup G$.
+
+\question{(d)} Let us define $Q = H\inter N$. We find $H/Q = \setbuilder{hQ}{h\in H}$ and $HN/N = \setbuilder{hnN}{h \in H\land n \in N} = \setbuilder{hN}{h \in H}$. Now we define $\phi:HN/N \to H/Q$ as $\phi(hN) = hQ$. First to show that $\phi$ is a function let $qN = hN$ with $h,q \in H$. Now choose $qn \in \phi(qN) = qQ$. As $n \in Q$ this implies $n \in N$. As $qn \in qN = hN$ there is some $m \in N$ such that $hm = qn$. We then have $m = h^{-1}qn$ and as all $h,q,n \in H$ we get $m \in H$, and therefore $m \in Q$. It follows then that $qn = hm \in hQ$ and therefore $\phi(qN) = qQ \subset hQ = \phi(hN)$. By symmetry we may make the same argument that $\phi(qN)\supset \phi(hN)$ and therefore $\phi$ is well defined.
+
+If we take $hN, qN \in HN/N$ we find $\phi(hN)\phi(qN) = (hQ)(qQ) = hqQ = \phi(hqQ)$. If $\phi(hN) = \phi(qN)$ then we find $hQ = qQ$. Now take $hn \in hN$ and as $hQ = qQ$ then there is some $v \in Q$ so that $he = h = qv$ and therefore $hn = qvn = q(vn) \in qN$. By symmetry we also know that for any $qn \in qN$, $qn \in hN$ so $hN = qN$. Finally for any $hQ \in H/Q$ we know $hN \in HN/N$ so that $\phi(hN) = hQ$ and therefore $\phi$ is a isomorphism giving $HN/N \simeq H/Q$.
+
 \subsubsection{Question 7}
+Let $\varphi: G\to G'$ be a homomorphism and onto and let $N \normsubgroup G$. Choose $a' \in G'$, and $n' \in \varphi(N)$. It follows that for some $a\in G$ and some $n \in N$, $\varphi(a) = a'$ and $\varphi(n) = n'$. Now if $a'^{-1}n'a' \in \varphi(N)$ then $\varphi(N) \normsubgroup G$.
+\begin{align*}
+a'^{-1}n'a' &= \varphi(a)^{-1}\varphi(n)\varphi(a) \\
+&= \varphi(a^{-1})\varphi(n)\varphi(a) \\
+&= \varphi(a^{-1}na)
+\end{align*}
+We know $a^{-1}na \in N$ and therefore $a'^{-1}n'a' \in \varphi(N)$ so $\varphi(N)\normsubgroup G'$.
 
 \subsection{Section 8}
 \subsubsection{Question 4}
+Let $a$ and $b$ be elements with order 7 and 3 respectively. It follows that $b^{-1}ab = a^i$ for some $0 \le i < 7$. We then have 
+\begin{align*}
+a &= eae\\
+& = b^{-3}ab^3\\
+& = b^{-2}a^ib^2\\
+&= b^{-1}a^{i^2}b \\
+&= a^{i^3}
+\end{align*}
+and therefore $i^3 \equiv 1 \mod 7$. If we let $i = 2$ we find that $2^3=8\equiv1\mod7$ and additionally this is consistent with Fermat's little theorem so $2^6 \equiv 1^2 \equiv 1 \mod 7$. We go ahead then and define $b^{-1}ab = a^2$ so $ab=ba^2$. Now consider
+\begin{align*}
+a^nb^m &= a^{n-1}ba^2b^{m-1} \\
+&= a^{n-k}ba^{2k}b^{m-1} \\
+&= ba^{2k}b^{m-1} \\
+&= b^2a^{4n}b^{m-2} \\
+&= b^\ell a^{2^\ell n}b^{m-\ell} \\
+&= b^ma^{2^mn}
+\end{align*}
+Now we can show that $G= \setbuilder{a^nb^m}{n\in\mathbb Z\land m\in\mathbb Z}$ is closed under this operation.
+\begin{align*}
+a^nb^ma^ob^p &= b^ma^{2^mn+o}b^p \\
+&= b^{m+p}a^{2^p\left(2^mn+o\right)} \in G
+\end{align*}
+This is a group as it obviously has an identity $a^0b^0$ and gets inverses from it's closure with $(a^nb^m)^{-1} =b^{-m}a^{-n}= a^0b^{-m}a^{-n}b^0 \in G$. Finally it's order is 21 as we may make the bijection $f(a^nb^m) = (n\mod 7,m\mod 3) \in \mathbb Z/7\cross \mathbb Z/3$. This is well defined due to the assumed order of $a$ and $b$ in $G$. It is 1-1 as if $f(a^nb^m)=f(a^ob^p)$ then $n\equiv o\mod 7$ and $m\equiv p \mod 7$ so it follows that $a^nb^m = a^ob^p$. Finally $f$ is onto as for any $(n,m) = f(a^nb^m)$.
+
 \subsubsection{Question 6}
+Consider $\card{AB}$. From a previous problem we showed that $\card{AB}=\frac{\card{A}\card{B}}{\card{A\inter B}}$. $AB \subset G$ so $\card{AB}\le\card G$. From this it follows that $\card{A\inter B}= \frac{\card A\card B}{\card{AB}} \ge \frac{\card A\card B}{\card G} > \frac{\card{\sqrt G}\card{\sqrt G}}{\card G} = 1$, so $A\inter B$ must have more than just the identity.
+
 \subsubsection{Question 7}
+We know that $A\inter B$ is a subgroup of both $A$ and $B$ so $\card{A\inter B}|A$ and $\card{A\inter B} | B$ by Lagrange's theorem, which in turn implies that $\card{A\inter B} = 1$ as $\card A$ relatively prime to $\card B$ and therefore $A\inter B = (e)$. We also know that $\card{AB} = \frac{\card A\card B}{\card{A\inter B}} = \card A\card B$.
+
 \subsubsection{Question 8}
+
+99 has prime divisors $3$ and $11$ so there is some element $a \in G$ with $o(a) = 3$ and $b\in G$ with $o(b) = 11$. It follows then that $o(ab) = 33$ so $(ab)$ is a subgroup of $G$ with order 33.
+
+Now we construct as $S=\setbuilder{(ab)x}{x\in G}$ and $T_x:S\to S$ as $T_x((ab)y) = (ab)yx$, which we note is in $A(S)$. Now we construct $\psi:G\to A(S)$ as $\psi(x) = T_x$. We get that $\psi$ is homomorphism from our work chapter 2, section 4, and additionally that $\abs S = \frac{\card G}{\card{(ab)}} = 3$. Now $\psi$ is not a monomorphism as it's domain is larger then it's co-domain. We then conclude that $\ker(\psi)$ must be a non-trivial subgroup of $G$ as $\ker(\psi) \not = (e)$ and kernels are always normal subgroups.
+
 \subsubsection{Question 11}
+
+
+Let us choose $a \in A$ and $b \in B$ then notice that for all $c \in A\inter B$ then $ac \in A$ and $c^{-1}b \in B$ and therefore $(ac)(c^{-1}b) = ab$. Therefore there are at least as many $(a,b)$ pairs such that $ab$ is equal as there are elements in $A \inter B$. Now assume there is some other $\bar a \in A$ and $\bar b \in B$ such that there is no $\bar c \in A\inter B$ such that $\bar a \bar c = a$ and ${\bar c}^{-1}\bar b = b$. If $\bar a\bar b = ab$ then $a^{-1}\bar a = b\bar b^{-1} \in A\inter B$. We will let $\bar c^{-1} = b\bar b^{-1}$ as we then get $\bar c^{-1}\bar b = b\bar b^{-1}\bar b = b$ we then will also find that $\bar c= \bar a^{-1}a$ and thus $\bar a\bar c = \bar a\bar a^{-1}a = a$. Finally we conclude that for any element $ab \in AB$, there exists exactly $\card{A \inter B}$ pairs $(\bar a,\bar b) \in A\cross B$ such that $ab = \bar a\bar b$.
+
+
 \subsubsection{Question 12}
+
+If $G$ is of order 21 then let $a,b \in G$ such that $o(a) = 7$ and $o(b) = 3$ we then know that $b^{-1}ab = a^{i}$ for some $i$ and from this we get $i^3 \equiv 1 \mod 7$. Well for $i^3 \equiv 1\mod 7$ we need either $i =1$, $i= 2$, or $i = 4$. If $i = 1$ then we get $b^{-1}ab = a$ so $ab = ba$ and $G$ is abelian. So either $i = 2$ or $i = 4$. Now consider $c = b^2$, $o(c) = 3$ as we get $(c) = \set{b^2,b^4=b^1,b^3 = e}$. In question 4 we found that $a^nb^m=b^ma^{2^m+n}$ and here we find it more generally is $a^nb^m=b^ma^{i^mn}$. If $i = 2$ and we get
+\begin{align*}
+a^nc^m &= a^nb^{2m} \\
+&= b^{2m}a^{2^{2m}n} \\
+&= b^{2m}a^{\left(2^2\right)^mn}\\
+&= c^ma^{4^mn}
+\end{align*}
+and therefore we find that even if we set $i = 2$ then we also have the group that we would get if $i=4$. This means the two must be isomorphic with the isomorphism $f(a^nb^m) = a^n\left(b^2\right)^m$.
 
 \subsection{Section 9}
 \subsubsection{Question 1}
+Let $f:G_1\cross G_2 \to G_2\cross G_1$ be defined as $f(\pair{a}{b}) = \pair ba$. We have 
+\begin{align*}
+f(\pair ab)f(\pair cd) &= \pair ba\pair dc\\
+& = \pair {bd}{ac} \\
+&= f(\pair{ac}{bd}) \\
+&= f(\pair ab\pair cd)
+\end{align*}
+so $f$ is a homomorphism. We have if $f(\pair ab) = f(\pair cd)$ then $\pair ba = \pair dc$ so $a = c$ and $b = d$, therefore $\pair ab=\pair cd$, so $f$ is a monomorphism. For any $\pair ab\in G_2\cross G_1$ we have $f(\pair ba) = \pair ab$ and $\pair ba \in G_1\cross G_2$ by definition so we have $f$ is an isomorphism. Therefore $G_1\simeq G_2$.
+
 \subsubsection{Question 2}
+Suppose $G_1$ and $G_2$ are cyclic groups of order $m,n$ respectively. The group $G_1\cross G_2$ has order $mn$ and therefore to say that $G_1\cross G_2$ is cyclic is equivalent to saying there is some element $\pair ab \in G_1\cross G_2$ with order $mn$. Now for any $\pair ab\in G_1\cross G_2$ we get $\pair ab^{mn} = \pair{a^{mn}}{b^{mn}} = \pair ee = e$, so therefore in order of $G_1\cross G_2$ not to be cyclic we need to show that for all elements there is some $i < mn$ such that $\pair ab = e$. Well this $i$ needs to be such that $n|i$ so that $b^i = e$ and $m|i$ so that $a^i = e$, and $i | ab$ by Lagrange's theorem. This exists if and only if $(m,n) \not = 1$ otherwise stated if and only if $m$ and $n$ are not relatively prime.
+
 \subsubsection{Question 3}
 
+\question{(a)}
+Consider $f:G\to T$ as $f(a) = \pair aa$. We get $f(a)f(b) = \pair aa\pair bb = \pair{ab}{ab} = f(ab)$. If $f(a) = f(b)$ we get $\pair aa = \pair bb $and therefore $a=b$. Finally if $\pair aa \in T$ then $f(a) = \pair aa$ so we know $f$ to be an isomorphism.
+
+\question{(b)} First iff $G$ is abelian is $G\cross G$ abelian.
+\begin{proof}
+	Let $G$ be abelian. It follows then that $\pair ab\pair cd = \pair{ac}{bd} = \pair{ca}{db} = \pair cd\pair ab$ so $G\cross G$ so $G$ is abelian implies $G\cross G$ is abelian. Let $G\cross G$ be abelian. Then as $G$ is isomorphic to the subgroup $\setbuilder{\pair gg}{g \in G}$ we get $G$ being abelian.
+\end{proof}
+
+So it follows that if $G$ is abelian then any subgroup is normal including $T$. If $T$ is a normal subgroup then we get for any $a,b,c \in G$ there exists $d\in G$ such that $\pair ab^{-1}\pair cc\pair ab = \pair dd$. This means  From this we get $a^{-1}ca = d = b^{-1}cb$, and further for any $g\in G$, $g^{-1}cg = d$. It logically follows then that $e^{-1}ce = d = c$. Now finally we have $a^{-1}ca = c$ for any $a,c\in G$ and by multiplying $a$ in the front we get $ca = ac$ for any $a,c\in G$ so $G$ is abelian.
+
+
+%and from that if we choose any $g \in G$ we still have $\pair ag^{-1}\pair cc\pair ag = \pair ff$, however from this we get $a^{-1}ca = f$ so $f= d$ and therefore $a^{-1}ca =d =f = g^{-1}cg$
+
+
+\subsection{Section 11}
+\subsubsection{Question 3}
+Let $ c\in C\left(x^{-1}ax\right)$. By definition we get $cx^{-1}ax=x^{-1}axc$. It follows from this that $x^{-1}ax = c^{-1}x^{-1}axc =(xc)^{-1}axc$, and therefore $xcx^{-1} \in C(a)$. This means $x^{-1}xcx^{-1}x  = c \in x^{-1}C(a)x$ so $C\left(x^{-1}ax\right) \subset x^{-1}C(a)x$. Going the other direction, let $x^{-1}cx \in x^{-1}C(a)x$, so $ca = ac$. We then get $\left(x^{-1}cx\right)\left(x^{-1}ax\right) = x^{-1}cax = x^{-1}acx = \left(x^{-1}ax\right)\left(x^{-1}cx\right)$. This means $x^{-1}cx \in C(x^{-1}ax)$ and we conclude our proof that $C\left(x^{-1}ax\right) = x^{-1}C(a)x$.
+
+\subsubsection{Question 4}
+Let $\varphi(b) \in \varphi(C(a))$ therefore $b \in C(a)$. Now we get $\varphi(a)\varphi(b) = \varphi(ab) = \varphi(ba) = \varphi(b)\varphi(a)$ so $\varphi(b) \in C(\varphi(a))$, and therefore $\varphi(C(a)) \subset C(\varphi(a))$.
+
+Let $b \in C(\varphi(a))$, and as $\varphi$ is 1-1 there is some $c$, such that $\varphi(c) = b$. Now we have $ac = \varphi^{-1}(\varphi(ac))$, which we can do again due to $\varphi$ being 1-1 and onto. This gives 
+\begin{align*}
+ac &= \varphi^{-1}(\varphi(ac))\\
+& = \varphi^{-1}(\varphi(a)\varphi(c))\\
+& = \varphi^{-1}(\varphi(c)\varphi(a))\\
+&= \varphi^{-1}(\varphi(ca)) \\
+&= ca
+\end{align*}
+so $c \in C(a)$ and thus $\varphi(c) = b \in \varphi(C(a))$ so we finish with $\varphi(C(a)) = C(\varphi(a))$.
+
+\subsubsection{Question 11}
+
+For any subgroup $H$ of $G$ we have $H \subset N(H)$ as if we choose $h \in H$ we get $h^{-1}gh \in H$ if $g \in H$ due to closure and we get $g \in H$ if $h^{-1}gh \in H$ as we would have $g = hqh^{-1}$ for some $q\in H$. This simply shows that if $P$ is a $p$-Sylow subgroup of $G$ then it must also be a subgroup of $N(P)$ and as $N(P)$ is trivially a subgroup of $G$, by Lagrange's theorem we know if there was some $p$-Sylow subgroup of $N(P)$ larger then $H$ it would be a subgroup of $G$ and thus $P$ would no longer be a $p$-Sylow group, so therefore $P$ is a $p$-Sylow subgroup of $H$.
+
+let $Q$ be a subgroup of $N(P)$ such that $\card Q = \card P = p^n$ Now consider the set $PQ = \setbuilder{pq}{p \in P\land q\in Q}$, we wish to show this is a group. Consider $p_1q_1p_2q_2$ with $p_1,p_2 \in P$ and $q_1,q_2\in Q$. Now $p_1q_1p_2q_2 = p_1\left(q_1p_2{q_1}^{-1}\right)q_1q_2 = p_1p_3q_1q_2$ with $p_3 = q_1p_2{q_1}^{-1}$ and we know $p_3 \in P$ as $ Q \subset N(P)$. This shows closure of $PQ$. Now we get inverses as $(pq)^{-1} = q^{-1}p^{-1} = eq^{-1}p^{-1}e$ and $eq^{-1} \in PQ$ as is $p^{-1}e\in PQ$, considering that we already have $PQ$ is closed we have now shown $PQ$ to be a subgroup of $G$ and as both $P$ and $Q$ are subgroups of $N(P)$ this is also a subgroup of $N(P)$. Finally we consider the size of this group, $\card{PQ} = \frac{\card{P}\card{Q}}{\card{P\inter Q}}$. $\card{P\inter Q} = p^k$ for some $k \le n$ as it is a subgroup of both $P$ and $Q$ which have order $p^n$. $\card P\card Q = p^{2n}$, so $\card{PQ} = p^{2n-k}$. It follows that $k = n$ as otherwise $P$ would not be $p$-Sylow group. Therefore $\card{P\inter N}= 2^p$ so $P\inter N = P$. Finally we then conclude that $N = P$ and therefore $P$ is the only $p$-Sylow subgroup of $N(P)$.
+
+
+
+\subsubsection{Question 14}
+Suppose $a \sim b$ if $a^{-1}Pa = b^{-1}Pb$. We get that $\sim$ is an equivalence relation very quickly as
+\begin{itemize}
+	\item $a\sim a$ trivial
+	\item $a \sim b \implies a^{-1}Pa=b^{-1}Pb\implies b^{-1}Pb=a^{-1}Pa \implies b\sim a$.
+	\item if $a\sim b$ and $b\sim c$ then $a^{-1}Pa =b^{-1}Pb = c^{-1}Pc$ so $a\sim c$.
+\end{itemize}
+
+Now we may construct equivalence classes $\eqclass{a} = \setbuilder{x\in G}{x \sim a}$, and notice that the question of how many distinct $a^{-1}Pa$ there are is the same as how many equivalence classes there are. Now first consider $\eqclass e$. This is the set of all $x$ such that $x^{-1}Px = e^{-1}Pe = P$. This trivially contains all of $P$ and is in-fact itself a subgroup of $G$ as
+\begin{itemize}
+	\item If $a, b \in \eqclass e$ then $a^{-1}Pa = b^{-1}Pb = P$. It follows that $\left({ab}\right)^{-1}Pab = b^{-1}a^{-1}Pab = b^{-1}Pb = P$ and therefore $ab \in \eqclass e$.
+	\item If $a \in \eqclass e$ then $a^{-1}Pa = P$. It follows then that $aPa^{-1} = aa^{-1}Paa^{-1} = P$ so $a^{-1} \in \eqclass e$.
+\end{itemize}
+so this means it's order is a multiple of $\card P = p^n$. Finally we now wish to prove that for all $a,b \in G$, $\card{\eqclass{a}}=\card{\eqclass{b}}$. To do this we construct a bijection $f_a:\eqclass e\to\eqclass a$ as $f_a(x) = xa$.
+
+First to show this function is well defined. If $x\in \eqclass e$ then $x^{-1}Px = P$ and therefore $(xa)^{-1}Pxa = a^{-1}x^{-1}Pxa = a^{-1}Pa$ so $f_a(x)\in\eqclass a$ and our function is shown to be well defined. Next it is 1-1 as if $f_a(x) = f_a(y)$ then $ax = ay$ and $x=y$. Our function is also onto as if I choose $y\in \eqclass a$ then consider $x=ya^{-1}$, if $x\in \eqclass e$ then we get $f_a(x) = y$ and $f_a$ would be onto. To show $x\in\eqclass e$ we consider $x^{-1}Px=\left(ya^{-1}\right)^{-1}P\left(ya^{-1}\right) = ay^{-1}Pya^{-1}$. We know $y\sim a$ so $y^{-1}Py=a^{-1}Pa$ and therefore $ay^{-1}Pya^{-1} =aa^{-1}Paa^{-1} = P$ so $x \in \eqclass e$. We conclude then that $f_a$ is onto and therefore for any $a\in G$, $\card{\eqclass{a}} = \card{\eqclass e}$. It follows from this that the number of distinct $\eqclass a$ is $\frac{\card G}{\card{\eqclass e}}$ We know $\card G = p^nm$ and $\card{\eqclass{e}} =p^nk$ for some $k$, we then get the number of distinct equality classes to be $\frac mk$. Due to $m$ not being divisible by $p$ then $\frac mk$ must also not be divisible by $p$ as it is a divisor of $m$. Therefore we conclude that the number of distinct equivalence classes, also the number of distinct $x^{-1}Px$ can not be a multiple of $p$.
+
+\subsubsection{Question 18}
+Let $a \in N(N(P))$, with $P$, $p$-Sylow. It follows that $a^{-1}N(P)a\subset N(P)$. We know $P \subset N(P)$ so $a^{-1}Pa\subset a^{-1}N(P)a\subset N(P)$. Now we have $a^{-1}Pa$ as a $p$-Sylow subgroup of $N(P)$. $N(P)$ contains only one $p$-Sylow subgroup, $P$ (as we have already shown in a previous question) so $a^{-1}Pa = P$. Now we have that $a\in N(P)$ and therefore $N(N(P)) \subset N(P)$. We already had $N(P)\subset N(N(P))$ as this is true for any subgroup $H$ of $G$ that $H\subset N(H)$ and $N(P)$ is a subgroup of $G$. We now conclude $N(N(P)) = N(P)$.
+
+%We already know that $N(P) \subset N(N(P))$ as for any subgroup $H$ of $G$ we have $H \subset N(H)$ and $N(P)$ is a group in $G$. Next consider $x \in N(N(P))$, this implies that $x^{-1}N(P)x = N(P)$. Now consider $y \in N(P)$, this implies that $y^{-1}Py = P$ and $x^{-1}yx \in N(P)$. We follow this out to get that $\left(x^{-1}yx\right)^{-1}Px^{-1}yx = P = x^{-1}y^{-1}xPx^{-1}yx$. We extrapolate that $xPx^{-1}=y^{-1}xPx^{-1}y$ so $y \in N\left(xPx^{-1}\right)$. This implies that $N(P)\subset N\left(xPx^{-1}\right)$. It follows that $y = xpx^{-1}$ for some $p\in P$ and therefore $x^{-1}yx = p$ so $x^{-1}yx \in P$. We now get $x^{-1}N(P)x\subset P$ and as $P\subset N(P)$ we then have $x^{-1}Px\subset P$. From this it follows that $x^{-1}Px = P$ as we saw in the section on normal subgroups. We now conclude that $x\in N(P)$ so $N(P) = N(N(P))$. Note that at no point did this make use of $P$ being and special subgroup of $G$ so this holds for all subgroups of $G$.
+
+\subsubsection{Question 19}
+
+Obviously if $\card G = p^n$, then $G$ contains the trivial subgroup of order $p^n$, itself. Now assume that for some $m$ with $0 \le m \le n$ that there is a subgroup of $G$ with order $p^m$, from this and theorem 2.11.6, we get that there is a subgroup of this group (the one with order $p^m$) that has order $p^{m-1}$, so we get $G$ having a subgroup of order $p^m$ implies $G$ has a subgroup of order $p^{m-1}$. Now we finish by invoking induction and we have shown that for all $m$, $0\le m \le n$ that $G$ has a subgroup of order $p^m$.
+
+\subsubsection{Question 25}
+First a lemma from a previous problem that was not assigned.
+\begin{lemma}\label{Q25}
+	Suppose $a \in G$ such that $o(a) = p^m$, and $a^{-1}Pa = P$, with $P$ a $p$-Sylow subgroup of $G$ then $a\in P$.
+\end{lemma}
+\begin{proof}
+	First we get that for all $k$, $a^-kPa^k = P$, and it follows that $Pa^k=a^{-k}P$. It follows from this that $(a)P=P(a)$, so let us show that this is a subgroup of $G$. Any element will have the form $a^kp$, with $p\in P$ so
+	\begin{itemize}
+		\item $a^{k_1}p_1a^{k_2}p_2 = a^{k_1+k_2}\left(a^{-k_2}p_1a^{k_2}\right)p_2 \in (a)P$.
+		\item $\left(a^kp\right)^{-1}=p^{-1}a^{-m} = a^{-m}\left(a^mp^{-1}a^{-m}\right) \in (a)P$.
+	\end{itemize}
+	so we get $(a)P$ is a group. Now the order of $(a)P$ must be $\frac{\card{(a)}\card P}{\card{(a)\inter P}} = \frac{p^mp^n}{\card{(a)\inter P}}$. This must then be in the form $p^k$ for some $k$, so $k \le n$ as we have a $p$-Sylow group of order $p^n$. Now we then get that $\card{(a)\inter P} = p^m$ which is the order $(a)$ and thus $(a)\subset P$.
+\end{proof}
+Now let $P$ and $Q$ be $p$-Sylow subgroups of $G$ and $Q\not=P$. Consider $a\in P\inter N(Q)$ it follows that $a\in N(Q)$ so $a^{-1}Qa = Q$. By our lemma we have that $a \in Q$ and as $a \in P$ it's order must divide the order of $P$ so we get $a \in Q$. It follows then that $P\inter N(Q) \subset P\inter Q$ and as $P\not=Q$ then $P\inter Q \not=P$. Now $P\inter Q$ is a subgroup of $P$ and as $P\inter N(Q)$ is a subgroup of that we get $P\inter N(Q)$ is a subgroup of $P$ so its order must divide $p$ and not be $p^n$. Now we get $i_P(N(Q)\inter N) = p^k  > 1$, and as $i_G(N(H))$ is the number of double co-sets of $H$ in $G$ we get that the number of double co-sets of $Q$ in $P$ is in the form $p^k > 1$ so must be a multiple of $p$.
+
+\subsubsection{Question 26}
+Let $P$ be $p$-Sylow. For any $Q\not=P$ such that $Q$ is $p$-Sylow we get a multiple of $p$, $kp$ distinct double co-sets of $Q$, which in turn are all $p$-Sylow subgroups of $G$ and are not $P$. Therefore we get the number of distinct $p$-Sylow subgroups of $G$ must be 1 plus a multiple of $p$ as we have $P$ and a multiple of $p$ other $p$-Sylow groups.
+
+\subsubsection{Question 28}
+Suppose $H$ is a subgroup of $G$ with order $p^m$ and further assume that it is not contained in any $p$-Sylow subgroup of $G$. Now consider $Q$, a $p$-Sylow subgroup of $G$ and let $a \in H\inter N(Q)$ and we find that $a \in Q$ by our lemma $\ref{Q25}$ in my answers (part of question 25). Therefore it follows that $H\inter Q \supset H\inter N(Q)$. Now consider $i_H(H\inter N(Q)) = \frac{p^k}{p^m}\not=1$ and we know $k\not=p$ as that would imply that $H\subset Q$ and contradict the assumption that it is not contained in a $p$-Sylow group. Now we find that there is a multiple of $p$ double co-sets for any $p$-Sylow group, $Q$ and therefore a multiple of $p$, $p$-Sylow groups. This contradicts the fact that there is always $1$ plus a multiple of $p$, $p$-Sylow groups so $H$ must be contained in a $p$-Sylow group.
+
+\section{Chapter 3}
+\subsection{Section 1}
+\subsubsection{Question 1}
+\question{(a)} $(4, 5,2,1,3,6)$
+
+\question{(b)} $(3,1,2,4,5)$
+
+\question{(c)} $(1, 4, 3, 2, 5)$
+
+\subsubsection{Question 2}
+
+\question{(a)}
+\begin{enumerate}
+	\item $(2,3,4,5,6,1)$
+	\item $(3,4,5,6,1,2)$
+	\item $(4,5,6,1,2,3)$
+	\item $(5,6,1,2,3,4)$
+	\item $(6,1,2,3,4,5)$
+	\item $(1,2,3,4,5,6)$
+\end{enumerate}
+
+\question{(b)}
+\begin{enumerate}
+	\item $(2,1,3,4,6,5,7)$
+	\item $(1,2,3,4,5,6,7)$
+\end{enumerate}
+
+\question{(c)}
+\begin{enumerate}
+	\item $(6,4,5,2,1,3)$
+	\item $(3,2,1,4,6,5)$
+	\item $(5,4,6,2,3,1)$
+	\item $(1,2,3,4,5,6)$
+\end{enumerate}
+
+\subsubsection{Question 3}
+Consider $a = \left(\begin{smallmatrix}
+1&2&\cdots&n\\a_1&a_2&\cdots&a_n
+\end{smallmatrix}\right)$ and $b =  \left(\begin{smallmatrix}
+a_1&a_2&\cdots&a_n\\b_1&b_2&\cdots&b_n
+\end{smallmatrix}\right)$. We then get $ba = \left(\begin{smallmatrix}
+1&2&\cdots&n\\b_1&b_2&\cdots&b_n
+\end{smallmatrix}\right)$. So in order for $ba = e$ we need $k = b_k$ for all $k$. This implies that $a^{-1} = \left(\begin{smallmatrix}
+a_1&a_2&\cdots&a_n\\1&2&\cdots&n
+\end{smallmatrix}\right)$.
+
+\subsection{Section 2}
+\subsubsection{Question 3}
+
+\question{(a)} $\left(\begin{matrix}1&2&4\end{matrix}\right)\left(\begin{matrix}3&5&7&6\end{matrix}\right)$ has order 12.
+
+\question{(b)}
+$\left(\begin{matrix}1&4&3&2\end{matrix}\right)$ has order 4.
+
+\question{(c)}
+$\left(\begin{matrix}1&4&7&3&6&2&5\end{matrix}\right)$ has order 7.
+
+\question{(d)}
+$\left(\begin{matrix}1\end{matrix}\right)\left(\begin{matrix}2\end{matrix}\right)\left(\begin{matrix}3\end{matrix}\right)$ has order 1.
+
+\question{(e)}
+$\left(\begin{matrix}1&5&7&9\end{matrix}\right)\left(\begin{matrix}2\end{matrix}\right)$ has order 4.
+
+\question{(f)}
+$\left(\begin{matrix}1&4&2&5&3\end{matrix}\right)$ has order 5.
+
+\subsubsection{Question 9}
+When $\sigma = \left(\begin{matrix}2&3\end{matrix}\right)$.
+
+\subsubsection{Question 12}
+Let $p = \left(\begin{matrix}1&2&3\end{matrix}\right)$ and let $a \in\set{1,2,\ldots,7}$ and suppose $\sigma(a) = b$. Now if $a \not\in\set{1,2,3}$ then it follows that $p(a) = a$, and therefore $\sigma p\sigma^{-1}(b) = \sigma(p(\sigma^{-1}(b))) = \sigma(p(a)) = \sigma(a) = b$. From this we get that for any $\sigma^{-1}(b) \not\in\set{1,2,3}$ then $\sigma p\sigma^{-1}(b) = b$. Therefore there at most 3 $b$ such that $\sigma p\sigma^{-1}(b)\not=b$, and therefore $\sigma p\sigma^{-1}$ can not be $\left(\begin{matrix}1&2&4\end{matrix}\right)\left(\begin{matrix}5&6&7\end{matrix}\right)$.
+
+\subsubsection{Question 21}
+By the fact that $\sigma$ and $\tau$ have no letters in common we get that if $\sigma(a) \not= a$ then $\tau(a) = a$ and if $\tau(a) \not = a$ then $\sigma(a) = a$. Now if $\sigma\tau = e$ then for any $a$ we have $\sigma(\tau(a)) = a$. If for some $a$, $\tau(a)\not = a$ then $\sigma(a) =a$ and therefore $\sigma(\tau(a))\not = a$. If for some $a$, $\sigma(a)\not=a$, then we have $\tau(a) = a$ and therefore $\sigma(\tau(a)) = \sigma(a)\not= a$ so $\sigma$ and $\tau$ must both be the identity.
+
+\subsubsection{Question 23}
+For any of the disjoint cycles $a$ in $\sigma$ there is a corresponding cycle $\alpha$ with the same length in $\tau$. Now we can think of these cycles as finite sequences simply be choosing one element to fix at the beginning, and it does not mater which we fix, so we can say $a=(a_1,a_2,\ldots,a_k)$ and $\alpha = (\alpha_1,\alpha_2,\ldots,\alpha_k)$. Now we can set $p(a_i) = \alpha_i$ and therefore $p\sigma p^{-1}(\alpha_i) = p(\sigma(p^{_1}(\alpha_i))) = p(\sigma(a_i)) = p(a_{i+1}) = \alpha_{i+1}$ as we would want for $\tau$. Note we may need to think mod $k$ in order for this to work as we want $k+1 = 1$. Now we can construct this for all the cycles and we get $p\sigma p^{-1} = \tau$.
+
+\subsubsection{Question 24}
+\begin{theorem}
+The conjugacy class for any permutation is the set of permutations with the same cycle structure as it.
+\end{theorem}
+\begin{proof}
+	Suppose $f,g\in S_n$ and choose $a \in \set{1,2,\ldots,n}$. Every permutation is composed of distinct cycles so $g(a)$ is in some cycle in $f$,  $(c_1,c_2,\ldots,c_k)$, so let $g(a) = c_1$ (from this we also get that $a = c_k$). Note also this is a cycle in $f$, so $f(c_1) = c_2$ and $f(c_i) = c_{j}$ where $j \equiv i + 1 \mod k$ and $0<j\le k$. Now consider \begin{align*}
+	\left(g^{-1}fg\right)^i(a) &= g^{-1}f^ig(a) \\
+	&= g^{-1}f^i(c_1) \\
+	&= g^{-1}(c_i)
+	\end{align*}
+	therefore  if we let $g^{-1}(c_i) = b_i$ we find $g^{-1}fg$ contains a cycle $(b_1,b_2,\ldots,b_k)$. Notice that $g^{-1}fg$ is 1-1 and onto so if $g(\alpha) = c_i$ then $\alpha = b_i$ so cycles in $g^{-1}fg$ map to cycles of the same length in $f$, therefore $g^{-1}fg$ has the same cycle structure as $f$.
+\end{proof}
+
+From this we find that the conjugacy class for this permutation is the set of all single cycle permutations in $S_n$.
+
+
+The centralizer of our permutation is a little easier. If we let $f,g\in S_n$ such that $fg = gf$ then we suppose $(a_1,a_2,\ldots,a_k)$ is a cycle in $f$ then we know $f(a_i) = a_{i+1}$ so $g(a_i) = gf(a_{i-1}) = fg(a_{i-1})$ we then find that $f$ maps $g(a_{i}) \to g(a_{i+1})$ This means that $(g(a_1),g(a_2),\ldots,g(a_k))$ is a cycle in $f$.
+
+So for our permutation we are looking for any $g$ such that $g(k) + 1 \equiv g(k+1) \mod n$. In order for this to be true $g$ must must be a power of $f$.
+
+
+\subsubsection{Question 25}
+From our solution to the last problem we know that $\sigma$'s conjugacy class is the set of all permutations in $S_4$ with two cycles of size two.
+
+From our solution to the last problem we also know that in order for a permutation $g\in S_4$ to commute with $\sigma$ we need $f(g(1)) = g(2)$ and $f(g(2)) = g(1)$ and then the same with 3 and 4.
+
+\subsection{Section 3}
+\subsubsection{Question 1}
+\question{(a)} even
+
+\question{(b)} odd
+
+\question{(c)} even
+
+\question{(d)} even
+
+\subsubsection{Question 3}
+
+We have already shown that for any permutation $\sigma$ it's conjugacy class is the set of permutations with the same cycle structure as it. This means that it must have the same parity.
+
+Another proof is using our homomorphism $\theta$ to $\set{-1, 1}$. We have $\theta(\tau^{-1}\sigma\tau) = \theta(\tau)\theta(\sigma)\theta(\tau) = \theta(\tau)\theta(\tau)\theta(\sigma)$ and as in $\set{-1,1}$ 3very element squared gives the identity 1, we conclude that $\theta(\tau^{-1}\sigma\tau) = \theta(\sigma)$.
+
+\subsubsection{Question 5}
+We must have $4\to 5$ and $5\to 4$.
+
+\subsubsection{Question 6}
+$A_n$ is the set of permutations that are written as the product of an even number of transpositions, so let us show that the product of two transpositions can be written as the product of 3-cycles, from this we will get that any element of $A_n$ can be written in such a way as we could decompose a transposition representation into a product of 3-cycles.
+
+Consider $p = \left(\begin{matrix}
+a&b
+\end{matrix}\right)\left(\begin{matrix}
+c&d
+\end{matrix}\right)$ and insist that $a\not=b$ and $c\not=d$. If there is overlap between these two transpositions then the problem becomes nearly trivial. I'll go through all the cases: if there is only one overlap (any of $a=c,b=c,a=d,b=d$ and the remaining pair does not overlap then we have a 3-cycle and this is trivial, if there are two overlaps then we get the identity and this can be written as the product of any 3-cycle with it's inverse, which also will be a 3-cycle. So assume $a,b,c,d$ all to be distinct. Now consider the permutation  $ \rho = \left(\begin{matrix}
+a&d&c
+\end{matrix}\right)\left(\begin{matrix}
+a&b&c
+\end{matrix}\right) = \left(\begin{matrix}
+a&b
+\end{matrix}\right)\left(\begin{matrix}
+c&d
+\end{matrix}
+\right)$.
+
+
+\subsubsection{Question 8}
+
+\[
+\set{
+	e, \left(\begin{matrix}
+	1&2
+	\end{matrix}\right)\left(\begin{matrix}
+	3&4
+	\end{matrix}\right),\left(\begin{matrix}
+	1&3
+	\end{matrix}\right)\left(\begin{matrix}
+	2&4
+	\end{matrix}\right),\left(\begin{matrix}
+	1&4
+	\end{matrix}\right)\left(\begin{matrix}
+	2&3
+	\end{matrix}\right)
+	}
+\]
+
+
+\section{Chapter 4}
+\subsection{Section 1}
+\subsubsection{Question 9}
+Consider $A = \left(\begin{matrix}
+a&b\\c&d
+\end{matrix}\right)$ and suppose that for all $2\times 2$ matrices $ B =  \left(\begin{matrix}
+\alpha&\beta\\\gamma&\delta
+\end{matrix}\right)$, $AB = BA$. We get
+\[
+AB = \left(\begin{matrix}
+a\alpha+b\gamma&a\beta+b\delta \\
+c\alpha+d\gamma&c\beta+d\delta
+\end{matrix}\right) = BA = \left(\begin{matrix}
+a\alpha+c\beta&b\alpha+d\beta\\
+a\gamma+c\delta&b\gamma+d\delta
+\end{matrix}
+\right)
+\]
+
+From this we get first by looking in the top left entry that $a\alpha+b\gamma = a\alpha+c\beta$, and therefore $b\gamma = c\beta$. This means that for any $\gamma,\beta$ we need some $b,c$ such that this equality holds, and that only happens if $b=c=0$, so we already figured out half of $A$. Next look at the entry on the top right and we get $a\beta+b\delta = b\alpha+d\beta$. We already know $b=0$ so this reduces to $a\beta=d\beta$ and therefore it follows that $a=d$.
+
+So far we have shown that it is necessary for $a=d$ and $b=c=0$ for our matrix to commute with all $2\cross 2$ matrices, so now we need to show this is sufficient. Consider the matrix $ A= \left(\begin{matrix}
+\alpha&0\\0&\alpha
+\end{matrix}\right) $ and an arbitrary matrix $B = \left(\begin{matrix}
+a&b\\c&d
+\end{matrix}\right)$, we then have
+\[AB = \left(
+\begin{matrix}
+a\alpha&b\alpha\\c\alpha&d\alpha
+\end{matrix}
+\right) = BA\] so this must be sufficient as well as necessary.
+
+\subsubsection{Question 11}
+\question{(a)} Let $x = a + bi \in \mathbb C$ and $y = \alpha + \beta i\in\mathbb C$. We then get 
+\begin{align*}
+F(xy) &= F((a+bi)(\alpha+\beta i))\\
+&= F(a\alpha-b\beta+(a\beta+b\alpha)i) \\
+&= a\alpha-b\beta-(a\beta+b\alpha)i \\ \\
+F(x)F(y) &= F(a+bi)F(\alpha+\beta i) \\ 
+&= (a-bi)(\alpha-\beta i)\\
+&= a\alpha - b\beta - (a\beta +b\alpha) i
+\end{align*}
+
+
+\question{(b)}
+Remember that by definition $\sqrt{x\overline x} = \abs x$ for $x \in \mathbb C$, and as $F(x) = \bar x$ we can use what we proved in the previous part of this question and write $F(x\overline x) = F(x)F(\overline x) = \overline xx = \abs{x}^2$.
+
+\question{(c)} Suppose $x = a + bi$ and $y = c +di$. We get $F(x\overline x)F(y\overline y) = \abs x^2\abs y^2 = (a^2+b^2)(c^2+d^2)$ from part b. We also can say $F(x\overline x)F(y\overline y) = F(xy\overline{xy}) = \abs{xy}^2 = (ac-bd)^2+(bc+ad)^2$.
+
+
+\subsubsection{Question 13}
+
+\question{(a)}
+\begin{align*}
+(i+j)(i-j) &= i^2-ij+ji-j^2 \\
+&= -1-k-k+1\\
+& = -2k
+\end{align*}
+
+\question{(b)}
+\begin{align*}
+(1-i+2j-2k)(1+2i-4j+6k) &= 1+2+8+12 + (2-1+12-8)i+(-4+2+6-4)j+(6-2+4-4)k \\
+&= 23 + 5i+4k
+\end{align*}
+
+\question{(c)}
+\begin{align*}
+(2i-3j+4k)^2 &= -4-9-16+(-12+12)i+(8-8)j+(-6+6)k\\
+&= -29
+\end{align*}
+
+\question{(d)}
+\begin{align*}
+i(\alpha_0+\alpha_1i+\alpha_2j+\alpha_3k)-(\alpha_0+\alpha_1i+\alpha_2j+\alpha_3k)i &= \alpha_0i-\alpha_1+\alpha_2k-\alpha_3j-(\alpha_0i-\alpha_1-\alpha_2k+\alpha_3j) \\
+&= -\alpha_1+\alpha_0i-\alpha_3j+\alpha_2k+\alpha_1-\alpha_0i-\alpha_3j+\alpha_2k \\
+&= -2\alpha_3j+2\alpha_2k
+\end{align*}
+
+\subsubsection{Question 16}
+When using our definition for multiplication we find that if we let our solution take the form $\gamma_0+\gamma_1i+\gamma_2j+\gamma_3k$ then we get $\gamma_0 = {\alpha_0}^2+{\alpha_1}^2+{\alpha_2}^2+{\alpha_3}^2$ and $\gamma_1=\gamma_2=\gamma_3 = 0$ as all of these will haver alternating parts that cancel themselves out.
+
+\subsubsection{Question 23}
+For this question let $x = a+bi+cj+dk$ and $y = \alpha+\beta i+\gamma j + \delta k$.
+
+\def\sop{\textbf{*}}
+
+\question{(a)}\begin{align*}
+x\sop\sop &= (a-bi-cj-dk)\sop\\
+& = a+bi+ci+dk \\
+&= x
+\end{align*}
+
+\question{(b)}\begin{align*}
+(x+y)\sop &= (a+\alpha+(b+\beta)i+(c+\gamma)j+(d+\delta)k)\sop\\
+&= a+\alpha-(b+\beta)i-(c+\gamma)j-(d+\delta)k \\
+&= a-bi-ci-dk + \alpha-\beta i-\gamma j - \delta k \\
+&= x\sop+y\sop
+\end{align*}
+
+\question{(c)}\begin{align*}
+xx\sop &= (a+bi+cj+dk)(a-bi-cj-dk) \\
+&= a^2+b^2+c^2+d^2
+\end{align*}
+(see problem 16) Note this is real and non-negative
+\begin{align*}
+x\sop x&=(a-bi-cj-dk)(a+bi+cj+dk) \\
+&= a^2+b^2+c^2+d^2
+\end{align*}
+
+\question{(d)} As margins in this are rather limiting I will adopt the notation $$x = a+bi+cj+dk = \left[\begin{matrix}
+a\\b\\c\\d
+\end{matrix}\right]$$, note that despite this looking like a row vector it is simply a representation of a quaternion, I am going to stick to using this throughout the section and possibly the chapter. If there is any possibility for confusion I will state which is being used.
+
+\begin{align*}
+(xy)\sop &= \left[\begin{matrix}
+a\alpha - b\beta -c\gamma -d\delta\\
+a\beta+b\alpha+c\delta-d\gamma\\
+a\gamma+c\alpha+d\beta-b\delta\\
+a\delta+d\alpha+b\gamma-c\beta
+\end{matrix}\right]\sop \\
+&= \left[\begin{matrix}
+a\alpha - b\beta -c\gamma -d\delta\\
+-a\beta-b\alpha-c\delta+d\gamma\\
+-a\gamma-c\alpha-d\beta+b\delta\\
+-a\delta-d\alpha-b\gamma+c\beta
+\end{matrix}\right]
+\\ \\
+y\sop x\sop &= \left[\begin{matrix}
+\alpha\\-\beta\\-\gamma\\-\delta
+\end{matrix}\right]\left[\begin{matrix}
+a\\-b\\-c\\-d
+\end{matrix}\right]\\
+&= \left[\begin{matrix}
+a\alpha-b\beta-c\gamma-d\delta\\
+-a\beta-b\alpha+d\gamma-c\delta\\
+-a\gamma-c\alpha+b\delta-d\beta\\
+-a\delta-d\alpha+c\beta-b\gamma
+\end{matrix}\right]
+\end{align*}
+and therefore $(xy)\sop = y\sop x\sop$.
+
+\subsubsection{Question 36}
+We know that if some element is a zero-divisor then it does not have an inverse, so all we need to do in order to show that $H(\mathbb C)$ is not a division ring is to find $a,b\in H(\mathbb C)$ such that $ab=0$ and $a\not=0\not=b$. We will use the representation from the previous problem ans write elements of $H(\mathbb C)$ in the form \[\left[\begin{matrix}
+a_0+b_0i\\
+a_1+b_1i\\
+a_2+b_2i\\
+a_3+b_3i
+\end{matrix}\right]\] Now consider $a=\left[\begin{matrix}
+1\\i\\0\\0
+\end{matrix}\right]$ and $b=\left[\begin{matrix}
+1\\-i\\0\\0
+\end{matrix}\right]$. We then find 
+\begin{align*}
+ab&=\left[\begin{matrix}
+1-1\\
+-i+i\\
+0\\
+0
+\end{matrix}\right]\\
+&= 0
+\end{align*}
+
+\subsubsection{Question 37}
+
+Using again the notation from before, consider
+\begin{align*}
+x &= \left[\begin{matrix}
+0\\3\\4\\5i
+\end{matrix}\right]\\
+\therefore x^2&= \left[\begin{matrix}
+0^2-3^2-4^2-(5i)^2\\
+2\cdot0\cdot3\\
+2\cdot0\cdot4\\
+2\cdot0\cdot5i
+\end{matrix}\right] \\
+&= \left[\begin{matrix}
+5^2-3^2+4^2\\0\\0\\0
+\end{matrix}\right]\\
+&= 0
+\end{align*}
+
+\subsection{Section 2}
+
+\subsubsection{Question 2}
+Let $R$ be an integral domain ring and let $a,b,c\in R$ such that $ab=ac$ and $a\not=0$.
+\begin{align*}
+ab&=ac \\
+ ab-ab&=ac-ab \\
+ 0 &= a(c-b) \\
+ c-b &= 0 \\
+ c&=b
+\end{align*}
+
+We also get this from $ba = ca$ by doing analogous operations from the right.
+
+\subsubsection{Question 3}
+Consider some element of $R$, $\alpha\not=0$ and we find first that all powers of $\alpha$ are not $0$ by the integral domain axioms and second that as $R$ is finite there is some $n>k>0$ such that $\alpha^n=\alpha^k$ and therefore $\alpha^{n-k}\alpha^k=\alpha^k$. Now let us relabel a bit and suppose $a = \alpha^{n-k}$ and $b= \alpha^k=\alpha^n$. Now $aab = a(ab) = ab$ so we can infer from what we proved in the previous question that $aa = a$. Now let $c \in R$ and we find $ac = aac$ and thus $c = ac$ and from the other side $ca = caa$ so $c = ca$. From this we can infer that $a = 1$, and thus $R$ has a unit. Next we need inverses on our multiplication. Now for every $\alpha$ we have some $n(\alpha)> 1$ such that $\alpha^{n(\alpha)} = 1$, therefore it follows that $\alpha^{n(\alpha)-1}\alpha = \alpha\alpha^{n(\alpha)-1} = 1$ and therefore for any $\alpha$, we have $\inv{\alpha} = \alpha^{n(\alpha)-1}$. Finally we get commutativity from the fact that $R$ is an integral domain so we can now conclude that we have a commutative division ring, and thus a field.
+
+\subsubsection{Question 7}
+We know from lemma 4.2.1 that $(-a)(-b) = ab$ in any ring and therefore it follows that $(-a)^4 = a^4$, so in our ring $R$ we get for any $r\in R$, $r = r^4 = (-r)^4 = -r$. From this we get that $r + r = 0$. Now notice that in $R$ if we have $a^n = 0$ then $a = 0$, as $a^n = a^k$ for $k \equiv n\mod 3$ and $1 \le k < 4$ so either $a^1 = a = 0$, $a^2 = 0$ which means that $a = a^4 = 0\cdot a^{4-k} = 0$ so $a= 0$. Now consider an element in $t\in R$ such that $t^2 = t$ and choose $l\in R$. We find 
+\begin{align*}
+(tl - tlt)^2 &= (tl)^2 - (tl)(tlt) - (tlt)(tl) + (tlt)^2\\
+&= tltl - tltlt - tlt^2l + tlt^2lt \\
+&= tltl - tltl - tltlt + tltlt \\
+&= 0
+\end{align*} and \begin{align*}
+(lt-tlt)^2 &= (lt)^2-(lt)(tlt)-(tlt)(lt) + (tlt)^2 \\
+&= ltlt-lt^2lt-tltlt+tlt^2lt \\
+&= ltlt-ltlt-tltlt+tltlt \\
+&= 0
+\end{align*}
+
+From this we find that $tl-tlt = 0$ and $lt - tlt = 0$ and so we can conclude that $tlt = -tl$ and $tlt = -lt$ so $lt = tl$. So from this we know that for any $x,y\in R$, $(x^2+x)y = y(x^2+x)$. From this we may choose $x,y \in R$ and we would find $z((x^2+y)^2+(x^2+y))=((x^2+y)^2+(x^2+y))z$ for all $z\in R$. We may expand out $(x^2+y)^2+(x^2+y)$ and get\begin{align*}
+(x^2+y)^2+x^2+y &= x^4+x^2y+yx^2+y^2+x^2+y \\
+&= x+x^2y+yx^2+y^2+x^2+y \\
+&= (x^2+x)+(y^2+y)+(x^2y+yx^2)\\
+\end{align*}
+and it follows then that
+\begin{align*}
+z((x^2+y)^2+(x^2+y))&=((x^2+y)^2+(x^2+y))z\\
+\therefore z((x^2+x)+(y^2+y)+(x^2y+yx^2))&=((x^2+x)+(y^2+y)+(x^2y+yx^2))z\\
+z(x^2+x) + z(y^2+y) + z(x^2y+yx^2) &= (x^2+x)z + (y^2+y)z + (x^2y+yx^2)z \\
+&= z(x^2+x) + z(y^2+y) + (x^2y+yx^2)z\\
+\therefore z(x^2y+yx^2)&=(x^2y+yx^2)z
+\end{align*}
+
+And now finally if we let $z = x^2$ we get \begin{align*}
+x^2(x^2y+yx^2)&=(x^2y+yx^2)x^2 \\
+x^4y+x^2yx^2&= x^2yx^2+yx^4\\
+\therefore xy&=yx
+\end{align*}
+
+and thus we conclude that $R$ is commutative.
+
+\subsubsection{Question 9}
+First we try and do our sum the traditional way, without simplification and we get $$\sumfrom{n=1}{p-1}{\frac 1n} = \frac{\sumfrom{n=1}{p-1}{(p-1)!\frac 1n}}{(p-1)!}$$ and we can let $a = \sumfrom{n=1}{p-1}{(p-1)!\frac 1n}$ and $b = (p-1)!$. Now notice that if $p|a$ so mus the simplified form of the fraction's numerator as that would be $\frac{a/\gcd(a,b)}{b/\gcd(a,b)}$ and $b$ is not a multiple of $p$ due to $p$ being prime so $p\not|\gcd(a,b)$ and therefore $p|\frac a{\gcd(a,b)}$. Further any possible numerator in a fraction equaling $\frac ab$ would be a multiple of the simplified forms fractions so if $p|a$ then $p$ must always divide the numerator of this fraction. Next we know that $(p-1)! \equiv -1\mod p$ as every element has an inverse other than itself which cancels itself out except $1$ and $p-1$ who's inverses are themselves. When we do divide this then by some $n$ with $0<n<p$ then we get $(p-1)! \equiv -\eqclass{n}^{-1}$, so when we take the sum we get 
+\begin{align*}
+\sumfrom{n=1}{p-1}{(p-1)!\frac 1n} &\equiv \sumfrom{n=1}{p-1}{-\eqclass{n}^{-1}}
+\end{align*}
+Each negative inverse just simply becomes a separate element in $\mathbb Z/p$ and still never the 0 element as it has no inverse and is it's own negative, therefore this simply is the sum $\sumfrom{n=1}{p-1}{\eqclass{n}}$ with a different ordering. Now $\mathbb Z/p$ is a field so each element has it's additive inverse in the sum and there are no elements $a$ such that $a+a = 0$ with the exception of $0$ then we can use each element to cancel it's negative out and we get $$\sumfrom{n=1}{p-1}{(p-1)!\frac 1n} \equiv \eqclass 0$$ and otherwise stated $a \equiv 0\mod p$ so $p|a$ and we are done.
+
+\subsection{Section 3}
+\subsubsection{Question 3}
+
+Choose $a\in R$ then we get $1a=a=a1$ and therefore $\varphi(1a) = \varphi(a) = \varphi(a1)$ and we conclude with $\varphi(1)\varphi(a) =\varphi(a) = \varphi(a)\varphi(1)$ so $\varphi(1)$ is the unit of $R'$.
+
+\subsubsection{Question 4}
+If $x,y \in I+J$ then $x = a+c$ and $y=b+d$ for some $a,b\in I$ and $c,d \in J$ therefore $x+y = a+c+b+d = a+b+c+d \in I+J$ so we have closure under addition. If $x\in I+J$ then $x=i+j$ for some $i\in I$ and $j\in J$, therefore $-x = -(i+j) = -i+(-j) \in I+J$ so we have additive inverses. From this we already know that $I+J$ is an additive subgroup of $R$. Now consider $r \in R$ and $a \in I+J$. As $a\in I+J$ there is some $i\in I$ and $j\in J$ such that $a=I+J$. Now we have $ra = r(i+j) = ri + rj \in I+J$ and $ar = (i+j)r = ir+ij \in I+J$. From this we conclude that $I+J$ is an ideal of $R$.
+
+\subsubsection{Question 17}
+
+\question{(a)}In order to show that some set $A$ is a subring of some ring $B$ we need to show
+\begin{enumerate}
+	\item $A\subset B$
+	\item $a,b\in A \implies a+b\in A$
+	\item $a\in A \implies -a \in A$
+	\item $a,b\in A \implies ab \in A$
+\end{enumerate}
+
+$A+I \subset R$ is trivial. For any $x,y\in A+I$, $x = a+i$ and $y=b+j$ for some $a,b\in A$ and $i,j\in I$. From this we get $x+y = a+i+b+j = (a+b)+(i+j) \in A+I$ so we get item 2. We also have $xy = (a+i)(b+j) = ab+aj+ib+ij$ and we have $ab \in A$ and $aj,ib,ij\in I$ so $xy \in A+I$ which fulfills item 4. Now consider $a+i \in A+I$ and we get $-(a+i) = -a+(-i) \in A+I$, and therefore $A+I$ is a subring of $R$. Also note that $A+I\supset I$ as $0 \in A$.
+
+
+\question{(b)}
+First notice that if $x \in (A+I)/I$ then $x = a + i + I = a + I$ for some $a\in A$ and $i \in I$ and from this it follows that $(A+I)/I = \setbuilder{a+I}{a \in A}$. Now let us define $B = A\inter I$ and we can now try and define $\varphi:(A+I)/I \to A/B$ as $\varphi(a+I) = a + B$.
+
+$\varphi$ is a function as if $a,b\in A$ and $a+I = b+I$ then we get $a-b \in I$ and $a-b \in A$ due to closure so $a-b \in B$. From this we now conclude $b+B = b+a-b+B = a+B$, so $\varphi$ must be well defined.
+
+$\varphi$ is a homomorphism as if $a,b \in A$ then $$\varphi(a+I)+\varphi(b+I) = (a+B)+(b+B) = a + b + B = \varphi(a+b + I)$$ and $$\varphi(a+I)\varphi(b+I) = (a+B)(b+B) = ab+B = \varphi(ab+B) = \varphi((a+B)(b+B))$$
+
+$\varphi$ is 1-1 as if $\varphi(a+I) = \varphi(b+I)$ then $a+B = b+B$ so $b-a\in B$ and therefore $b-a \in I$ as $B = A\inter I$. From this we conclude $a+I=a+b-a+I = b+I$.
+
+Finally $\varphi$ is onto as if $x \in A/B$ then $x = a + B$ for some $a \in A$ and therefore $a + I\in (A+I)/I$ so $\varphi(a+I) = a+B = x$.
+
+Now we have constructed a isomorphism, $\varphi:(A+I)/I \to A/(A\inter I)$ so $(A+I)/I\simeq A/(A\inter I)$.
+
+\subsubsection{Question 20}
+Suppose $a,b \in R$. Now we get 
+\begin{align*}\varphi(a+b) &= \pair{a+b+I}{a+b+J}\\& = \pair{(a+I)+(b+I)}{(a+J)+(b+J)}\\& = \pair{a+I}{a+J}+\pair{b+I}{b+J} \\&= \varphi(a)+\varphi(b)\end{align*}
+and
+\begin{align*}
+\varphi(ab)&= \pair{ab+I}{ab+J}\\
+&= \pair{(a+I)(b+I)}{(a+J)(b+J)} \\
+&= \pair{a+I}{a+J}\pair{b+I}{b+J} \\
+&= \varphi(a)\varphi(b)
+\end{align*}
+so $\varphi$ is a homomorphism.
+
+Now consider $\varphi(0)$, we find that the 0 in $R_1\oplus R_2$ must be $\pair{0+I}{0+J} = \pair IJ$. So now we find $\ker(\varphi) = \setbuilder{x\in R}{\varphi(x) = \pair IJ}$. From this we can infer that $x\in \ker(\varphi)$ iff $x +I = I$ and $x + J = J$, so from this we get $x\in I$ and $x\in J$ so $x\in\ker(\varphi) \iff x \in I\inter J$ so $\ker(\varphi) = I\inter J$.
+
+
+\subsubsection{Question 24}
+
+Let $m$ and $n$ be relatively prime integers and consider the function $f:\mathbb Z_{mn}\to\mathbb Z_m\oplus\mathbb Z_n$ defined as $f(x) = \pair xx$. If we have $f(x) = f(y)$ then we have $x \equiv y\mod m$ and $x \equiv y \mod n$ so it follows that $x\equiv y\mod mn$. Now $\mathbb Z_{mn}$ has exactly $m\cdot n$ elements and $\mathbb Z_m\oplus \mathbb Z_n$ also has exactly $m\cdot n$ so if $f$ is 1-1 then $f$ is also onto. Finally we may then take any $a,b\in\mathbb Z$ and let $\inv f(\pair ab) = x$. We know this to be well defined as $f$ is onto so we then have $x \equiv a\mod m$ and $x\equiv b\mod n$.
+
+\subsubsection{Question 27}
+
+
+Let $P$ be the product of our $n$ primes and we get from our previous question that we may define $f:\mathbb Z_p \to \prodfrom{i=1}n{\mathbb Z_{p_i}}$ just as before with $f(x)=(x,x,\ldots,x)$ and again this function will be 1-1 as if $f(x) = f(y)$ then we get $x \equiv y \mod p_i$ for all $0<i\le n$, and therefore $x \equiv y \mod \prodfrom{i=1}{n}{p_i}$ otherwise stated as $x\equiv y\mod P$. Just like before this is a map from two spaces with the same finite cardinality of $P$ so $f$ being 1-1 also makes $f$ onto. Here we also will note that $f$ is a homomorphism as \[f(xy) = (xy,xy,\ldots,xy) = (x,x,\ldots,x)(y,y,\ldots,y)=f(x)f(y)\]  and \[f(x+y) = (x+y,x+y,\ldots,x+y)=(x,x,\ldots,x)+(y,y,\ldots,y) = f(x)+f(y)\]
+
+Now from this we get that in order for $x^2 \equiv x\mod P$ then $f(x) = f(x^2) = (f(x))^2$ and also that if $f(x^2) \not= f(x)$ then $x^2 \not= x$ as $f$ is an isomorphism, so we simply need to count the number of $(a_1,a_2,\ldots,a_n)\in \prodfrom{i=1}{n}{\mathbb Z_{p_i}}$ such that $(a_1,a_2,\ldots,a_n)^2 = (a_1,a_2,\ldots,a_n)$. From this we need ${a_i}^2 \equiv a_i\mod p_i$ and that happens exactly when $a_i \equiv 1\mod p_i$ or $a_i \equiv 0\mod p_1$. This gives us two options for each $a_i$ and as each option is independent we then have $2^n$ total ways to create $x\in Z_P$ such that $x^2 \equiv x\mod P$.
+
+\subsection{Section 4}
+\subsubsection{Question 1}
+Notice that $1^2 \equiv 1\mod 3$ and $2^2\equiv 1\mod3$ so if $a \not\equiv 0\mod 3$ and $b\not\equiv 0\mod 3$ then $a^2+b^2 \equiv 1+1\mod 3$ so $a^2+b^2\equiv 2\mod 3$.
+
+\subsubsection{Question 9}
+Assume that $a^2 \equiv b^2 \mod p$ with $a\not=0\not=b$. We then find that $a^2-b^2\equiv 0\mod p$ so $(a+b)(a-b)\equiv0\mod p$. We know that $\mathbb Z_p$ is a division ring when $p$ is prime so then either $a+b\equiv 0\mod p$ or $a-b\equiv 0\mod p$. From this we get that the only way for $a^2 \equiv b^2\mod p$ is if $a\equiv \pm b\mod p$. This means that every non-zero quadratic residue in a prime modulus has exactly two ways to be represented as for all $a\not\equiv0\mod p$, $a\not\equiv -a\mod p$ as then $a+a = 2a \equiv 0$ and we would then have $2\equiv 0\mod p$, which would be true if $p=2$, however we are assuming $p$ to be an odd prime. Now we finish the proof by saying each $a^2$ has two distinct representations and thus there are $\frac{p-1}2$ quadratic residues and $\frac{p-1}2$ quadratic nonresidues mod $p$.
+
+Consider $Q = \setbuilder{x^2}{x\not=0\in\mathbb Z_p}$ with $p$ prime. It follows then that for any $a^2,b^2 \in Q$ that $a^2b^2 = (ab)^2\in Q$ as multiplication is commutative in $\mathbb Z_p$. We also have for any $a^2 \in Q$, that $\inv a\in \mathbb Z_p$ and therefore $\left(\inv a\right)^2 = a^{-2} = \inv{\left(a^2\right)} \in Q$. From this we get that $Q$ is a group, and more specifically a subgroup of $\mathbb Z_p\setminus\set 0$ under multiplication. 
+
+\subsubsection{Question 10}
+
+Choose $m \in \mathbb Z$ such that $m > 0$ and $\sqrt m \not\in Z$ and define $R = \setbuilder{a+b\sqrt m}{a,b\in \mathbb Z}$ and define addition and multiplication on $R$ in the standard way from the reals. It is obvious that $R\subset \mathbb R$ so in order to show that $R$ is a ring we simply need to show it to be a subring of $\mathbb R$, and to do this we only need show it is closed under addition and multiplication and that it has additive inverses.
+
+Choose $a+b\sqrt m \in R$, then we find $$-\left(a+b\sqrt m\right) = -a+-b\sqrt m \in R$$ so we have additive inverses.
+
+Choose $a_1+b_1\sqrt m \in R$ and $a_2+b_2\sqrt m \in R$. We then have $$\left(a_1+b_1\sqrt m\right)+\left(a_2+b_2\sqrt m\right) = (a_1+a_2)+(b_1+b_2)\sqrt m \in R$$ and \begin{align*}
+\left(a_1+b_1\sqrt m\right)\left(a_2+b_2\sqrt m\right) &= a_1a_2+a_1b_2\sqrt m + a_2b_1\sqrt m+b_1\sqrt mb_2\sqrt m \\
+&= (a_1a_2 + b_1b_2m) + (a_1b_2+a_2b_1)\sqrt m \in R
+\end{align*}
+so we have closures.
+
+Now we conclude that $R$ is a subring of $\mathbb R$.
+
+
+
+\subsubsection{Question 11}
+First let us show that $I_p$ is an additive subgroup of $R$. Let $a+b\sqrt m \in I_p$ and $c+d\sqrt m \in I_p$. Then $$a + b \sqrt m + c + d\sqrt m = (a+c)+(b+d)\sqrt m$$ and we know $p|a$ and $p|c$ so $p|(a+c)$ and the same is true for $b+d$, therefore $I_p$ is closed under addition. Also $$-\left(a+b\sqrt m\right) =-a+-b\sqrt m$$ and as $p|a$ then $p|-a$ and again the same argument goes for $-b$ so we now know that $I_p$ is an additive subgroup of $R$.
+
+Now consider $a+b\sqrt m \in I_p$ and $c+d\sqrt m \in R$. We only need show that this is an ideal from one side as multiplication is commutative in $\mathbb R$, which this is all contained within. So we find $$
+\left(a+b\sqrt m\right)\left(c+d\sqrt m\right)=ac+bdm + (ad+bc)\sqrt m $$ We know $p|a$ so $p|ac$. We also know that $p|b$ so we know that $p|bdm$ and therefore $p|(ac + bdm)$. Next we know that $p|a$ so $p|ad$ and we know $p|b$ so $p|ac$ and therefore $p|(ad+bc)$ so we conclude that $ac+bdm+(ad+bc)\sqrt m \in I_p$ and therefore $I_p$ is an ideal of $R$.
+
+\subsection{Section 5}
+\subsubsection{Question 2}
+
+For this problem I will assume that $x$ commutes with $R$ as otherwise I end up with $ax^nbx^m$ and can't be sure that this is really can be written as $cx^k$. I feel this is a a safe assumption, despite the book not stating this in the problem, as it does say that it is mostly dealing with commutative rings. To be more precise I'm really saying that for any $p(x) \in R[x]$, $p(x)$ is a function $p:A\to B$ and for any $x\in A$ and $r \in R$, we need to have $xr = rx$.
+
+\question{(a)} Consider $f(x), g(x) \in R[x]$ with $f(x)\not=0\not=g(x)$. Let $\deg f(x) = n$ and $\deg g(x) = m$ and we get that $f(x) = \sumfrom{i=0}{n}{f_ix^i}$ and $g(x) = \sumfrom{i=0}{m}{g_ix^i}$ for some $f_1,f_2,\ldots,f_n,g_1,g_2,\ldots,g_m \in R$. From this we get
+\def\LB{\left[}
+\def\RB{\right]}
+\begin{align*}
+f(x)g(x)&= \sumfrom{i=0}{n}{f_ix^i}\sumfrom{i=0}{m}{g_ix^i}\\
+&= \sumfrom{j=0}n{f_jx^j\sumfrom{i=0}m{g_ix^i}}\\
+&= \sumfrom{j=0}n{\sumfrom{i=0}m{f_jx^jg_ix^i}} \\
+&= \sumfrom{j=0}n{\sumfrom{i=0}m{f_jg_ix^{j+i}}}
+\end{align*}
+so we get that the largest power possible for $x$ to be $n+m$ and therefore $\deg(f(x)g(x)) \le m+n = \deg f(x)+\deg g(x)$.
+
+\question{(b)} Consider the ring $\mathbb Z_{ab}$, with $a,b > 1$. Then we can have $f(x) = ax$ and $g(x) = bx+1$ and so we find $f(x)g(x) = abx^2+ax = 0x^2+ax = ax$ as $ab \equiv 0\mod ab$.
+
+\subsubsection{Question 3}
+Using the Euclidean algorithm, I will not show the work as it's quite a lot to be typed up, however the algorithm takes in $a_0(x)$ and $b_0(x)$ and then finds $a_0 = q_0(x)b_0(x)+r_0(x)$ with $\deg r_0(x) < \deg b_0(x)$ as per the division algorithm. Then we let $a_1(x) = b_0(x)$ and $b_1(x) = r_1(x)$ and we repeat. This means we have $a_i = b_{i-1}$ and $b_i = r_{i-1}$ and $a_i =q_i(x)b_i(x)+r_i(x)$ with $\deg r_i(x) < \deg b_i(x)$. Eventually there is some $n$ such that $b_n(x) = 0$, and then $a_n(x) = \gcd(a_0(x),b_0(x))$. Some normalizing may be required to keep the polynomials monic, but this does not mess with the algorithm. Remember that if $a(x)|f(x)$ then any $ca(x)|f(x)$ as $a(x)b(x) = f(x)$ so $ca(x)c^{-1}b(x) | f(x)$ as $c^{-1}$ must exist due to us working in $F[x]$ with $F$ a field. With no further ado, the solutions:
+
+\question{(a)} $1$
+
+\question{(b)} $x-1$
+
+\question{(c)} $1$
+
+\question{(d)} $x^3-1$
+
+\subsubsection{Question 10}
+
+\question{(a)} $x^2+7$ over $\mathbb R$.
+If a polynomial is not irreducible then it can be written as the product of irreducible polynomials. For $x^2 + 7$ over $\mathbb R$ we would have to have some $g(x),f(x)\in\mathbb R[x]$ such that $g(x)$ is monic irreducible and $\deg f(x),\deg g(x) > 0$. This means that $\deg f(x) = 1 = \deg g(x)$ so $f(x) = ax+b$ and $g(x) = x+c$. From this we would have $f(x)g(x) = ax^2+(ac+b)x + bc = x^2+7$. From this we get $a= 1$, $ac+b = 0$ and $bc = 7$. We then have $c+b = 0$ so $b=-c$.  That means that $bc = -b^2$ and all squares are positive in $\mathbb R$ so we can not have $-b^2 = 7$ so we have a contradiction.
+
+\question{(b)} $x^3-3x+3$ over $\mathbb Q$. If this is not irreducible then it is the product of some smaller monic polynomials and a constant so by it being degree 3 this must be a polynomial of order 1 and order 2. Therefore we let $f(x) = x^2+ax+b$ and $g(x) = x+c$ and finally $d\in \mathbb R$ such that $f(x)g(x)d = x^3-3x+3$. Immediately we get $d=1$ as $x^3-3x+3$ is monic, so we are left with $$x^3-3x+3=x^3+(a+1)x^2+(ac+b)x+bc$$ and from that $a + 1 = 0$ so $a=-1$, $ac+b = b-c = -3$ and $bc =3$. It follows that $c-b=3=bc$. From this the sign of $b$ and $c$ must be the same as $bc$ is positive, so that means $c > 3$ as otherwise we could not have $c-b=3$. Now we let $\frac nm = c$ and $\frac pq = b$, with $p,q,n,m \in\mathbb Z$ and $\gcd(n,m) =1 = \gcd(p,q)$. We know $a,b > 0$ so $p,q,n,m>0$. We know $c>3$ so $\frac nm > 3$ and thus $n>3m\ge 3$. And finally we know $\frac nm\frac pq = 3 = \frac nm-\frac pq$ which we rewrite as $\frac{np}{mq} = 3 = \frac{nq-mp}{mq}$ and then one step further we get $$np=3mq=nq-mp$$ Here we divide by $n$ and $p$ and we get two equalities: first $$n=\frac{3mq}p=\frac{nq}p-m$$ and therefore $p|3mq$ and $p|nq$, and as we know $\gcd(p,q)=1$ then $p|3m$ and $p|n$; and our second equation $$p=\frac{3mq}n=q+\frac{mp}n$$ and therefore $n|3mq$ and $n|mp$, however we know $\gcd(n,m) = 1$ so we have $n|3q$ and $n|p$. We now have shown $n|p$ and $p|n$ so $p=n$ and therefore we know that $n|3m$ as we had $p|3m$. We know $\gcd(n,m)=1$ so $n|3m\implies n|3$ and thus $n \le 3$ which contradicts $n > 3m \ge 3$ we already had, so thus there can not possibly be any polynomials $g(x),f(x)$ over $\mathbb Q$ such that $g(x)f(x) = x^3-3x+3$ with both being lower order than three, so $x^3-3x+3$ is irreducible.
+
+\question{(c)} $x^2+x+1$ over $\mathbb Z_2$. From our previous results we know that in order for this not to be irreducible we need $g(x),f(x)\in\mathbb Z_2[x]$, both with lower order and monic be such that $g(x)f(x) = x^2+x+1$. It follows that $g(x)=x+a$ and $f(x)= x+b$ and therefore $f(x)g(x) = x^2+(a+b)x+ab$. We know then that $ab=1$ and $a+b=1$. In order for $ab=1$ we need both $a,b = 1$ and therefore $a+b=0$ so we have a contradiction and thus $x^2+x+1$ is irreducible.
+
+\question{(d)} $x^2+1$ over $\mathbb Z_{19}$. Just like before let $g(x) = x+a$ and $f(x) = x+b$ and we get $a+b=0$ and $ab = 1$. From this we get that $a=-b$ so $ab=-bb=-b^2=1$ so $b^2 = -1$ which is not a square in $\mathbb Z_{19}$ which we can show simply by listing all the squares. I will not do that here, however here is python code that will verify the result.
+\begin{center}
+	\verb|[pow(x,2,19) for x in range(0,19)]|
+\end{center}
+
+
+\question{(e)} $x^3-9$ over $\mathbb Z_{13}$. Just like before let $f(x) + x^2+ax+b$ and $g(x) = x+c$ and we find $$f(x)g(x) = x^3+(a+c)x^2+(ac+b)x+bc$$ so $a+c = 0$, $ac+b=0$ and $bc=1$. From this we get $a=-c$ and therefore $ac+b = -c^2+b = 0$, so $b=c^2$ and thus finally $bc = c^3 = -9$. $\mathbb Z_{13}$ is a small space so we can just check to see if $-9$ is a cube, notice $-9=13-9=4$ and $4$ is not a cube. I verified this with the following python code.
+\begin{center}
+	\verb|[pow(x,3,13) for x in range(0,13)]|
+\end{center}
+
+\question{(f)} $x^4+2x^2+2$ over $\mathbb Q$. If this is reducible then either it is a degree 3 and a degree 1 or two degree 2 polynomials. Let us degree 3 and 1 and then two degree 2 polynomials.
+
+Let $f(x) = x^3+ax^2+bx+c$ and $g(x) = x+d$, then we have $$f(x)g(x) = x^4+(a+d)x^3+(ad+b)x^2+(bd+c)x + cd$$ so $a+d = 0$, $ad+b=2$, $bd+c = 0$, and $cd = 2$. We then have $a=-d$ and therefore $-a^2+b=2$ so $b=2+a^2$. Further $bd+c = (2+a^2)(-a)+c = 0$ so $c = a(2+a^3)$ and $cd = a(2+a^3)(-a) = 2$, so we have $-a^2(2+a^3) = 2$. Now $a^2 > 0$ so $2+a^3 < 0$ for the multiplication to work, this simply means $a^3 <-2$ and therefore $a < -\sqrt[3]{2}$. Now we also know that $a\in\mathbb Q$ and $a$ is negative so $a = -\frac pq$ with integers $p,q > 0$. From this we get 
+\begin{align*}2 &= -\left(-\frac pq\right)^2\left(2+\left(-\frac pq\right)^3\right)\\
+&= -\frac{p^2}{q^2}\left(2-\frac{p^3}{q^3}\right)\\
+&= -2\frac{p^2}{q^2}+\frac{p^5}{q^5}\\
+2q^2 &= -2p^2+\frac{p^5}{q^3}\\
+2q^2+2p^2&=\frac{p^5}{q^3}\\
+2q^5+2p^2q^3 &= p^5\\
+\frac{2q^5}{p^2}+2q^3 &= p^3
+\end{align*}
+so we have $p^2|2q^5$, however as $\gcd(p,q) = 1$ then $p^2|2$ and therefore $p=1$. From this we get $\frac pq\le 1$ so $2-\left(\frac pq\right)^3 > 0$ and $-\left(\frac pq\right)^2 < 0$ so then $2=-\left(\frac pq\right)^2\left(2-\left(\frac pq\right)^3\right) < 0$ and we have a contradiction.
+
+Now let us try two order 2 polynomials, $f(x) = x^2+ax+b$ and $g(x) = x^2+cx+d$ and we find $$f(x)g(x) = x^4+(a+c)x^3+(b+ac+d)x^2+(ad+bc)x+bd$$ so $a+c = 0$, $b+ac+d = 2$, $ad+bc=0$ and $bd = 2$. From $a+c=0$ we get $a=-c$ and therefore our equality $ad=bc=0$ becomes $ad-ab=0$ so $ad=ab$ and therefore either $a=0$ or $b=d$.
+
+If $b=d$ then $bd=b^2=2$ and therefore $b=\sqrt 2$ which is known to be irrational, so this can not be.
+
+If $a=0$ then $b-ac+d=2$ becomes $b+d=2$ and we also have $bd=2$ so $a+b=2=bd$. $bd$ is positive and therefore $b$ and $d$ must share a sign, however $b+d$ is also positive so if they are to share a sign they both must be positive. Now let $b = \frac nm$ and $d=\frac pq$ with $p,q,n,m$ positive integers and $\gcd(p,q) = 1 = \gcd(n,m)$. Now we have $\frac nm + \frac pq = 2=\frac nm\cdot\frac pq$ so it follows that $\frac{nq+pm}{mq}=2=\frac{np}{mq}$ and therefore $$2mq=nq+pm=np$$ From this we can do some division and find $$\frac{2mq}n = q+\frac{pm}q=p$$ so $n|pm$ and $n|2mq$ and by $\gcd(n,m)=1$ we get $n|p$ and $n|2q$; and we find $$\frac{2mq}p=\frac{nq}p+m=n$$ so $p|2mq$ and $p|nq$ and by $\gcd(p,q) = 1$ we get $p|n$ and $p|2m$. From this we then have $p|n$ and $n|p$ so it follows that $n=p$ and therefore $n|2$ as $n=p|2m$ so either $n=1$ or $n=2$. If $n=1$ then $2=\frac{1}{mq}$ which is impossible, so $n\not=1$. If $n=2$ then $2mq = 2q+m=4$. From this we get $mq=q+m=2$, in order for $mq = 2$ we need one of $m,q$ to be 1 and the other to be 2, however that would give $q+m=3\not=2$ so we have a contradiction, and are now done.
+
+\subsubsection{Question 11}
+Suppose $p(x)\in F[x]$ is of order 3. If $p(x)$ is reducible then there must be some $f(x),g(x)\in F[x]$ and some $a_0\in F$ such that $p(x)=a_0f(x)g(x)$ and both $f(x)$ and $g(x)$ have lower order then $p(x)$ and are monic. This means one will have order 2 while the other has order 1. Suppose then without loss of generality $f(x)$ has order 2 and $f(x) = x+b$. Then we notice that $f(-b) = 0$ so $a_0f(-b)g(-b) = 0$ and thus $p(x)=0$ for at least some value in $F$. It follows then that if $p(x)\not0$ for all $x\in F$ then $p(x)$ is irreducible.
+
+
+
+\subsubsection{Question 12}
+
+By theorem 4.5.9 in the book we have if $f(x),g(x)$ are relatively prime then there is some $a(x),b(x)$ such that $a(x)f(x)+b(x)g(x) = 1$. This means that there is $a(x),f(x),b(x),g(x) \in F$ such that $a(x)f(x)+b(x)g(x) =1$, and as $F\subset K$ then $a(x)f(x)+b(x)g(x) = 1$ is also true in $K[x]$. Now by theorem 4.5.9 again we get that this means $f(x)$ and $g(x)$ are relatively prime.
+
+\subsubsection{Question 13}
+Let $p(x) = x^2 +1$. Now $\mathbb R[x]$ is an principal ideal domain, so for all $f(x) \in (p(x))$, $f(x) = a(x)p(x)$ for some $a(x)$. So the first thing we wish to show is that if $\deg f(x) \ge 2$ then there is some $g(x)$ of order less than 2 such that $(p(x))+f(x) = (p(x)) +g(x)$ or $f(x)\in (p(x))$.
+
+\begin{proof}
+	Suppose $\deg f(x) \ge 2$, then there exists $q(x),r(x)$ such that $f(x)=q(x)p(x)+r(x)$ and $\deg r(x) < \deg p(x)$ or $r(x) = 0$ by the division algorithm. From this we get $\deg r(x) < 2$ or $r(x) = 0$. If $r(x)=0$ then $f(x) = q(x)p(x)\in(p(x))$. If $\deg r(x) < 2$ then $f(x) \in (p(x))+r(x)$.
+\end{proof}
+
+Now further we wish to show that for any $a(x),b(x)$ with order less than 2, if $a(x)\not=b(x)$ then $(p(x))+a(x)\not=(p(x))+b(x)$. We include the 0 function as having order less than 2.
+
+\begin{proof}
+	Suppose $a(x) \not=b(x)$ and both have order less than 2, then assume for the sake of contradiction that $(p(x))+a(x)=(p(x))+b(x)$.  From this we get $a(x)=c(x)p(x)+b(x)$ and we find $\deg(c(x)p(x)+b(x)) = \max(\deg c(x)+\deg p(x), \deg b(x)) = \deg c(x)+\deg p(x)$ as $\deg p(x) > \deg b(x)$ unless $c(x) = 0$. If $c(x) = 0$ then we get $a(x) = b(x)$ which we already said it is not, and otherwise we get $\deg a(x) = \deg c(x) + \deg p(x) \ge \deg p(x) = 2$ thus contradiction that $a(x)$ has order 2 or less, so we conclude that $(p(x))+a(x)\not=(p(x))+b(x)$
+\end{proof}
+
+So every element in $\mathbb R[x]/(p(x))$ has a unique representation by a polynomial with that is either 0, or has order less than 2. Notice finally that $f(x) = x$ has $f(x)^2=x^2$ and $(p(x))+x^2 = (p(x))-1$ by the division algorithm. So we can conclude that $\varphi:\mathbb C\to\mathbb R[x]/p(x)$ defined as $\varphi(a+bi)=(p(x)) + bx+a$ is a isomorphism.
+
+
+\subsubsection{Question 19}
+
+Consider $P(x) = x^2-a \in \mathbb Z_p[x]$ with $p$ an odd prime. If $P(x)$ is reducible then there is some $f(x)g(x) = P(x)$ with both having lower order and monic as $P(x)$ is monic. Let $f(x) = x+c$ and $g(x) = c+d$ so $$P(x)=x^2-a=f(x)g(x)=(x+c)(x+d) = x^2+(c+d)x+cd$$ and therefore $c+d = 0$ so $c=-d$ and we also have $cd=-a$ so $-c^2=-a$ and therefore $c^2=a$. So only if $a$ is a square in $\mathbb Z_p$ is $P(x)$ reducible, so let $a$ be a quadratic nonresidue mod $p$, and we know such an element exists from Question 9 in Section 4.
+
+Now consider $\mathbb Z_p[x]/P(x)$ and we know from the last problem that every element of this has a unique representation by a polynomial of order less than 2.\footnote{While we didn't actually prove it in the last problem the steps we went through would also work for this case, so I'm not going to go through the work again.} So now we already know this is a commutative ring, so we simply need to show the existence of a unit and inverses and we have a field. So as every element of this has a unique second degree polynomial representing it then any element takes the form $\eqclass{bx+c}$ and there are $p^2$ such polynomials.
+
+So for a unit we have $e(x) = 1$, as $e(x)(bx+c) = 1(bx+c) = bx+c$. Now consider $f(x) = bx+c$ and we find $$\eqclass{f(x)}^2 = \eqclass{b^2x^2+2bcx+c^2} = \eqclass{2bcx+b^2a+c^2}$$, thus in order for $\eqclass{f(x)}^2 = 0$ we need $2bc = 0$ so either $b=0$ or $c=0$ and either way then $b^2a+c^2=0$ would imply that the other (between $b$ and $c$) must be $0$. From this we get that no element multiplied by itself is 0, unless that element was the 0 element. So we can conclude that $\eqclass{f(x)}^{2^n} \not=\eqclass 0$. This in-fact means all powers of $f(x)$ are not zero as then there would some $2^n$ power greater then it which would be zero. Now from some results we had in finite groups we can be sure that $\eqclass{f(x)}$ has an inverse. Now we know that $\mathbb Z_p[x]/P(x)$ is a field with order $p^2$.
+
+
+
+\subsubsection{Question 26}
+%TODO this problem and next (sort of samey)
+
+
+
+\subsubsection{Question 28}
+
+\subsection{Section 6}
+\subsubsection{Question 3}
+Any $a$ such that $a=5k$ with $k\equiv 0\mod 5$ or $a=3k$ with $k\equiv 0\mod3$.
+\subsubsection{Question 4}
+
+Consider $g(x) = {a_0}^{n-1}f(x)$ and then let $y = a_0x$ and we find $h(y)$ such that $h(y) = g(x)$. Therefore we have $$h(y) = h(a_0x) = g(x)$$ The first term of $g(x)$ is ${a_0x}^n$ so then $h(y)$ must be monic, and we may use the Einstein criterion on this to test if $f(x)$ is reducible.
+
+
+\subsubsection{Question 7}
+For this we will define arbitrary polynomial $f(x) = \sumfrom{i=0}{\infty}{f_ix^i}$ with $f_i = 0$ for all $i > \deg f(x)$. This will make notation much smoother.
+
+\begin{itemize}
+	\item $\varphi$ is a homomorphism as: \begin{align*}
+	\varphi(f(x)) +\varphi(g(x)) &= f(x+1)+g(x+1) \\
+	&= \sumfrom{i=0}{\infty}{f_i\left(x+1\right)^i}+\sumfrom{i=0}{\infty}{g_i\left(x+1\right)^i} \\
+	&= \sumfrom{i=0}{\infty}{(f_i+g_i)(x+1)^i} \\
+	&= \varphi\left(\sumfrom{i=0}{\infty}{(f_i+g_i)x^i}\right)\\
+	%&=\varphi\left(\sumfrom{i=0}{\infty}{f_ix^i}+\sumfrom{i=0}{\infty}{g_ix^i}\right)\\
+	&=\varphi(f(x)+g(x))\\
+	\\
+	\varphi(f(x))\varphi(g(x)) &= f(x+1)g(x+1) \\
+	&= \sumfrom{i=0}{\infty}{\sumfrom{j=0}{i}{f_{i-j}g_j}(x+1)^i} \\
+	&= \varphi\left(\sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{f_{i-j}g_j}x^i}\right) \\
+	&= \varphi(f(x)g(x))
+	\end{align*}
+	\item $\varphi$ is 1-1 as if $\varphi(f(x)) = \varphi(g(x))$ then $f(x+1)=g(x+1)$ and we can define $p(x) = f(x+1)$ and $q(x) = g(x+1)$ so we have $p(x) = q(x)$ and it follows then that $p(x-1) = q(x-1)$ so $f(x)=g(x)$.
+	
+	\item $\varphi$ is onto as $f(x) = g(x+1)$ with $g(x) = f(x-1)$, so $\varphi(g(x)) = f(x)$.
+\end{itemize}
+
+Further consider that for any $a\in F$, we can construct $f(x) = a$ and then $\varphi(f(x)) = a$, so $\varphi(a) = a$.
+
+\subsubsection{Question 11}
+
+We have $\varphi:F[x]\to F[x]$ is an automorphism and $\varphi(a) = a$ for all $a\in F$. Now we have $$\varphi(f(x)) = \varphi\left(\sumfrom{i=0}{n}{f_ix^i}\right)=\sumfrom{i=0}{n}{\varphi(f_i)\varphi(x)^i} = \sumfrom{i=0}{n}{f_i\varphi(x)^i}$$. Now as $x\in F[x]$ then so must $\varphi(x) \in F[x]$ as $\varphi$ is an automorphism. From this we get $\varphi(x) = p(x) \in F[x]$, so $\varphi(f(x)) = f(p(x))$. Now we have $\deg f(g(x)) = \deg f(x)\cdot\deg g(x)$, so $\deg p(x) = 1$ as if it were greater we could never map to a order 1 polynomial and if it were less everything would map to the zero function or a constant. So now $\sigma(f(x)) = f(p(x))$ and $\deg p(x) = 1$ so $p(x) = ax+b$ for some $a,b\in F$ with $a\not=0$.
+
+\subsection{Section 7}
+\subsubsection{Question 3}
+We have $[a,b][c,d] = [ac,bd]$. So \begin{align*}
+[a,b]\left([c,d][e,f]\right) &= [a,b][ce,df]\\
+&= [ace,bdf] \\
+&= [ac,bd][e,f]\\
+&=\left([a,b][c,d]\right)[e,f]\\\\
+[a,b][c,d] &= [ac,bd]\\
+&= [ca,db]\\
+&= [c,d][a,b]
+\end{align*}
+so we have associativity and commutativity for multiplication. 
+
+
+\subsubsection{Question 4}
+Let $K$ be a field and $D$ an integral domain with $D\subset K$. Let $F$ be the quotient field generated by $D$. Now assume for the sake of contradiction there is some $\frac ab \in F$ such that $\frac ab \not\in K$. If $\frac 1b \in K$ then we get $\frac ab\in K$ as $a\in K$ and thus we would have $a\frac 1b \in K$. Now $\frac 1b = \inv b$ so therefore we have found some $b\not=0$ such that $b$ does not have an inverse in $K$, so $K$ is not a field. Therefore $\frac ab \in K$ so $F\subset K$.
+
+
+\section{Chapter 5}
+\subsection{Section 1}
+\subsubsection{Question 3}
+For notational reasons we will let polynomials be the sum of infinite terms, with only finitely many having non-zero coefficients.
+
+\question{(a)} Consider $f(x,y) \in S[y]$, then $$f(x,y) =\sumfrom{i=0}{\infty}{f_i(x)y^i} = \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{f_{i,j}x^j}y^i}$$
+
+\question{(b)} If $f(x,y) = \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{f_{i,j}x^j}y^i}$ and $g(x,y) = \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{g_{i,j}x^j}y^i}$ then simply, we need $f_{i,j}=g_{i,j}$ for all $i,j$.
+
+\question{(c)} 
+\begin{align*}f(x,y) + g(x,y) &= \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{f_{i,j}x^j}y^i} + \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{g_{i,j}x^j}y^i}\\
+&=\sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{f_{i,j}x^j}y^i+\sumfrom{j=0}{\infty}{g_{i,j}x^j}y^i}\\
+&= \sumfrom{i=0}{\infty}{\left(\sumfrom{j=0}{\infty}{f_{i,j}x^j}+\sumfrom{j=0}{\infty}{g_{i,j}x^j}\right)y^i}\\
+&= \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{f_{i,j}x^j+g{i,j}x^j}y^i}\\
+&= \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{\left(f_{i,j}+g_{i,j}\right)x^j}y^i}
+\end{align*}
+
+\question{(d)}
+\begin{align*}
+f(x,y)g(x,y) &= \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{f_{i,j}x^j}y^i} \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{g_{i,j}x^j}y^i} \\
+&=\sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{f_{i,j}x^j}y^i\sumfrom{k=0}{\infty}{\sumfrom{j=0}{\infty}{g_{k,j}x^j}y^k}}\\
+&=\sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{\sumfrom{k=0}{\infty}{f_{i,k}x^k}y^i\sumfrom{k=0}{\infty}{g_{j,k}x^k}y^j}} \\
+\text{(If $R$ is commutative)}\quad&=\sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{\sumfrom{k=0}{\infty}{f_{i,k}x^k}\sumfrom{k=0}{\infty}{g_{j,k}x^k}y^iy^j}} \\
+&= \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{\sumfrom{k=0}{\infty}{\sumfrom{l=0}{\infty}{f_{i,l}x^l}g_{j,k}x^k}y^{i+j}}}\\
+&= \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{\sumfrom{k=0}{\infty}{\sumfrom{l=0}{\infty}{f_{i,l}x^lg_{j,k}x^k}}y^{i+j}}}\\
+&= \sumfrom{i=0}{\infty}{\sumfrom{j=0}{\infty}{\sumfrom{k=0}{\infty}{\sumfrom{l=0}{\infty}{f_{i,l}g_{j,k}x^{l+k}}}y^{i+j}}} \\
+&= \sumfrom{i=0}{\infty}{\sumfrom{j=0}{i}{\sumfrom{k=0}{\infty}{\sumfrom{l=0}{\infty}{f_{i-j,l}g_{j,k}x^{l+k}}}}y^{i}}\\
+&= \sumfrom{i=0}{\infty}{\sumfrom{j=0}{i}{\sumfrom{k=0}{\infty}{\sumfrom{l=0}{k}{f_{i-j,l}g_{j,k-l}}x^{k}}}y^{i}}\\
+&=\sumfrom{i=0}{\infty}{\sumfrom{k=0}{\infty}{\sumfrom{j=0}{i}{\sumfrom{l=0}{k}{f_{i-j,l}g_{j,k-l}}x^{k}}}y^{i}}\\
+&= \sumfrom{i=0}{\infty}{\sumfrom{k=0}{\infty}{\sumfrom{j=0}{i}{\sumfrom{l=0}{k}{f_{i-j,l}g_{j,k-l}}}x^{k}}y^{i}}
+\end{align*}
+
+\subsubsection{Question 8}
+\def\LB{}\def\RB{}
+
+Let us do this by induction on $n$ where $m = p^n$. If $n=0$ this is trivial and when $n = 1$ we get $(a+b)^p = \sumfrom{i=0}{p}{\binom pia^ib^{p-i}}$ and as $p|\binom pi$ for all $i$ such that $0 < i < p$ we then get $(a+b)^p = a^p+b^p$. Choose $n\in\mathbb N$ and suppose that for all $k < n$ that $$(a+b)^{p^k} = (a+b)^{p\cdot p^k} = \left((a+b)^p\right)^{p^{k-1}} = (a^p+b^p)^{p^{k-1}} = a^{p\cdot p^{k-1}}+b^{p\cdot p^{k-1}} = a^{p^n}+b^{p^n}$$
+
+\subsubsection{Question 9}
+\question{(a)}
+First $$\varphi(ab) = (ab)^p = a^pb^p = \varphi(a)\varphi(b)$$ Second, using the result from our previous problem $$\varphi(a+b) = (a+b)^p = a^p+b^p = \varphi(a) + \varphi(b)$$ Finally if $\varphi(a) = \varphi(b)$ then $a^p = b^p$, $b = a+c$ for some $c \in F$, so $a^p=(a+c)^p = a^p+c^p$ and therefore $c^p = 0$, and as $F$ is a field, $c^p = 0 \implies c = 0$. From this we have $b=a+0$ so $b=a$.
+
+If you do not believe that $c^p = 0 \implies c = 0$ then suppose $c\not=0$ let  $n$ be such that $c^n = 0$ and for all $0< m < n$, $c^m \not = 0$, that is $n$ is the lowest power $c$ that is zero. Now consider these statements $$c(c^{n-1}c^{1-n}) = c1 = c$$ $$(cc^{n-1})c^{1-n} = 0c^{1-n} = 0$$ and now we have a contradiction, so $c^n\not=0$ and thus all powers of non zero elements of fields are non zero.
+
+\question{(b)} Consider $\mathbb Z_p$ and we have a finite field. From this we can construct the field of quotients over $\mathbb Z_p[x]$, and let us call this field $K$. For any $\frac{f(x)}{g(x)} \in K$ we have $p\frac{f(x)}{g(x)} = 0$ as $pf(x) = p\sumfrom{i=0}{\infty}{f_ix^i} = \sumfrom{i=0}{\infty}{pf_ix^i} = 0$. Now there is so $\frac{f(x)}{g(x)}$ such that $\varphi\left(\frac{f(x)}{g(x)}\right)=x$ as $\varphi\left(\frac{f(x)}{g(x)} \right)=\frac{f(\varphi(x))}{g(\varphi(x))}=\frac{f(x^p)}{g(x^p)}$ so the numerator's order will be $p\cdot \deg f(x)$ and the denominator's will be $p\cdot \deg g(x)$. Only if $g(x^p)|f(x^p)$ then can we reduce this to a polynomial and in that case we will have something of order $p\cdot \deg f(x) - p\cdot \deg g(x) = p(\deg f(x) - \deg g(x))\not = 1$.
+
+\subsubsection{Question 10}
+If $f:A\to A$ is 1-1 and $A$ is finite then $f$ must be onto, therefore we have $F$ is finite and $\varphi:F\to F$ is 1-1 so $\varphi$ must be onto and thus a n automorphism as we already know it to be a monomorphism.
+
+\subsection{Section 2}
+\subsubsection{Question 2}
+Only the trivial solution exists. I proved this by brute force checking all 125 possible solutions, and only the trivial one worked.
+
+\subsubsection{Question 3}
+If $V$ has dimension $n$ over $\mathbb Z_p$ then choose a basis $a_1, a_2, \ldots, a_n\in V$. Then any element of $V$ has a unique representation as $\sumfrom{i=1}n{\alpha_ia_i}$ with every $\alpha_i\in\mathbb Z_p$. This gives us a bijection $f:V\to{\mathbb Z_p}^n$ as $f(\sumfrom{i=1}n{\alpha_ia_i}) = (a_1, a_2, \ldots, a_n)$ and this we know has $p^n$ possible distinct values.
+
+\subsubsection{Question 6}
+
+\question{(a)}
+Assume there is some set of linearly independent vectors in $W$, therefore this set is also linearly independent in $V$. So by theorem 5.2.7 if $W$ were to have dimension greater than $V$'s dimension, it would imply that it has a set $S$ of linearly independent vectors with $\card S > \dim_F(V)$. Now $S$ is also linearly independent in $V$ which gives us a contradiction by theorem 5.2.6.
+
+If $\dim_F(W) = \dim_F(V) = n$ then we can choose some basis for $W$ with $n$ elements. This is then linearly independent in $W$ and thus also linearly independent in $V$ and forms a basis by theorem 5.2.7.
+
+\subsubsection{Question 10}
+I assume a vector space homomorphism $\psi$ must follow $\psi(a+b) = \psi(a)+\psi(b)$ and $\alpha\psi(a) = \psi(\alpha a)$. If we view $V$ and $V'$ as groups under addition then by one of our homomorphism theorems from groups we already have $V'\simeq V/K$, So that means that there is a group isomorphism from $V'$ to $V/K$, let us call it $\phi$. All we need to do is show that $\alpha \phi(a) = \phi(\alpha a)$. Let $a \in V'$ and then consider $\setbuilder{v\in V}{\psi(v) = a} = \inv\psi(a) \in V/K$. Remember $\psi:V\to V'$ is a vector space homomorphism. Let us try and construct $\phi$ as $\phi = \inv\psi$. We should already have this to be a group isomorphism so let us simply consider scaler multiplication.
+\begin{align*}
+\alpha\phi(a) &= \alpha\inv\psi(a)\\
+& = \alpha\setbuilder{v \in V}{\psi(v) = a}\\ &= \setbuilder{\alpha v}{v\in V, \psi(v) = a}
+\end{align*} Then we would have $\psi(v) = a \implies \psi(\alpha v) = \alpha a$ so $\alpha\phi(a) = \setbuilder{v\in V}{\psi(v) = \alpha a} = \inv\psi(\alpha a)= \phi(\alpha a)$ and we have shown $\phi$ to be a vector space isomorphism.
+
+
+\subsubsection{Question 11}
+Let us proceed with a proof by contradiction. Suppose there is some finite dimensional vector space $V$ over $F$ with a linearly independent set of vectors $v_1,v_2,\ldots, v_n$ and $\dim_F(v) > n$ such that we can not add another vector $v_{n+1}$ without breaking linear independence. This is impossible as $v_1,v_2,\ldots,v_n$ is not a basis as $\dim_F(v)>n$ so we can find some $v$ such that $v \not\in<v_1,v_2,\ldots,v_n>$ and let $v_{n+1} = v$ and this must maintain linear independence. Now going back to our problem, we may simply keep adding $v_{m+i}$ in this manner until we have a basis for $V$ over $F$.
+
+\subsubsection{Question 14}
+Consider the candidate basis $\eqclass 1, \eqclass x, \eqclass{x^2}, \ldots, \eqclass{x^{\deg f(x) - 1}}$. There are quite obviously $\deg f(x)$ elements in this so all that remains is to show it is a basis. For any $g(x) \in F[x]$, we know $[g(x)] = [h(x)]$ for some $h(x)$ with $\deg h(x) < \deg f(x)$ by the division algorithm, so this supposed basis can generate all of $F[x]/J$. Now if one were to remove $\eqclass {x^i}$ then there would be no way ever get element of $\eqclass{x^i}$ (with the exception of 0) as they all have order $i$ and when we add together functions we simply take the max of their orders, and we aren't allowed multiplication so we can't ever get anything with order $x^i$ or even with a non-zero $i^{\text{th}}$ coefficient.
+
+\subsubsection{Question 17}
+\question{(a)} Because $\dim_F(K) = m$ then there is a basis $k_1,k_2,\ldots,k_m$ of $K$ over $F$ and thus any element of $K$ can be represented as $ \sumfrom{i=0}{m}{\alpha_ik_i}$ with $\alpha_i \in F$ for all $i$. Now if $V$ is a vector space over $K$ then there is some basis that may or may not be finite for $V$ over $K$, let us denote this basis as the set $S$. Now any element of $V$ may be represented as $\sumacross{v \in S}{h_vv}$ with $h_v \in K$ for all $v\in S$. as $h_v \in K$ we may then say $h_v = \sumfrom{i=0}{m}{\alpha_{v,i}k_i}$ and therefore $$\sumacross{v\in S}{h_vv} = \sumacross{v\in S}{\sumfrom{i=0}{m}{\alpha_{v,i}k_i}v}$$ and $k_iv \in V$ and $\alpha{v,i}\in F$ so then $V$ must be a vector space over $F$.
+
+\question{(b)} If $V$ is finite dimensional over $K$ then using the equation we have already laid out becomes a finite sum and thus $\dim_F(V)$ must be finite.
+
+\question{(c)} In-fact, going a step further, $\setbuilder{k_iv}{v \in S, 0< i\le m}$ is a basis for $V$. To show this all we need it show linear independence. We know all the $v$ are linearly independent over $K$ and all the $k_i$ are linearly independent over $F$. Assume they are not linearly independent, it follows then that there is some non-trivial solution to $$\sumacross{v\in S}{\sumfrom{i=0}{m}{\alpha_{v,i}k_i}v} = 0$$ so there is some set $\alpha{v,i}$ that are not 0. From this we then say that if $\alpha_{w,j}$ is not zero then we get $\sumfrom{i=0}{m}{\alpha_{w,i}k_i}\not = 0\in K$ by the $k_i$s forming a basis. From this we go another step and we realize that we have one $h_w \not = 0$ so again $\sumacross{v\in S}{h_vv}\not=0$. Now we have shown that if any coefficient is nonzero then so must the entire sum.
+
+From this if $S$ is finite then we have a basis of size $m\card S$ which is also $\dim_K(V)\dim_F(K) = \dim_F(V)$.
+
+\subsection{Section 3}
+\subsubsection{Question 1}
+\question{(a)} Let $a = \sqrt 2 + \sqrt 3$, then $a^2 = 5+2\sqrt{6}$ and $a^4 = 31+10\sqrt 6$. so $a^4-5a^2 = 6$ and therefore $a^4-5a^2-a = 0$.
+
+\question{(b)} Consider $\sqrt 7^2-7 = 0$ and $\sqrt[3]{12}^3-12 = 0$ so both $\sqrt 7$ and $\sqrt[3]{12}$ are algebraic, and we know algebraic numbers are a field in $\mathbb C$ so their sum must be algebraic.
+
+\question{(c)} $2$ is algebraic as $2^2-2\cdot2^1 = 0$ and $i$ is algebraic as $i^2+1 = 0$ and $\sqrt 3$ is algebraic as $\sqrt 3^2-3 = 0$ so again as the algebraic numbers are a field in $\mathbb C$ then $2+i\sqrt 3$ must be algebraic.
+
+\question{(d)} $\cos(2\pi/k)+i\sin(2\pi/k) = e^{i2\pi/k} = a$ is algebraic when $k$ is a positive integer as $\left(e^{i2\pi/k}\right)^k = e^{i2\pi} = 1$ so $a^k - 1 = 0$.
+
+\subsubsection{Question 4}
+First we have $\cos(2\pi/8)+i\sin(2\pi/8)=e^{i2\pi/8}=e^{i\pi/4}$, so now consider $\left(e^{i\pi/4}\right)^4 = e^{i\pi} = -1$ so if $f(x) = x^4+1$ then $f(e^{i\pi/4}) = 0$, so the degree can be no greater than 4. Now $f(x+1) = (x+1)^4 + 1 = x^4+4x^3+6x^2+4x+2$ therefore is irreducible by Einstein criterion. From this we get there are no $g(x)q(x) = f(x)$ with $\deg q(x) > 0$. Now let $g(x)\not=0$ such that $g(e^{i\pi/4}) = 0$ with $g(x)$ being a minimal nontrivial polynomial with $g(e^{i\pi/4}) = 0$, we then would find by the division algorithm that $g(x)q(x)+r(x) = f(x)$ for some $q(x), r(x)$ with $\deg r(x) < g(x)$. Well then we would have $g(e^{i\pi/4})q(e^{i\pi/4}) +r(e^{i\pi/4}) = f(e^{i\pi/4}) = 0$ and as we assumed $g(e^{i\pi/4}) = 0$ then we have $0q(e^{i\pi/4})+r(e^{i\pi/4}) = f(e^{i\pi/4}) = 0$ so $r(e^{i\pi/4}) = 0$ and we know $\deg r(x) <\deg g(x)$ and due to $g(x)$ being minimal then it must be that $r(x) = 0$. From this we find $g(x)q(x) = f(x)$ and as $f(x)$ is irreducible then $\deg g(x) =\deg f(x)$. Thus $e^{i\pi/4}$ is of degree 4.
+
+
+
+\subsubsection{Question 6}
+Let us start with $$e=\sumfrom{i=0}\infty{\frac 1{n!}}$$ and assume for the sake of contradiction that $e \in \mathbb Q$, so $e=\frac ab$ with $a,b\in\mathbb Z$ and $b\not=0$. Now suppose $$x = b!\left(e-\sumfrom{n=0}{b}{\frac 1{n!}}\right)$$ and we get two immediate results about $x$. First as $e=\frac ab$ we have $$x=b!\left(\frac ab-\sumfrom{n=0}{b}{\frac 1{n!}}\right) = a(b-1)!-\sumfrom{n=0}{b}{\frac{b!}{n!}}$$ and as $b>n$ for all $n$ in the sum then we get $x$ is an integer. Our second result is from $e = \sumfrom{n=0}\infty{\frac 1{n!}}$ where we get $$x=b!\left(\sumfrom{n=0}{\infty}{\frac{1}{n!}}-\sumfrom{n=0}b{\frac1{n!}}\right) = b!\sumfrom{n=b+1}\infty{\frac 1{n!}} > 0$$ so $x$ must be a positive integer. Now consider $n\ge b+1$ and we would find $$\frac{n!}{b!} = \prodfrom{k=b+1}nk \ge \prodfrom{k=b+1}n{b+1} = (b+1)^{n-b}$$ and therefore $$\frac{b!}{n!}\le \frac{1}{(b+1)^{n-b}}$$ for any $n \ge b+1$, and further note that if $n \ge b+2$ then $\frac{b!}{n!} < \frac{1}{(b+1)^{n-b}}$. From this we now look again at $x$ and we find $$x = b!\sumfrom{n=b+1}{\infty}{\frac 1{n!}} = \sumfrom{n=b+1}{\infty}{\frac{b!}{n!}} < \sumfrom{n=b+1}{\infty}{\frac{1}{(b+1)^{n-b}}} = \sumfrom{n=1}\infty{(b+1)^n} = \frac 1b \le 1$$ So we find our selves with $x\in Z$ and $0<x<1$ so we have ourselves a contradiction and thus $e\not\in\mathbb Q$.
+
+\subsubsection{Question 10}
+Consider first that $1^\circ = \frac{\pi}{180}$ and therefore $\cos(1^\circ)+i\sin(1^\circ) $ is algebraic due to Question 1 part (d) of this section. Now $\cos(1^\circ)+i\sin(1^\circ)\not=0$ so $\left(\cos(1^\circ)+i\sin(1^\circ)\right)^{-1}$ must be algebraic. We find by De Moivre's theorem that $\left(\cos(1^\circ)+i\sin(1^\circ)\right)^{-1} = \cos(-1^\circ)+i\sin(-1^\circ)$. Now from basic trigonometry we have $\cos(-x) = \cos(x)$ and $\sin(-x) = -\sin(x)$ so we therefore have $\cos(-1^\circ)+i\sin(-1^\circ) = \cos(1^\circ) -i\sin(1^\circ)$. Now we can take the sum of these two algebraic numbers and have $$\left(\cos(1^\circ)+i\sin(1^\circ)\right)+\left(\cos(1^\circ)-i\sin(1^\circ)\right) = 2\cos(1^\circ)$$ must be algebraic. Now from here we multiply by $\frac 12$ which is trivially algebraic and get $\cos(1^\circ)$ which must be algebraic.
+
+
+\subsubsection{Question 13}
+$K$ forms a vector space over $F$, with $\dim_F(K) = n$. This means there is a basis $b_1,b_2,\ldots,b_n$ for $K$ over $F$, and each element of $K$ has a unique representation as $\sumfrom{k=0}{n}{\alpha_k b_k}$ with each $\alpha_k \in F$. So then simply by specifying a sequence of $n$ elements of $F$ we get a unique representation of a value in $K$ so if $\card F = q$ is finite then $\card K = q^n$.
+
+
+\subsubsection{Question 14}
+
+If $F$ is a finite field then $F$ has a nonzero finite characteristic, $p$. We know then that $p$ is prime, so we can construct a subfield of $F$ isomorphic to $\mathbb Z_p$, by taking the 1 element and then including any number that is formed by simply adding 1 to itself repeatedly. We can call $1+1 = 2$ and $1+1+1 = 3$ and so on up till $p$ at which point we have $1+1+\ldots+1 = 0$ because $F$ has characteristic $p$. Now that we have this subfield we know that $F$ can be viewed of as a vector space over this subfield we generated and therefore by the problem above we know that $\card F = p^n$ for some $n$.
+
+\subsection{Section 4}
+\subsubsection{Question 1}
+Without much work one find $a^2 = 5-2\sqrt3\sqrt2$ and $a^4=49-\sqrt3\sqrt2$ so if $f(x) = x^4-x^2-44$ then $f(a) = 0$.
+
+\subsubsection{Question 3}
+Consider $K_0 = \mathbb Q(\sqrt 2)$ and we get that $[k_0:\mathbb Q] = 2$, then we can construct $K_1 = K_0(\sqrt 5)$ and $K_2 = K_1(\sqrt 7)$ and finally $K_3=K_2(\sqrt{11})$. It follows then that $[K_4:\mathbb Q] = [K_4:K_3][K_3:K_2][K_2:K_1][K_1:K_0][K_0:\mathbb Q]$ from the corollary to theorem 5.4.1 in the book. Each one of $[K_i:K_{i-1}]\le 2$ so $[K_4:\mathbb Q] \le 2^4$ now we go one step further and realize $p(x) \in K_4[x]$ so for any $a$ such that $p(a) = 0$ then $[K_4(a):K_4 \le \deg p(x) = 5$ and thus $[K_4(a):\mathbb Q] \le 2^4\cdot5=80$. This tells us $a$ is an algebraic number of degree no greater than 80.
+
+\subsubsection{Question 5}
+Well we know $[K:T]$ is some positive integer, lets call it $k$ and therefore if we let $h = [T:F]$ we have $h$ also being a positive integer such that $hk = 2^n$. From this it follows that both $h$ and $k$ are smaller powers of 2 then $2^n$.
+
+\subsubsection{Question 6}
+
+Consider $a = \sqrt[3]{2}$ and $b = 1+\sqrt3i$. Now $a$ is quite obviously of degree 3. For $b$ we have $b^2 = 1-3+2\sqrt3i  = -2+2\sqrt3i$, therefore $b^2-2b=-4$ and so we can see that $b$ is degree 2. When we multiply together we get $ab=\sqrt[3]2\left(1+\sqrt3i\right)$. Let us now consider $$(ab)^3 = 2\left(1+3\sqrt3i-9-3\sqrt3i\right) = -16$$ and therefore $ab$ is algebraic of degree no greater than 3.
+
+\subsection{Section 5}
+\subsubsection{Question 2}
+Consider $f(x) = x^3-3x-1$. Suppose that it is reducible, if that is so then it would reduce into $(x^2+ax+b)(x+c) = f(x)$ and therefore $$x^3+(c+a)x^2+(ac+b)x+bc=x^3-3x-1$$ so $c+a=0$, $ac+b=-3$, and $bc = -1$. It follows from this that $a=-c$ and $c=-\inv b$ so $-c^2-\inv c = -3$ or $c^2+\inv c = 3$ and we know $c\not=0$. Consider $c = \frac pq$ with $q > 0$ and $\gcd(p,q) = 1$, we then have $\frac{p^2}{q^2}+\frac qp = 3$, so we know $$p^3+q^3=3pq^2$$. Now if we divide by $q$ and rearrange a bit we get $\frac{p^3}q = 3pq-q^2$ so $q|p^3$ and therefore as $\gcd(p,q)=1$, we have $q=1$. We also can divide through by $p$ and rearrange and get $\frac{q^3}{p}=3q^2-p^2$ so $p|q^3$ and again as $\gcd(p,q) =  1$ we have $p=1$. Now we go back and see that $p^3+q^3=2\not=3=3pq^2$ so we have a contradiction. Therefore $f(x)$ is irreducible in $\mathbb Q$.
+
+\subsubsection{Question 3}
+Drawing diagrams is hard in \latex so I will assume one is looking at the diagram in the book that the question is referring to. Consider first $\angle AEB$, which is known to be a right angle.\footnote{I do not know what the theorem that states this is called but I didn't think it relevant to prove here.} Now we will use the Pythagorean theorem to come up with a few equivalences. Now by our construction $a$ is the length of $AD$ and $DB$ is our unit. Let $p$ be the length $AE$, let $q$ be the length of $EB$, and let $h$ be the length of $ED$. Now using the Pythagorean theorem we get
+\begin{align*}
+p^2 &= a^2 + h^2\\
+q^2 &= 1^2 + h^2 \\
+(a+1)^2&= p^2 + q^2
+\end{align*}
+and therefore we can do some substitution and find $$a^2+h^2+1^2+h^2=(a+1)^2=a^2+2a+1$$ and we can simplify to having $h^2=a$ so therefore $h=\sqrt a$.
+
+\subsubsection{Question 4}
+Every angle in the regular heptagon will be be $\frac 57\pi$, so for a regular heptagon to be constructible we would need $\frac 57\pi$ to be a constructible angle. If we could construct the angle $\frac 57\pi$ we would also be able to construct the angle $\pi-\frac57\pi=\frac27\pi$. If we can construct this angle then we can surely construct a right triangle with one angle $\frac27\pi$ and a hypotenuse of unit length. This gives us side lengths of $\cos\left(\frac27\pi\right)$ and $\sin\left(\frac27\pi\right)$ so both of these would need to be constructible numbers. From this we would then have $\left[\mathbb Q\left(\cos\left(\frac27\pi\right), \sin\left(\frac27\pi\right)\right):\mathbb Q\right] = 2^n$ for some $n$. Within $\mathbb Q\left(\cos\left(\frac27\pi\right), \sin\left(\frac27\pi\right)\right)$, $e^{i\frac27\pi} = \cos\left(\frac27\pi\right)+i\sin\left(\frac27\pi\right)$ would be of degree two so $\left[\mathbb Q\left(e^{i\frac27\pi}\right):\mathbb Q\left(\cos\left(\frac27\pi\right), \sin\left(\frac27\pi\right)\right)\right] = 2$ and therefore $\left[\mathbb Q\left(e^{i\frac27\pi}\right):\mathbb Q \right]=2^{n+1}$. However $e^{i\frac27\pi}$ is of degree 6 due to the polynomial $x^6+x^5+x^4+x^3+x^2+x^1+1$, which is irreducible and has $e^{i\frac27\pi}$ as a root.
+
+\subsection{Section 6}
+\subsubsection{Question 3}
+\def\LB{\left[}\def\RB{\right]}
+Notice that $p(x)(x-1) = x^5-1$. $x^5-1$ has as roots any number who's fifth power is 1 and therefore any number a integer multiple fifth of the way around the complex unit circle, so $e^{i\frac{2k}5\pi}$ for all $k\in\mathbb Z$ are roots of $p(x)$ with the exception of $1$ as that we get from the $x-1$. This leaves us with the other four possible values as the roots. These numbers are of degree 4 as $p(x)$ is irreducible and they are roots for it, so we then get $p(x) = \prodfrom{i=1}{4}{x-e^{i\frac{2i}5\pi}}$ so we have factorized it into 4 linear parts in $\mathbb Q\left(e^{i\frac{2k}5\pi}\right)$.
+
+\subsubsection{Question 4}
+
+Let us rewrite the coefficients of $q(x)$ so that $q(x) = a_0+a_1x+\cdots+a_{n-1}x^{n-1}+x^n$, this does not change the problem in any ways, simply changes the notation to be one that I prefer. To take things a step further let $a_n=1$ and then we have $$q(x)=\sumfrom{k=0}{n}{a_kx^k}$$ Now if this thing has a rational root, then it will take the form of $\frac st$ with $s,t$ relatively prime and $t>0$. So we then have $$q\left(\frac st\right)=\sumfrom{k=0}{n}{a_k\frac{s^k}{t^k}} = 0$$ We can multiply out and get $$t^nq\left(\frac st\right) = t^n\sumfrom{k=0}{n}{a_k\frac{s^k}{t^k}} = \sumfrom{k=0}{n}{a_ks^kt^{n-k}} = 0$$
+Now we isolate the first term and we have
+\begin{align*}
+\sumfrom{k=1}{n}{a_ks^kt^{n-K}}+a_0t^n &= 0\\
+\therefore s\sumfrom{k=1}{n}{a_ks^{k-1}t^{n-K}}& =-a_0t^n
+\end{align*}
+so $s|a_0t^n$ and as $\gcd(s,t) = 1$ hen $s|a_0$. We can also go the other direction when we isolate the last term of our sum and get
+\begin{align*}
+\sumfrom{k=0}{n-1}{a_ks^kt^{n-k}}+a_ns^n &= 0\\
+\therefore t\sumfrom{k=0}{n-1}{a_ks^kt^{n-1-k}}&=-a_ns^n
+\end{align*}
+so $t|a_ns^n$, however remember we said $a_n=1$ so then we have $t|s^n$ and as $\gcd(t,s) = 1$ then $t=1$.
+
+When we put this together we have $\frac st = s$ and $s|a_0$ which concludes the proof. Notice that I relabeled the coefficients so $a_0$ is the coefficient of $x^0$ in $q(x)$.
+
+\subsubsection{Question 7}
+
+See solution to Section 1, Question 8 of this chapter. The problems are identical.
+
+\subsubsection{Question 8}
+Notice that $x^m-x$ is of degree $m$ so it would be impossible for it to have more than $m$ roots in any field. Now we need to show that these roots form a field, under our specified conditions. They will be the subfield of a finite extension to $\mathbb Z_p$ so  $(a+b)^m = a^m+b^m$ for any $a,b$ in this field
+
+So first to show addition, assume $a,b$ are roots of our polynomial, then $$(a+b)^m -(a+b) = a^m+b^m-a-b=(a^m-a)+(b^m-b)=0+0=0$$
+$$(-a)^m-(-a) = -a^m+a=-(a^m-a) = -0=0$$ so we have the additive group.
+
+For the multiplicative rules we again assume $a,b$ are roots of our polynomial, then notice first that as $a$ and $b$ are roots that $a^m-a = 0$ so $a^m =a$ and the same for $b^m=b$, from this we get 
+$$(ab)^m-ab=a^mb^m-ab=ab-ab=0$$
+and if $a\not=0$ then $$\left(\inv a\right)^m-\inv a = a^{-m}-\inv a = \inv{\left(a^m\right)}-\inv a = \inv a -\inv a = 0$$ so we have multiplication done and thus a field.
+
+\subsubsection{Question 11}
+First we will denote $f(x) \in F[x]$ as $$f(x) = \sumfrom{n=0}{\infty}{f_nx^n}$$ with $a_n = 0$ for all $n > \deg f(x)$ and use this notation for any polynomial in $F[x]$. From this we also have $$\delta(f(x)) = \sumfrom{n=1}{\infty}{nf_nx^{n-1}} = \sumfrom{n=0}\infty{(n+1)f_{n+1}x^n}$$ and that $$f(x)g(x) = \sumfrom{n=0}{\infty}{\sumfrom{k=0}{n}{f_kg_{n-k}}x^n}$$
+
+\question{(a)} Here we have
+\begin{align*}
+\delta(f(x))+\delta(g(x))&=\sumfrom{n=1}{\infty}{nf_nx^{n-1}}+\sumfrom{n=1}{\infty}{ng_nx^{n-1}}\\
+	&= \sumfrom{n=1}{\infty}{n(f_n+g_n)x^{n-1}}\\
+	&=\delta(f(x)+g(x))
+\end{align*}
+
+\question{(b)} Now since we already have that $\delta(f(x))+\delta(g(x)) = \delta(f(x)+g(x))$ then it follows that we only need to show that this is true for functions in the form $ax^n$, as we can construct other polynomials as sums of these polynomials. Now if we let $f(x) = ax^n$ and $g(x)=bx^m$ then \begin{align*}
+\delta(f(x)g(x)) &= \delta(abx^{n+m})\\
+&= ab(n+m)x^{n+m-1}\\
+&= abnx^{n+m-1}+abmx^{n+m-1} \\
+&= nax^{n-1}bx^m + ax^nmbx^{m-1}\\
+&= \delta(f(x))g(x)+f(x)\delta(g(x))
+\end{align*}
+
+
+\subsubsection{Question 14}
+
+Assuming the result from problem 13 to be true, consider $\delta(x^m-x) = mx^{m-1}-1 = -1$, so $\delta(x^m-x)$ must be relatively prime to $x^m-x$ and therefore $x^m-x$ has no roots with multiplicity greater than 1.
+
+\def\LB{}\def \RB{}
+\subsubsection{Question 15}
+\question{(a)} Let $f(x)\in F[x]$ be irreducible and let $f(x)=\sumfrom{i=0}{n}{f_ix^i}$ with $n=\deg f(x)$. If $f(x)$ has a root with multiplicity then $f(x)$ and $\delta(f(x))$ share a divisor and as $\deg \delta(f(x)) < \deg f(x)$ and as $f(x)$ is irreducible then it must be that $\delta(f(x)) = 0$. We know that $f_n \not=0$ as otherwise $n\not=\deg f(x)$, and as $\delta(f(x)) = 0$ then $nf_n=0$. This means that $F$ must have multiplicity $p$, where $p$ is some prime divisor of $n$, as otherwise $nf_n\not=0$.
+
+\question{(b)} Now that we have established $\delta(f(x)) = 0$ and $F$ has characteristic $p$, we can show there is some $g(x)\in F[x]$ such that $f(x) = g(x^p)$. Now for any $\deg f(x)\ge k>0$, we have $kf_k = 0$ from $\delta(f(x)) = 0$ and therefore either $f_k = 0$ or $p|k$. This means we can rewrite $f(x)$ as $$f(x) = f_0+f_px^p+f_{2p}x^{2p}+\cdots+a_{kp}a^{kp}$$ with $kp = n$ and therefore if we let $g(x)=f_0+f_1x+f_2x^2+\cdots+f_{kp}a^k$ then we find $f(x) = g(x^p)$.
+
+
+
 \end{document}
+
 
