@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  18 MAY 2018 11:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  6 JUL 2018 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -864,10 +864,10 @@ Package rerunfilecheck Info: File `Paper.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 225.
  ) 
 Here is how much of TeX's memory you used:
- 17395 strings out of 493029
- 317783 string characters out of 6136234
+ 17396 strings out of 493029
+ 317795 string characters out of 6136234
  408066 words of memory out of 5000000
- 20564 multiletter control sequences out of 15000+600000
+ 20565 multiletter control sequences out of 15000+600000
  14054 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,10n,54p,1461b,382s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -886,7 +886,7 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on Paper.pdf (6 pages, 194964 bytes).
+Output written on Paper.pdf (6 pages, 195175 bytes).
 PDF statistics:
  171 PDF objects out of 1000 (max. 8388607)
  145 compressed objects within 2 object streams

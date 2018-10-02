@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  5 MAY 2018 14:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  1 OCT 2018 18:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1015,7 +1015,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Konigsberg.pdf_tex
-<Konigsberg.pdf, id=110, page=1, 520.26665pt x 393.25441pt>
+<Konigsberg.pdf, id=120, page=1, 520.26665pt x 393.25441pt>
 File: Konigsberg.pdf Graphic file (type pdf)
 
 <use Konigsberg.pdf, page 1>
@@ -1026,28 +1026,36 @@ Overfull \hbox (65.51164pt too wide) in paragraph at lines 53--30
 [][] 
  []
 
-[2 <./Konigsberg.pdf>] [3] [4] [5] [6] (./paper.bbl
+[2 <./Konigsberg.pdf>] [3] [4] [5]
+Overfull \hbox (24.55685pt too wide) in paragraph at lines 208--209
+[]\OT1/cmr/m/n/10 Now the se-quence $\OML/cmm/m/it/10 BGF$ \OT1/cmr/m/n/10 is a
+ path as $\OML/cmm/m/it/10 B$ \OT1/cmr/m/n/10 con-nects to $\OML/cmm/m/it/10 G$
+ \OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 G$ \OT1/cmr/m/n/10 con-nects to $\OML/cm
+m/m/it/10 F$\OT1/cmr/m/n/10 . The se-quence $\OML/cmm/m/it/10 ABGFACEJHCABA$
+ []
+
+[6] [7] [8] (./paper.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 253.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 253.
+) [9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 379.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 379.
  (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 253.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 253.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 379.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 379.
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 5C6D127C480DA2BF1412CA98A4EC7E59;796.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 253.
+(rerunfilecheck)             Checksum: 4D089FFA3C07A6B3DF937DF32C75A0F7;857.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 379.
  ) 
 Here is how much of TeX's memory you used:
- 21543 strings out of 493029
- 382330 string characters out of 6136234
- 518945 words of memory out of 5000000
- 24588 multiletter control sequences out of 15000+600000
+ 21632 strings out of 493029
+ 383324 string characters out of 6136234
+ 520390 words of memory out of 5000000
+ 24673 multiletter control sequences out of 15000+600000
  17172 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,54p,1935b,789s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,9n,54p,1935b,789s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -1061,10 +1069,10 @@ s/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on paper.pdf (7 pages, 179497 bytes).
+Output written on paper.pdf (9 pages, 191510 bytes).
 PDF statistics:
- 315 PDF objects out of 1000 (max. 8388607)
- 287 compressed objects within 3 object streams
- 34 named destinations out of 1000 (max. 500000)
- 122 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 316 PDF objects out of 1000 (max. 8388607)
+ 286 compressed objects within 3 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 138 words of extra memory for PDF output out of 10000 (max. 10000000)
 
