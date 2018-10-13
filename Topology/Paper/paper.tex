@@ -351,25 +351,13 @@ Here $K_5$ refers to the complete graph on 5 verticies, and $K_{3,3}$ is the com
 	edge node {} (6);
 	\end{tikzpicture}
 \end{center}
-\subsection{Groundwork}
 
-Here we prove some lemmas that we will use while proving Kuratowski's theorem before getting into the meat of the theorem.
-
-\begin{theorem}[Spherical and Planar graphs are the same] \label{sphere=plane}
-	If and only if a \gls{graph} may be drawn on a plane with no \glspl{edge} intersection then it may be drawn on a sphere without self intersection.
-\end{theorem}
-
-Now this we won't actually prove as it's quite difficult to do so, however notice that the plane is homeomorphic to the punctured sphere. Now it seems intuitive that if you can draw a finite graph, or even multi-graph on a sphere then it would not have to cover every single point on the sphere. This means that we could puncture the sphere at one point and thus we have the plane.
-
-This means that we may freely interchange usage of a sphere with a plane; for our purposes they are the same.
-
-\begin{theorem}[Euler's equation for planar graphs]
-	Let the number of edges in the graph be $e$, the number of verticies by $v$ and the number of faces be $f$.
-\end{theorem}
-
-
-
-
+The basic sketch of the proof will be:
+\begin{enumerate}
+	\item Prove that $K_5$ and $K_3,3$ are not planar.
+	\item Prove that if if a graph $G$ is planar than any graph obtained through an edge contraction is also planar.
+	\item 
+\end{enumerate}
 
 \printnoidxglossary
 
