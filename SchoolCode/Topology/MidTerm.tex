@@ -1,0 +1,132 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,graphicx,algpseudocode,algorithm}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathrsfs}
+\let\mathcrl\mathscr
+\usepackage[mathscr]{euscript}
+
+
+\title{Topology Midterm}
+\author{Benji Altman}
+
+
+\reversemarginpar
+\newcommand{\question}[1]{\marginpar{\flushright {#1}}}
+\let\union\cup
+\let\inter\cap
+\let\emptyset\varnothing
+\let\bigunion\bigcup
+\let\biginter\bigcap
+\let\composed\circ
+\let\cross\times
+\def\And{\textit{ and }}
+\def\Or{\textit{ or }}
+\def\Return{\State\textbf{return}\par}
+\newcommand{\setcomp}[1]{{#1}^{\mathsf{c}}}
+\newcommand{\prodfrom}[3]{\prod\limits_{#1}^{#2}\left( #3 \right)}
+\newcommand{\sumfrom}[3]{\sum\limits_{#1}^{#2} \left( {#3} \right)}
+\newcommand{\unionfrom}[3]{\bigunion\limits_{#1}^{#2} \left( {#3} \right)}
+\newcommand{\interfrom}[3]{\biginter\limits_{#1}^{#2} \left( {#3} \right)}
+\newcommand{\interacross}[2]{\interfrom{#1}{}{#2}}
+\newcommand{\unionacross}[2]{\unionfrom{#1}{}{#2}}
+\newcommand{\sumacross}[2]{\sumfrom{#1}{}{#2}}
+\newcommand{\prodacross}[2]{\prodfrom{#1}{}{#2}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setbuilder}[2]{\set{#1 | #2}}
+\newcommand{\derivative}[2]{\frac{d}{d{#2}}\left( {#1} \right)}
+\newcommand{\Exists}[2]{\exists_{#1}\left( {#2} \right)}
+\newcommand{\All}[2]{\forall_{#1}\left( #2 \right)}
+\newcommand{\abs}[1]{\left|{#1}\right|}
+\newcommand{\cardinality}[1]{\overline{\overline{#1}}}
+\newcommand{\range}[1]{\textit{\textbf{Rng}}\left( #1 \right)}
+\newcommand{\domain}[1]{\textit{\textbf{Dom}}\left( #1 \right)}
+\newcommand{\pset}[1]{\mathscr P\left( #1 \right)}
+\newcommand{\pair}[2]{\left( #1 , #2 \right)}
+\newcommand{\closure}[1]{\overline{#1}}
+\newcommand{\limpts}[1]{#1 '}
+\newcommand{\ooint}[2]{\left( #1 , #2 \right)}
+\newcommand{\ocint}[2]{\left( #1 , #2 \right]}
+\newcommand{\coint}[2]{\left[ #1 , #2 \right)}
+\newcommand{\ccint}[2]{\left[ #1 , #2 \right]}
+\newcommand{\eqclass}[1]{\overline{#1}}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+
+\begin{document}
+\maketitle
+
+In \question{17.5} order to show that, for any order topology, $\closure{\ooint ab} \subset \ccint ab$ we first notice that $\ccint ab \supset \ooint ab$ and that $\ccint ab$ is closed. By definition we know $\closure{\ooint ab} = \biginter \text{all closed supersets of }\ooint ab$. We now notice that $\ccint ab$ is one such closed superset of $\ooint ab$, thus $\closure{\ooint ab} \subset \ccint ab$.
+
+We now will look to see when $\closure{\ooint ab} = \ccint ab$. We already know that $\closure{\ooint ab} \subset \ccint ab$, and to have equality we only need $\ccint ab \subset \closure{\ooint ab}$. Let us start by noticing that $\ccint ab$ is the union of disjoint sets $\ooint ab$ and $\set{a,b}$. Now if $\ccint ab$ is to be a subset of $\closure{\ooint ab}$ then that would be the same as saying $\ooint ab\union\set{a,b}\subset\closure{\ooint ab}$ thus both $\ooint ab$ and $\set{a,b}$ must be subsets of $\closure{\ooint ab}$. We know that $\ooint ab\subset\closure{\ooint ab}$ as $\closure{\ooint ab} = \ooint ab \union \limpts{\ooint ab}$, and because we know that $\set{a,b}$ is disjoint from $\ooint ab$ we can then say $\ccint ab \subset \closure{\ooint ab} \implies \set{a,b} \subset \limpts{\ooint ab}$. We also can say
+\begin{align*}
+\set{a,b} \subset \limpts{\ooint ab} &\implies \set{a,b} \subset \closure{\ooint ab} \\
+&\implies \set{a,b} \union \ooint ab \subset \closure{\ooint ab} \\
+&\implies \ccint ab \subset \closure{\ooint ab}
+\end{align*}
+and thus, iff $a$ and $b$ are limit points for the interval $\ooint ab$, then our equality ($\ccint ab = \closure{\ooint ab}$) holds.
+\bigskip
+
+Consider\question{17.17} the lower limit topology on $\mathbb R$, and the topology given by the basis $\mathscr C$ of Exercise 8 \S 13. Determine the closures of the intervals $A = \ooint0{\sqrt{2}}$ and $B=\ooint{\sqrt2}3$ in these two topologies.
+
+Basis $\mathscr C$ of Exercise 8 \S 13:\[\mathscr C = \setbuilder{\coint ab}{a<b \And a,b\in\mathbb Q}\]
+\medskip
+
+First we will consider our topology to be $\mathbb R_{\ell}$:
+\smallskip
+
+Let $C$ be an interval in the form $\ooint ab$, where $a,b\in\mathbb R$. By definition we know that $\closure C $ is the intersection of all closed sets that contain $C$. We know that $\coint ab \in \mathbb R_\ell$ and that $\left[a,b\right) \supset A$, thus $\closure C \subset \left[a,b\right)$.
+
+Now if we can show that $[a,b)\subset\closure C$ then we will know that $[a,b)=\closure C$.
+
+First we note that by theorem 17.6 $\closure C = C \union \limpts C$, now because we know $C \subset \closure C$ then we can say if $\coint ab\setminus C\subset \closure C \setminus C$ then $ [a,b) = \closure C$. We also know that $\closure C \setminus C \subset \limpts C$, thus we can say that if $\coint ab \setminus C \subset \limpts C$ then $[a,b) = \closure C$. Next we find that $[a,b) \setminus C = \set a$ so if $a \in \limpts C$ then $[a,b) = \closure C$. We will show $a\in\limpts C$ by contradiction.
+
+Let us assume $a \not\in\limpts C$ then there is an interval $[x,y)$, where $x,y\in \mathbb R$, that contains $a$ but no elements in $C$. By definition $[x,y) = \setbuilder{k}{x\le k<y}$, so if $a\in[x,y)$ then $x\le a<y$. Now we can construct an interval $(a,y) \subset [x,y)$ which is not empty as $y > a$ and thus it will contain some elements of $C$. We now have a contradiction, thus $a \in \limpts C$, thus
+\[
+[a,b) = \closure C
+\]
+
+Now if we let $a = 0$ and $b = \sqrt2$ then we know $\closure{\ooint{0}{\sqrt2}} = \closure A = \coint{0}{\sqrt2}$.
+
+Now if we let $a = \sqrt2$ and $b = 3$ then we know $\closure{\ooint{\sqrt2}3} = \closure B = \coint{\sqrt2}3$.
+\medskip
+
+Now we will to continue on to the topology $\mathcrl C$, which is given by basis $\mathscr C$.
+
+Let us first attempt to find $\closure{\ooint{0}{\sqrt2}}$. We will consider the set $\ccint0{\sqrt2}$, and attempt to show that it is closed by showing it's compliment is open.
+\begin{align*}
+\setcomp{\ccint0{\sqrt2}} &= \ooint{-\infty}0 \union \ooint{\sqrt2}{\infty} \\
+&= \left(\unionacross{a<b<0 \And a,b \in \mathbb Q}{\coint ab} \union \unionacross{\sqrt2<a<b \And a,b \in \mathbb Q}{\coint ab}\right) \in \mathcrl C
+\end{align*}
+Thus $\ccint 0{\sqrt2}$ is closed, and thus $\closure{\ooint0{\sqrt2}}\subset\ccint0{\sqrt2}=\ooint{0}{\sqrt2}\union\set{0,\sqrt2}$. Now to find $\closure{\ooint{0}{\sqrt2}}$ we simply must determine if $0$ is a limit point of $\ooint 0{\sqrt2}$ and if $\sqrt2$ is a limit point of $\ooint 0{\sqrt2}$. If an open set contains $0$ then it must contain an interval $\coint\alpha\beta$, where $\alpha\le 0$ and is rational, and $\beta>0$ and is rational. Because $\beta > 0$ then there must be some number between $0$ and $\beta$ that is in $\ooint 0{\sqrt2}$, thus $0$ is a limit point of $\ooint 0{\sqrt2}$. If an open set contains $\sqrt2$ then it must contain an interval $\coint\alpha\beta$, where $\alpha\le\sqrt2$ and is rational, and $\beta>\sqrt2$ and is rational. Because $\alpha$ is rational $\alpha\not=\sqrt2$, thus there must be a number between $\alpha$ and $\sqrt2$ that is in $\ooint0{\sqrt2}$, thus $\sqrt2$ is a limit point of $\ooint 0{\sqrt2}$. Thus we may now say that $\closure{\ooint0{\sqrt2}} = \ccint{0}{\sqrt2}$.
+
+Now let us attempt to find $\closure{\ooint{\sqrt2}3}$. We will consider the set $\coint{\sqrt2}3$, and attempt to show that it is closed by showing it's compliment is open.
+\begin{align*}
+\setcomp{\coint{\sqrt2}3} &= \ooint{-\infty}{\sqrt2} \union \coint3\infty \\
+&=\left(\unionacross{a<b<\sqrt2\And a,b\in\mathbb Q}{\coint ab} \union \unionacross{3 \le a < b \And a,b\in\mathbb Q}{\coint ab}\right) \in \mathcrl C
+\end{align*}
+Thus $\coint{\sqrt2}3$ is closed, and thust $\closure{\ooint{\sqrt2}3} \subset \coint{\sqrt2}3 = \ooint{\sqrt2}3\union\set{\sqrt2}$. To to find $\closure{\ooint{\sqrt2}3}$ we must simply determine if $\sqrt2$ is a limit point of $\ooint{\sqrt2}3$. If an open set contains $\sqrt2$ then it must contain an interval $\coint\alpha\beta$, where $\alpha\le\sqrt2$ and is rational, and $\beta>\sqrt2$ and is rational. Because $\beta > \sqrt2$ then there must be a number between $\sqrt2$ and $\beta$ that is in $\ooint{\sqrt2}3$, thus $\sqrt2$ is a limit point of $\ooint{\sqrt2}3$. Thus we may now say that $\closure{\ooint{\sqrt2}3}=\coint{\sqrt2}3$.
+
+\bigskip
+Consider \question{18.5}the linear function $f:\mathbb R \to \mathbb R$ defined as $f(x) = \frac{x-a}{b-a}$. We know all linear functions are continious, we have the homeomorphisms
+\begin{align*}
+f(\ooint ab) &= \ooint{\frac{a-a}{b-a}}{\frac{b-a}{b-a}} \\
+&= \ooint01
+\end{align*}
+\begin{align*}
+f(\ccint ab) &= \ccint{\frac{a-a}{b-a}}{\frac{b-a}{b-a}} \\
+&= \ccint01
+\end{align*}
+thus we have shown homeomophism between $\ooint ab$ and $\ooint01$, and between $\ccint ab$ and $\ccint01$.
+
+\bigskip
+\question{18.8(a)}
+\medskip
+\question{(b)}
+\bigskip
+\question{19.7}
+\bigskip
+\question{20.4}
+
+\end{document}

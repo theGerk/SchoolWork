@@ -1,0 +1,87 @@
+\documentclass{article}
+
+% stuff from the percent sign to end of line is a comment, ignored by LaTeX
+
+\usepackage{amsmath,amssymb,graphicx,algpseudocode,algorithm} %load extra symbols and environments
+\usepackage[margin=1in]{geometry} %set margins
+\usepackage{mathrsfs}
+
+\title{Foundations of Mathematics \\ Section 2.3}
+\author{Benji Altman}
+\let\union\cup
+\let\inter\cap
+\let\emptyset\varnothing
+\let\bigunion\bigcup
+\let\biginter\bigcap
+\def\Return{\State\textbf{return} }
+\newcommand{\setcomp}[1]{{#1}^{\mathsf{c}}}
+\newcommand{\interacross}[2]{\biginter\limits_{#1} \left( {#2} \right)}
+\newcommand{\unionacross}[2]{\bigunion\limits_{#1} \left( {#2} \right)}
+\newcommand{\unionfrom}[3]{\bigunion\limits_{#1}^{#2} \left( {#3 } \right)}
+\newcommand{\interfrom}[3]{\biginter\limits_{#1}^{#2} \left( {#3 } \right)}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\reversemarginpar
+
+
+\begin{document}
+\maketitle
+
+Let\marginpar{\flushright3(a)} $\mathscr A$ be a family of sets and $B \in \mathscr A$, and $x \in \unionacross{A \in \mathscr A}{A}$ then $x \in A$ for at least one $A \in \mathscr A$. As $B \in \mathscr A$ then $\left(\forall x \in B\right) x\in\unionacross{A \in \mathscr A}{A}$, thus by definition of subset $B \subseteq \unionacross{A \in \mathscr A}A$.
+\medskip
+
+Let\marginpar{\flushright(b)} $A \subseteq B$ for all $A \in \mathscr A$ where $\mathscr A$ is a family of sets. Then we know that for any $x \in A \in \mathscr A$ that $x \in B$ thus by the definition of subset the set $S = \set{x : (\exists A \in \mathscr A) x \in A} \subseteq B$ and by definition $S = \unionacross{A \in \mathscr A}{A}$, thus $\unionacross{A \in \mathscr A}{A} \subseteq B$.
+\bigskip
+
+The largest set $X$ such that $X\subseteq A$ for all $A\in\mathscr A$ is $\interacross{B\in\mathscr A}B$\marginpar{\flushright11(a)}. This is shown by proving that both $\interacross{B\in\mathscr A}B \subseteq A$ for all $A\in \mathscr A$ and that if $V \subseteq A$ for all $A \in \mathscr A$ then $V \subseteq \interacross{B\in\mathscr A}B$.
+\begin{enumerate}
+\item By theorem 2.3.1(a) we know that $\interacross{B\in\mathscr A}B \subseteq A$ for all $A\in \mathscr A$.
+\item By theorem 2.3.2(a) we know that  if $V \subseteq A$ for all $A \in \mathscr A$ then $V \subseteq \interacross{B\in\mathscr A}B$.
+\end{enumerate}
+Thus we have shown that $\interacross{A\in\mathscr A}A$ is the largest set for which it is a subset of all $A \in \mathscr A$.
+\medskip
+
+The smallest\marginpar{\flushright(b)} set $Y$ such that $A \subseteq Y$ for all $A \in \mathscr A$ is $\unionacross{B\in\mathscr A}B$. This is shown by proving that both $A \subseteq \unionacross{B\in\mathscr A}B$ for all $A \in \mathscr A$ and that if $A \subseteq W$ for all $A \in \mathscr A$ then $\unionacross{B\in\mathscr A}B \subseteq W$.
+\begin{enumerate}
+\item By theorem 2.3.1(b) we know that $A \subseteq \unionacross{B\in\mathscr A}B$ for all $A \in \mathscr A$.
+\item By theorem 2.3.2(b) we know that  if $A \subseteq W$ for all $A \in \mathscr A$ then $\unionacross{B\in\mathscr A}B \subseteq W$.
+\end{enumerate}
+Thus we have shwon that $\unionacross{B\in\mathscr A}B$ is the smallest set for which it is a superset of all $A \in \mathscr A$.
+\bigskip
+
+Let \marginpar{\flushright12(a)}$\mathscr A = \set{ \set{1, 2, \ldots, 10 }, \set{11, 12, \ldots, 20, 1}}$
+\medskip
+
+Let \marginpar{\flushright(b)}$\mathscr B = \set{ \set{1, 2, \ldots, 17}, \set{18}, \set{19}, set{20} }$
+\medskip
+
+Let \marginpar{\flushright(c)}$\mathscr C = \set{ \set1, \set2, \ldots, \set{20} }$
+\bigskip
+
+First we know \marginpar{\flushright17(a)}that if $Q \subseteq W$, then $Q \inter W = Q$, and using this we will show by induction that for any $k \in \mathbb N$ that $\interfrom{i=1}k{A_i}=A_k$ given that for any pair $i\in\mathbb N$, $j\in\mathbb N$ where $i\le j$ then $A_j \subseteq A_i$.
+
+For our base case we let $k=1$, and it is trivial to show that $\interfrom{i=1}1{A_i}=A_1$.
+
+For our inductive case we assume that $\interfrom{i=1}{k}{A_i}=A_{k}$ and we intend to show that $\interfrom{i=1}{k+1}{A_i}=A_{k+1}$.
+\begin{align*}
+\interfrom{i=1}{k+1}{A_i} &= \interfrom{i=1}{k}{A_i} \inter A_{k+1} \\
+&= A_k \inter A_{k+1} \\
+&= A_{k+1}
+\end{align*}
+The last step,  $A_k \inter A_{k+1} = A_{k+1}$ is true due to our knowledge that $A_{k+1} \subseteq A_k$.
+
+Thus by PMI we know that for any $k \in \mathbb N$ that $\interfrom{i=1}k{A_i}=A_k$ given that for any pair $i\in\mathbb N$, $j\in\mathbb N$ where $i\le j$ then $A_j \subseteq A_i$.
+\medskip
+
+We\marginpar{\flushright(b)} again will let $A_j \subseteq A_i$ for any pair $i\in\mathbb N$, and $j\in\mathbb N$ where $i\le j$, and again we will use mathematical induction, this time to show that $\unionfrom{i=1}\infty{A_i}=A_1$.
+
+For our base case we show that $\unionfrom{i=1}1{A_i}=A_1$, which is trivial.
+
+For our inductive case we assume $\unionfrom{i=1}k{A_i}=A_1$ and show that it holds for $\unionfrom{i=1}{k+1}{A_i}=A_1$.
+\begin{align*}
+\unionfrom{i=1}{k+1}{A_i} &= \unionfrom{i=1}k{A_i} \union A_{k+1} \\
+&= A_1 \union A_{k+1}
+\end{align*}
+We know that $ A_1 \union A_{k+1}=A_1$ because $\forall (n \in \mathbb N) A_n \subseteq A_1$, thus $A_{k+1}\subseteq A_1$, and because $A_{k+1}$ is a subset of $A_1$ the union of the two is $A_1$ (there are no elements in $A_{k+1}$, not in $A_1$).
+
+Thus by PMI we know that for any $k\in\mathbb N$, $\unionfrom{i=1}k{A_i}=A_1$, although this isn't what we were actually trying to prove. The question states the union up to $\infty$, although $A_i$ is only defined for when $i \in \mathbb N$, thus it doesn't make sense to include infinity in this range.
+\end{document}

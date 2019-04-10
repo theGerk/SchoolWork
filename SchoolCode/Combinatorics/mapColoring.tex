@@ -1,0 +1,34 @@
+\documentclass{article}
+
+% stuff from the percent sign to end of line is a comment, ignored by LaTeX
+
+\usepackage{amsmath,amssymb,graphicx,algpseudocode,algorithm} %load extra symbols and environments
+\usepackage[margin=1in]{geometry} %set margins
+\usepackage{mathrsfs}
+
+\title{Map Coloring}
+\author{Benji Altman}
+\let\union\cup
+\let\intersection\cap
+\let\inter\intersection
+\let\emptyset\varnothing
+\def\Return{\State\textbf{return} }
+\newcommand{\setcomp}[1]{{#1}^{\mathsf{c}}}
+\newcommand{\biginter}[2]{\bigcap\limits_{#1} \left( {#2} \right)}
+\reversemarginpar
+
+\begin{document}
+\maketitle
+
+\section{Question}
+Given a map consisting of $n$ circles, what is an upper bound for the number of colors needed to color in the map such that every space has it's own color and each adjacent space has a different color from it. Spaces touching at a finite number of points do not count, they must share an edge (thus infinite points). More specifically find a better upper bound then $n^2$.
+
+\section{Ideas}
+The solution to this that we are going to try and show that the upper bound is $2$. One may get an intuitive sense as to why this is true by letting the outside space be color $A$ and notice that only spaces which may be written in the form $\biginter{i\in(0,n]-\{k\}}{\setcomp{S_i}} \inter S_k$ so that it is the intersection of $1$ circle with the compliment of all the others. Then those will only be touching areas that are the intersection of all the copmliments and areas that are the interesction of $2$ circles and all the other copliments. This extends out no mater how the cirlces ae laid out. Though as I do not see how to prove this it is more of an intuitive idea then anything concrete.
+
+Now let $\mathscr U$ is the set of all circles, then let $\mathcal I \subseteq \mathscr U$ and let $\mathcal O = \mathscr U \setminus \mathcal I$. Now if we are able to show that for any valid $\mathcal I$ we can have the space defined as $\left[\biginter{A \in \mathcal I}{A}\right] \inter \left[\biginter{A \in \mathcal O}{\setcomp A}\right]$ thus 
+
+\subsection{construction}
+One can construct an algorithim to color any map of $n$ circles with only $2$ colors. This was found by Proffesor Guetter, although I will lay it out here. Start with a map only having $0$ circles, and color the entire universe with color $A$. Now start to add circles, each time you do invert\footnote{if the color is $A$ then make it $B$ and if the color is $B$ then make it $A$} the colors wherever that circle is. Continue adding circles like this until you have all $n$. This will result in 2 working colors, again a proof is beyond me.
+
+\end{document}

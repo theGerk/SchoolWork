@@ -1,0 +1,177 @@
+\documentclass{article}
+
+% stuff from the percent sign to end of line is a comment, ignored by LaTeX
+
+\usepackage{amsmath,amssymb,graphicx,algpseudocode,algorithm} %load extra symbols and environments
+\usepackage[margin=1in]{geometry} %set margins
+\usepackage{mathrsfs}
+
+\title{Foundations of Mathematics \\ Section 3.1}
+\author{Benji Altman}
+
+\newcommand{\sectionheading}[1]{\noindent\textbf{#1}
+
+}
+\let\union\cup
+\let\inter\cap
+\let\emptyset\varnothing
+\let\bigunion\bigcup
+\let\biginter\bigcap
+\let\composed\circ
+\let\cross\times
+\def\And{\textit{ and }}
+\def\Or{\textit{ or }}
+\def\Return{\State\textbf{return}\par}
+\newcommand{\setcomp}[1]{{#1}^{\mathsf{c}}}
+\newcommand{\prodfrom}[3]{\prod\limits_{#1}^{#2}\left( #3 \right)}
+\newcommand{\sumfrom}[3]{\sum\limits_{#1}^{#2} \left( {#3} \right)}
+\newcommand{\unionfrom}[3]{\bigunion\limits_{#1}^{#2} \left( {#3} \right)}
+\newcommand{\interfrom}[3]{\biginter\limits_{#1}^{#2} \left( {#3} \right)}
+\newcommand{\interacross}[2]{\interfrom{#1}{}{#2}}
+\newcommand{\unionacross}[2]{\unionfrom{#1}{}{#2}}
+\newcommand{\sumacross}[2]{\sumfrom{#1}{}{#2}}
+\newcommand{\prodacross}[2]{\prodfrom{#1}{}{#2}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setbuilder}[2]{\set{#1 : #2}}
+\newcommand{\derivative}[2]{\frac{d}{d{#2}}\left( {#1} \right)}
+\newcommand{\Exists}[2]{\exists_{#1}\left( {#2} \right)}
+\newcommand{\All}[2]{\forall_{#1}\left( #2 \right)}
+\newcommand{\abs}[1]{\left|{#1}\right|}
+\newcommand{\cardinality}[1]{\overline{\overline{#1}}}
+\newcommand{\range}[1]{\textit{\textbf{Rng}}\left( #1 \right)}
+\newcommand{\domain}[1]{\textit{\textbf{Dom}}\left( #1 \right)}
+\newcommand{\pset}[1]{\mathscr P\left( #1 \right)}
+\newcommand{\pair}[2]{\left( #1 , #2 \right)}
+
+\begin{document}
+
+\maketitle
+
+\sectionheading{7}
+Let $R=\set{\pair15,\pair22,(3,4),(5,2)}$, $S=\set{(2,4),(3,4),(3,1),(5,5)}$, and $T={(1,4),(3,5),(4,1)}$. Find
+
+\smallskip
+\sectionheading{(a)}
+$R\composed S$
+\[R\composed S = \set{(3,5),(5,2)}\]
+
+\medskip
+\sectionheading{(b)}
+$R \composed T$
+\[R\composed T = \set{(3,2),(4,5)}\]
+
+\medskip
+\sectionheading{(f)}
+$T \composed T$
+\[T\composed T = \set{(1,1)}\]
+
+\medskip
+\sectionheading{(g)}
+$R \composed (S \composed T)$
+\begin{align*}
+S \composed T &= \set{(3,5)} \\
+R\composed (S \composed T) &= \set{(3,2)}
+\end{align*}
+
+\bigskip
+\sectionheading{11}
+Let $R$ be a relation from $A$ to $B$ and $S$ be a relation from $B$ to $C$.
+
+\smallskip
+\sectionheading{(a)}
+Prove that $\range{R^{-1}}=\domain{R}$
+
+\begin{align*}
+R^{-1} &= \setbuilder{(y,x)}{(x,y) \in R} \\
+\range{R^{-1}} &= \setbuilder{x}{\Exists{y}{(y,x) \in R^{-1}}} \\
+\domain{R} &= \setbuilder{x}{\Exists{y}{(x,y) \in R}}
+\end{align*}
+
+Let $v\in\range{R^{-1}}$, thus there exists some $y$ such that $(y,v) \in R^{-1}$, now let $w$ be one possible value for $y$. Now we know that $(w,v) \in R^{-1}$ so we also know that $(v,w) \in R$. We now can say $v \in \domain R$, and as that would be true for any $v\in\range{R^{-1}}$, we then know $\range{R^{-1}} \subseteq \domain R$.
+
+Now let $v\in\domain R$, there must now be some $y$ such that $(v,y) \in R$ and we will now let $w$ represent one such value of $y$. Now we can say $(v,w) \in R$ which also means that $(w,v) \in R^{-1}$ and that $v \in \range{R^{-1}}$, and because this is true for any $v\in\domain R$, then $\domain R \subseteq \range{R^{-1}}$
+
+Now we can finally say $\domain R = \range{R^{-1}}$.
+
+\medskip
+\sectionheading{(b)}
+Prove that $\domain{S \composed R} \subseteq \domain R$.
+
+\begin{align*}
+S \composed R &= \setbuilder{(a,c)}{\Exists{b}{(a,b) \in R \And (b,c) \in S}} \\
+\domain{S \composed R} &= \setbuilder{a}{\Exists{c}{(a,c) \in S \composed R}} \\
+\domain{R} &= \setbuilder{a}{\Exists{b}{(a,b) \in R}}
+\end{align*}
+
+First let $x \in \domain{S \composed R}$, that means that there is some $c$ such that $(a,c) \in S \composed R$, we will let $y$ be one such value of $c$. Now that we know $(x,y) \in S \composed R$ we can say there is some $b$ such that $(x,b)\in R$, we will let $z$ be one such value of $b$. Now we notice that $(x,z) \in R$, which means that $x\in\domain{R}$, and because that could be any $x\in\domain{S\composed R}$ we know that $\domain{S\composed R} \subseteq \domain{R}$.
+
+\medskip
+\sectionheading{(c)}
+Show by example that $\domain{S \circ R} = \domain{R}$ may be false.
+
+\begin{align*}
+R &= \set {(0,0)} \\
+S &= \emptyset \\
+S \composed R &= \emptyset \\
+\domain R &= \set 0 \\
+\domain{S \composed R} &= \emptyset \\
+\domain{S\composed R} = \emptyset &\not= \set 0 = \domain R
+\end{align*}
+
+\bigskip
+\sectionheading{12}
+Complete the proof of Theorem 3.1.2 by proving that if $R$ is a relation from $A$ to $B$ and $S$ is a relation from $B$ to $C$, then
+
+\smallskip
+\sectionheading{(c)}
+$(S \composed R)^{-1}=R^{-1} \composed S^{-1}$.
+
+\begin{align*}
+S \composed R &= \setbuilder{(a,c)}{\Exists{b}{(a,b) \in R \And (b,c) \in S}} \\
+(S\composed R)^{-1} &= \setbuilder{(c,a)}{(a,c)\in S\composed R} \\
+R^{-1} &= \setbuilder{(b,a)}{(a,b)\in R} \\
+S^{-1} &= \setbuilder{(c,b)}{(b,c)\in S} \\
+R^{-1} \composed S^{-1} &= \setbuilder{(c,a)}{\Exists{b}{(c,b)\in S^{-1} \And (b,a) \in R^{-1}}}
+\end{align*}
+
+First we will start by showing $(S\composed R)^{-1} \subseteq R^{-1}\composed S^{-1}$ and then we will show $(S\composed R)^{-1} \supseteq R^{-1}\composed S^{-1}$.
+
+For our first step we let $(x,y) \in (S \composed R)^{-1}$, which means that $(y,x)\in S\composed R$. Now we can say there is some $b$ such that $(y,b) \in R$ and $(b,x) \in S$, we will let $z$ be a possible value for $b$, which means $(y,z) \in R$ and $(z,x) \in S$. Now we can say that $(z,y) \in R^{-1}$ and that $(x,z) \in S^{-1}$. Now we can show that $(x,y)\in R^{-1}\composed S^{-1}$, which means that $(S\composed R)^{-1} \subseteq R^{-1}\composed S^{-1}$
+
+For our second step we will start by letting $(x,y) \in R^{-1}\composed S^{-1}$, using this we can say that there exists a $b$ such that $(x,b)\in S^{-1}$ and $(b,y)\in R^{-1}$, we will let $z$ be one such possible value of $b$. Now we have $(x,z)\in S^{-1}$ and $(z,x) \in R^{-1}$ 
+
+\bigskip
+\sectionheading{14}
+Prove that if $A$ has $m$ elements and $B$ has $n$ elements, then there are $2^{mn}$ different relations from $A$ to $B$. 
+
+\smallskip
+
+First let us notice that the maximal relation, one with every possible pair from $A$ to $B$ is $A \cross B$. Now we want to find how many possible subsets of $A\cross B$ there are, as any subset is a unique relation from $A$ to $B$, there may be no other possible relations that are not subsets of $A\cross B$ as $A\cross B$ has all ordered pairs $(a,b)$ where $a\in A$ and $b \in B$, and thus all relations must be subsets of $A\cross B$. Now to count how many subsets there are we simply must realize that any element may either be in a subset or not in a subset, then we are looking at two possibilities for each element in $A\cross B$. This translates to $2^{\cardinality{A\cross B}}$ different relations (this could also be looked at as $\cardinality{\pset{A\cross B}}$.) We now simply need to find how many elements there are in $A\cross B$ and here we use the multiplication rule and find $\cardinality{A\cross B} = \cardinality{A}\times\cardinality{B}$ which we know is $m\cdot n$. Thus the total number of possible relations from $A$ to $B$ is $2^{mn}$.
+
+\bigskip
+\sectionheading{15(a)}
+Let $R$ be a relation from $A$ to $B$. For $a \in A$, define the \textbf{vertical section of $R$ at $a$} to be $V_a=\setbuilder{y\in B}{(a,y)\in R}$. Prove that $\unionacross{a\in A}{V_a}=\range{R}$.
+
+Let \[y\in \unionacross{a\in A}{V_a}\]
+then we can say
+\begin{align*}
+\Exists{x}{y\in V_x} &\implies \Exists{x}{(x,y)\in R}\\
+&\implies y \in \range{R}\\
+&\implies \unionacross{a\in A}{V_a} \subseteq \range{R}
+\end{align*}
+Now let \[y \in \range{R}\]
+then we can say
+\begin{align*}
+\Exists{x}{(x,y)} \in R &\implies \Exists{x}{y\in V_x} \\
+&\implies y\in\unionacross{a\in A}{V_a}\\
+&\implies \range{R} \subseteq \unionacross{a\in A}{V_a}
+\end{align*}
+Now we have shown
+\[\range{R} = \unionacross{a\in A}{V_a}\]
+
+
+\medskip
+\sectionheading{(b)}
+Let $R$ be a relation from $A$ to $B$. For $b \in B$, define the \textbf{horizontal section of $R$ at $b$} to be $H_b=\setbuilder{x\in A}{(x,b)\in R}$. Prove that $\unionacross{b\in B}{H_b}=\domain{R}$.
+
+\end{document}
