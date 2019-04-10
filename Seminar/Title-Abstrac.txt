@@ -1,0 +1,4 @@
+Title: A guided tour to turing completenss.
+
+
+Programmers are often surprised just how much they can accomplish with a very small set of tools.  There is a theoretical upper bound for how many things may be done, and this is called turing completeness. I intend to explore a few aspects of turing completeness. First, we look at different turing complete systems and see if there are common ways in which they achieve their turing completeness. Second we explore systems that are not turing complete and see if we can easily determine that they are not turing complete and what they are missing to make them turing complete.

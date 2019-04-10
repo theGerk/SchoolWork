@@ -1,0 +1,5 @@
+Project statement:
+
+1. Understand and explain what a cryptographically secure voting system is, and why it is nessicary.
+2. Learn the details of how a specific system works and implement it in code. I do not intend to understand all the low level algorithms, so this program may use libraries that already have lower level algorithms implemented. This allows me to spend more time focusing on what parts I want to focus on and not spend time trying to figure out how to make a cryptographic hash.
+3. Write a paper documenting everything I learned, strengths and weaknesses of the algorithm and cryptographic voting systems in general, and to lay out what sort of further research there may be for me.

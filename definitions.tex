@@ -10,11 +10,11 @@
 \usepackage{tikz}
 \geometry{reversemarginpar}
 
-
 \author{Benji Altman}
 
 \def\latex{\LaTeX\ }
 
+\newcommand{\comment}[1]{}
 \def\useLim{\limits}
 \newcommand{\question}[1]{\marginnote{#1}}
 \let\union\cup
@@ -63,6 +63,7 @@
 \def\true{\text{True}}
 \def\false{\text{False}}
 \newcommand{\ball}[2]{B_{#1}\left({#2}\right)}
+\let\normsubgroup\triangleleft
 \def\LB{}
 \def\RB{}
 \newcommand{\cannonicalSet}[1]{\left[ #1 \right]}
@@ -70,5 +71,6 @@
 \newcommand{\norm}[1]{\left|\left|{#1}\right|\right|}
 
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
