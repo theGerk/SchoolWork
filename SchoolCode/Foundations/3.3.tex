@@ -1,0 +1,57 @@
+\documentclass{article}
+
+\input{definitions}
+\title{Foundations of Mathematics \\ Section 3.3}
+
+\begin{document}
+
+\maketitle
+
+\question{3.3.4}
+
+\question{a)}
+
+Here our partition $\mathscr P$ on $\mathbb R$ may be defined as the following
+\begin{enumerate}
+\item $\All{x\in\coint01}{x \in P_x \in \mathscr P}$
+\item $\All{P \in \mathscr P}{x \in P \implies \left( x + 1 \in P \And x - 1 \in P \right)}$
+\end{enumerate}
+
+\question{c)}
+Here our partition $\mathscr P$ on $\mathbb R$ may be defined as the following
+\begin{enumerate}
+\item $\All{x \in \ccint{-\frac\pi2}{\frac\pi2}}{x \in P_x \in \mathscr P}$
+\item $\All{x \in \ooint{-\frac\pi2}{\frac\pi2}}{\pi-x \in P_x}$
+\item $\All{P \in \mathscr P}{x \in P \implies \left( x + 2\pi \in P \And x - 2\pi \in P \right)}$
+\end{enumerate}
+
+\question{d)}
+
+Here our partition $\mathscr P$ on $\mathbb R$ may be defined as the following
+\[
+\All{x\in\coint0\infty}{\set{-x,x}\in\mathscr P}
+\]
+
+\question{e)}
+
+Here our partition $\mathscr P$ on $\mathbb R^2$ may be defined as the following
+\begin{enumerate}
+\item $\mathscr P = \set{P_-, P_0, P_+}$
+\item $P_- = \setbuilder{\pair xy \in \mathbb R^2}{xy < 0}$
+\item $P_0 = \setbuilder{\pair xy \in \mathbb R^2}{xy = 0}$
+\item $P_+ = \setbuilder{\pair xy \in \mathbb R^2}{xy > 0}$
+\end{enumerate}
+
+\question{3.2.5}
+
+Here we define our partition $\mathscr P$ on $\set{1,i,-1,-i}$ as
+\[\mathscr P = \set{\set{1,-1},\set{i,-i}}\]
+
+\question{3.2.6}
+
+Here we define our partition $\mathscr P$ on $S^2$ where $S = \set{1,i,-1,-i}$ as
+\[\mathscr P = \setbuilder{\setbuilder{\pair xy\in S^2}{xy = s}}{s\in S}\]
+This may more clearly be defined as the following, the two are equivalent.
+\[\All{s\in S}{\setbuilder{\pair xy\in S^2}{xy = s} \in \mathscr P}\]
+
+\end{document}

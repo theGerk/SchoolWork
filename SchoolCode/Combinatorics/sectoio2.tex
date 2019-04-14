@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,graphicx,esint} %load extra symbols and environments
+\usepackage[margin=1in]{geometry} %set margins
+\usepackage{mathrsfs}
+
+\title{Foundations of Mathematics\\Section 1.5 Problems}
+\author{Benji Altman}
+
+\reversemarginpar
+
+\begin{document}
+\maketitle
+$$
+\mathbb{R}
+$$
+We\marginpar{\flushright3(c)} are trying to prove $4\not|x^2\implies x\in\{\text{Odds}\}$, where $x\in\mathbb{Z}$. By contrapositive, $4\not|x^2\implies x\in\{\text{Odds}\}$ is equivalent to trying to prove $4|x^2\impliedby x\in2\mathbb Z$.
+
+Let $x$ be an even number. Thus it can be written as $2k$, where $k\in\mathbb Z$. Now
+\[x^2=4k^2\]
+and $4k^2$ is divisible by $4$ by definition of divisibility. Thus $4\not|x^2\implies x\in\{\text{Odds}\}$.
+\vspace{2\baselineskip}
+
+Let\marginpar{\flushright5} $\mathfrak C$ be a circle with center at $(2,4)$ and radius length of $r$, this will be referred to throughout problem 5.
+\medskip
+
+The\marginpar{\flushright(a)} point $(-1,5)$ is distance $d_1$ from the center of $\mathfrak C$, and the point $(5,1)$ is distance $d_2$ from the center of $\mathfrak C$.
+\begin{align*}
+d_1
+&= \sqrt{(2-(-1))^2+(4-5)^2} \\
+&= \sqrt{3^2+(-1)^2} \\
+&= \sqrt{9+1} \\
+&= \sqrt{10}
+\\ \\
+d_2
+&= \sqrt{(5-2)^2+(1-4)^2} \\
+&= \sqrt{3^2+(-3)^2} \\
+&= \sqrt{9+9} \\
+&= \sqrt{18} \\
+&= 3\sqrt{2}
+\end{align*}
+\begin{equation*}
+\sqrt{10} = d_1 \not= d_2 = 3\sqrt2
+\end{equation*}
+By the definition of circle, two points of of different distance from the centerpoint may not both lie upon it's edge.
+\bigskip
+
+T\marginpar{\flushright(b)}he distance from the line $y=x-6$, which will herein be referred to as $\mathfrak L$, to the center point of $\mathfrak C$ at $x$ is given by the function:
+\begin{align*}
+\mathfrak D(x)&=\sqrt{(2-x)^2+(4-(x-6))^2}\\
+&=\sqrt{(2-x)^2+(10-x)^2} \\
+&=\left((2-x)^2+(10-x)^2\right)^\frac12
+\end{align*}
+We can find $\mathfrak D(x)$'s minima by using calculus.
+\begin{align*}
+\mathfrak D'(x) &= \frac12\cdot\left((2-x)^2+(10-x)^2\right)^{-\frac12} \cdot \left(2\cdot(2-x)\cdot(-1)+2\cdot(10-x)\cdot(-1)\right) \\
+&= \frac{2(x-6)}{\sqrt{(2-x)^2+(10-x)^2}}
+\end{align*}
+$\mathfrak D'(x)=0$ when $(2(x-6)=0)\land\left(\sqrt{(2-x)^2+(10-x)^2}\not=0\right)$
+\begin{align*}
+2(x-6)&=0 \\
+x-6&=0 \\
+x&=6
+\end{align*}
+\begin{align*}
+\sqrt{(2-6)^2+(10-6)^2}&=\sqrt{(-4)^2+4^2} \\
+&=4\sqrt{2} \\
+&\not=0
+\end{align*}
+Thus $\mathfrak D$'s only critical point is when $x=6$. We can tell $x=6$ is a minima for $\mathfrak D(x)$ if $\mathfrak D''(6)>0$.
+\begin{align*}
+\mathfrak D'(x)&=2(x-6)\left((2-x)^2+(10-x)^2\right)^{-1/2} \\
+\mathfrak D''(x)&=2\left((2-x)^2+(10-x)^2\right)^{-1/2}-(x-6)\left((2-x)^2+(10-x)^2\right)^{-3/2}\cdot2\left(x-12\right) \\
+\mathfrak D''(6)&=2\left((2-6)^2+(10-6)^2\right)^{-1/2}-(6-6)\left((2-6)^2+(10-6)^2\right)^{-3/2}\cdot2\left(6-12\right) \\
+&=2\left((-4)^2+(4)^2\right)^{-1/2}-(0)\left((-4)^2+4^2\right)^{-3/2}\cdot2\left(-6\right) \\
+&= \frac{\sqrt{2}}4 > 0
+\end{align*}
+Thus the distance between $\mathfrak C$'s center point and $\mathfrak L$ is $\mathfrak D(6)$, which is equal to
+\begin{align*}
+\mathfrak D(6) &= \sqrt{(2-6)^2+(4-(6-6))^2} \\
+&= \sqrt{(-4)^2+4^2} \\
+&= \sqrt{16\cdot2} \\
+&= 4\sqrt2
+\end{align*}
+If $4\sqrt2>r$ then $\mathfrak L$ does not cross over $\mathfrak C$ because $\mathfrak L$ will never have a point as close or closer then $r$ to $\mathfrak C$'s center point.
+
+We can say that $\sqrt2>\frac43$ because $\sqrt2^2=2>\frac43^2=\frac{16}9$, thus $4\sqrt2>4\cdot\frac43=\frac{16}3>\frac{15}3=5$. Thus $4\sqrt2>5$ so if $r=5$, $\mathfrak L$ will not intersect $\mathfrak C$.
+\bigskip
+
+Claim\marginpar{\flushright(c)}: $(0,3)$ is not inside $\mathfrak C\implies(3,1)$ is not inside $\mathfrak C$. We proove this by contrapostive, so we are going to show that if $(3,1)$ is inside $\mathfrak C\implies(0,3)$ is inside $\mathfrak C$.
+
+Proof: The point $(0,3)$ is of distance $\sqrt{(2-0)^2+(4-3)^2}$ from the center of $\mathfrak C$.
+\begin{align*}
+\sqrt{(2-0)^2+(4-3)^2} &= \sqrt{2^2+1^2} \\
+&= \sqrt{4+1} \\
+&= \sqrt5
+\end{align*}
+The point $(3,1)$ is of distance $\sqrt{(3-2)^2+(1-4)^2}$ from the center of $\mathfrak C$.
+\begin{align*}
+\sqrt{(3-2)^2+(1-4)^2}&=\sqrt{1^2+(-3)^2} \\
+&=\sqrt{1+9} \\
+&=\sqrt{10}
+\end{align*}
+For the point $(3,1)$ to be in $\mathfrak C$, $r>\sqrt{10}$, thus $(0,3)$ will always be contained within that circle as it is only $\sqrt5$ from the center of $\mathfrak C$.
+\vspace{2\baselineskip}
+
+Prove \marginpar{\flushright10}that $\sqrt5\not\in\mathbb Q$. This will be shown by contradiction so we start by assuming $\sqrt5\in \mathbb Q$, which by definition of $\mathbb Q$ means that it can be written as $\frac ab$, where $a\in\mathbb Z$ and $b\in\mathbb Z_+$ and there are no common factors between $a$ and $b$. \footnote{$\mathbb Z_+$ is the set of positive integers, ie: $\{1, 2, 3, \ldots\}$.} We also know, by definition of square root, that $\sqrt5^2=5$, thus $\frac ab^2=5$ and $a^2=5b^2$.
+
+We also will show that for any integer $x$, if it is not divisible by some prime number $d$, then $x^2$ is also not divisible by $d$. We show this by saying that any value $x$ can be written as $(-1)^b p_1^{e_1} p_2^{e_2} p_3^{e_3} \ldots p_v^{e_v}$, where $b\in\{0,1\}, \forall_{p_k, k\in\mathbb N}(p_k\in\mathbb P) $
+
+\marginpar{\flushright11}
+
+\end{document}

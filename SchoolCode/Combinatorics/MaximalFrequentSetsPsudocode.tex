@@ -1,0 +1,157 @@
+\documentclass{article}
+
+\title{Maximal Frequent Set Algorithm}
+\author{Benji Altman}
+
+\usepackage{amsmath,amssymb,graphicx,algpseudocode,algorithm} %load extra symbols and environments
+\usepackage[margin=1in]{geometry} %set margins
+\usepackage{mathrsfs}
+
+\let\union\cup
+\let\inter\cap
+\let\cross\times
+\let\emptyset\varnothing
+\let\bigunion\bigcup
+\let\true\top
+\let\false\bot
+\let\biginter\bigcap
+
+\let\setminus-
+\let\bigcross\bigtimes
+\def\Return{\State\textbf{return} }
+\newcommand{\setcompliment}[1]{{#1}^{\mathsf{c}}}
+\newcommand{\unionfrom}[3]{\bigunion\limits_{#1}^{#2} \left( {#3} \right)}
+\newcommand{\interfrom}[3]{\biginter\limits_{#1}^{#2} \left( {#3} \right)}
+\newcommand{\crossfrom}[3]{\bigcross\limits_{#1}^{#2} \left( #3 \right)}
+\newcommand{\productfrom}[3]{\prod\limits_{#1}^{#2} \left( #3 \right)}
+\newcommand{\sumfrom}[3]{\sum\limits_{#1}^{#2} \left( {#3} \right)}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setbuilder}[2]{\set{#1 | #2}}
+\newcommand{\derivative}[2]{\frac{d}{d{#2}}\left( {#1} \right)}
+\newcommand{\Exists}[2]{\exists_{#1}\left( {#2} \right)}
+\newcommand{\abs}[1]{\left|{#1}\right|}
+\newcommand{\cardinality}[1]{\overline{\overline{#1}}}
+\newcommand{\interacross}[2]{\interfrom{#1}{}{#2}}
+\newcommand{\unionacross}[2]{\unionfrom{#1}{}{#2}}
+\let\times\cdot
+
+
+\newcommand{\CommentLine}[0]{\State\textbackslash\textbackslash}
+\begin{document}
+\maketitle
+\section{Pseudocode}
+Let $P(S)$ be read as the statement ``$S$ is a special set'', and let $\mathcal U$ be any finite superset of $\left\{x: P\left(\{x\}\right)\right\}$.
+
+\begin{algorithm}
+	\caption{depth-first searth}\label{dfs}
+	\begin{algorithmic}[1]
+		\Function{FindMaximalSpecialSet}{\null}
+			\Return \Call{GetSpecialSuperset}{$\mathcal U,\emptyset,\emptyset$}
+		\EndFunction
+		\\
+		\Function{GetSpecialSuperset}{$A,B,\mathcal O$}
+			\CommentLine Step 1: thin out array
+			\ForAll{$x \in A$}
+				\If{$\neg$ \Call {$P$}{$B \union \set x$}}
+					\State $A \gets A \setminus \set x$
+				\EndIf
+			\EndFor
+			\\
+			\CommentLine Step 2: add to output, or call recursive
+			\If{$A=\emptyset$}
+				\\
+				\CommentLine If $B$ is not a subset of any set in $\mathcal O$ add it to $\mathcal O$ and return.
+				\ForAll{$O \in \mathcal O$}
+					\If{$B \subseteq O$}
+						\Return $\mathcal O$ \Comment{Ends the function if the return statement is hit.}
+					\EndIf
+				\EndFor
+				\Return $\mathcal O \union \set B$
+			\Else
+				\\
+				\CommentLine Make recursive calls, moving elements from $A$ into $B$.
+				\ForAll{$a \in A$}
+					\State $A \gets A \setminus \set a$
+					\State $\mathcal O \gets $ \Call{GetSpecialSuperset}{$A,B\union\set a,\mathcal O$} \Comment{$\mathcal O \subseteq$ \Call{GetSpecialSuperset}{$A,B,\mathcal O$}}
+				\EndFor
+				\Return $\mathcal O$
+			\EndIf
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\section{Explanation}
+
+
+\subsection{details}
+We are going to tackle this problem with recursion, so we are going to try and show that our function ``GetSpecialSuperset'' will return the set of maximal special supersets of $B$, if $B$ is a special set and $A$ is a finite superset of the set of all elements which are special with $B$.\footnote{$x$ is special with $S$ iff $S \union \set x$ is special and $x\not\in S$.}
+
+We start by limiting $A$ to only being the set of elemetns with are special with $B$. If there are none, then $A$ will become the empty set, and we would know that $B$ is the only maximal special superset of $B$, and thus return the set $\set B$.
+
+If $A$ is not the empty set (there are elements that are special with $B$), then for each element $x\in A$ we get the set, $\mathcal R$, of maximal special supersets of $B \union \set x$. $\mathcal R$ is found by applying this function again with the new $A$ set as our current $A$, just without $x$, and the new $B$ set as $B \union \set x$. We can see this is true as if some $k$ is speical with $B \union \set x$ then it must also be special with $B$, $A$ is the set of all things special with $B$ and $A \setminus \set x$ is the set of all things special with $B$ except $x$, which we know is in $B \union \set x$, thus $A\supseteq \setbuilder{k}{k \text{ is special with } B \union \set x}$, which is our requirement for what we need $A$ to be. We also know that our new $B$ is special by defintion of $x$ being special with $B$. To take things one step further, we can remove $x$ from our current $A$ as if we have all maximal supersets $B \union \set x$ then we never need to check $B$ with $x$ again as it would have already been found.\footnote{This justifies line 18.} Once we have found $\mathcal R$ we add all sets in $\mathcal R$ to $\text{Output}$.
+
+Once we have iterated through all $x\in A$ we return $\text{Output}$ as it now contains all supersets of $B$ which are special.
+
+\subsection{example}
+
+Let $\mathcal U=\set{0,1,2,3}$ and our set of maximal special sets, the expected output we will call $\mathcal T$ and we will let $\mathcal T = \set{\set{0,2},\set{1}}$, thus $P(S)=\Exists{E\in\mathcal T}{S\subseteq E}$.
+
+\def\ind{\phantom{$\rightarrow$}\hspace{1em}}
+\def\nnd{$\rightarrow$\hspace{1em}}
+\vspace{4ex}
+\noindent
+$A: \set{0,1,2,3}$\\
+$B: \set{}$\\
+$\mathcal O: \set{}$\\
+$x:0$\\
+$P(B\union\set x)$\\
+$x:1$\\
+$P(B\union\set x)$\\
+$x:2$\\
+$P(B\union\set x)$\\
+$x:3$\\
+$\neg P(B\union\set x)$\\
+$A:\set{0,1,2}$\\
+$A\not=\emptyset$\\
+$a:0$\\
+$A:\set{1,2}$\\
+\nnd$A:\set{1,2}$\\
+\ind$B:\set0$\\
+\ind$\mathcal O:\set{}$\\
+\ind$x:1$\\
+\ind$\neg P(B\union\set x)$\\
+\ind$A:\set{2}$\\
+\ind$x:2$\\
+\ind$P\set{0,2}$\\
+\ind$A\not=\emptyset$\\
+\ind$a:2$\\
+\ind$A:\set{}$\\
+\ind\nnd$A:\set{}$\\
+\ind\ind$B:\set{0,2}$\\
+\ind\ind$\mathcal O:\set{}$\\
+\ind\ind$A=\emptyset$\\
+\ind$\mathcal O:\set{\set{0,2}}$\\
+$\mathcal O:\set{\set{0,2}}$\\
+$a:1$\\
+$A:\set2$\\
+\nnd$A:\set{2}$\\
+\ind$B:\set{1}$\\
+\ind$\mathcal O:\set{\set{0,2}}$\\
+\ind$x:2$\\
+\ind$\neg P(B\union\set x)$\\
+\ind$A:\set{}$\\
+\ind$A=\emptyset$\\
+\ind$O:\set{0,2}$\\
+\ind$B\not\subseteq O$\\
+$\mathcal O: \set{\set{0,2},\set1}$\\
+$a:2$\\
+$A:\set{}$\\
+\nnd$A:\set{}$\\
+\ind$B:\set{2}$\\
+\ind$\mathcal O:\set{\set{0,2},\set1}$\\
+\ind$A=\emptyset$\\
+\ind$O:\set{0,2}$\\
+\ind$B\subseteq O$\\
+$\mathcal O: \set{\set{0,2},\set1}$\\
+
+\end{document}

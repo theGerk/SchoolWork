@@ -1,0 +1,221 @@
+\documentclass{article}
+
+\input{definitions.tex}
+\def\useLim{}
+
+\title{Topology Homework 1}
+
+
+
+\begin{document}
+\maketitle
+
+\question{1.2(b)}
+\[A\subset B \Or A \subset C \iff A \subset (B \union C)\]
+
+First we show $A\subset B \Or A \subset C \implies A \subset (B \union C)$. We note that if $A \subset B$ then $A \subset (B \union X)$ for any set $X$. The same is true for $A \subset C$. Thus we know that if $A$ is a subset of $B$ or $C$ then it must also be a subset of $B \union C$. Thus we have shown $A\subset B \Or A \subset C \implies A \subset (B \union C)$.
+
+Next we try and show that $A\subset B \Or A \subset C \impliedby A \subset (B \union C)$. This we can disprove by example. Let $A$ be the set of all prime numbers, let $B$ be the set of all even numbers, and let $C$ be the set of all odd numbers.
+
+\question{(e)}
+\[A\setminus(A\setminus B) = B\]
+
+First we will do some manipulation
+\begin{align*}
+A \setminus (A \setminus B) &= A \inter \setcomp{(A \setminus B)} \\
+&= A \inter \setcomp{\left(A \inter \setcomp B \right)} \\
+&= A \inter \left(\setcomp A \union \setcomp{\setcomp B}\right) \\
+&= A \inter \left(\setcomp A \union B\right) \\
+&= \left(A \inter \setcomp A\right) \union \left( A \inter B \right) \\
+&= \emptyset \union (A \inter B) \\
+&= A \inter B
+\end{align*}
+Now we only need to see if $A \inter B = B$. This is obviously not true, but it is safe to say that $A \inter B \subset B$.
+
+\question{(o)}
+\[A \cross (B \setminus C) = (A \cross B) \setminus (A \cross C)\]
+
+\begin{align*}
+A \cross (B \setminus C) &= \setbuilder{x}{x \in A \cross (B \setminus C)} \\
+&= \setbuilder{\pair ab}{a \in A \land b \in B \setminus C} \\
+&= \setbuilder{\pair ab}{a \in A \land (b \in B \land b \not\in C)}
+\end{align*}
+\begin{align*}
+(A \cross B) \setminus (A \cross C) &= \setbuilder{x}{x \in (A \cross B)\setminus(A \cross C)} \\
+&= \setbuilder{x}{x \in A \cross B \land x \not\in A \cross C}\\
+&= \setbuilder{\pair ab}{(a \in A \land b \in B)\land \lnot(a \in A \land b \in C)}
+\end{align*}
+
+At this point one may notice that these two are equivalent as can be shown by truth table. The truth table will not be presented as it's really really hard to make them in \latex and I'm kinda lazy.
+
+\question{(q)}
+
+\[(A\cross B) \setminus (C \cross D) = (A \setminus C) \cross (B \setminus D)\]
+
+\begin{align*}
+(A \cross B) \setminus (C \cross D) &= \setbuilder{x}{x \in A\cross B \land x \not\in C\cross D} \\
+&= \setbuilder{\pair ab}{(a \in A \land b \in B) \land \lnot(a \in C \land b \in D)}
+\end{align*}
+\begin{align*}
+(A \setminus C) \cross (B \setminus D) &= \setbuilder{\pair ab}{(a \in A \setminus C) \land (b \in B \setminus D)} \\
+&= \setbuilder{\pair ab}{(a \in A \land a \not\in C) \land (b \in B \land  b\not\in D)}
+\end{align*}
+
+At this point one may make truth tables, and this time I'll actually do that...
+\[
+\begin{array}{c|c|c|c|c|c}
+a \in A & b \in B & a \in C & b \in D & (a \in A \land b \in B) \land \lnot(a \in C \land b \in D) & (a \in A \land a \not\in C) \land (b \in B \land b \not\in D) \\
+\hline
+\false & \false & \false & \false & \false & \false \\
+\false & \false & \false & \true & \false & \false \\
+\false & \false & \true & \false & \false & \false \\
+\false & \false & \true & \true & \false & \false \\
+\false & \true & \false & \false & \false & \false \\
+\false & \true & \false & \true & \false & \false \\
+\false & \true & \true & \false & \false & \false \\
+\false & \true & \true & \true & \false & \false \\
+\true & \false & \false & \false & \false & \false \\
+\true & \false & \false & \true & \false & \false \\
+\true & \false & \true & \false & \false & \false \\
+\true & \false & \true & \true & \false  & \false \\
+\true & \true & \false & \false & \true & \true \\
+\true & \true & \false & \true & \true & \false \\
+\true & \true & \true & \false & \true & \false \\
+\true & \true & \true & \true & \false & \false
+\end{array}
+\]
+... and we notice that cases for $(A \cross B) \setminus (C \cross D)$ is a superset of the cases for $(A \setminus C) \cross (B \setminus D)$, thus \[(A\cross B) \setminus(C\cross D) \supset (A\setminus C) \cross (B\setminus D)\]
+
+\question{4(a)} For at least one $a \in A$, it is true that $a^2 \not\in B$.
+
+\question{(b)} For every $a \in A$, it is true that $a^2 \not\in B$.
+
+\question{(c)} For at least one $a \in A$, it is true that $a^2 \in B$.
+
+\question{(d)} For every $a \not\in A$, it is true that $a^2 \not\in B$.
+
+\question{5 and 6}
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+part & statement & converse & problem 6 \\
+\hline
+(a) & $\true$ & $\true$ & $x\not\in \unionacross{A \in \mathcal A}{A} \impliedby x \not\in A \text{ for every } A \in \mathcal A$\\
+(b) & $\false$ & $\true$ & $x \not\in \unionacross{A \in\mathcal A}A \impliedby x \not\in A \text{ for at least one } A \in \mathcal A$\\
+(c) & $\true$ & $\false$ & $x\not\in\interacross{A \in \mathcal A}A \impliedby x \not\in A \text{ for every } A \in\mathcal A$\\
+(d) & $\true$ & $\true$ & $x \not\in\interacross{A \in\mathcal A}A \impliedby x \not\in A \text{ for at least one } A \in\mathcal A$
+\end{tabular}
+\end{center}
+
+\question{10(a)} Yes, $\mathbb Z \cross \mathbb R$.
+
+\question{(b)} Yes, $\mathbb R \cross \ocint01$.
+
+\question{(c)} No.
+
+\question{(d)} Yes, $(\mathbb R \setminus \mathbb Z) \cross \mathbb Z$.
+
+\question{(e)} No.
+
+\question{2.2(b)}
+\begin{align*}
+x\in f^{-1}\left(B_0 \union B_1\right) &\iff f(x) \in B_0 \union B_1 \\
+&\iff f(x) \in B_0 \Or f(x) \in B_1 \\
+&\iff x \in f^{-1}\left(B_0\right) \Or x \in f^{-1}\left(B_1\right) \\
+&\iff x \in f^{-1}\left(B_0\right) \union f^{-1}\left(B_1\right)
+\end{align*}
+
+\question{(g)} We have to be careful about notation here, when we have an inverse function we will say that it maps to sets. For example if $f:\mathbb R \to \mathbb R$ defined as $f(x)=x$ then $f^{-1}(x)=\set x$. This is to deal with functions where $f^{-1}$ maps to multiple points like if $f(x)=x^2$ then $f^{-1}(x) = \set{\sqrt x, -\sqrt x}$.
+
+
+First we notice that for all $y \in \func f{A_0 \inter A_1}$ there exists at least one $x \in A_0 \inter A_1$ su. $f(x) = y$. Next we notice $x \in A_0 \inter A_1 \iff x \in A_0 \And x \in A_1$. Now we can say \[\All{x\in A_0 \inter A_1}{\func fx \in \func f{A_0} \And \func fx \in \func f{A_1}}\] which also means that \[\All{y\in\func f{A_0\inter A_1}}{y \in \func f{A_0} \And y \in \func f{A_1}}\] thus \[\func{f}{A_0\inter A_1} \subset \func f{A_0} \inter \func f{A_1}\]
+
+Now we have shown $f\left(A_0\inter A_1\right) \subset f\left(A_0\right) \inter f\left(A_1\right)$, for any function $f:A\to B$. Now we will show that if $f$ is injective then $f\left(A_0 \inter A_1\right) \supset f\left( A_0 \right) \inter f\left(A_1\right)$.
+
+
+
+Our definition of injective is as follows: $f:A\to B$ is injective iff $f(a) = f(a') \implies a = a'$.
+
+In order to prove this we will first show that for any injective function, $g:X\to Y$, then for any $\bar X \subset X$, if $y \in\func f{\bar X}$ then $\func{g^{-1}}y \subset \bar X$.
+
+To show this we will let $\bar X$ be any subset of $X$. Now let $y \in \func g{\bar X}$ and $x\in\bar X$ su. $\func gx = y$. Then for all $k \in\func{g^{-1}}y$, $k=x$, by $g$ being injective. Thus $\func{g^{-1}}y\subset\bar X$.
+
+
+
+\begin{align*}
+y \in \func f{A_0} \inter \func f{A_1} &\implies y \in \func f{A_0} \And y \in \func f{A_1} \\
+&\implies \func{f^{-1}}y \subset A_0 \And \func{f^{-1}}y \subset A_1 \\
+&\implies \func{f^{-1}}y \subset A_0 \inter A_1 \\
+&\implies y \in \func f{A_0 \inter A_1}
+\end{align*}
+
+\question{3(b)} First we show $\func{f^{-1}}{\bigunion B_i} \subset \bigunion\func{f^{-1}}{B_i}$.
+\begin{align*}
+x \in \func{f^{-1}}{\bigunion B_i} &\implies \func fx \in \bigunion B_i \\
+&\implies \Exists{i}{\func fx \in B_i} \\
+&\implies \Exists{i}{x \in \func{f^{-1}}{B_i}} \\
+&\implies x \in \bigunion\func{f^{-1}}{B_i}
+\end{align*}
+and now we show $\bigunion\func{f^{-1}}{B_i}\subset\func{f^{-1}}{\bigunion B_i}$.
+\begin{align*}
+x\in\bigunion\func{f^{-1}}{B_i} &\implies \Exists i{x\in\func{f^{-1}}{B_i}} \\
+&\implies \Exists i{\func fx\in B_i} \\
+&\implies \func fx \in \bigunion B_i \\
+&\implies x \in \func{f^{-1}}{\bigunion B_i}
+\end{align*}
+Thus we have shown $\func{f^{-1}}{\bigunion B_i} = \bigunion\func{f^{-1}}{B_i}$.
+
+\question{(g)} First we will show $\func f{\biginter A_i}\subset\biginter\func f{A_i}$. We start by noting that $\All{b\in\func f{\biginter A_i}}{\Exists{a \in \biginter A_i}{\func fa = b}}$, thus in the following proof we will let $b\in\func{f}{\biginter A_i}$ and let $a$ be such that $a \in \biginter A_i$ and $f(a) = b$.
+\begin{align*}
+a \in \biginter A_i &\implies \All i{a\in A_i} \\
+&\implies \All i{\func fa \in \func f{A_i}} \\
+&\implies \func fa \in\biginter\func f{A_i} \\
+&\implies b \in \biginter\func f{A_i}
+\end{align*}
+
+Next we will let $f:A\to B$ be injective and show that then $\func f{\biginter A_i} \supset \biginter \func f{A_i}$.
+\begin{align*}
+b\in\biginter\func f{A_i} &\implies \All i{b\in\func f{A_i}} \\
+&\implies \All i{\Exists{a\in\func{f^{-1}}b}{a\in A_i}} \\
+&\implies \All i{f^{-1}b}\subset A_i \\
+&\implies \func{f^{-1}}b \subset \biginter A_i \\
+&\implies b \in \func f{\biginter A_i}
+\end{align*}
+
+\question{4(a)}
+\begin{align*}
+\func{f^{-1}}{\func{g^{-1}}{C_0}} &= \setbuilder a{\func fa\in\func{g^{-1}}{C_0}} \\
+&= \setbuilder a{\func fa \in\setbuilder b{\func gb \in C_0}} \\
+&= \setbuilder a{\Exists{b\in B}{\func fa=b \And \func gb\in C_0}} \\
+&= \setbuilder a{\func{g\composed f}a \in C_0} \\
+&= \func{(g\composed f)^{-1}}{C_0}
+\end{align*}
+
+\question{(b)} The definition of injective is $\func fa=\func f{a'} \implies a = a'$, thus by contra-position we know can also say that some function $f$ is injective iff
+\begin{equation}\label{contra injective}
+a \not= a' \implies \func fa \not= \func f{a'}
+\end{equation}
+So if we can show that \eqref{contra injective} is true for when the function is $g\composed f$, where $f$ and $g$ are injective. We also will make use of the fact that $\func{g\composed f}x= \func g{\func fx}$.
+
+First let $a \in A$ and $a' \in A$ su. $a\not=a'$, then $\func ga \not= \func g{a'}$ as $g$ is injective. Now we can say that $\func f{\func ga} \not= \func f{\func g{a'}}$ by the same logic. Thus we can say $f\composed g$ is injective.
+
+\question{(c)} $f$ is injective, and we don't know weather or not $g$ is injective. We will prove that $f$ is injective if $g\composed f$ is injective by contradiction.
+
+First, let it be a given that $g \composed f$ is injective, and let us assume that $f$ is not injective. That would mean \[\Exists{x\not=x'}{\func fx = \func f{x'}}\] then we would know that \[\Exists{x\not=x'}{\func{g\composed f}x = \func{g\composed f}{x'}}\], thus $g \composed f$ would not be injective, thus by contradiction we know $f$ is injective.
+
+\question{5(a)} An identity function must be injective, thus by the proof from above we know that if $g\composed f = i_A$ then $f$ is injective.
+
+An identity function must be surjective, thus by the proof given below we know that if $f \composed h = i_A$ then $f$ is surjective.
+
+Let $f\composed h: A \to C$ be a surjective function, and let $f: B\to C$, and $h:A\to B$. Assume $f$ is not surjective, then \[\Exists{c\in C}{\All{b\in B}{\func fb \not= c}}\] This would then mean \[\Exists{c \in C}{\All{a \in A}{\func {f \composed h}b \not= c}}\] thus $f \composed h$ would not be surjective, thus there is a contra diction and $f$ must be a surjective.
+
+\question{(b)} The function $f:\mathbb R \to \mathbb R_+$ defined by $\func fx = e^x$.
+
+\question{3.13} Prove: If an ordered set $A$ has the least upper bound property, then it has the greatest lower bound property.
+
+Let $A$ be a least upper bound property. Let $B \subset A$ such that $B$ has a lower bound. Let $L$ be the set of all lower bounds for $B$.
+\[L = \setbuilder{a}{\All{b\in B}{a\le b}}\]
+now let $b\in B$, thus $\All{\ell \in L}{b \ge \ell}$, thus $L$ has an upper bound. Thus $L$ has a least upper bound, which we will refer to as $x$.
+\[\All{\ell\in L}{\ell\in x}\]
+thus $x$ is the greatest lower bound for $B$. Thus $B$ has a greatest lower bound, and thus $A$ has a greatest lower bound property.
+\end{document}

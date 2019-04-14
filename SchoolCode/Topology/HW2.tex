@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\input{definitions.tex}
+\def\useLim{}
+
+\title{Topology Homework 2}
+
+
+\begin{document}
+\maketitle
+
+\question{13.1.} Given that $A \subset X$ and $X$ has topology $\mathscr T$ and $\All{x\in A}{\Exists{U\in\mathscr T}{x \in U \And U \subset A}}$, show that $A \in \mathscr T$.
+
+Let $U_x$ be an open subset of $A$ su. $x \in U$, we know this exists as it is given.
+\begin{enumerate}
+\item $\unionacross{x\in A}{U_x}$ is open as it is the union of open sets.
+\item $\unionacross{x\in A}{U_x} \subset A$ as all $U_x \subset A$.
+\item $\unionacross{x\in A}{U_x} \supset A$ as for any $x'\in A$ is in at least one $U_x$ namely $U_{x'}$.
+\end{enumerate}
+Thus $\unionacross{x\in A}{U_x} = A$ and is open, thus $A$ must be open.
+
+\question{13.2.} We will make a table here comparing each pair of two topologies on $X$. It will be read as: $<$ means that the row's value is finer then the column's value, $>$ means that the row's value is coarser then the column's value, $=$ means the row and column are the same, and $/$ means they are not compareable. First let us list all nine topologies though.
+
+\begin{enumerate}
+\item $\set{\emptyset, X}$
+\item $\set{\emptyset, \set a, \set{a,b}, X}$
+\item $\set{\emptyset, \set{a,b}, \set b, \set{b,c}, X}$
+\item $\set{\emptyset, \set b, X}$
+\item $\set{\emptyset, \set a, \set{b,c}, X}$
+\item $\set{\emptyset, \set{a,b}, \set b, \set{b,c},\set c, X}$
+\item $\set{\emptyset, \set{a,b}, X}$
+\item $\set{\emptyset, \set a, \set{a,b}, \set b, X}$
+\item $\func{P}{X}$, where $\func PS$ is the powerset of $S$.
+\end{enumerate}
+
+\[
+\begin{array}{c|c|c|c|c|c|c|c|c|c}
+&1&2&3&4&5&6&7&8&9\\\hline 1
+&=&<&<&<&<&<&<&<&<\\\hline 2
+&>&=&/&/&/&/&>&/&<\\\hline 3
+&>&/&=&>&/&<&>&/&<\\\hline 4
+&>&/&<&=&/&<&/&<&<\\\hline 5
+&>&/&/&/&=&/&/&/&<\\\hline 6
+&>&/&>&>&/&=&>&/&<\\\hline 7
+&>&<&<&/&/&<&=&<&<\\\hline 8
+&>&/&/&>&/&/&>&=&<\\\hline 9
+&>&>&>&>&>&>&>&>&=
+\end{array}
+\]
+
+
+\question{3.} Let $X$ be a set; show that $\mathscr T_c = \setbuilder{U\subset X}{X-U \text{ is countable } \Or X - U = X}$ is a topology on $X$.
+\begin{align*}
+\mathscr T_c &= \setbuilder{U\subset X}{X-U \text{ is countable } \Or X - U = X} \\
+&= \setbuilder{U\subset X}{\setcomp U \text{ is countable } \Or \setcomp U = X} \\
+&= \setbuilder{U\subset X}{\setcomp U \text{ is countable } \Or U = \emptyset}
+\end{align*}
+
+First note that $\emptyset = \emptyset \implies \emptyset \in \mathscr T_c$ and $\setcomp X = \emptyset$ is countable $\implies X \in \mathscr T_c$, thus the first condition is satisfied.
+
+Now to show the second condition, let $\mathscr A \subset \mathscr T_c$. We will show $\unionacross{A\in\mathscr A}A \in \mathscr T_c$ by contradiction, so we will assume $\unionacross{A\in\mathscr A}A \not\in \mathscr T_c$, thus we know \[\setcomp{\left(\unionacross{A\in\mathscr A}A\right)}\text{ is not countable}\And\unionacross{A\in\mathscr A}A \not= \emptyset\] thus \[\unionacross{A\in\mathscr A}A\not=\emptyset\implies\Exists{A\in\mathscr A}{A\not=\emptyset}\implies\Exists{A\in\mathscr A}{\setcomp A\text{ is countable}}\] and \[\setcomp{\left(\unionacross{A\in\mathscr A}A\right)}\text{ is not countable }\implies\interacross{A\in\mathscr A}{\setcomp A}\text{ is not countable }\implies\All{A\in\mathscr A}{\setcomp{A}\text{ is not countable}}\] thus there is a contradiction, thus our second condition is met.
+
+Now to show the third condition, we will try to show that for any finite $\mathscr A \subset \mathscr T_c$\[\interacross{A\in\mathscr A}{A}\in\mathscr T_c\] If $A$ is finite, that means that $\cardinality A \in \mathbb N$.\footnote{$\mathbb N = \set{0, 1, 2, \ldots}$} Thus if show that the statement holds when $\cardinality{\mathscr A} = 0$, and then show that the statement holding when $\cardinality{\mathscr A}=n$ implies that the statement will hold when $\cardinality{\mathscr A}=n+1$, where $n \in \mathbb N$, then we will have shown that our statement is true in all cases.
+
+If $\cardinality{\mathscr A} = 0$ then $\mathscr A = \emptyset$, thus $\interacross{A\in\mathscr A}{A} = X \in \mathscr T_c$, thus our base case is fulfiled.
+
+Now let us assume that for any $\mathscr A \subset \mathscr T_c$ with cardinality $n$, $\interacross{A\in\mathscr A}{A}\in\mathscr T_c$. Now let $\mathscr A \subset \mathscr T_c$ such that $\cardinality{\mathscr A} = n+1$. Let $B$ and $C$ form a partition on $\mathscr A$ such that $\cardinality C = 1$, thus we know that $\cardinality B = n$. Since $\cardinality B = n$ and $B \subset \mathscr A \subset \mathscr T_c$ we know, via our assumption that $\interacross{A\in B}A\in\mathscr T_c$. We also know that $C \subset \mathscr A \subset \mathscr T_c$. Because $B$ and $C$ form a partition on $\mathscr A$ we can say that \[\interacross{A\in\mathscr A}A = \interacross{A\in B}A \inter \interacross{A\in C}A\] Now there are two cases either one of the intersection across a partition, is the empty set, in which case it's tirvial that the entire intersection is in the topology, or they both compliments of countable sets. In the case where both are countable sets we will let \begin{align*}\interacross{A\in B}A &= \mathcal B\\\interacross{A\in C}A&=\mathcal C\end{align*} thus, $\setcomp{\mathcal B}$ and $\setcomp{\mathcal C}$ are countable.\[\setcomp{\mathcal B} \inter \setcomp{\mathcal C} = \setcomp{\left(\mathcal B \union \mathcal C\right)}\] Because the union of countable sets is countable, then $\setcomp{\left(\mathcal B \union \mathcal C\right)}$ is the compliment of two countable sets and thus is in the topology $\mathscr T_c$.
+
+The set defined by $\mathscr T_\infty$ is not a topology for all sets $X$, a counter example is consider $\mathscr T_\infty$ on $\mathbb R$ then then any singleton set is in $\mathscr T_\infty$, then if we take the union of all singletons except $\set0$, then we have a set not in $\mathscr T_\infty$.
+
+\question{4.}
+
+\question{7.}
+
+\question{8.}
+
+
+\end{document}

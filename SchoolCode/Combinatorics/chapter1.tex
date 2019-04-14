@@ -1,0 +1,40 @@
+\documentclass{article}
+
+% stuff from the percent sign to end of line is a comment, ignored by LaTeX
+
+\usepackage{amsmath,amssymb,graphicx} %load extra symbols and environments
+\usepackage[margin=1in]{geometry} %set margins
+\usepackage{mathrsfs}
+
+\title{Combinatorics Homework Chapter 1}
+\author{Benji Altman}
+
+\reversemarginpar
+
+\begin{document}
+\maketitle
+
+We\marginpar{\flushright Prob 1.2} can refer to each square on any chess board uniquely with notation $(x,y)$ where $x$ is the number of squares to the right, and $y$ is the number of squares to the left.\footnote{Thus $(0,0)$ would be the upper right hand corner, $(0,1)$ would be one square down from that, and $(1,0)$ would be one square left of the upper right hand corner.} The problem states that the upper right hand corner or $(0,0)$ is white, thus we know that the white squares can be defined as ``The set of all squares $(x,y)$ where $x+y$ is even.''\footnote{This can be proved by defining black and white squares as the following
+\begin{enumerate}
+\item A black square is any square adjacent to a white square.
+\item A white square is any square, either adjacent to a black square, or is $(0,0)$.
+\item A square, $(a_x,a_y)$, is adjacent to another square, $(b_x,b_y)$, iff $(b_x = a_x \pm 1 \land b_y = a_y) \lor (b_x = a_x \land b_y = a_y \pm 1)$
+\end{enumerate}
+
+Let us also define a function $f(s)=s_x+s_y$, where $s=(s_x,s_y)$. Notice that for any square $q$, where $f(q) = n$, for any adjacent square to it, $r$, $f(r) = n \pm 1$. That means that for any $q$ where $f(q)$ is odd, all $f(r)$ is even, where $r$ is any adjacent square, and if $f(q)$ is even, then all $f(r)$ would have been odd.
+
+Now to prove that $\forall_{x \in \left\{\text{white squares}\right\}}\left(f(x) \text{ is even}\right)$ and $\forall_{x \in \left\{\text{black squares}\right\}}\left(f(x) \text{ is odd}\right)$ we start by showing
+\begin{equation}
+f((0,0)) = 0 \in \left\{\text{Evens}\right\}
+\end{equation}
+and we know that (0,0) is a white square by definition. Now let $f((a,b))=k$, where $a$ and $b$ are natural numbers (ie: in the set $\{0,1,2,\ldots \}$), thus
+\begin{equation}
+\begin{aligned}
+f((a+1,b))=a+1+b=k+1 \\
+f((a-1,b))=a-1+b=k-1 \\
+f((a,b+1))=a+b+1=k+1 \\
+f((a,b-1))=a+b-1=k-1
+\end{aligned}
+\end{equation}
+so for adjacent square to $(a,b)$, $(a,b)'$, $f\left((a,b)'\right)$ can be written as $a+b\pm1$ or $f((a,b))\pm1$. Any even number $\pm 1$ is an odd number, and any odd number $\pm 1$ is an even number. Now we can say that for any square $X$, any adjacent square to it $X'$, is odd iff $X$ is even, and is even iff $X$ is odd. We also know by definitions 1 and 2 that $X'$ is black if $X$ is white and $X'$ is white if $X$ is black. We can now show by induction that if $f(X)$ is even, then $X$ is a white square, and if $f(X)$ is odd, then $X$ is a black square.} Thus if $X$ is on an odd row
+\end{document}
