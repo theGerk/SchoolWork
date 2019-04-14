@@ -10,5 +10,7 @@
 \contentsline {subsection}{\numberline {3.4}Path}{5}{subsection.3.4}% 
 \contentsline {subsection}{\numberline {3.5}Connected}{6}{subsection.3.5}% 
 \contentsline {subsection}{\numberline {3.6}Contraction}{7}{subsection.3.6}% 
-\contentsline {section}{\numberline {4}Kuratowski's Theorem}{8}{section.4}% 
-\contentsline {section}{Glossary}{8}{section*.2}% 
+\contentsline {subsection}{\numberline {3.7}Subdivision}{7}{subsection.3.7}% 
+\contentsline {section}{\numberline {4}Kuratowski's Theorem}{9}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}$K_{3,3}$ and $K_5$}{9}{subsection.4.1}% 
+\contentsline {section}{Glossary}{10}{section*.2}% 

@@ -63,7 +63,7 @@ I am particularly glad that you're paying enough attention to notice that the di
 Now to solve this problem we need to make one simple observation about how we walk. If we are to go to island (or vertex) we must also leave that island, unless it is the last island we arrive on. This means, that with the exception of the island we start on and end on, each island must have an even number of bridges connected to it. On the \gls{multigraph} we would say that we need all \glspl{vertex} but a start and end \gls{vertex} to have an even number of edges. If we look at the \gls{multigraph} above, we have four \glspl{vertex} that have an odd number of \glspl{edge} connected to them.
 
 \subsection{History}
-%TODO add more to section
+%TODO Make how short this is less obvious
 The seven bridges of K\"onigsberg problem was solved by Euler %TODO Citation (wikipedia for seven bridges of konigsberg)
 in 1736. In mathematics this problem is of great historical significance as it is considered to be the beginning of graph theory as well as a sort of precursor to topology. %TODO Citation 
 
@@ -299,14 +299,95 @@ We wish to preform a \gls{contraction} on \gls{edge} $R$. To be clear all graph 
 
 This can then be reduced into a \gls{graph} again by simply treating $b_r$ and $b_s$ as the same edge. This operation is particularly important as we will prove that if a \gls{graph} is planar, then so is any \gls{graph} or \gls{multigraph} obtained by contracting an \gls{edge}.
 
+\subsection{Subdivision}
+%TODO rename unsubdivide
+\def\unsubdivide{vertex replacement}
+\def\unsubdividepl{vertex replacements}
+
+To define this we first describe, we first have to describe an operation where we take a vertex $v$ that has degree 2, and replace with an edge as follows.
+
+\begin{center}
+	$
+	\begin{array}{l}
+		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+		
+		\node[main node] (1) {$v$};
+		\node[main node] (2) [left of=1] {$A$};
+		\node[main node] (3) [right of=1] {$B$};
+		
+		\path[every node/.style={font=\sffamily\small}]
+		(1)	edge node {} (2)
+		edge node {} (3);
+		\end{tikzpicture}
+	\end{array}
+	$
+	\scalebox{2}{$\to$}
+	$
+	\begin{array}{l}
+		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+		
+		\node[main node] (1) {$A$};
+		\node[main node] (2) [right of=1] {$B$};
+		
+		\path[every node/.style={font=\sffamily\small}]
+		(1)	edge node {} (2);
+		\end{tikzpicture}
+	\end{array}
+	$
+	
+	or
+	
+	$
+	\begin{array}{l}
+		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+		
+		\node[main node] (1) {$v$};
+		\node[main node] (2) [left of=1] {$A$};
+		\node[main node] (3) [right of=1] {$B$};
+		
+		\path[every node/.style={font=\sffamily\small}]
+		(1)	edge node {} (2)
+		edge node {} (3)
+		(2) edge [bend left] node {} (3);
+		\end{tikzpicture}
+	\end{array}
+	$
+	\scalebox{2}{$\to$}
+	$
+	\begin{array}{l}
+		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+		
+		\node[main node] (1) {$A$};
+		\node[main node] (2) [right of=1] {$B$};
+		
+		\path[every node/.style={font=\sffamily\small}]
+		(1)	edge node {} (2);
+		\end{tikzpicture}
+	\end{array}
+	$
+	
+	\scalebox{.9}{Here $A$ and $B$ may be connected in any way to a larger graph, however only this subgraph will change.}
+\end{center}
+
+Now we are going to call this operation \unsubdivide, and using it we define a graph subdivision as follows.
+
+\begin{definition}[graph subdivision]
+	A graph $G$ is a subdivision of $H$ if $H$ may be produced by some series of \unsubdividepl\ on $G$.
+\end{definition}
+
 \newpage
 
 \section{Kuratowski's Theorem}
 \begin{theorem}[Kuratowski's Theorem]
-	A graph $G$ is planar if and only if it does not contain any subgraph $H$ such that a some series of edge contractions on $H$ would produce $K_5$ or $K_{3,3}$.
+	A graph $G$ is nonplanar if and only if it contains a subgraph that is a subdivision of $K_{3,3}$ or $K_5$
 \end{theorem}
 
-Here $K_5$ refers to the complete graph on 5 verticies, and $K_{3,3}$ is the complete bipartite graph with three verticies in both partitions. Drawings of both theses graphs are below with ($K_5$ on left and $K_{3,3}$ on right).
+%TODO Maybe explanation of what $K_5$ and $K_{3,3}$ are should be earlier?
+Here $K_5$ refers to the complete graph on 5 vertices, and $K_{3,3}$ is the complete bipartite graph with three vertices in both partitions. Drawings of both theses graphs are below with ($K_5$ on left and $K_{3,3}$ on right).
 \begin{center}
 	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
 	thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
@@ -351,6 +432,24 @@ Here $K_5$ refers to the complete graph on 5 verticies, and $K_{3,3}$ is the com
 	edge node {} (6);
 	\end{tikzpicture}
 \end{center}
+
+\subsection{$K_{3,3}$ and $K_5$}
+Our first step is proving that $K_{3,3}$ and $K_5$ are nonplanar. To do this we are going to use the following theorem.
+
+\begin{theorem}[Euler's formula on planar graphs]
+	For any plane drawing of a graph, we have $$v-e+f=2$$, where $v$ is the number of vertices in the graph, $e$ is the number of edges in the graph, and $f$ is the number of faces in the plane drawing of the graph.
+\end{theorem}
+%TODO credit this to https://www.ics.uci.edu/~eppstein/junkyard/euler/interdig.html
+Before we can prove this we need to define the dual of a planar graph.
+\begin{definition}[graph dual]
+	For any plane drawing $G$ of a graph, we may construct it's dual $G*$ by putting a single vertex in each face, and putting an edge between any two adjacent faces (faces that share an edge). Note that this dual is not necessarily a graph, but will fit our definition of a multigraph.
+\end{definition}
+For example consider the following graph drawing
+\input{Duals_graphs.tex}
+
+\begin{proof}
+	
+\end{proof}
 
 
 \printnoidxglossary
