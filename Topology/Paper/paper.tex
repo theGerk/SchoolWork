@@ -435,14 +435,14 @@ Here $K_5$ refers to the complete graph on 5 vertices, and $K_{3,3}$ is the comp
 Our first step is proving that $K_{3,3}$ and $K_5$ are nonplanar. To do this we are going to use the following theorem.
 
 \begin{theorem}[Euler's formula on planar multigraphs]
-	For any plane drawing of a multigraph (with the exception of a multigraph with no vertices), we have $$v-e+f=2$$, where $v$ is the number of vertices in the multigraph, $e$ is the number of edges in the multigraph, and $f$ is the number of faces in the plane drawing of the multigraph.
+	For any plane drawing of a multigraph (with the exception of a multigraph with no vertices), we have $$v-e+f=2$$, where $v$ is the number of vertices in the multigraph, $e$ is the number of edges in the multigraph, and $f$ is the number of faces in a plane drawing of the multigraph.
 \end{theorem}
 
 %TODO cite https://www.ics.uci.edu/~eppstein/junkyard/euler/iedge.html
 
 
 \begin{proof}
-	First consider a connected multigraph with no edges, as this is connected we may only have a single vertex. This produces a single and no edges so we find $$v-e+f=1-0+1=2$$. Now that we no that for 0 edges this rule fits, then either the rule ($v-e+f-2$) is true no mater the number of edges, or there is some number at which point this rule breaks, and $v-e+f\not=2$. If there is a number that breaks this rule, then there must be a lowest number (lets call it $k$) that breaks this rule. For any multigraph with $k$ edges, choose any edge $e$ in the graph.
+	First consider a connected multigraph with no edges, as this is connected we may only have a single vertex. This produces a single and no edges so we find $$v-e+f=1-0+1=2$$. Now that we know that for 0 edges this rule fits, then either the rule ($v-e+f-2$) is true no mater the number of edges, or there is some number at which point this rule breaks, and $v-e+f\not=2$. If there is a number that breaks this rule, then there must be a lowest number (lets call it $k$) that breaks this rule. For any multigraph with $k$ edges, choose any edge $e$ in the graph.
 	\begin{itemize}
 		\item If $e$ connects a vertex to itself it is a loop and it's removal will result in the loss of one edge and one face (each loop creates a face\footnote{Jordan curve theorem}). The resulting multigraph has less than $k$ edges and thus we know that for it \begin{align*}2&=v-e+f \\&= v-(e+1)+(f+1)\end{align*} and as the original graph had one more edge and one more face it too would fit this rule.
 		\item If $e$ is not a loop we may preform an edge contraction on it and this will reduce both the number of edges and the number of vertices by one. Again this gives us a multigraph with less than $k$ edges so we know that for it \begin{align*}2&=v-e+f\\&=(v+1)-(e+1)+f\end{align*} and as the original graph had one more edge and one more vertex it to would fit this rule.
