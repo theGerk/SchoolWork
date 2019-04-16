@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.8)  16 APR 2019 11:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.8)  16 APR 2019 11:45
 entering extended mode
 **./paper.tex
 (paper.tex
@@ -1098,14 +1098,21 @@ Using TeX to sort glossary entries---this may take a while
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 ) [10] [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 548.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 548.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 549.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 549.
  (paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 548.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 548.
-Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: A4A5B51AC6EA7755B2713E46A31CEF15;935.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 548.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 549.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 549.
+
+
+Package rerunfilecheck Warning: File `paper.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `paper.out':
+(rerunfilecheck)             Before: A4A5B51AC6EA7755B2713E46A31CEF15;935
+(rerunfilecheck)             After:  5ECDE8665B50383BEE24A7D02AEDA351;934.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 549.
  ) 
 Here is how much of TeX's memory you used:
  22102 strings out of 492945
@@ -1132,7 +1139,7 @@ lic/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 sy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 
-Output written on paper.pdf (11 pages, 281480 bytes).
+Output written on paper.pdf (11 pages, 281462 bytes).
 PDF statistics:
  347 PDF objects out of 1000 (max. 8388607)
  47 named destinations out of 1000 (max. 500000)
