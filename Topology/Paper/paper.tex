@@ -379,8 +379,6 @@ Now we are going to call this operation \unsubdivide, and using it we define a g
 	A graph $G$ is a subdivision of $H$ if $H$ may be produced by some series of \unsubdividepl\ on $G$.
 \end{definition}
 
-\newpage
-
 \section{Kuratowski's Theorem}
 \begin{theorem}[Kuratowski's Theorem]
 	A graph $G$ is nonplanar if and only if it contains a subgraph that is a subdivision of $K_{3,3}$ or $K_5$
@@ -433,26 +431,112 @@ Here $K_5$ refers to the complete graph on 5 vertices, and $K_{3,3}$ is the comp
 	\end{tikzpicture}
 \end{center}
 
-\subsection{$K_{3,3}$ and $K_5$}
+\subsection{$K_5$ and $K_{3,3}$}
 Our first step is proving that $K_{3,3}$ and $K_5$ are nonplanar. To do this we are going to use the following theorem.
 
-\begin{theorem}[Euler's formula on planar graphs]
-	For any plane drawing of a graph, we have $$v-e+f=2$$, where $v$ is the number of vertices in the graph, $e$ is the number of edges in the graph, and $f$ is the number of faces in the plane drawing of the graph.
+\begin{theorem}[Euler's formula on planar multigraphs]
+	For any plane drawing of a multigraph (with the exception of a multigraph with no vertices), we have $$v-e+f=2$$, where $v$ is the number of vertices in the multigraph, $e$ is the number of edges in the multigraph, and $f$ is the number of faces in the plane drawing of the multigraph.
 \end{theorem}
-%TODO credit this to https://www.ics.uci.edu/~eppstein/junkyard/euler/interdig.html
-Before we can prove this we need to define the dual of a planar graph.
-\begin{definition}[graph dual]
-	For any plane drawing $G$ of a graph, we may construct it's dual $G*$ by putting a single vertex in each face, and putting an edge between any two adjacent faces (faces that share an edge). Note that this dual is not necessarily a graph, but will fit our definition of a multigraph.
-\end{definition}
-For example consider the following graph drawing
-\begin{center}
-\input{Duals_graphs.pdf_tex} %TODO (is this needed?) citation: https://en.wikipedia.org/wiki/Dual_graph#/media/File:Duals_graphs.svg
+
+%TODO cite https://www.ics.uci.edu/~eppstein/junkyard/euler/iedge.html
 
 
-\end{center}
-the \color{blue}blue \color{black}graph
 \begin{proof}
+	First consider a connected multigraph with no edges, as this is connected we may only have a single vertex. This produces a single and no edges so we find $$v-e+f=1-0+1=2$$. Now that we no that for 0 edges this rule fits, then either the rule ($v-e+f-2$) is true no mater the number of edges, or there is some number at which point this rule breaks, and $v-e+f\not=2$. If there is a number that breaks this rule, then there must be a lowest number (lets call it $k$) that breaks this rule. For any multigraph with $k$ edges, choose any edge $e$ in the graph.
+	\begin{itemize}
+		\item If $e$ connects a vertex to itself it is a loop and it's removal will result in the loss of one edge and one face (each loop creates a face\footnote{Jordan curve theorem}). The resulting multigraph has less than $k$ edges and thus we know that for it \begin{align*}2&=v-e+f \\&= v-(e+1)+(f+1)\end{align*} and as the original graph had one more edge and one more face it too would fit this rule.
+		\item If $e$ is not a loop we may preform an edge contraction on it and this will reduce both the number of edges and the number of vertices by one. Again this gives us a multigraph with less than $k$ edges so we know that for it \begin{align*}2&=v-e+f\\&=(v+1)-(e+1)+f\end{align*} and as the original graph had one more edge and one more vertex it to would fit this rule.
+	\end{itemize}
 	
+	From this we know that there can not possibly be some $k$, and thus all multigraphs, regardless of the number of edges must fit this rule.
+\end{proof}
+This leads to a nice corollary, that will be helpful when talking about graphs.
+\begin{corallary}
+	Any plane drawing of any multigraph has the same number of faces.
+\end{corallary}
+\begin{proof}
+	Any planar multigraph can be broken into connected components. Each component of a planar multigraph is a connected planar multigraph and thus any planar drawing of it fits the rule $v-e+f=2$.  Now any plane drawing we make of a planar multigraph will be made of parts that already have a constant number of faces.\footnote{This is not a complete proof, to complete it you simply make an induction on the number of components drawn and realize each time you add a component you add exactly $f_{i}-1$ new faces (if $f_i$ is the number of faces in the $i^{\text{th}}$ component drawn).}
+	
+	%Each drawing of every component has the same number of edges and vertices, and therefore by our equation the number of faces must also be the same in each component's drawing. Now we make a plane drawing of each component one by one to create a plane drawing of the full multigraph. Choose a component to draw first and when we draw it we know it will have some number $f_1$ of faces regardless of it's drawing. Now if we have already drawn in $k$ components we can add the $k+1^{\text{th}}$ component. To do this we must draw it completely within one of the faces that already exists as it is a plane drawing. This adds exactly $f_{k+1}-1$ faces by drawing this component as it simply splits one already existing face into $f_{k+1}$ new faces. This means that no mater what order we add faces in 
+\end{proof}
+
+This means that given any planar multigraph $G$, we can talk about the number of faces $G$ has without referring to any drawing of $G$, as all plane drawings will have the same number of faces.
+
+Now using this we can prove that $K_{3,3}$ and $K_5$ are nonplanar.
+
+\begin{theorem}
+	$K_5$ is nonplanar.
+\end{theorem}
+\begin{center}
+	\scalebox{.6}{
+		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+		
+			\node[main node] (1) {};
+			\node[main node] (2) [below left of=1] {};
+			\node[main node] (3) [below right of=1] {};
+			\node[main node] (4) [below of=2] {};
+			\node[main node] (5) [below of=3] {};
+			
+			\path[every node/.style={font=\sffamily\small}]
+			(1)	edge node {} (2)
+			edge node {} (3)
+			edge node {} (4)
+			edge node {} (5)
+			(2) edge node {} (3)
+			edge node {} (4)
+			edge node {} (5)
+			(3) edge node {} (4)
+			edge node {} (5)
+			(4) edge node {} (5);
+		\end{tikzpicture}
+	}
+
+	\scalebox{.9}{$K_5$}
+\end{center}
+\begin{proof}
+	$K_5$ is a graph\footnote{Recall that all graphs are multigraphs, but not all multigraphs are graphs.}, and as such an edge can not be a loop and two vertices can share at most one edge. This means that in any plane drawing of a graph, there must be at least 3 edges bordering every face.
+	\begin{itemize}
+		\item To only have one edge bordering a face would require that the edge be a loop (which we can't have in a graph).
+		\item To only have only two edges bordering a face would require that some pair of vertices share more than one edge (which we can't have in a graph).
+	\end{itemize}
+	Additionally every edge boarders no more than two faces, so from this we know that in any graph $2e \ge 3f$ or $\frac23e\ge f$. Now $K_5$ has 10 edges and 5 vertices, so we know that $$\frac2310=\frac{20}3=6.\bar6\ge f$$ We know that $K_5$ is a connected graph (and thus also a connected multigraph) so if $K_5$ were planar then we would have $$2=v-e+f=5-10+f\le5-10+6.\bar6 = 1.\bar6$$ which is clearly false as $$2\not\le1.\bar6$$ Therefore $K_5$ must not be planar.
+\end{proof}
+
+\begin{theorem}
+	$K_{3,3}$ is nonplanar.
+\end{theorem}
+\begin{center}
+	\scalebox{.6}{
+		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+	
+			\node[main node] (1) {};
+			\node[main node] (2) [below of=1] {};
+			\node[main node] (3) [below of=2] {};
+			\node[main node] (4) [right of=1] {};
+			\node[main node] (5) [below of=4] {};
+			\node[main node] (6) [below of=5] {};
+			
+			\path[every node/.style={font=\sffamily\small}]
+			(1)	edge node {} (4)
+			edge node {} (5)
+			edge node {} (6)
+			(2)	edge node {} (4)
+			edge node {} (5)
+			edge node {} (6)
+			(3)	edge node {} (4)
+			edge node {} (5)
+			edge node {} (6);
+		\end{tikzpicture}
+	}
+		
+	\scalebox{.9}{$K_{3,3}$}
+\end{center}
+\begin{proof}
+	$K_{3,3}$ is a bipartite graph, meaning that there is some way to break the graph into two collections of vertices, where there are no edges that stay within one of these collections. If we look at the drawing of $K_{3,3}$ above we see that the right and left works as these collections for us. There is no edge that goes between two vertices on the right or two vertices on the left. This means that if we can make a plane drawing of $K_{3,3}$ each face must have at east four edges on it's boundary. We know from our proof of $K_5$'s nonplanarity that each face in a graph must have at least three edges on it's boundary. If any face were to have three edges then the cycle bounding the face would have exactly three vertices as well. Each pair of vertices within these three vertices would share an edge and therefore there is no way to split them up into two groups such that neither group has an edge within it. Additionally every edge boarders no more than two faces, so from this we know that in any bipartite graph $2e \ge 4f$ or $e\ge 2f$.
+	
+	Now $K_{3,3}$ has 6 vertices and 9 edges. $K_{3,3}$ is bipartite so the number of faces, $f \le \frac e2 = \frac92 = 4.5$. $K_{3,3}$ is connected, so if it were planar we would have Euler's formula giving us $$2=v-e+f=6-9+f\le6-9+4.5=1.5$$ and this is false as $$2\not\le1.5$$ Therefore $K_{3,3}$ is nonplanar.
 \end{proof}
 
 
