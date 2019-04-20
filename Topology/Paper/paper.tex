@@ -435,7 +435,7 @@ Here $K_5$ refers to the complete graph on 5 vertices, and $K_{3,3}$ is the comp
 Our first step is proving that $K_{3,3}$ and $K_5$ are nonplanar. To do this we are going to use the following theorem.
 
 \begin{theorem}[Euler's formula on planar multigraphs]
-	For any plane drawing of a multigraph (with the exception of a multigraph with no vertices), we have $$v-e+f=2$$, where $v$ is the number of vertices in the multigraph, $e$ is the number of edges in the multigraph, and $f$ is the number of faces in a plane drawing of the multigraph.
+	For any plane drawing of a multigraph (with the exception of a multigraph with no vertices), we have $$v-e+f=2$$, where $v$ is the number of vertices in the multigraph, $e$ is the number of edges in the multigraph, and $f$ is the number of faces in the plane drawing of the multigraph.
 \end{theorem}
 
 %TODO cite https://www.ics.uci.edu/~eppstein/junkyard/euler/iedge.html
@@ -539,7 +539,40 @@ Now using this we can prove that $K_{3,3}$ and $K_5$ are nonplanar.
 	Now $K_{3,3}$ has 6 vertices and 9 edges. $K_{3,3}$ is bipartite so the number of faces, $f \le \frac e2 = \frac92 = 4.5$. $K_{3,3}$ is connected, so if it were planar we would have Euler's formula giving us $$2=v-e+f=6-9+f\le6-9+4.5=1.5$$ and this is false as $$2\not\le1.5$$ Therefore $K_{3,3}$ is nonplanar.
 \end{proof}
 
+\subsection{Some basic lemmas}
+This is the point in the paper where it is no longer written to be understood by everyone. %TODO make this better
 
+\begin{lemma}
+	If a graph $G$ has a nonplanar subgraph, then $G$ is nonplanar.
+\end{lemma}
+
+%TODO prove
+
+\begin{lemma}
+	If a graph $G$ is a subdivision of a nonplanar graph, then $G$ is nonplanar.
+\end{lemma}
+
+%TODO prove
+
+\begin{definition}[minimal nonplanar graph]
+	A nonplanar graph $G$ is said to be a minimal nonplanar graph if for all edges $e\in G$ the removal of $e$ would yield a  graph.
+\end{definition}
+
+
+\begin{lemma}
+	For any nonplanar graph $G$ there exists a minimal nonplanar subgraph.
+\end{lemma}
+\begin{proof}
+	Let $G$ be a nonplanar graph with $n$ edges. The removal of all edges from $G$ would yield a graph with only vertices which is trivially planar. This means there is some least number $k$ such that there exists a nonplanar subgraph of $G$ with $k$ edges. Any such nonplanar subgraph of $G$, must be a minimal nonplanar graph as the removal of any edge from it would yield a subgraph of $G$ with less than $k$ edges.
+\end{proof}
+
+\begin{lemma}
+	Every minimal nonplanar graph contains a connected minimal nonplanar subgraph.
+\end{lemma}
+\begin{proof}
+	%TODO redo proof
+	Let $G$ be a minimal nonplanar graph. If $G$ is connected then $G$ contains itself as a minimal nonplanar subgraph. If $G$ is not connected then it is composed of connected components. When embedding $G$ within the plane, if every component was planar we could embed them into any space homeomorphic to $\mathbb R^2$. For example each component could be embedded in an open disk with radius $1/2$ about a separate point in $\mathbb Z^2$, and this would then be a plane drawing. This means that at least one component in $G$ must be nonplanar. Now every other component in this graph may not have any edges as their removal would still yield a nonplanar graph (which breaks the definition of minimal nonplanar). This means that there is only one nonplanar component, and further if any edge from this component is to be removed then $G$ would be planar. Now by . From this we get that this component is itself a connected minimal nonplanar subgraph of $G$.
+\end{proof}
 
 \printnoidxglossary
 

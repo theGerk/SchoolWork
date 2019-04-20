@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.8)  16 APR 2019 11:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.8)  20 APR 2019 18:09
 entering extended mode
 **./paper.tex
 (paper.tex
@@ -1041,7 +1041,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 {C:/Users/Benji/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 (Konigsberg.pdf_tex
-<Konigsberg.pdf, id=127, page=1, 520.26665pt x 393.25441pt>
+<Konigsberg.pdf, id=129, page=1, 520.26665pt x 393.25441pt>
 File: Konigsberg.pdf Graphic file (type pdf)
 <use Konigsberg.pdf, page 1>
 Package pdftex.def Info: Konigsberg.pdf , page1 used on input line 52.
@@ -1091,34 +1091,27 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 447.
- [8] [9]
+ [8] [9] [10]
 Using TeX to sort glossary entries---this may take a while
 (paper.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [10] [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 549.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 549.
+) [11]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 582.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 582.
  (paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 549.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 549.
-
-
-Package rerunfilecheck Warning: File `paper.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `paper.out':
-(rerunfilecheck)             Before: A4A5B51AC6EA7755B2713E46A31CEF15;935
-(rerunfilecheck)             After:  5ECDE8665B50383BEE24A7D02AEDA351;934.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 549.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 582.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 582.
+Package rerunfilecheck Info: File `paper.out' has not changed.
+(rerunfilecheck)             Checksum: E7035946A63BD9FB1DFFBE356762DED8;1002.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 582.
  ) 
 Here is how much of TeX's memory you used:
- 22102 strings out of 492945
- 396041 string characters out of 3135514
+ 22109 strings out of 492945
+ 396129 string characters out of 3135514
  537286 words of memory out of 3000000
- 25488 multiletter control sequences out of 15000+200000
+ 25489 multiletter control sequences out of 15000+200000
  17172 words of font info for 69 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,15n,56p,1990b,927s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1138,10 +1131,10 @@ les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX
 lic/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 sy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-
-Output written on paper.pdf (11 pages, 281462 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on paper.pdf (11 pages, 288433 bytes).
 PDF statistics:
- 347 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 359 PDF objects out of 1000 (max. 8388607)
+ 53 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 
