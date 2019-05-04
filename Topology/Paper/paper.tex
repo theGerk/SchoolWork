@@ -1,7 +1,6 @@
 \documentclass{article}
 \input{../../definitions}
 \input{../topology}
-\input{glossary}
 \title{Topological Graph Theory}
 \begin{document}
 \maketitle
@@ -14,13 +13,13 @@ Topological graph theory is an entire field within topology and as such this pap
 
 \section{Overview}
 \subsection{Graphs}
-Before we talk about topological graph theory with any level of understanding we must first understand what a \gls{graph} is.
+Before we talk about topological graph theory with any level of understanding we must first understand what a graph is.
 
-A \gls{graph} is generally defined as a \gls{set} of \glspl{vertex} combined with a \gls{set} of \glspl{edge} between \glspl{vertex}, however here it may be more useful to think about them visually with a simple representation.
+A graph is generally defined as a set of vertices combined with a set of edges between vertices, however here it may be more useful to think about them visually with a simple representation.
 
-Consider first a \gls{set} of points, this may be thought of as just drawing dots on a sheet of paper. Each of these points will be called a \gls{vertex}. Now we may start drawing lines between \glspl{vertex}. Lines may cross over each other and need not be straight. There is no requirement that all \glspl{vertex} have a line going to it. Each of these lines are called an \gls{edge}. We will simply insist that no \gls{edge} connects two \glspl{vertex} and that we do not have multiple \glspl{edge} between the same pair of \glspl{vertex}.
+Consider first a set of points, this may be thought of as just drawing dots on a sheet of paper. Each of these points will be called a vertex. Now we may start drawing lines between vertices. Lines may cross over each other and need not be straight. There is no requirement that all vertices have a line going to it. Each of these lines are called an edge. We will simply insist that no edge connects two vertices and that we do not have multiple edges between the same pair of vertices.
 
-Once we have drawn this we have a representation of a \gls{graph}. If we were to move the \glspl{vertex} around on the paper but leave them having the same \glspl{edge} (the same \glspl{vertex} are connected to the point as they were before). we would be left with the same \gls{graph}. That is to say, it doesn't mater where we put a \gls{vertex} on our sheet, the \gls{graph} exists independently of the representation we draw.
+Once we have drawn this we have a representation of a graph. If we were to move the vertices around on the paper but leave them having the same edges (the same vertices are connected to the point as they were before). we would be left with the same graph. That is to say, it doesn't mater where we put a vertex on our sheet, the graph exists independently of the representation we draw.
 
 \subsection{K\"onigsberg, and its seven bridges}
 
@@ -30,9 +29,9 @@ Consider the following photo-realistic drawing of the city of K\"onigsberg.
 
 Now the question is, if we get to choose where we start, can we go for a stroll and cross every bridge exactly once?
 
-I first came across this question in the 8\textsuperscript{th} grade, and it was presented to us during geometry class. While undoubtedly an interesting problem, it is quite misleading to try and think of this as a geometry problem. Instead we will try and reduce it to a \gls{graph} problem.
+I first came across this question in the 8\textsuperscript{th} grade, and it was presented to us during geometry class. While undoubtedly an interesting problem, it is quite misleading to try and think of this as a geometry problem. Instead we will try and reduce it to a graph problem.
 
-Let us start by thinking of every island as a \gls{vertex} and every bridge as an \gls{edge}. We find the following \gls{graph}.
+Let us start by thinking of every island as a vertex and every bridge as an edge. We find the following graph.
 
 \begin{center}
 \begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
@@ -54,13 +53,13 @@ Let us start by thinking of every island as a \gls{vertex} and every bridge as a
 \end{tikzpicture}
 \end{center}
 
-It is worth noting two things about the above diagram. First that the labels on the \glspl{vertex} and \glspl{edge} are unrelated to the problem, but have been added simply to make referring to parts of the \gls{graph} much easier. Second that whatever the above image depicts, does not fit our definition of a \gls{graph}.
+It is worth noting two things about the above diagram. First that the labels on the vertices and edges are unrelated to the problem, but have been added simply to make referring to parts of the graph much easier. Second that whatever the above image depicts, does not fit our definition of a graph.
 
-Notice that \gls{edge} $2$ and \gls{edge} $3$ both connect \gls{vertex} $A$ to $B$, as well \glspl{edge} $5$ and $6$ do for $B$ and $C$. This is a strict violation of our definition for a \gls{graph}. The issue of course then comes to what would one call such a beast as this where, presumably, one is able to have as many connections between any pair of \glspl{vertex} and could even have connections from a \gls{vertex} to itself.
+Notice that edge $2$ and edge $3$ both connect vertex $A$ to $B$, as well edges $5$ and $6$ do for $B$ and $C$. This is a strict violation of our definition for a graph. The issue of course then comes to what would one call such a beast as this where, presumably, one is able to have as many connections between any pair of vertices and could even have connections from a vertices to itself.
 
-I am particularly glad that you're paying enough attention to notice that the diagram does not depict a \gls{graph}. This is what we will refer to as a \gls{multigraph}. It is worth noting that \glspl{graph} are a type of \gls{multigraph}, so anything we show to be true for all \glspl{multigraph}, is also true for all \glspl{graph}.
+I am particularly glad that you're paying enough attention to notice that the diagram does not depict a graph. This is what we will refer to as a multigraph. It is worth noting that graphs are a type of multigraph, so anything we show to be true for all multigraphs, is also true for all graphs.
 
-Now to solve this problem we need to make one simple observation about how we walk. If we are to go to island (or vertex) we must also leave that island, unless it is the last island we arrive on. This means, that with the exception of the island we start on and end on, each island must have an even number of bridges connected to it. On the \gls{multigraph} we would say that we need all \glspl{vertex} but a start and end \gls{vertex} to have an even number of edges. If we look at the \gls{multigraph} above, we have four \glspl{vertex} that have an odd number of \glspl{edge} connected to them.
+Now to solve this problem we need to make one simple observation about how we walk. If we are to go to island (or vertex) we must also leave that island, unless it is the last island we arrive on. This means, that with the exception of the island we start on and end on, each island must have an even number of bridges connected to it. On the multigraph we would say that we need all vertices but a start and end vertex to have an even number of edges. If we look at the multigraph above, we have four vertices that have an odd number of edges connected to them.
 
 \subsection{History}
 %TODO Make how short this is less obvious
@@ -71,7 +70,7 @@ in 1736. In mathematics this problem is of great historical significance as it i
 
 \subsection{Planer Graphs}
 
-Consider the following \gls{graph}.
+Consider the following graph.
 
 \begin{center}
 \begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
@@ -92,7 +91,7 @@ Consider the following \gls{graph}.
 \end{tikzpicture}
 \end{center}
 
-This \gls{graph} is called a \gls{complete} as every \gls{vertex} is connected to every other \gls{vertex} by an \gls{edge}; in fact this \gls{graph} in particular is called $K_4$ as it is the complete four vertex \gls{graph}. We would like to find out if we can draw this above \gls{graph} without having any lines crossing. We can in fact draw this \gls{graph} without any intersections and for any skeptics who may being reading this, the below is $K_4$ without any \glspl{edge} intersecting.
+This graph is called a complete as every vertex is connected to every other vertex by an edge; in fact this graph in particular is called $K_4$ as it is the complete four vertex graph. We would like to find out if we can draw this above graph without having any lines crossing. We can in fact draw this graph without any intersections and for any skeptics who may being reading this, the below is $K_4$ without any edges intersecting.
 
 \begin{center}
 \begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
@@ -113,7 +112,7 @@ This \gls{graph} is called a \gls{complete} as every \gls{vertex} is connected t
 \end{tikzpicture}
 \end{center}
 
-So if this \gls{graph} can be drawn without intersection, can any \gls{graph} be drawn without intersections? If some can and some can't how do we tell which can be drawn and which can not? The answer to this comes in Kuratowski's theorem, however before we can even state this theorem we need to build up a bit of terminology for graph theory.
+So if this graph can be drawn without intersection, can any graph be drawn without intersections? If some can and some can't how do we tell which can be drawn and which can not? The answer to this comes in Kuratowski's theorem, however before we can even state this theorem we need to build up a bit of terminology for graph theory.
 
 \subsection{Graph Drawing}
 A graph drawing is exactly what it sounds like. We've already seen drawings of graphs like the one for K\"oingsberg and two drawings of $k_4$, this means there may be multiple distinct drawings for the same graph. Now we don't need to be very worried about what defines a drawing, that won't be important to us. Simply think of it as the drawing.
@@ -123,9 +122,9 @@ If a drawing has no edges intersecting it is said to be a plane drawing. If ther
 \subsection{Face}
 Faces are a bit of an odd property here as they fundamentally are actually properties only of plane drawings and not graphs themselves; however the number of faces, as we will see stays consistent between any plane drawing of a planar graph and as such the number of faces is a property that planar graphs have.
 
-A face is defined as a connected space that contains no edges or verticies and itself is bounded by edges and verticies.
+A face is defined as a connected space that contains no edges or vertices and itself is bounded by edges and vertices.
 
-If you think back to high-school geometry and cubes you may recall that a each of the corners is a vertex, the lines connecting verticies are edges and the area between the edges are faces. In a graph we have verticies connected by edges and when we draw them there are empty areas enclosed by edges and verticies. For example the following would correspond with a cube
+If you think back to high-school geometry and cubes you may recall that a each of the corners is a vertex, the lines connecting vertices are edges and the area between the edges are faces. In a graph we have vertices connected by edges and when we draw them there are empty areas enclosed by edges and vertices. For example the following would correspond with a cube
 \begin{center}
 	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
 	thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
@@ -154,7 +153,7 @@ If you think back to high-school geometry and cubes you may recall that a each o
 	(7) edge node {} (8);
 	\end{tikzpicture}
 \end{center}
-Now we can imagine that if we look at the cube straight on maybe $ABDC$ would be the face we are looking at. So too we see the area enclosed in $ABDC$ is a face by the definition we gave. The same is true for $ABFE$, $ACGE$, $DBFH$, and $DCGH$, however that leaves us with only five faces on this cube. The last face must logically come from $EFHG$, however the area enclosed by that contains all the other edges and verticies, so it doesn't fit our definition. However we may notice that the infinite space outside $EFHG$ does not contain any verticies, and therefore we get a sixth face.
+Now we can imagine that if we look at the cube straight on maybe $ABDC$ would be the face we are looking at. So too we see the area enclosed in $ABDC$ is a face by the definition we gave. The same is true for $ABFE$, $ACGE$, $DBFH$, and $DCGH$, however that leaves us with only five faces on this cube. The last face must logically come from $EFHG$, however the area enclosed by that contains all the other edges and vertices, so it doesn't fit our definition. However we may notice that the infinite space outside $EFHG$ does not contain any vertices, and therefore we get a sixth face.
 
 Consider then the following very simple graph:
 \begin{center}
@@ -169,8 +168,19 @@ Consider then the following very simple graph:
 \end{center}
 Now we still only have one face, however it doesn't have as nice a boundary as they did in the cube. However if we look at all of space excluding $A$ and $B$ then we still get a valid space by our definition.
 
-\subsection{Path}
-Now moving onto a more traditional graph property we have the concept of a path. A path is defined as a finite sequence of verticies with the property that each element of the sequence (excluding the last one) has an edge from it to the next element. For example consider the following graph.
+\subsection{Walks}
+Now moving onto a more traditional graph property we have the concept of a walk. A walk can be thought of as if you were standing on some vertex $v_0$ and just kept following edges to neighboring vertices some number of times. We define it as follows.
+
+\begin{definition}[walk]
+	A walk is a finite sequence of vertices and edges with the following properties.
+	\begin{itemize}
+		\item Every odd element in the sequence is a vertex.
+		\item Every even element in the sequence is an edge that connects the vertex before and after it.
+		\item A walk always begins and ends with a vertex.
+	\end{itemize}
+\end{definition}
+
+For example consider the following graph.
 
 \begin{center}
 	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
@@ -188,27 +198,45 @@ Now moving onto a more traditional graph property we have the concept of a path.
 	\node[main node] (j) [below right of=e] {$J$};
 	
 	\path[every node/.style={font=\sffamily\small}]
-	(a) edge node {} (b)
-	edge node {} (c)
-	edge node {} (f)
-	(b) edge node {} (d)
-	edge node {} (g)
-	(c) edge node {} (e)
-	edge node {} (h)
-	(d) edge node {} (i)
-	(e) edge node {} (j)
-	(f) edge node {} (g)
-	edge node {} (h)
-	(g) edge node {} (i)
-	(h) edge node {} (j)
-	(i) edge node {} (j);
+	(a) edge node {$a$} (b)
+	edge node {$b$} (c)
+	edge node {$c$} (f)
+	edge node {$o$} (e)
+	(b) edge node {$d$} (d)
+	edge node {$e$} (g)
+	(c) edge node {$f$} (e)
+	edge node {$g$} (h)
+	(d) edge node {$h$} (i)
+	(e) edge node {$i$} (j)
+	(f) edge node {$j$} (g)
+	edge node {$k$} (h)
+	(g) edge node {$l$} (i)
+	(h) edge node {$m$} (j)
+	(i) edge node {$n$} (j);
 	\end{tikzpicture}
 \end{center}
 
-Now the sequence $BGF$ is a path as $B$ connects to $G$ and $G$ connects to $F$. The sequence $ABGFACEJHCABA$ is also a path, however $JEDI$ is not a path as $E$ has no edge to $D$. Notice that how we draw the graph has nothing to do with what is and is not a path.
+Now the sequence $BeGjF$ is a walk as we can think of starting at vertex $B$, walking down $e$ to $G$, then down $j$ to $F$ and  finishing. The sequence $AaBaA$ is also a walk as we could start at $A$, go down edge $a$ to $B$, then back up $a$ to $A$ again. The sequence $CfEi$ however isn't a walk as it doesn't end with a vertex. 
+
+\subsubsection{Path}
+\begin{definition}[path]
+	A path is a walk where a vertex and edge can not appear twice in the sequence.
+\end{definition}
+ 
+You could think of a path as you start at some vertex and start building a path as you talk your walk. You aren't allows to have your path intersect with itself, so you always 
+ 
+So for example with the above graph $BeGjF$ is not only a walk, but also a path. The sequence $AaBaA$, while it is a walk, it however is not a path as both edge $a$ and vertex $A$ are used twice.
+
+\subsubsection{Cycle}
+\begin{definition}[cycle]
+	A cycle is a walk, of length greater than one, where a vertex and edge can not appear twice in the sequence with the exception of the first and last vertex which must be the same.
+\end{definition}
+
+
+The definition for cycle is quite similar to that of a path, it effectively is a path that loops back to where it started at the end. The stipulation that a cycle must be "of length greater than one" simply means that the walk $A$ (just the vertex $A$ and nothing else) is not a cycle. Examples of a cycle would include $AbCgHkFcA$, $AbCfEoA$, and $FkHmJnIlGjF$. It is important to note that something like $FcAcF$ is not a cycle as it includes the edge $c$ twice.
 
 \subsection{Connected}
-A graph is said to be connected if for any pair of verticies, $\pair ab$ there is a path from $a$ to $b$. So if we consider the following graphs 
+A graph is said to be connected if for any pair of vertices, $\pair ab$ there is a walk from $a$ to $b$. So if we consider the following graphs 
 \begin{center}
 	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
 	thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
@@ -256,8 +284,73 @@ We find that only the graph in the middle is connected. For the graph on the rig
 
 Any graph, connected or not, can be broken into connected components. To do this we simply take a vertex and every other vertex connected to it and call that one component, and then repeat with a vertex not in that component. This sort of breaking apart is nice as often we will prove things about connected graphs that are true about all graphs. For example if all components of a graph are planar then the entire graph must be planar, this will be proven below and it allows us to only deal with connected graphs.
 
+%\subsection{Neighborhood}
+%Given some graph $G$ with vertex $v$. The neighborhood of $v$ within $G$ is the set of all vertices that share an edge with $v$, not including $v$.\footnote{If $G$ is a multigraph the definition stays the same, however $v$ maybe it's own neighbor if it has an edge with itself or a loop} Given a subgraph $H$ of $G$, the neighborhood of $H$ within $G$ is a new subgraph of $G$ that includes $H$ as well as any vertex in $G$ that is adjacent to a vertex in $H$ and the edge that they share.
+%
+%Lets look at some examples
+%\begin{center}
+%	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+%	thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+%	
+%		\node[main node] (0) {\textcolor{blue}{$a$}};
+%		\node[main node] (1) [above right of=0] {\textcolor{red}{$b$}};
+%		\node[main node] (2) [right of=1] {$c$};
+%		\node[main node] (3) [below right of=2] {$d$};
+%		\node[main node] (4) [below of=3] {\textcolor{red}{$e$}};
+%		\node[main node] (5) [below left of=4] {$f$};
+%		\node[main node] (6) [left of=5] {$g$};
+%		\node[main node] (7) [above left of=6] {$h$};
+%		
+%		\path[every node/.style={font=\sffamily\small}]
+%		(0)
+%		edge node {} (2)
+%		edge node {} (3)
+%		edge node {} (4)
+%		(1)
+%		edge node {} (3)
+%		edge node {} (4)
+%		edge node {} (5)
+%		(2)
+%		edge node {} (4)
+%		edge node {} (5)
+%		(3)
+%		edge node {} (7)
+%		(4)
+%		edge node {} (6)
+%		edge node {} (7)
+%		(5)
+%		edge node {} (6)
+%		edge node {} (7)
+%		(6)
+%		edge node {} (7);
+%	\end{tikzpicture}
+%\end{center}
+%
+%First let us consider the neighborhood of just the vertex \textcolor{blue}{$a$}, this would then be all the vertices that it is adjacent to so we get $$\set{c, d, \textcolor{red}{e}}$$ We could also let $A$ be a subgraph containing only the vertex $\textcolor{blue}{a}$ and so it's neighborhood within $G$ will be the graph below.
+%\begin{center}
+%	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+%	thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+%	
+%		\node[main node] (0) {\textcolor{blue}{$a$}};
+%		\node[main node] (2) [above right of=0] {$c$};
+%		\node[main node] (3) [below right of=2] {$d$};
+%		\node[main node] (4) [below of=3] {\textcolor{red}{$e$}};
+%		
+%		\path[every node/.style={font=\sffamily\small}]
+%		(0)
+%		edge node {} (2)
+%		edge node {} (3)
+%		edge node {} (4)
+%		(2)
+%		edge node {} (4);
+%	\end{tikzpicture}
+%\end{center}
+%The difference is that this is actually a subgraph of $G$, whereas the previous is just vertices.
+%
+%For another example let $H$ be the subgraph with only the \textcolor{red}{$b$}, \textcolor{red}{$e$} and the edge they share. The neighborhood of $H$ within $G$ within $G$ would then be all of $G$ as every vertex is either a neighbor of $b$ or $e$.
+%
 \subsection{Contraction}
-This is not a property, but rather an operation or action that we preform on a graph. Let us consider the following \gls{graph}.
+This is not a property, but rather an operation or action that we preform on a graph. Let us consider the following graph.
 
 \begin{center}
 	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
@@ -278,7 +371,7 @@ This is not a property, but rather an operation or action that we preform on a g
 	\end{tikzpicture}
 \end{center}
 
-We wish to preform a \gls{contraction} on \gls{edge} $R$. To be clear all graph \glspl{contraction} are on \glspl{edge}. So we will make a new \gls{vertex}, $r\cdot s$ which has all the \glspl{edge} of $r$ and all the \glspl{edge} of $s$ except the \gls{edge} we are contracting across. In this case the \gls{edge} we are contracting across is $R$ and thus we get the following \gls{multigraph}.
+We wish to preform a contraction on edge $R$. To be clear all graph contractions are on edges. So we will make a new vertex, $r\cdot s$ which has all the edges of $r$ and all the edges of $s$ except the edge we are contracting across. In this case the edge we are contracting across is $R$ and thus we get the following multigraph.
 
 \begin{center}
 	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
@@ -297,28 +390,24 @@ We wish to preform a \gls{contraction} on \gls{edge} $R$. To be clear all graph 
 	\end{tikzpicture}
 \end{center}
 
-This can then be reduced into a \gls{graph} again by simply treating $b_r$ and $b_s$ as the same edge. This operation is particularly important as we will prove that if a \gls{graph} is planar, then so is any \gls{graph} or \gls{multigraph} obtained by contracting an \gls{edge}.
+This can then be reduced into a graph again by simply treating $b_r$ and $b_s$ as the same edge. This operation is particularly important as we will prove that if a graph is planar, then so is any graph or multigraph obtained by contracting an edge.
 
 \subsection{Subdivision}
-%TODO rename unsubdivide
-\def\unsubdivide{vertex replacement}
-\def\unsubdividepl{vertex replacements}
+There are two types of subdivision, an edge subdivision and graph subdivision. Edge subdivisions can best be though of as an operation, much like a contraction. We then can define a graph subdivision in terms of the edge version.
 
-To define this we first describe, we first have to describe an operation where we take a vertex $v$ that has degree 2, and replace with an edge as follows.
-
+\subsubsection{Edge Subdivision}
+An edge subdivision is where we take an an edge and add a vertex into the middle of it. If we have an edge $e$ that goes between vertex $a$ and $b$ then to subdivide it we add a vertex $c$, remove edge $e$ and then add an edge between $a$ and $c$ and between $b$ and $c$. This is demonstrated in the diagram below.
 \begin{center}
 	$
 	\begin{array}{l}
 		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
 		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
 		
-		\node[main node] (1) {$v$};
-		\node[main node] (2) [left of=1] {$A$};
-		\node[main node] (3) [right of=1] {$B$};
-		
-		\path[every node/.style={font=\sffamily\small}]
-		(1)	edge node {} (2)
-		edge node {} (3);
+			\node[main node] (1) {$a$};
+			\node[main node] (2) [right of=1] {$b$};
+			
+			\path[every node/.style={font=\sffamily\small}]
+			(1)	edge node {$e$} (2);
 		\end{tikzpicture}
 	\end{array}
 	$
@@ -326,61 +415,29 @@ To define this we first describe, we first have to describe an operation where w
 	$
 	\begin{array}{l}
 		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
-		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
-		
-		\node[main node] (1) {$A$};
-		\node[main node] (2) [right of=1] {$B$};
+thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+		\node[main node] (1) {$a$};
+		\node[main node] (3) [right of=1] {$c$};
+		\node[main node] (2) [right of=3] {$b$};
 		
 		\path[every node/.style={font=\sffamily\small}]
-		(1)	edge node {} (2);
+		(1)	edge node {} (3)
+		(2) edge node {} (3);
 		\end{tikzpicture}
 	\end{array}
 	$
-	
-	or
-	
-	$
-	\begin{array}{l}
-		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
-		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
-		
-		\node[main node] (1) {$v$};
-		\node[main node] (2) [left of=1] {$A$};
-		\node[main node] (3) [right of=1] {$B$};
-		
-		\path[every node/.style={font=\sffamily\small}]
-		(1)	edge node {} (2)
-		edge node {} (3)
-		(2) edge [bend left] node {} (3);
-		\end{tikzpicture}
-	\end{array}
-	$
-	\scalebox{2}{$\to$}
-	$
-	\begin{array}{l}
-		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
-		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
-		
-		\node[main node] (1) {$A$};
-		\node[main node] (2) [right of=1] {$B$};
-		
-		\path[every node/.style={font=\sffamily\small}]
-		(1)	edge node {} (2);
-		\end{tikzpicture}
-	\end{array}
-	$
-	
-	\scalebox{.9}{Here $A$ and $B$ may be connected in any way to a larger graph, however only this subgraph will change.}
 \end{center}
 
-Now we are going to call this operation \unsubdivide, and using it we define a graph subdivision as follows.
+This can be thought of as a sort of inverse to contractions. To see this simply preform a contraction on either edge of the output graph above and you will return the the original graph.
 
-\begin{definition}[graph subdivision]
-	A graph $G$ is a subdivision of $H$ if $H$ may be produced by some series of \unsubdividepl\ on $G$.
-\end{definition}
+
+\subsubsection{Graph Subdivision}
+A graph $G$ is said to be a subdivision of $H$ if $G$ can be obtained from $H$ via some series of edge subdivisions. For example consider the two following graphs.
+This can be thought of as just adding vertices along an edge. Intuitively this shouldn't actually change the shape of a graph. This not changing the shape of a graph is something that will be touched on later in lemma \ref{subdivision}.
 
 \section{Kuratowski's Theorem}
-\begin{theorem}[Kuratowski's Theorem]
+\begin{theorem}[Kuratowski's Theorem]\label{THEBIGONE}
 	A graph $G$ is nonplanar if and only if it contains a subgraph that is a subdivision of $K_{3,3}$ or $K_5$
 \end{theorem}
 
@@ -444,7 +501,7 @@ Our first step is proving that $K_{3,3}$ and $K_5$ are nonplanar. To do this we 
 \begin{proof}
 	First consider a connected multigraph with no edges, as this is connected we may only have a single vertex. This produces a single and no edges so we find $$v-e+f=1-0+1=2$$ Now that we know that for 0 edges this rule fits, then either the rule ($v-e+f-2$) is true no mater the number of edges, or there is some number at which point this rule breaks, and $v-e+f\not=2$. If there is a number that breaks this rule, then there must be a lowest number (let's call it $k$) that breaks this rule. For any multigraph with $k$ edges, choose any edge $e$ in the graph.
 	\begin{itemize}
-		\item If $e$ connects a vertex to itself it is a loop and its removal will result in the loss of one edge and one face (each loop creates a face\footnote{Jordan curve theorem}). The resulting multigraph has less than $k$ edges and thus we know that for it \begin{align*}2&=v-e+f \\&= v-(e+1)+(f+1)\end{align*} and as the original graph had one more edge and one more face it too would fit this rule.
+		\item If $e$ connects a vertex to itself it is a loop and its removal will result in the loss of one edge and one face (each loop creates a face\footnote{this is due to the Jordan curve theorem}). The resulting multigraph has less than $k$ edges and thus we know that for it \begin{align*}2&=v-e+f \\&= v-(e+1)+(f+1)\end{align*} and as the original graph had one more edge and one more face it too would fit this rule.
 		\item If $e$ is not a loop we may perform an edge contraction on it and this will reduce both the number of edges and the number of vertices by one. Again this gives us a multigraph with less than $k$ edges so we know that for it \begin{align*}2&=v-e+f\\&=(v+1)-(e+1)+f\end{align*} and as the original graph had one more edge and one more vertex it to would fit this rule.
 	\end{itemize}
 	
@@ -540,19 +597,29 @@ Now using this we can prove that $K_{3,3}$ and $K_5$ are nonplanar.
 \end{proof}
 
 \subsection{Some basic lemmas}
-This is the point in the paper where it is no longer written to be understood by everyone. %TODO make this better
+Up to this point the paper has been writing such that anyone with a basic mathematical competency and interest could understand and work through the content. From this point on the paper moves a bit faster and assumes knowledge of basic mathematical notation and more experience with math.
 
-\begin{lemma}
+The purpose of the next couple sections is to build up the mathematical machinery that we need for our proof of Kuratowski's theorem (theorem \ref{THEBIGONE})
+
+\begin{lemma} \label{subgraph}
 	If a graph $G$ has a nonplanar subgraph, then $G$ is nonplanar.
 \end{lemma}
 
-%TODO prove
+\begin{proof}
+	If we have a graph $G$ with a nonplanar subgraph $H$ then when drawing $G$ there is a part of the drawing that is $H$. This part of the drawing can not be planar and therefore the drawing of $G$ can not be a plane drawing.
+\end{proof}
 
-\begin{lemma}
+\begin{lemma} \label{subdivision}
 	If a graph $G$ is a subdivision of a nonplanar graph, then $G$ is nonplanar.
 \end{lemma}
 
-%TODO prove
+\begin{proof}
+	
+\end{proof}
+
+\begin{lemma} \label{component}
+	If a graph $G$ is nonplanar than at least one of it's connected components is nonplanar.
+\end{lemma}
 
 \begin{definition}[minimal nonplanar graph]
 	A nonplanar graph $G$ is said to be a minimal nonplanar graph if for all edges $e\in G$ the removal of $e$ would yield a  graph.
@@ -567,14 +634,164 @@ This is the point in the paper where it is no longer written to be understood by
 \end{proof}
 
 \begin{lemma}
-	Every minimal nonplanar graph contains a connected minimal nonplanar subgraph.
+	Every minimal nonplanar graph contains a connected minimal nonplanar subgraph
 \end{lemma}
+
 \begin{proof}
-	%TODO redo proof
-	Let $G$ be a minimal nonplanar graph. If $G$ is connected then $G$ contains itself as a minimal nonplanar subgraph. If $G$ is not connected then it is composed of connected components. When embedding $G$ within the plane, if every component was planar we could embed them into any space homeomorphic to $\mathbb R^2$. For example each component could be embedded in an open disk with radius $1/2$ about a separate point in $\mathbb Z^2$, and this would then be a plane drawing. This means that at least one component in $G$ must be nonplanar. Now every other component in this graph may not have any edges as their removal would still yield a nonplanar graph (which breaks the definition of minimal nonplanar). This means that there is only one nonplanar component, and further if any edge from this component is to be removed then $G$ would be planar. Now by . From this we get that this component is itself a connected minimal nonplanar subgraph of $G$.
+	Let $G$ be a minimal nonplanar graph. We know by lemma \ref{component} that $G$ contains at least one nonplanar component, $C_1$. Additionally for a graph to be nonplanar it must have edges (as it is trivial to embed a graph of finite vertices with no edges in the plane), so $C_1$ has edges. Now assume for the sake of contradiction that there is another connected component in $G$, $C_2\not=C_1$, and that $C_2$ has at least one edge in it. We know that $C_1$ is nonplanar so if in $G$ we remove an edge from $C_2$ then $G$ would still be planar as it contains $C_1$ (by lemma \ref{subgraph}). Therefore by contradiction $G$ contains only one connected component, $C_1$, with any edges.
+	
+	Now to finish the proof assume for the sake of contradiction that $C_1$ is not minimally nonplanar. This means there is some edge in $C_1$, $e$, for which $C_1\setminus\set e$ is nonplanar. Therefore if we remove the same edge $e$ in $G$, $G$ still contains a nonplanar graph $C_1\setminus\set e$, and therefore is nonplanar by lemma \ref{subgraph}. Therefore we have a contradiction as we know $G$ to be minimally nonplanar and thus $C_1$ must also be minimally nonplanar.
 \end{proof}
 
-\printnoidxglossary
+\begin{definition}[cut set]
+	In a graph $G$, any set of vertices, whose removal would yield a disconnected graph is called a cut set.
+\end{definition}
+
+\begin{definition}[$k$ connected]
+	A graph $G$, is said to be $k$ connected if it's minimal cut set is of size $k$.
+\end{definition}
+
+
+\subsection{Some larger theorems}
+
+\begin{theorem}[Menger's theorem] %TODO make sure mutally distinct path is well defined and make sure $n$ connected is well defined
+	A graph is $n$ connected if and only if there are at least $n$ mutually distinct paths between any two vertices.
+\end{theorem}
+
+%TODO prove
+
+
+
+\begin{theorem}
+	Any connected minimal nonplanar graph is at least 3 connected.
+\end{theorem}
+
+%TODO prove
+
+\subsection{Bridges}
+First consider a planar graph $G$ with cycle $C$. When we make a plane drawing of $G$ we find that $C$ in this drawing is a loop that separates the plane into an interior and exterior. The proof for this comes from the Jordan curve theorem, however we won't be getting into the Jordan curve theorem in this paper. Even so, just to make this complete we must state the Jordan curve theorem, define a Jordan curve and show that $C$ is a Jordan curve.
+\subsubsection{The Jordan Curve Theorem}
+\begin{theorem}[Jordan curve theorem] %TODO cite wikipedia https://en.wikipedia.org/wiki/Jordan_curve_theorem#Definitions_and_the_statement_of_the_Jordan_theorem
+	Let $C$ be a Jordan curve in the plane $\mathbb R^2$. Then its complement, $\mathbb R^2 \setminus C$, consists of exactly two connected components. One of these components is bounded (the interior) and the other is unbounded (the exterior), and the curve C is the boundary of each component.
+\end{theorem}
+
+\begin{definition}[Jordan curve]
+	A Jordan curve is a curve, $f:\ccint01\to \mathbb R^2$, with the following properties:
+	\begin{itemize}
+		\item $f$ is continuous
+		\item $f$ is injective on the interval $\coint 01$
+		\item $f(0) = f(1)$
+	\end{itemize}
+\end{definition}
+\begin{lemma}
+	For any plane drawing of a graph, $G$, containing cycle $C$, $C$ is a Jordan curve in the drawing.
+\end{lemma}
+\begin{proof}
+	In order to fully rigorously prove this we have to go back and formalize what a plane drawing is. So let us do this now.
+	
+	A drawing is a subset, $D$, of some topological space $S$. For plane drawings this space will be $\mathbb R^2$ with it's standard topology.
+	
+	Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said to be a drawing of $G$ if and only if the following criteria are met:
+	\begin{itemize}
+		\item There exists an injective function $v:V\to D$.
+		\item If there is an edge $e\in E$ between vertices $a$ and $b$ then there is a continuous injective function $\hat e:\ccint01\to S$ with $\hat e(0) = v(a)$ and $\hat e(1) = v(b)$ and the image of $e$ is contained within $D$.
+		\item For any vertex $a\in V$ and edge $e\in E$ and any real number $x\in\ooint 01$, $\hat e(x)\not=v(a)$.
+		\item For any two edges $e\not=f$, $\hat e(x) \not= \hat f(y)$ for all $x,y \in\ooint01$.
+		\item for all $d\in D$ there exists either a vertex $a\in V$ such that $v(a) = d$ or there exists an edge $e\in E$ such that $d$ is in the image of $\hat e$.
+	\end{itemize}
+
+%TODO ask Shaw what he thinks
+	Now consider a plane drawing of a graph $G$ with cycle $C$. We may write out $C$ as $v_1e_1v_2e_2\ldots v_ke_kv_1$. We know that each of these $e_i$s have a corresponding curve $\hat e_i$ that starts at the end of the previous ($\hat e_{i-1}$) curve and ends at the beginning of the next ($\hat e_{i+1}$) curve. This means we can construct a new continuous curve simply by stringing each of these together and then resize the domain. What we end with will then be a curve $f:\ccint 01\to\mathbb R^2$ that is continuous. We will also have $f(0) = f(1)$ as $v_1$ as $e_1$ starts at $v_1$ and $e_k$ ends at $v_1$. We will also have $f$ injective on $\coint{0}{1}$ as we know that edges do not overlap each other (this is formalized in the fourth bullet point of our definition for a drawing). This then means that our cycle creates a Jordan curve.
+\end{proof}
+
+\subsubsection{Bridges}
+
+Let $G$ be a connected graph with cycle $C$. Let $G'$ be the graph of $G$ when all edges of $C$ are removed. 
+\begin{definition}[partial bridge]
+	A partial bridge, $B$, of $C$ in $G$ is any connected subgraph of $G'$ that contains at lest one edge and for any two edges $a$ and $b$ in $B$, there is a walk in $B$ that contains both $a$ and $b$ and does not pass through any vertex of $C$ (it may begin or end on with a vertex of $C$, but no internal vertex may be in $C$). 
+\end{definition}
+\begin{definition}[bridge]
+	A partial bridge, $B$, is a bridge of $C$ in $G$ if there does not exist a partial bridge $B'\not=B$ of $C$ in $G$ such that $B\subset B'$.
+	
+	Alternatively a bridge is a maximal partial bridge.
+\end{definition}
+
+Bridges are the final tool we use to prove Kuratowski's theorem. We will now build up some lemmas, that we will need and might help us to build up a conception of a bridge. For these let $G$ be a connected graph with cycle $C$ and let $G'$ be the subgraph. All bridges and partial bridges will be in reference to $C$.
+
+
+\begin{lemma}\label{walktopartialbridge}
+	Let $W$ be a walk in $G'$ that does not pass through $C$ (it may start and end in $C$) and has at least one edge. Then the graph, $H$, composed of the vertices and edges in $W$ is a partial bridge.
+\end{lemma}
+\begin{proof}
+	First $H$ is a subgraph of $G'$ as $W$ is a walk in $G'$. Second $H$ contains at least one edge as $W$ contains at least one edge. Third $H$ is connected trivially. Finally $W$ is a walk containing all edges of $H$ and not passing through $C$, so $H$ must be a partial bridge.
+\end{proof}
+
+\begin{lemma}\label{partialbridgeunion}
+	Let $A$ and $B$ be partial bridges sharing a vertex, $v\not\in C$, then $A\union B$ is a partial bridge.
+\end{lemma}
+\begin{proof}
+	First $A\union B$ is trivially a subgraph of $G'$ and contains at least one edge as both $A$ and $B$ contain at least one edge. Additionally $A\union B$ is connected as for any pair of vertices $a,b \in A\union B$ we have the following possibilities:
+	\begin{itemize}
+		\item If both $a$ and $b$ are in $A$ or both $a$ and $b$ are in $B$, then there is a walk from $a$ to $b$ within $A$ or $B$ respectively as both $A$ and $B$ are connected.
+		\item Otherwise one of the vertices is in $A$ and the other is in $B$. Without loss of generality let $a\in A$ and $b\in B$, then we can construct a walk from $a$ to $v$ within $A$ as both are in $A$ and a walk from $v$ to $b$ as within $B$ both are in $B$. We then combine these two walks and have a walk from $a$ to $b$ that stays within $A\union B$.
+	\end{itemize}
+	Therefore $A\union B$ is connected. Finally we can make a similar argument that for any edges in $a,b\in A\union B$ there is a walk within $A\union B$ that doesn't pass through $C$ that contains both $a$ and $b$.
+	\begin{itemize}
+		\item If both $a$ and $b$ are in $A$ or both $a$ and $b$ are in $B$ then there is such a walk as $A$ and $B$ are both partial bridges.
+		\item If $a$ and $b$ are not both in $A$ or both in $B$ then without loss of generality we can let $a\in A$ and $b \in B$. First as $A$ and $B$ are both connected and contain at least one edge, then $v$ must have at least one edge in each $A$ and $B$. Now we know there exists a walk in $A$ containing both $a$ and an edge of $v$ and there is a walk in $B$ containing both $b$ and an edge of $v$, and both these walks do not pass through $C$. Any walk passing though an edge of $v$ must also contain $v$, so both these paths must contain $v$. Without loss of generality we will assume the walk in $A$ contains $v$ after $a$ and the walk in $B$ contains $b$ after $v$. We now construct a walk that starts as the first walk up until has passed through $a$ and continued on to $v$, then we start following the walk in $B$ as it does after $v$ until reaching $b$. This walk's internal vertices are composed only of internal vertices from the walk in $A$, the walk in $B$ and of $v$. All of these are known not to be in $C$.
+	\end{itemize}
+	Now we have shown that $A\union B$ is a partial bridge.
+\end{proof}
+
+\begin{corallary}
+	No two bridges of the same cycle will share any edges and may only share a vertex if the vertex is in the cycle. 
+\end{corallary}
+\begin{proof}
+	Let $A$ and $B$ be bridges of $C$. If they share a vertex that is not in $C$, then by lemma \ref{partialbridgeunion} we know that $A\union B$ is a partial bridge, and it would contain both $A$ and $B$, so then $A = A\union B = B$. If $A$ and $B$ share an edge, $e$, then they must also share the vertices of $e$. If either one of $e$'s vertices are not in $C$ then we already know that $A=B$. If both of $e$'s vertices are in $C$ then $e$ is the only edge in both $A$ and $B$ as for any other edge $e'$ a walk that contains both $e$ and $e'$ must through one of $e$'s vertices to get between $e$ and $e'$. Additionally neither $A$ nor $B$ can contain any other vertices than $e$'s vertices as they are connected. Therefore $A=B$ again.
+\end{proof}
+
+%Let $G$ be a connected graph with cycle $C$. We can define an equivalence relation $\sim$ on the set of all edges and vertices not in $C$ as $a\sim b$ if there is a walk, $v_1e_1v_2e_2\ldots v_{k-1}e_{k-1}v_k$, with the following properties.
+%\begin{itemize}
+%	\item All vertices $v_i$ with $1 < i < k$ are not on $C$. ($v_1$ and $v_k$ may be on $C$ but this is not a requirement.)
+%	\item All edges in the walk must not be in $C$.
+%	\item Both $a$ and $b$ must be in the walk, they may be either an edge or vertex.
+%\end{itemize}
+%We should check that this is a equivalence relation.
+%\begin{itemize}
+%	\item (\textit{symmetry}) - trivial from how we construct $\sim$.
+%	\item (\textit{reflexivity}) - For a vertex $v$ we can define a walk with just $v$ and therefore $v\sim v$ as this walk fits our requirements. For an edge $e$, $e$ must have two vertices it is attached two, $a$ and $b$. We then construct a walk $aeb$, and therefore $e\sim e$.
+%	\item (\textit{transitivity)} - If $a\sim b$ and $c$ then there is a walk that goes through both $a$ and $b$ and a walk that goes through both $b$ and $c$. None of $a$, $b$, or $c$ are on $C$ as $\sim$ is not defined on $C$. Any walk $W$ we can reverse the direction of and it will still fit our rules above. This means that we can say there is a walk that goes through $a$ and then through $b$ as well as a walk that goes through $b$ and then through $c$. These walks will then take the the form $\alpha_1\alpha_2\ldots\alpha_{k}$ and $\beta_1\beta_2\ldots\beta_n$ with $a = \alpha_i$, $b = \alpha_j = \beta_m$, and $c = \beta_o$ for some $1\le i \le j \le k$ and $1\le m \le o \le n$. Now if $b$ is a vertex we can construct a walk as follows:
+%	$$\alpha_1\ldots\alpha_{i-1}a\alpha_{i+1}\ldots\alpha_{j-1}b\beta_{m+1}\ldots\beta_{o-1}c\beta_{o+1}\ldots\beta_n$$
+%	giving us a valid walk containing both $a$ and $c$. If $b$ is an edge then $\alpha_{i-1}$ is a vertex adjacent to $b$ and thus it must appear either before or after $b$ in any walk including $b$ as an edge. Additionally we know $\alpha{i-1}$ is not part of $C$ as it is in the interior of our walk containing $a$ and $b$. Therefore we can construct a walk just like we did last time that starts at $\alpha_1$ then goes through $a$ and then up to $\alpha_{i-1}$ at which point it switches to the equivalent vertex in the other walk be it $\beta{m-1}$ or $\beta{m+1}$ and simply follows that walk through $c$ until it reaches $b_n$. This walk will contain both $a$ and $b$ and therefore we know $a\sim b$ in all cases.
+%\end{itemize}
+%Now we may consider the partition created by $\sim$ on the set of all vertices and edges not in $C$. For any partition $P$ then we may construct $\bar P$ as $P$ with any vertices in $C$ that an edge $P$ connects to. This $\bar P$ is then what we call a bridge. Lets take a bit to get an intrinsic understanding of what a bridge is.
+%
+%Conceptually a bridge is a sort of bit of the graph
+
+\begin{lemma}
+	Every bridge $B$ of cycle $C$ contains at least one vertex in $C$.
+\end{lemma}
+\begin{proof}
+	Let $B$ be a partial bridge that does not contain any vertex in $C$. We know $C$ and $B$ are contained within a larger graph $G$ that is connected, so there must be a walk from any vertex in $B$ to any vertex in $C$. Consider then a walk $W$ that starts at vertex $b\in B$ and ends at vertex $c\in C$. There must be some first vertex in $W$ that is in $C$, so let us call $W'$ the subwalk of $W$ from $b$ to that first vertex in $C$. Now we know that $W'$'s first vertex in $C$ is also it's last vertex, so it does not pass through $C$. Therefore by lemma \ref{walktopartialbridge} the graph $H$ composed of $W'$'s vertices and edges is a partial bridge. We know also that $B\union H$ is a partial bridge by lemma \ref{partialbridgeunion}. Finally $B\not=B\union H$ as $B\union H$ contains a vertex in $C$ and $B$ does not. Now we have a partial bridge, $B\union H$ that contains $B$, so we know $B$ is not a bridge.
+\end{proof}
+
+\begin{lemma}
+	In a plane drawing of a graph $G$, given some cycle $C$, every bridge, $B$, of $C$ will either entirely be in the interior or exterior of $C$ with the exception of the vertices of $B$ that are in $C$.
+\end{lemma}
+\begin{proof}
+	We know that $C$ splits the plane into the interior and exterior. We know every vertex and edge that are not in $C$, must be entirely in the interior or exterior. As $B$ is a subgraph $G'$ which contains no edges of $C$ then every edge in $B$ is entirely in the interior or exterior.
+	
+	Now assume for the sake of contradiction there is an edge, $e\in B$ that is in the exterior and an edge $i\in B$ that is in the interior. Then any walk containing both $e$ and $i$ must pass over $C$ which can only be done at vertices of $C$. This then means that every walk contain $e$ and $i$ passes through $C$ and thus we have a contradiction.
+	
+	Now for any vertex $v\in B$ there is some edge $e\in B$ that connects to $v$. If $v$ is in the interior of $C$ then $e$ must also be entirely in the interior, and if $v$ is in the exterior then $e$ must be entirely in the exterior. This means that if any part of $B$ is in the interior, then $B$ must have at least one edge in the interior and if any part of $B$ is in the exterior then $B$ must have at least one edge in the exterior. We then can conclude that all of $B$ must be solely in the interior of $C$ or the exterior of $C$.
+\end{proof}
+
+\subsection{The home stretch}
+We can finally provide the proof for Kuratowski's theorem.
+
+\begin{theorem}[Kuratowski's Theorem]
+	A graph $G$ is nonplanar if and only if it contains a subgraph that is a subdivision of $K_{3,3}$ or $K_5$
+\end{theorem}
 
 \bibliographystyle{unsrt}
 \bibliography{bibliography}
