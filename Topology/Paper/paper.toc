@@ -17,9 +17,9 @@
 \contentsline {subsubsection}{\numberline {3.7.2}Graph Subdivision}{8}{subsubsection.3.7.2}% 
 \contentsline {section}{\numberline {4}Kuratowski's Theorem}{8}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}$K_5$ and $K_{3,3}$}{8}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}Some basic lemmas}{11}{subsection.4.2}% 
-\contentsline {subsection}{\numberline {4.3}Some larger theorems}{12}{subsection.4.3}% 
-\contentsline {subsection}{\numberline {4.4}Bridges}{12}{subsection.4.4}% 
-\contentsline {subsubsection}{\numberline {4.4.1}The Jordan Curve Theorem}{12}{subsubsection.4.4.1}% 
-\contentsline {subsubsection}{\numberline {4.4.2}Bridges}{13}{subsubsection.4.4.2}% 
-\contentsline {subsection}{\numberline {4.5}The home stretch}{14}{subsection.4.5}% 
+\contentsline {subsection}{\numberline {4.2}Drawings}{11}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Subgraph lemmas}{11}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {4.4}The Jordan Curve Theorem}{12}{subsection.4.4}% 
+\contentsline {subsection}{\numberline {4.5}Connectivity lemmas}{12}{subsection.4.5}% 
+\contentsline {subsection}{\numberline {4.6}Bridges}{16}{subsection.4.6}% 
+\contentsline {subsection}{\numberline {4.7}The home stretch}{17}{subsection.4.7}% 
