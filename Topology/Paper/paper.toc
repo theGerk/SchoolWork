@@ -12,14 +12,14 @@
 \contentsline {subsubsection}{\numberline {3.4.2}Cycle}{6}{subsubsection.3.4.2}% 
 \contentsline {subsection}{\numberline {3.5}Connected}{6}{subsection.3.5}% 
 \contentsline {subsection}{\numberline {3.6}Contraction}{7}{subsection.3.6}% 
-\contentsline {subsection}{\numberline {3.7}Subdivision}{8}{subsection.3.7}% 
-\contentsline {subsubsection}{\numberline {3.7.1}Edge Subdivision}{8}{subsubsection.3.7.1}% 
-\contentsline {subsubsection}{\numberline {3.7.2}Graph Subdivision}{8}{subsubsection.3.7.2}% 
+\contentsline {subsubsection}{\numberline {3.6.1}Edge contraction}{7}{subsubsection.3.6.1}% 
+\contentsline {subsubsection}{\numberline {3.6.2}Simple edge contraction}{8}{subsubsection.3.6.2}% 
 \contentsline {section}{\numberline {4}Kuratowski's Theorem}{8}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}$K_5$ and $K_{3,3}$}{8}{subsection.4.1}% 
 \contentsline {subsection}{\numberline {4.2}Drawings}{11}{subsection.4.2}% 
 \contentsline {subsection}{\numberline {4.3}Subgraph lemmas}{11}{subsection.4.3}% 
 \contentsline {subsection}{\numberline {4.4}The Jordan Curve Theorem}{12}{subsection.4.4}% 
-\contentsline {subsection}{\numberline {4.5}Connectivity lemmas}{12}{subsection.4.5}% 
+\contentsline {subsection}{\numberline {4.5}Connectivity lemmas}{13}{subsection.4.5}% 
 \contentsline {subsection}{\numberline {4.6}Bridges}{16}{subsection.4.6}% 
-\contentsline {subsection}{\numberline {4.7}The home stretch}{17}{subsection.4.7}% 
+\contentsline {subsubsection}{\numberline {4.6.1}Some more useful definitions about bridges}{17}{subsubsection.4.6.1}% 
+\contentsline {subsection}{\numberline {4.7}The home stretch}{18}{subsection.4.7}% 

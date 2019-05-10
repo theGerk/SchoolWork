@@ -287,7 +287,7 @@ We find that only the graph in the middle is connected. For the graph on the rig
 Any graph, connected or not, can be broken into connected components. To do this we simply take a vertex and every other vertex connected to it and call that one component, and then repeat with a vertex not in that component. This sort of breaking apart is nice as often we will prove things about connected graphs that are true about all graphs. For example if all components of a graph are planar then the entire graph must be planar, this will be proven below and it allows us to only deal with connected graphs.
 
 %\subsection{Neighborhood}
-%Given some graph $G$ with vertex $v$. The neighborhood of $v$ within $G$ is the set of all vertices that share an edge with $v$, not including $v$.\footnote{If $G$ is a multigraph the definition stays the same, however $v$ maybe it's own neighbor if it has an edge with itself or a loop} Given a subgraph $H$ of $G$, the neighborhood of $H$ within $G$ is a new subgraph of $G$ that includes $H$ as well as any vertex in $G$ that is adjacent to a vertex in $H$ and the edge that they share.
+%Given some graph $G$ with vertex $v$. The neighborhood of $v$ within $G$ is the set of all vertices that share an edge with $v$, not including $v$.\footnote{If $G$ is a multigraph the definition stays the same, however $v$ maybe its own neighbor if it has an edge with itself or a loop} Given a subgraph $H$ of $G$, the neighborhood of $H$ within $G$ is a new subgraph of $G$ that includes $H$ as well as any vertex in $G$ that is adjacent to a vertex in $H$ and the edge that they share.
 %
 %Lets look at some examples
 %\begin{center}
@@ -328,7 +328,7 @@ Any graph, connected or not, can be broken into connected components. To do this
 %	\end{tikzpicture}
 %\end{center}
 %
-%First let us consider the neighborhood of just the vertex \textcolor{blue}{$a$}, this would then be all the vertices that it is adjacent to so we get $$\set{c, d, \textcolor{red}{e}}$$ We could also let $A$ be a subgraph containing only the vertex $\textcolor{blue}{a}$ and so it's neighborhood within $G$ will be the graph below.
+%First let us consider the neighborhood of just the vertex \textcolor{blue}{$a$}, this would then be all the vertices that it is adjacent to so we get $$\set{c, d, \textcolor{red}{e}}$$ We could also let $A$ be a subgraph containing only the vertex $\textcolor{blue}{a}$ and so its neighborhood within $G$ will be the graph below.
 %\begin{center}
 %	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
 %	thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
@@ -352,7 +352,9 @@ Any graph, connected or not, can be broken into connected components. To do this
 %For another example let $H$ be the subgraph with only the \textcolor{red}{$b$}, \textcolor{red}{$e$} and the edge they share. The neighborhood of $H$ within $G$ within $G$ would then be all of $G$ as every vertex is either a neighbor of $b$ or $e$.
 %
 \subsection{Contraction}
-This is not a property, but rather an operation or action that we preform on a graph. Let us consider the following graph.
+
+\subsubsection{Edge contraction}
+This is not a property, but rather an operation or action that we perform on a graph. Let us consider the following graph.
 
 \begin{center}
 	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
@@ -373,7 +375,7 @@ This is not a property, but rather an operation or action that we preform on a g
 	\end{tikzpicture}
 \end{center}
 
-We wish to preform a contraction on edge $R$. To be clear all graph contractions are on edges. So we will make a new vertex, $r\cdot s$ which has all the edges of $r$ and all the edges of $s$ except the edge we are contracting across. In this case the edge we are contracting across is $R$ and thus we get the following multigraph.
+We wish to perform a contraction on edge $R$. To be clear all graph contractions are on edges. So we will make a new vertex, $r\cdot s$ which has all the edges of $r$ and all the edges of $s$ except the edge we are contracting across. In this case the edge we are contracting across is $R$ and thus we get the following multigraph.
 
 \begin{center}
 	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
@@ -392,51 +394,71 @@ We wish to preform a contraction on edge $R$. To be clear all graph contractions
 	\end{tikzpicture}
 \end{center}
 
-This can then be reduced into a graph again by simply treating $b_r$ and $b_s$ as the same edge. This operation is particularly important as we will prove that if a graph is planar, then so is any graph or multigraph obtained by contracting an edge.
+Often we may prefer to have the end result be a graph rather than a multigraph, which brings us to our next kind of contraction
 
-\subsection{Subdivision}
-There are two types of subdivision, an edge subdivision and graph subdivision. Edge subdivisions can best be though of as an operation, much like a contraction. We then can define a graph subdivision in terms of the edge version.
+\subsubsection{Simple edge contraction}
 
-\subsubsection{Edge Subdivision}
-An edge subdivision is where we take an an edge and add a vertex into the middle of it. If we have an edge $e$ that goes between vertex $a$ and $b$ then to subdivide it we add a vertex $c$, remove edge $e$ and then add an edge between $a$ and $c$ and between $b$ and $c$. This is demonstrated in the diagram below.
+We can take any multigraph produced by an edge contraction and for any edge pairs that go between the same vertices, simply replace it with a single edge. This will reduce the multigraph back to a graph, and from the previous example the result of a simple edge contraction on $R$ will give the below graph.
+
 \begin{center}
-	$
-	\begin{array}{l}
-		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
-		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
-		
-			\node[main node] (1) {$a$};
-			\node[main node] (2) [right of=1] {$b$};
-			
-			\path[every node/.style={font=\sffamily\small}]
-			(1)	edge node {$e$} (2);
-		\end{tikzpicture}
-	\end{array}
-	$
-	\scalebox{2}{$\to$}
-	$
-	\begin{array}{l}
-		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
-thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
-
-		\node[main node] (1) {$a$};
-		\node[main node] (3) [right of=1] {$c$};
-		\node[main node] (2) [right of=3] {$b$};
-		
-		\path[every node/.style={font=\sffamily\small}]
-		(1)	edge node {} (3)
-		(2) edge node {} (3);
-		\end{tikzpicture}
-	\end{array}
-	$
+	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+	thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+	
+	\node[main node] (1) {$r\cdot s$};
+	\node[main node] (2) [right of=1] {$B$};
+	\node[main node] (3) [above left of=1] {$A$};
+	\node[main node] (4) [below left of=1] {$C$};
+	
+	\path[every node/.style={font=\sffamily\small}]
+	(1)	edge node {$a$} (3)
+	(2) edge node {$b$} (1)
+	(4) edge node {$c$} (1);
+	\end{tikzpicture}
 \end{center}
 
-This can be thought of as a sort of inverse to contractions. To see this simply preform a contraction on either edge of the output graph above and you will return the the original graph.
+%\subsection{Subdivision}
+%There are two types of subdivision, an edge subdivision and graph subdivision. Edge subdivisions can best be though of as an operation, much like a contraction. We then can define a graph subdivision in terms of the edge version.
 
-
-\subsubsection{Graph Subdivision}
-A graph $G$ is said to be a subdivision of $H$ if $G$ can be obtained from $H$ via some series of edge subdivisions. For example consider the two following graphs.
-This can be thought of as just adding vertices along an edge. Intuitively this shouldn't actually change the shape of a graph. This not changing the shape of a graph is something that will be touched on later in lemma \ref{subdivision}.
+%\subsubsection{Edge Subdivision}
+%An edge subdivision is where we take an an edge and add a vertex into the middle of it. If we have an edge $e$ that goes between vertex $a$ and $b$ then to subdivide it we add a vertex $c$, remove edge $e$ and then add an edge between $a$ and $c$ and between $b$ and $c$. This is demonstrated in the diagram below.
+%\begin{center}
+%	$
+%	\begin{array}{l}
+%		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+%		thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+%		
+%			\node[main node] (1) {$a$};
+%			\node[main node] (2) [right of=1] {$b$};
+%			
+%			\path[every node/.style={font=\sffamily\small}]
+%			(1)	edge node {$e$} (2);
+%		\end{tikzpicture}
+%	\end{array}
+%	$
+%	\scalebox{2}{$\to$}
+%	$
+%	\begin{array}{l}
+%		\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
+%thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+%
+%		\node[main node] (1) {$a$};
+%		\node[main node] (3) [right of=1] {$c$};
+%		\node[main node] (2) [right of=3] {$b$};
+%		
+%		\path[every node/.style={font=\sffamily\small}]
+%		(1)	edge node {} (3)
+%		(2) edge node {} (3);
+%		\end{tikzpicture}
+%	\end{array}
+%	$
+%\end{center}
+%
+%This can be thought of as a sort of inverse to contractions. To see this simply perform a contraction on either edge of the output graph above and you will return the the original graph.
+%
+%
+%\subsubsection{Graph Subdivision}
+%A graph $G$ is said to be a subdivision of $H$ if $G$ can be obtained from $H$ via some series of edge subdivisions. For example consider the two following graphs.
+%This can be thought of as just adding vertices along an edge. Intuitively this shouldn't actually change the shape of a graph. This not changing the shape of a graph is something that will be touched on later in lemma \ref{subdivision}.
 
 \section{Kuratowski's Theorem}
 \begin{restatable}[Kuratowski]{theorem}{THEBIGONE}\label{THEBIGONE}
@@ -559,7 +581,7 @@ Now using this we can prove that $K_{3,3}$ and $K_5$ are nonplanar.
 		\item To only have one edge bordering a face would require that the edge be a loop (which we can't have in a graph).
 		\item To only have only two edges bordering a face would require that some pair of vertices share more than one edge (which we can't have in a graph).
 	\end{itemize}
-	Additionally every edge boarders no more than two faces, so from this we know that in any graph $2e \ge 3f$ or $\frac23e\ge f$. Now $K_5$ has 10 edges and 5 vertices, so we know that $$\frac2310=\frac{20}3=6.\bar6\ge f$$ We know that $K_5$ is a connected graph (and thus also a connected multigraph) so if $K_5$ were planar then we would have $$2=v-e+f=5-10+f\le5-10+6.\bar6 = 1.\bar6$$ which is clearly false as $$2\not\le1.\bar6$$ Therefore $K_5$ must not be planar.
+	Additionally every edge borders no more than two faces, so from this we know that in any graph $2e \ge 3f$ or $\frac23e\ge f$. Now $K_5$ has 10 edges and 5 vertices, so we know that $$\frac2310=\frac{20}3=6.\bar6\ge f$$ We know that $K_5$ is a connected graph (and thus also a connected multigraph) so if $K_5$ were planar then we would have $$2=v-e+f=5-10+f\le5-10+6.\bar6 = 1.\bar6$$ which is clearly false as $$2\not\le1.\bar6$$ Therefore $K_5$ must not be planar.
 \end{proof}
 
 \begin{theorem}
@@ -593,7 +615,7 @@ Now using this we can prove that $K_{3,3}$ and $K_5$ are nonplanar.
 	\scalebox{.9}{$K_{3,3}$}
 \end{center}
 \begin{proof}
-	$K_{3,3}$ is a bipartite graph, meaning that there is some way to break the graph into two collections of vertices, where there are no edges that stay within one of these collections. If we look at the drawing of $K_{3,3}$ above we see that the right and left works as these collections for us. There is no edge that goes between two vertices on the right or two vertices on the left. This means that if we can make a plane drawing of $K_{3,3}$ each face must have at least four edges on its boundary. We know from our proof of $K_5$'s nonplanarity that each face in a graph must have at least three edges on its boundary. If any face were to have three edges then the cycle bounding the face would have exactly three vertices as well. Each pair of vertices within these three vertices would share an edge and therefore there is no way to split them up into two groups such that neither group has an edge within it. Additionally every edge boarders no more than two faces, so from this we know that in any bipartite graph $2e \ge 4f$ or $e\ge 2f$.
+	$K_{3,3}$ is a bipartite graph, meaning that there is some way to break the graph into two collections of vertices, where there are no edges that stay within one of these collections. If we look at the drawing of $K_{3,3}$ above we see that the right and left works as these collections for us. There is no edge that goes between two vertices on the right or two vertices on the left. This means that if we can make a plane drawing of $K_{3,3}$ each face must have at least four edges on its boundary. We know from our proof of $K_5$'s nonplanarity that each face in a graph must have at least three edges on its boundary. If any face were to have three edges then the cycle bounding the face would have exactly three vertices as well. Each pair of vertices within these three vertices would share an edge and therefore there is no way to split them up into two groups such that neither group has an edge within it. Additionally every edge borders no more than two faces, so from this we know that in any bipartite graph $2e \ge 4f$ or $e\ge 2f$.
 	
 	Now $K_{3,3}$ has 6 vertices and 9 edges. $K_{3,3}$ is bipartite so the number of faces, $f \le \frac e2 = \frac92 = 4.5$. $K_{3,3}$ is connected, so if it were planar we would have Euler's formula giving us $$2=v-e+f=6-9+f\le6-9+4.5=1.5$$ and this is false as $$2\not\le1.5$$ Therefore $K_{3,3}$ is nonplanar.
 \end{proof}
@@ -606,7 +628,7 @@ The purpose of the next couple sections is to build up the mathematical machiner
 We start by going back and formalizing our idea of a graph drawing. All this is meant to do is use mathematical language to define what we have already been thinking of as a graph drawing.
 
 \begin{definition}[Drawing]
-	A drawing is a subset, $D$, of some topological space $S$. For plane drawings this space will be $\mathbb R^2$ with it's standard topology.
+	A drawing is a subset, $D$, of some topological space $S$. For plane drawings this space will be $\mathbb R^2$ with its standard topology.
 \end{definition}
 
 \begin{definition}[Graph Drawing]
@@ -631,39 +653,79 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 	If we have a graph $G$ with a nonplanar subgraph $H$ then when drawing $G$ there is a part of the drawing that is $H$. This part of the drawing can not be planar and therefore the drawing of $G$ can not be a plane drawing.
 \end{proof}
 
-\begin{lemma} \label{subdivision}
-	If a graph $G$ is a subdivision of a nonplanar graph, then $G$ is nonplanar.
+\begin{definition}[contactable]
+	A graph $G$ is said to be contactable to a graph $H$ if there is some series of simple edge contractions that when performed on $G$ produce $H$.
+\end{definition}
+
+\begin{lemma}
+	If a graph $G$ with edge $e$ is planar then so is the graph produced by performing a simple edge contraction on $e$.
 \end{lemma}
 
 \begin{proof}
-	Let $H$ be a nonplanar graph with edge, $e$, between vertices $a$ and $b$. Let $H'$ be the graph produced by preforming an edge subdivision on edge $e$. Let us call the new call the new vertex $v$ and the new edges $e_a$ and $e_b$ ($e_a$ is an edge from $a$ to $v$ and $e_b$ is an edge from $b$ to $v$).
+	Let $G$ be a planar graph with edge $e$ between $x$ and $y$. et $G'$ be the graph produced by an edge contraction on $e$. We are going to prove this using induction on the number of edges of $y$.
 	
-	Suppose there exists a plane drawing, $D$, of $H'$. Then there are continuous injective functions $\hat e_a,\hat e_b\ccint01\to\mathbb R^2$ with $\hat e_a(1) = \hat e_b(0)$ whose range is contained in $D$. Additionally we know that $\hat e_a(x) \not= \hat e_b(y)$ for any $x,y\in\ooint 01$. Further we know that $a\not=b$ as otherwise $H$ would be a multigraph with $e$ being a loop in it. This means that $v(a) = \hat e_a(0) \not= \hat e_b(x)$ and $v(b) = \hat e_b(1)\not=\hat e_a(x)$ for all $x\in\ccint 01$. With all this we can construct an continuous injective function $\hat e:\ccint01\to \mathbb R^2$ such that $\hat e(0) = a$ and $\hat e(1) = b$ with 
-	$$\hat e(x) = \begin{cases}
-	\hat e_a(x*2) & x \le \frac12\\
-	\hat e_b(x*2-1) & x > \frac 12
-	\end{cases}$$
-	As both $\hat e_a$ and $\hat e_b$ map into $D$, then so must $\hat e$ map into $D$. This contradicts our original statement that $H$ is nonplanar, and therefore $H'$ must not have a plane drawing.
+	Statement: $G'$ is planar and there is a plane drawing of $G'$ where all vertices, $v$, that border a face that $y$ borders in $G$ also a face that $x\cdot y$ borders in $G'$ ($x\cdot y$ is the vertex produced by contracting across $e$).
 	
-	It follows by induction that if a graph is a subdivision of a nonplanar graph, that graph must be nonplanar.
+	Base case: Suppose $y$ only has edge $e$. Clearly $G'\subset G$ so by lemma \ref{subgraph} $G'$ must be planar. Additionally as $y$ has only one edge it can not possibly lie upon any cycles in $G$, this means that $y$ can only border at most 1 face, and as it has an edge to $x$ it must share this face with $x$. We may draw $G'$ simply be removing $e$ and $y$ from any drawing of $G$ and relabeling $x$ as $x\cdot y$. Clearly then the statement above must be true when $y$ has only one edge.
+	
+	Inductive step: Let $z\not=x$ be a vertex sharing edge $\bar e$ with $y$. Assume that the statement is true in $G\setminus\set{\bar e}$. Now perform a contraction on $e$ in $G\setminus\set{\bar e}$ to produce $H$. $x\cdot y$ in $H$ must border a face $\bar f$ that $z$ borders so we may add in edge $\bar e$ to $H$ in face $\bar f$ and produce a plane drawing of $G'$. Further let $v$ be a vertex bordering a face $f$ in $G$ that $y$ also borders. We then know that there is a face $f'$ in $H$ that borders both $v$ and $x \cdot y$. If $f'\not=\bar f$ then clearly $x\cdot y$ and $v$ both boarder $f'$ in $G'$ as well as $H$. If $f'=\bar f$ then $f'$ is split into two parts by $\bar e$ in $G'$, both of which are bordered by $x\cdot y$. Therefore our statement must be true for $G$.
+	
+	Now by induction we have proven the statement is true on all graphs and therefore our lemma is proved.
 \end{proof}
+
+\begin{corallary} \label{contractible}
+	If a graph $G$ is planar, and if $G$ is contactable to a graph $H$, then $H$ must also be planar.
+\end{corallary}
+
+\begin{proof}
+	Let $c_1,c_2,\ldots, c_n$ be the sequence of contractions on $G$ that produce $H$. Let $H_i$ be the graph produced after the first $i$ contractions on $G$, so $H_i = G$ and $H_n = H$. If $G$ is planar then clearly $H_0$ is planar. If $H_i$ is planar, then by the above lemma clearly $H_{i+1}$ is planar. Now by induction, if $G$ is planar $H$ must be planar.
+\end{proof}
+
+\begin{lemma} \label{contractibleCarryOn}
+	If a graph $G$ has a subgraph that is contactable to $H$ as a subgraph, then graph $G'$ that is contactable to $G$ also contains a subgraph that is contactable to $H$.
+\end{lemma}
+
+\begin{proof}
+		Let $H$ be a graph. Let $H'$ be contactable to $H$. Let $G$ be a graph that contains $H'$ as a subgraph. Let $G'$ be a graph that is contactable to $G$. There is some sequence of simple edge contractions $h_1,h_2,\ldots,h_\ell$ that produce $H$ from $H'$ as is there some sequence of simple edge contractions $g_1,g_2,\ldots,g_m$ that produce $G$ from $G'$.
+		If we reverse these sequences we get sequences of inverse simple edge contractions that take produce $H'$ from $H$ and $G'$ from $G$. Each inverse simple edge contraction will be done on a single vertex (and turn it into two vertices that share an edge). Let $f_i = h_{\ell-i+1}$ and $e_i = g_{i-m+1}$ so that they are the reversed sequences of $g$ and $h$. Take the subsequence, $e_{i_1},e_{i_2},\ldots,e_{i_n}$ that consists of all the inverse simple edge contractions that act on a vertex within the subgraph $H'$ of $G$. Now we can produce $H''$ as the graph produced by performing the following inverse simple edge contractions on $H$
+		$$ f_1,f_2,\ldots,f_\ell,e_{i_1},e_{i_2},\ldots,e_{i_n} $$
+		Clearly now $H''$ is contactable to $H$ and $H''$ must be a subgraph of $G'$.
+\end{proof}
+
+%%TODO remove?
+%\begin{lemma} \label{subdivision}
+%	If a graph $G$ is a subdivision of a nonplanar graph, then $G$ is nonplanar.
+%\end{lemma}
+%
+%\begin{proof}
+%	Let $H$ be a nonplanar graph with edge, $e$, between vertices $a$ and $b$. Let $H'$ be the graph produced by performing an edge subdivision on edge $e$. Let us call the new call the new vertex $v$ and the new edges $e_a$ and $e_b$ ($e_a$ is an edge from $a$ to $v$ and $e_b$ is an edge from $b$ to $v$).
+%	
+%	Suppose there exists a plane drawing, $D$, of $H'$. Then there are continuous injective functions $\hat e_a,\hat e_b\ccint01\to\mathbb R^2$ with $\hat e_a(1) = \hat e_b(0)$ whose range is contained in $D$. Additionally we know that $\hat e_a(x) \not= \hat e_b(y)$ for any $x,y\in\ooint 01$. Further we know that $a\not=b$ as otherwise $H$ would be a multigraph with $e$ being a loop in it. This means that $v(a) = \hat e_a(0) \not= \hat e_b(x)$ and $v(b) = \hat e_b(1)\not=\hat e_a(x)$ for all $x\in\ccint 01$. With all this we can construct an continuous injective function $\hat e:\ccint01\to \mathbb R^2$ such that $\hat e(0) = a$ and $\hat e(1) = b$ with 
+%	$$\hat e(x) = \begin{cases}
+%	\hat e_a(x*2) & x \le \frac12\\
+%	\hat e_b(x*2-1) & x > \frac 12
+%	\end{cases}$$
+%	As both $\hat e_a$ and $\hat e_b$ map into $D$, then so must $\hat e$ map into $D$. This contradicts our original statement that $H$ is nonplanar, and therefore $H'$ must not have a plane drawing.
+%	
+%	It follows by induction that if a graph is a subdivision of a nonplanar graph, that graph must be nonplanar.
+%\end{proof}
 
 
 \begin{lemma} \label{component}
-	If a graph $G$ is nonplanar than at least one of it's connected components is nonplanar.
+	If a graph $G$ is nonplanar than at least one of its connected components is nonplanar.
 \end{lemma}
 
 \begin{proof}
-	Suppose there exists a nonplanar graph $G$ for which all of it's components are planar. If each component is planar we may also make a drawing of it in any space homeomorphic to $\mathbb R^2$. Simply embed each component in a separate open epsilon ball about an integer point, with $\varepsilon \le \frac12$, and we find a contradiction with a planar embedding of $G$.
+	Suppose there exists a nonplanar graph $G$ for which all of its components are planar. If each component is planar we may also make a drawing of it in any space homeomorphic to $\mathbb R^2$. Simply embed each component in a separate open epsilon ball about an integer point, with $\varepsilon \le \frac12$, and we find a contradiction with a planar embedding of $G$.
 \end{proof}
 
-
-\begin{lemma} \label{subdivisionCarryOn}
-	If a graph $G$ has a subdivision of $H$ as a subgraph, then any subdivision of $G$ contains a subdivision of $H$ as a subgraph.
-\end{lemma}
-\begin{proof}
-	Let $H$ be a graph. Let $H'$ be a subdivision of $H$. Let $G$ be a graph that contains $H'$ as a subgraph. Let $G'$ be a subdivision of $G$. There is some sequence of edge subdivisions $h_1,h_2,\ldots,h_\ell$ that produce $H'$ from $H$ as is there some sequence of edge subdivisions $g_1,g_2,\ldots,g_m$ that produce $G'$ from $G$. Let $g_{i_1},g_{i_2},\ldots,g_{i_n}$ be the subsequence of all the edge subdivisions that happen within $H'$. We then can produce $H''$ by taking $H$ and doing the sequence of edge subdivisions $h_1,h_2,\ldots,h_\ell,g_{i_1},g_{i_2},\ldots,g_{i_n}$ so $H''$ is a subdivision of $H$.
-\end{proof}
+%%TODO remove?
+%\begin{lemma} \label{subdivisionCarryOn}
+%	If a graph $G$ has a subdivision of $H$ as a subgraph, then any subdivision of $G$ contains a subdivision of $H$ as a subgraph.
+%\end{lemma}
+%\begin{proof}
+%	Let $H$ be a graph. Let $H'$ be a subdivision of $H$. Let $G$ be a graph that contains $H'$ as a subgraph. Let $G'$ be a subdivision of $G$. There is some sequence of edge subdivisions $h_1,h_2,\ldots,h_\ell$ that produce $H'$ from $H$ as is there some sequence of edge subdivisions $g_1,g_2,\ldots,g_m$ that produce $G'$ from $G$. Let $g_{i_1},g_{i_2},\ldots,g_{i_n}$ be the subsequence of all the edge subdivisions that happen within $H'$. We then can produce $H''$ by taking $H$ and doing the sequence of edge subdivisions $h_1,h_2,\ldots,h_\ell,g_{i_1},g_{i_2},\ldots,g_{i_n}$ so $H''$ is a subdivision of $H$.
+%\end{proof}
 
 
 
@@ -688,7 +750,7 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 		\item $f(0) = f(1)$
 	\end{itemize}
 \end{definition}
-\begin{lemma}
+\begin{lemma}\label{JordansLemma}
 	For any plane drawing of a graph, $G$, containing cycle $C$, $C$ is a Jordan curve in the drawing.
 \end{lemma}
 \begin{proof}
@@ -701,7 +763,7 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 
 
 \begin{lemma} \label{outside}
-	For any face, $F$, in a plane drawing, $D$, of a graph $G$, there is a corresponding drawing plane drawing of $G$, $D'$, where all edges and vertices that boarder $F$ in $D$, now boarder the outer face.
+	For any face, $F$, in a plane drawing, $D$, of a graph $G$, there is a corresponding drawing plane drawing of $G$, $D'$, where all edges and vertices that border $F$ in $D$, now border the outer face.
 \end{lemma}
 \begin{proof}
 	Let $G$ be a graph with face $F$ in plane drawing $D$. Now let $\inv f$ be a stereographic projection from the punctured sphere onto the plane. Therefore $f(D)$ is a drawing of $G$ on the punctured sphere. If $f(D)$ is a drawing of $G$ on the punctured sphere then it must also be a drawing of $G$ on the sphere. Now we pick a point on the interior of $F$ and puncture the sphere there rather than where our original puncture was.\footnote{There is a problem in this proof. How do we know that $F$ has an interior? Simply put if we have a finite number of vertices and never use any space filling curves for edges we will never fill space. We know that we are never forced to use a space filling curve as for any space filling curve $c$ we may create a new curve $c'$ that connects the same end points, stays within $c$'s image, and is not space filling. %TODO ask Shaw if maybe turn into lemma and prove
@@ -713,7 +775,7 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 \end{definition}
 
 \begin{definition}[$k$ connected]
-	A graph, $G$, is $k$ connected if it's minimal cut set is of size $k$. The complete graph on $n$ vertices is defined to be $n-1$ connected.
+	A graph, $G$, is $k$ connected if its minimal cut set is of size $k$. The complete graph on $n$ vertices is defined to be $n-1$ connected.
 \end{definition}
 
 \begin{lemma}
@@ -729,47 +791,53 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 	The neighborhood of a vertex $v$ in a graph $G$ is the set of vertices that are adjaacent to $v$. This is denoted by $N(v)$. In a graph (not multigraph) we will never have $v \in N(v)$ as $v$ can not have an edge to itself.
 \end{definition}
 
-\begin{definition}[mutually disjoint paths]
-	A set of paths, $S$, is mutually disjoint if no two paths share a vertex. A path $p\in S$ is said to be mutually disjoint from the the other paths in $S$ if $S$ is mutually disjoint.
+\begin{definition}[disjoint paths]
+	A set of paths, $S$, is disjoint if no two paths share a vertex. A path $p\in S$ is said to be disjoint from the the other paths in $S$ if $S$ is disjoint.
 \end{definition}
 
-\begin{definition}[mutually internally disjoint paths]
-	A set of paths, $S$, is mutually internally disjoint if no to paths share an internal vertex. That is no two paths, $p_1\not=p_2\in S$ share a vertex other than their first or last vertex. A path $p\in S$ is said to be mutually internally disjoint from the other paths in $S$ if $S$ is mutually internally disjoint.
+\begin{definition}[internally disjoint paths]
+	A set of paths, $S$, is internally disjoint if no to paths share an internal vertex. That is no two paths, $p_1\not=p_2\in S$ share a vertex other than their first or last vertex. A path $p\in S$ is said to be internally disjoint from the other paths in $S$ if $S$ is internally disjoint.
 \end{definition}
 
-\begin{theorem}[Menger's theorem]
-	A non-empty graph is $n$ connected if and only if among all pairs of vertices $a\not=b$ in $G$ the least number of mutually internally disjoint paths from $a$ to $b$ is $n$.
+\begin{theorem}[Menger's theorem]\label{menger}
+	A non-empty graph is $n$ connected if and only if among all pairs of vertices $a\not=b$ in $G$ the least number of internally disjoint paths from $a$ to $b$ is $n$.
 \end{theorem}
 %TODO cite Wikipeida menger's theorem
 \begin{proof}
 	This is trivially true on complete graphs, so for the rest of this proof we will only be considering graphs that are not complete.
 	
-	Let $A$ and $B$ be vertex sets in a finite graph $G$. Define an $AB$ path as any path that starts in $A$ and has no other vertices in $A$, and ends in $B$ and has no other vertices in $B$. Notice that if $v\in A\inter B$ then the path $v$ is an $AB$ path. Define an $AB$ separator as any vertex set, $S$, for which all $AB$ paths contain at least one member of $S$. Define an $AB$ connector a set of mutually disjoint $AB$ paths.
+	Let $A$ and $B$ be vertex sets in a finite graph $G$. Define an $AB$ path as any path that starts in $A$ and has no other vertices in $A$, and ends in $B$ and has no other vertices in $B$. Notice that if $v\in A\inter B$ then the path $v$ is an $AB$ path. Define an $AB$ separator as any vertex set, $S$, for which all $AB$ paths contain at least one member of $S$. Define an $AB$ connector a set of disjoint $AB$ paths.
 	
-	Now by induction we will show that for any pair of vertex sets $A,B$ in a graph $G$, the maximum size of an $AB$ connector is also the minimum size of an $AB$ separator.
+	We will show by induction that for any pair of vertex sets $A,B$ in a graph $G$, the maximum size of an $AB$ connector is also the minimum size of an $AB$ separator. First however note that the size of the minimum $AB$ separator always forms an upper bound for the size of an $AB$ connector, as every path in an $AB$ connector must pass through one element of every $AB$ separator. Likewise the maximum size of an $AB$ connector forms a lower bound for the size of an $AB$ separator. 
 	
 	Base case: Suppose $G$ has no edges, therefore all paths in $G$ are single vertex paths. For all $v \in A \inter B$ the path $v$ is an $AB$ path, and any other path will either not start in $A$ or not end in $B$. This means that any $AB$ separator contains $A\inter B$ and that our maximal $AB$ connector is composed of single vertex paths for each vertex in $A\inter B$. Therefore our statement must be true when $G$ has no edges.
 	
-	Inductive case: Suppose $H$ is a graph with $k>0$ edges, and that our statement is true for any graph with less than $k$ edges. Now choose an edge $e\in H$%TODO
+	Inductive case: Suppose $H$ is a graph with $k>1$ edges. Further suppose that for any sets pair of vertex sets $A,B$ in a graph with $k-1$ edges, the size of the maximum $AB$ connector is also the size of the minimum $AB$ separator. Choose vertex sets $A$ and $B$ within $H$ and suppose the minimum size of an $AB$ separator is $n$. Choose an edge $e \in H$ and consider $H\setminus\set e$. Any $AB$ separator in $H$ is also an $AB$ separator in $H\setminus\set e$, so the size of the minimum $AB$ separator in $H\setminus\set e$ is at most $n$.
+	
+	If $H\setminus\set e$ has a minimum $AB$ separator of size $n$ then $H\setminus\set e$ must have a maximum $AB$ connector of size $n$. This $AB$ connector is also a $AB$ connector of size $n$ in $H$. Therefore $H$ has a maximum $AB$ connector of size $n$.
+	
+	If $H\setminus\set e$ has a minimum $AB$ separator of size less than $n$, then let $S$ be such an $AB$ separator. Any $AB$ path in $H$ must contain a vertex in $S$ or the edge $e$. Now we know that $\card S = n-1$ as $S$ combined with either vertex of $e$ is an $AB$ separator in $H$. We know there exists some $AB$ path in $H$ that contains edge $e$ and no vertices in $S$ as otherwise $S$ would be an $AB$ separator in $H$. Along this path let us call the earlier vertex of $e$, $e_a$ and the later vertex $e_b$. In $(H\setminus\set e)\setminus S$ we have a path from $A$ to $e_a$ and a path from $e_b$ to $B$. This also means there is no path from $e_a$ to $B$ or from $A$ to $e_b$ in $(H\setminus \set e)\setminus S$ as otherwise $S$ would not be an $AB$ separator in $H\setminus\set e$. Now we let $S_a = S\union\set{e_a}$ and $S_b = S\union\set{e_b}$. $S_a$ and $S_b$ are both vertex sets within $H\setminus\set e$ so the minimal $AS_a$ separators is the same size as the maximal $AS_a$ connector and the minimal $S_bB$ separator is the same size as the maximal $S_bB$ connector by our inductive hypothesis. Now let $T_a$ be a minimal $AS_a$ separator in $H\setminus\set e$ and $T_b$ be a minimal $S_bB$ separator in $H\setminus\set e$. We know that $T_a$ is a minimal $AS_a$ separator in $H$ as any path through $e$ from $A$ must have already passed through $S_a$. Likewise we know that $T_b$ is a minimal $S_bB$ separator in $H$ for the same reason.  As $T_a$ is a $AS_a$ separator in $H$ and $S_a$ is a $AB$ separator in $H$ then any $AB$ path must contain an element of $S_1$ and also contains an element of $T_a$. Likewise as $T_b$ is a $S_bB$ separator in $H$ and $S_b$ is a $AB$ separator in $H$ then any $AB$ contains an element of $S_2$ and therefore also contains an element of $T_b$. From this we know that both $T_a$ and $T_b$ must be at least size $n$. This then means that the minimal $AS_a$ connector in $H\setminus\set e$ is at least size $n$, so it must be exactly $n$ as there are only $n$ elements in $S_a$. Likewise the maximal $S_bB$ connector must be of size $n$. Finally we can construct an $AB$ connector in $H$ of size $n$ by taking an $AS_a$ path starting at $A$ going to $S_a$, if we are at $e_a$ then take edge $e$ to $e_b$ then we are in $S_b$ and we can continue down a $S_bB$ path. There can not be a larger $AB$ connector as we have an $AB$ separator of size $n$ and this forms an upper bound like before.
+	
+	Now by induction we know that for any graph $G$, and any pair of vertex sets $A,B$ within $G$, the maximal $AB$ connector is the same size as the minimal $AB$ separator.
 	
 	Now let $G$ be a graph with vertices $a\not=b$. Further let $A = N(a)$ and $B = N(b)$. 
 	
 	$$(\implies)$$
 	
-	First let us suppose $G$ is $n$ connected, meaning the smallest cut set in $G$ is $n$. If $a$ is not adjacent to $b$ then any $AB$ separator serves as a cut set in $G$, separating $a$ from $b$. It follows that the size of the smallest $AB$ separator is at least $n$, therefore there is an $AB$ connector with at least $n$ paths. Therefore there are at least $n$ mutually internally disjoint paths from $a$ to $b$.
+	First let us suppose $G$ is $n$ connected, meaning the smallest cut set in $G$ is $n$. If $a$ is not adjacent to $b$ then any $AB$ separator serves as a cut set in $G$, separating $a$ from $b$. It follows that the size of the smallest $AB$ separator is at least $n$, therefore there is an $AB$ connector with at least $n$ paths. Therefore there are at least $n$ internally disjoint paths from $a$ to $b$.
 	
 	Now let us suppose $a$ is adjacent to $b$ and further let us suppose that there can be an $AB$ separator of size $k < n$. First off we know that $\card A \ge n$ and $\card B \ge n$ as otherwise we would have one of the following:
 	\begin{enumerate}
 		\item $A$ or $B$ would serve as a cut set of size less than $n$ separating $a$ or $b$ from the rest of $G$. This clearly is a contradiction.
 		\item $A$ and $B$ both contain all vertices except $a$ and $b$ respectively. If $G$ has $m$ vertices then $G$ can be at most $m-1$ connected and therefore we still have $\card A = m-1 = \card B$.
 	\end{enumerate}
-	If $S$ is a minimal $AB$ separator of size $k < n$ then there are no $AB$ paths that do not contain a vertex in $S$. Let $\bar a\in A$ and $\bar b \in B$ and let $p$ be a path from $\bar a$ to $\bar b$. $p$ must contain a final vertex, $p_i$, that is within $A$. $p$ must contain an earliest vertex, $p_j$, that is within $B$ and after $p_i$. If we consider the subpath of $p$ simply going from $p_i$ to $p_j$ we have an $AB$ path. This means that any path from $\bar a$ to $\bar b$ must pass through $S$, this means that if $\bar a$ is not adjacent to $\bar b$ and $\bar a\not=\bar b$ $S$ is a cut set separating $\bar a$ from $\bar b$. Therefore as $\card S = k < n$ we know that all for all $\bar a \in A$ and all $\bar b\in B$, either $\bar a= \bar b$ or $\bar a$ is adjacent to $\bar b$. Without loss of generality we can suppose that $\card A \le \card B$. Now every vertex in $A\setminus B$ has an $AB$ path to every vertex in $B \setminus A$ as they are adjacent. Now for every vertex $a'\in A$ we have a mutually distinct $AB$ path from $a'$ to some vertex in $B$. This is because either $a'\in A\inter B$ and it is already an $AB$ path or $a'$ is adjacent to all $b' \in B$ and simply select one that isn't used by any other $AB$ path. We know that $\card A \ge n$, so we have a contradiction and the minimal $AB$ separator must still be at least size $n$. We then have at least one $AB$ connector of at least size $n$, and therefore there are at least $n$ mutually internally disjoint paths from $a$ to $b$.
+	If $S$ is a minimal $AB$ separator of size $k < n$ then there are no $AB$ paths that do not contain a vertex in $S$. Let $\bar a\in A$ and $\bar b \in B$ and let $p$ be a path from $\bar a$ to $\bar b$. $p$ must contain a final vertex, $p_i$, that is within $A$. $p$ must contain an earliest vertex, $p_j$, that is within $B$ and after $p_i$. If we consider the subpath of $p$ simply going from $p_i$ to $p_j$ we have an $AB$ path. This means that any path from $\bar a$ to $\bar b$ must pass through $S$, this means that if $\bar a$ is not adjacent to $\bar b$ and $\bar a\not=\bar b$ $S$ is a cut set separating $\bar a$ from $\bar b$. Therefore as $\card S = k < n$ we know that all for all $\bar a \in A$ and all $\bar b\in B$, either $\bar a= \bar b$ or $\bar a$ is adjacent to $\bar b$. Without loss of generality we can suppose that $\card A \le \card B$. Now every vertex in $A\setminus B$ has an $AB$ path to every vertex in $B \setminus A$ as they are adjacent. Now for every vertex $a'\in A$ we have a mutually distinct $AB$ path from $a'$ to some vertex in $B$. This is because either $a'\in A\inter B$ and it is already an $AB$ path or $a'$ is adjacent to all $b' \in B$ and simply select one that isn't used by any other $AB$ path. We know that $\card A \ge n$, so we have a contradiction and the minimal $AB$ separator must still be at least size $n$. We then have at least one $AB$ connector of at least size $n$, and therefore there are at least $n$ internally disjoint paths from $a$ to $b$.
 	
-	Further we know there is a cut set of size $n$ in $G$. Therefore there must be some vertex pair $\alpha, \beta$ that are separated by such a cut set of size $n$. This means that there is a minimal $N(\alpha)N(\beta)$ separator of size $n$. Therefore the maximal $N(\alpha)N(\beta)$ connector is size $n$. Therefore if $G$ is $n$ connected, then among all pairs of vertices $a\not=b$ in $G$ the least number of mutually internally disjoint paths from $a$ to $b$ is $n$.
+	Further we know there is a cut set of size $n$ in $G$. Therefore there must be some vertex pair $\alpha, \beta$ that are separated by such a cut set of size $n$. This means that there is a minimal $N(\alpha)N(\beta)$ separator of size $n$. Therefore the maximal $N(\alpha)N(\beta)$ connector is size $n$. Therefore if $G$ is $n$ connected, then among all pairs of vertices $a\not=b$ in $G$ the least number of internally disjoint paths from $a$ to $b$ is $n$.
 	
 	$$(\impliedby)$$
 	
-	Now let us suppose $G$ is not $n$ connected, then the graph must be $k\not= n$ connected. By what we have shown above we know that among all the vertex pairs $a\not= b$ in $G$ the least number of mutually internally disjoint paths from $a$ to $b$ is $k\not=n$.
+	Now let us suppose $G$ is not $n$ connected, then the graph must be $k\not= n$ connected. By what we have shown above we know that among all the vertex pairs $a\not= b$ in $G$ the least number of internally disjoint paths from $a$ to $b$ is $k\not=n$.
 \end{proof}
 
 
@@ -809,7 +877,7 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 	
 	Now let $G$ be a minimal nonplanar graph that is not a complete graph. By lemma \ref{component} $G$ contains connected component, $G'$, that is nonplanar. We know $G'\subset G$ and that all proper subsets of $G$ are planar, therefore $G'=G$. This means that $G'$ is the only component in $G$ so $G$ must be at least 1 connected.
 	
-	If $G$ is 1 connected then there exists some vertex $v$ for which $G\setminus\set v$ into at least two components. Let $H$ be one such component and $H'$ be the graph produced by adding $v$ back into $H$ ($H'$ is $v$ with all of $H$ and all edges between $H$ and $v$). Now $H'$ is a proper subgraph of $G$ so it must be planar. We also know that $G\setminus H$ is a proper subgraph of $G$ and therefore must also be planar. By lemma $\ref{outside}$ we may draw both $G\setminus H$ and $H'$ such that $v$ boarders the outer face. We may split $\mathbb R^2$ into two disjoint subsets
+	If $G$ is 1 connected then there exists some vertex $v$ for which $G\setminus\set v$ into at least two components. Let $H$ be one such component and $H'$ be the graph produced by adding $v$ back into $H$ ($H'$ is $v$ with all of $H$ and all edges between $H$ and $v$). Now $H'$ is a proper subgraph of $G$ so it must be planar. We also know that $G\setminus H$ is a proper subgraph of $G$ and therefore must also be planar. By lemma $\ref{outside}$ we may draw both $G\setminus H$ and $H'$ such that $v$ borders the outer face. We may split $\mathbb R^2$ into two disjoint subsets
 	\begin{align*}
 	R^- &= \setbuilder{\pair xy\in\mathbb R^2}{x < 0}\\
 	R^+&=\setbuilder{\pair xy\in\mathbb R^2}{x > 0}
@@ -817,7 +885,6 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 	then draw $H'$ in $R^-$ with the exception of putting $v$ at $\pair 00$ and then draw $G\setminus H$ in $R^+$ with the exception of putting $v$ at $\pair 00$. This then yields a plane drawing of $G$, so $G$ must be at least 2 connected.
 \end{proof}
 
-%TODO 3 connected stuff
 \begin{definition}[lobe]
 	Let $G$ be a graph with cut set $S$. Further let $C_1, C_2, \ldots C_n$ be the connected components of $G\setminus S$. A lobe $L_i$ of $S$ is then what we would get if we took the subset of $G$ containing all of $C_i$ and $S$. This can more formally be written as
 	$$
@@ -830,13 +897,13 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 \end{lemma}
 %TODO cite http://www.cs.rpi.edu/~goldberg/14-GT/19-kurat.pdf
 \begin{proof}
-	Let $G$ be a graph with lobes $L_1, L_2, \ldots, L_n$ of separating set $S=\set{x,y}$. Suppose that for all $i$, $L_i^+$ is planar. We may then draw $L_1^+$ on the plane. If we have a planar drawing of $\unionfrom{j = 1}{i-1}{L_j^+}$ we can then embed a drawing of $L_i^+$ where the edge between $x$ and $y$ boarders the outer edge into a face that is bordered by the edge between $x$ and $y$ in our planar drawing of $\unionfrom{j = 1}{i-1}{L_j^+}$. We then can redraw this embedding such that $x$ and $y$ in $L_i^+$ are at the same points as $x$ and $y$ in $\unionfrom{j = 1}{i-1}{L_j^+}$ yielding a planar drawing of $\unionfrom{j=1}{i}{L_j^+}$. By induction then $\unionfrom{i=1}{n}{L_i^+}$ is planar. Clearly $G \subset \unionfrom{i=1}{n}{L_i^+}$ so by lemma \ref{subgraph} we know $G$ must be planar.
+	Let $G$ be a graph with lobes $L_1, L_2, \ldots, L_n$ of separating set $S=\set{x,y}$. Suppose that for all $i$, $L_i^+$ is planar. We may then draw $L_1^+$ on the plane. If we have a planar drawing of $\unionfrom{j = 1}{i-1}{L_j^+}$ we can then embed a drawing of $L_i^+$ where the edge between $x$ and $y$ borders the outer edge into a face that is bordered by the edge between $x$ and $y$ in our planar drawing of $\unionfrom{j = 1}{i-1}{L_j^+}$. We then can redraw this embedding such that $x$ and $y$ in $L_i^+$ are at the same points as $x$ and $y$ in $\unionfrom{j = 1}{i-1}{L_j^+}$ yielding a planar drawing of $\unionfrom{j=1}{i}{L_j^+}$. By induction then $\unionfrom{i=1}{n}{L_i^+}$ is planar. Clearly $G \subset \unionfrom{i=1}{n}{L_i^+}$ so by lemma \ref{subgraph} we know $G$ must be planar.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{3connect}
 	If $G$ is a graph with the properties listed below, then $G$ is at least 3-connected.
 	\begin{enumerate}
-		\item $G$ does not contain any subdivision of $K_{3,3}$ or $K_5$ as a subgraph.
+		\item $G$ does not contain any subgraph that is contactable to of $K_{3,3}$ or $K_5$.
 		\item $G$ is nonplanar.
 		\item Of all graphs satisfying properties (1) and (2), $G$ has the least number of edges.
 		\item Of all graphs satisfying properties (1), (2) and (3), $G$ has the least number of vertices.
@@ -845,9 +912,9 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 %TODO cite http://www.cs.rpi.edu/~goldberg/14-GT/19-kurat.pdf
 
 \begin{proof}
-	Let $G$ be a graph fitting the above properties. Any proper subgraph, $H$, of $G$ will be missing at least one vertex or one edge from $G$. If $H$ is missing a vertex from $G$, then $H$ must break one of the first 3 properties. $H$ can not contain a subdivision of $K_{3,3}$ or $K_5$ as then $G$ would also contain it and $H$ can not have more vertices than $G$. This leaves only that $H$ must be planar. If $H$ is missing an edge from $G$, then $H$ must break one of the first 2 properties. Again $H$ can not contain a subdivision of $K_{3,3}$ or $k_5$ as then $G$ would also contain it. This again leaves only that $H$ must be planar. This means that all proper subgraphs $H$ of $G$ are planar so $G$ is minimally nonplanar. Additionally we know that $G$ is not a complete graph as all complete graphs either contain $K_5$ or are planar.
+	Let $G$ be a graph fitting the above properties. Any proper subgraph, $H$, of $G$ will be missing at least one vertex or one edge from $G$. If $H$ is missing a vertex from $G$, then $H$ must break one of the first 3 properties. $H$ can not contain a subgraph that is contactable to $K_{3,3}$ or $K_5$ as then $G$ would also contain it and $H$ can not have more vertices than $G$. This leaves only that $H$ must be planar. If $H$ is missing an edge from $G$, then $H$ must break one of the first 2 properties. Again $H$ can not contain a subgraph that is contactable to $K_{3,3}$ or $k_5$ as then $G$ would also contain it. This again leaves only that $H$ must be planar. This means that all proper subgraphs $H$ of $G$ are planar so $G$ is minimally nonplanar. Additionally we know that $G$ is not a complete graph as all complete graphs either contain $K_5$ or are planar.
 	
-	By lemma \ref{2connect} we know that $G$ is at least 2 connected. Suppose that $G$ is 2 connected. Let $\set xy = S$ be a cut set in $G$. We know by lemma \ref{lobes} that there is a lobe $L$ for which adding an edge between $x$ and $y$ would yield a nonplanar graph $L^+$. Clearly $L^+$ has less edges then $G$, so $L^+$ must contain $K_{3,3}$ or $K_{5}$ as a subdivision. Consider another lobe $M$ of $S$. There must be a path, $p$, from $x$ to $y$ in $M$ as otherwise $G$ would not be either 0 or 1 connected. Clearly $L\union p$ is a subgraph of $G$ and $L\union p$ is a subdivision of $L^+$. By lemma \ref{subdivisionCarryOn} we then know that $L\union p$ contains a subdivision of $K_{3,3}$ or $K_5$. This gives us a contradiction so $G$ can not be 2-connected and therefore must be at least 3 connected.
+	By lemma \ref{2connect} we know that $G$ is at least 2 connected. Suppose that $G$ is 2 connected. Let $\set xy = S$ be a cut set in $G$. We know by lemma \ref{lobes} that there is a lobe $L$ for which adding an edge between $x$ and $y$ would yield a nonplanar graph $L^+$. Clearly $L^+$ has less edges then $G$, so $L^+$ must contain a subgraph that is contractible to $K_{3,3}$ or $K_{5}$. Consider another lobe $M$ of $S$. There must be a path, $p$, from $x$ to $y$ in $M$ as otherwise $G$ would not be either 0 or 1 connected. Clearly $L\union p$ is a subgraph of $G$ and $L\union p$ is contractible to $L^+$. By lemma \ref{contractibleCarryOn} we then know that $L\union p$ contains a subgraph that is contractible to $K_{3,3}$ or $K_5$. This gives us a contradiction so $G$ can not be 2-connected and therefore must be at least 3 connected.
 \end{proof}
 
 \subsection{Bridges}
@@ -889,6 +956,15 @@ Bridges are the final tool we use to prove Kuratowski's theorem. We will now bui
 	Now we have shown that $A\union B$ is a partial bridge.
 \end{proof}
 
+\subsubsection{Some more useful definitions about bridges}
+\begin{definition}[vertex of attachment]
+	If $B$ is a bridge of cycle $C$, then any vertex in both $B$ and $C$ is a vertex of attachment
+\end{definition}
+
+\begin{definition}[degree]
+	The degree of a bridge is the number of vertices of attachment it has.
+\end{definition}
+
 \begin{corallary}
 	No two bridges of the same cycle will share any edges and may only share a vertex if the vertex is in the cycle. 
 \end{corallary}
@@ -918,7 +994,7 @@ Bridges are the final tool we use to prove Kuratowski's theorem. We will now bui
 	Every bridge $B$ of cycle $C$ contains at least one vertex in $C$.
 \end{lemma}
 \begin{proof}
-	Let $B$ be a partial bridge that does not contain any vertex in $C$. We know $C$ and $B$ are contained within a larger graph $G$ that is connected, so there must be a walk from any vertex in $B$ to any vertex in $C$. Consider then a walk $W$ that starts at vertex $b\in B$ and ends at vertex $c\in C$. There must be some first vertex in $W$ that is in $C$, so let us call $W'$ the subwalk of $W$ from $b$ to that first vertex in $C$. Now we know that $W'$'s first vertex in $C$ is also it's last vertex, so it does not pass through $C$. Therefore by lemma \ref{walktopartialbridge} the graph $H$ composed of $W'$'s vertices and edges is a partial bridge. We know also that $B\union H$ is a partial bridge by lemma \ref{partialbridgeunion}. Finally $B\not=B\union H$ as $B\union H$ contains a vertex in $C$ and $B$ does not. Now we have a partial bridge, $B\union H$ that contains $B$, so we know $B$ is not a bridge.
+	Let $B$ be a partial bridge that does not contain any vertex in $C$. We know $C$ and $B$ are contained within a larger graph $G$ that is connected, so there must be a walk from any vertex in $B$ to any vertex in $C$. Consider then a walk $W$ that starts at vertex $b\in B$ and ends at vertex $c\in C$. There must be some first vertex in $W$ that is in $C$, so let us call $W'$ the subwalk of $W$ from $b$ to that first vertex in $C$. Now we know that $W'$'s first vertex in $C$ is also its last vertex, so it does not pass through $C$. Therefore by lemma \ref{walktopartialbridge} the graph $H$ composed of $W'$'s vertices and edges is a partial bridge. We know also that $B\union H$ is a partial bridge by lemma \ref{partialbridgeunion}. Finally $B\not=B\union H$ as $B\union H$ contains a vertex in $C$ and $B$ does not. Now we have a partial bridge, $B\union H$ that contains $B$, so we know $B$ is not a bridge.
 \end{proof}
 
 \begin{lemma}
@@ -940,7 +1016,28 @@ We can finally provide the proof for Kuratowski's theorem.
 \THEBIGONE*
 
 \begin{proof}
-%TODO prove
+	Suppose that $G$ is a graph with the following properties.
+	\begin{enumerate}
+		\item $G$ does not contain any subgraph that is contactable to of $K_{3,3}$ or $K_5$.
+		\item $G$ is nonplanar.
+		\item Of all graphs satisfying properties (1) and (2), $G$ has the least number of edges.
+		\item Of all graphs satisfying properties (1), (2) and (3), $G$ has the least number of vertices.
+	\end{enumerate}
+	We will try and show that $G$ does not exist.
+
+	First off we have lemma \ref{3connect} which says that $G$ must be at least 3 connected. Additionally we know that $G$ must be minimally nonplanar.\footnote{This was proved in the beginning of the proof for lemma \ref{3connect}.} Now choose an edge $e \in G$ between $x$ and $y$ and let $G' = G\setminus\set e$. Clearly $G'$ is planar. Because $G$ is 3 connected, by Menger's theorem (theorem \ref{menger}) we know that between any two vertices $a\not=b$ there are at least 3 internally disjoint paths in $G$. From this we can see that in $G'$ there must be at least 2 internally disjoint paths between $a$ and $b$. This means that every pair of paths in $G'$ lie upon a cycle, start at $a$ go down one path to $b$, then follow the other internally distinct path back to $a$. Let $\mathcal C$ be the set of all cycles that $x$ and $y$ lie on in $G'$. Let $\mathcal D$ be the set of all plane drawings of $G'$. By lemma \ref{JordansLemma} we know that every drawing $D\in\mathcal D$ we know that all cycles $C\in\mathcal C$ form a Jordan curve. Now choose a pair $\pair CD \in \mathcal C\cross\mathcal D$ such the curve created by $C$ in $D$ has the maximum possible number of edges in its interior. Now lets take a look at the bridges of $C$ in $D$.
+	
+	$C$ has no bridges of degree 1 as their vertex of attachment would be a single vertex cut set and we know $G'$ is at least 2 connected. Now we can break $C$ into two parts. If we start at $x$ and travel along $C$ to $y$ we get a path we are calling $p$. If we continue along $C$ from $y$ back to $x$ we get another path $q$.
+	
+	Claim: There are no external bridges of $C$ that have more than one vertex of attachment in either $p$ or $q$.
+	
+	Proof: Assume there is an external bridge $B$ of $C$ with vertices of attachment $b_1$, $b_2$ with either both in $p$ or both in $q$. Let $r$ be the path (either $p$ or $q$) that contains $b_1$ and $b_2$. Further assume without loss of generality that $b_1$ comes before $b_2$ in $r$. As $B$ is connected, there must be a path $s$ in $B$ from $b_1$ to $b_2$. Now construct a path $r'$ that starts where $r$ starts, goes down $r$ to $b_1$ then follows $s$ to $b_2$ where it continues down $r$ until $r$'s end. If $b_2 = r_j$ this would look like
+	$$
+	r' = r_1r_2\ldots b_1s_1s_2\ldots b_2r_{j+1}r_{j+2}\ldots r_{\card r}
+	$$
+	Now we can construct $C'$ to be $C$ but replace $r$ with $r'$. $C'$ clearly contains both $x$ and $y$, and it also will have more edges on it's interior than $C$ did. This is a contradiction as $C$ is the cycle containing $x$ and $y$ with the most edges on the interior.
+	
+	Now by the pigeonhole principle there can not be any external bridges of $C$ with degree greater than 2. Further no external bridge may have $x$ or $y$ as a vertex of attachment as $x$ and $y$ are in both $p$ and $q$. This means that all external bridges of $C$ are degree two with one vertex of attachment in $p$ and one vertex of attachment in $q$ and neither in $\set{x,y}$. We also know there is at least one external bridge of $C$ as otherwise $x$ and $y$ would both be bordering the outer face so the edge $e$ can be drawn within the outer face yielding $G$ to be a planar graph. By similar logic there must be some internal bridge $I$ that has one vertex of attachment in $p\setminus\set{x,y}$ and one vertex of attachment in $q\setminus\set{x,y}$ (This is because if there was no such bridge $x$ and $y$ would share a face and we could draw in $e$ making $G$ planar).
 \end{proof}
 
 \end{document}
