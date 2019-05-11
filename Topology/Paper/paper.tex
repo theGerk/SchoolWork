@@ -956,14 +956,6 @@ Bridges are the final tool we use to prove Kuratowski's theorem. We will now bui
 	Now we have shown that $A\union B$ is a partial bridge.
 \end{proof}
 
-\subsubsection{Some more useful definitions about bridges}
-\begin{definition}[vertex of attachment]
-	If $B$ is a bridge of cycle $C$, then any vertex in both $B$ and $C$ is a vertex of attachment
-\end{definition}
-
-\begin{definition}[degree]
-	The degree of a bridge is the number of vertices of attachment it has.
-\end{definition}
 
 \begin{corallary}
 	No two bridges of the same cycle will share any edges and may only share a vertex if the vertex is in the cycle. 
@@ -997,6 +989,7 @@ Bridges are the final tool we use to prove Kuratowski's theorem. We will now bui
 	Let $B$ be a partial bridge that does not contain any vertex in $C$. We know $C$ and $B$ are contained within a larger graph $G$ that is connected, so there must be a walk from any vertex in $B$ to any vertex in $C$. Consider then a walk $W$ that starts at vertex $b\in B$ and ends at vertex $c\in C$. There must be some first vertex in $W$ that is in $C$, so let us call $W'$ the subwalk of $W$ from $b$ to that first vertex in $C$. Now we know that $W'$'s first vertex in $C$ is also its last vertex, so it does not pass through $C$. Therefore by lemma \ref{walktopartialbridge} the graph $H$ composed of $W'$'s vertices and edges is a partial bridge. We know also that $B\union H$ is a partial bridge by lemma \ref{partialbridgeunion}. Finally $B\not=B\union H$ as $B\union H$ contains a vertex in $C$ and $B$ does not. Now we have a partial bridge, $B\union H$ that contains $B$, so we know $B$ is not a bridge.
 \end{proof}
 
+
 \begin{lemma}
 	In a plane drawing of a graph $G$, given some cycle $C$, every bridge, $B$, of $C$ will either entirely be in the interior or exterior of $C$ with the exception of the vertices of $B$ that are in $C$.
 \end{lemma}
@@ -1009,6 +1002,27 @@ Bridges are the final tool we use to prove Kuratowski's theorem. We will now bui
 \end{proof}
 
 
+
+\subsubsection{Some more useful definitions about bridges}
+\begin{definition}[vertex of attachment]
+	If $B$ is a bridge of cycle $C$, then any vertex in both $B$ and $C$ is a vertex of attachment
+\end{definition}
+
+\begin{definition}[degree]
+	The degree of a bridge is the number of vertices of attachment it has.
+\end{definition}
+
+\begin{definition}[Skew]
+	Let $A$ and $B$ be bridges of cycle $C$. $A$ and $B$ are skew one another if there exists vertices of attachment $a_1, a_2 \in A$ and $b_1,b_2\in B$ with ordering $a_1,b_1,a_2,b_2$ in $C$ and $\set{a_1,a_2}\inter\set{b_1,b_2}=\emptyset$.
+\end{definition}
+
+\begin{lemma}\label{skew}
+	If $A$ and $B$ are bridges of cycle $C$ in a planar graph $G$, and $A$ and $B$ are skew one another then $A$ and $B$ can not both be drawn in interior or both in the exterior of $C$.
+\end{lemma}
+
+\begin{proof}
+	In $C$ the vertices $a_1$ and $a_2$ separate $C$ into two parts. One part contains $b_1$ and the other contains $b_2$. If $A$ is drawn on the interior of $C$ then there must be a path from $a_1$ to $a_2$ already drawn on the interior of $C$. This means that any path drawn from $b_1$ to $b_2$ on the interior of $C$, must pass over this path. The same argument works for the exterior of $C$. 
+\end{proof}
 
 \subsection{The home stretch}
 We can finally provide the proof for Kuratowski's theorem.
@@ -1037,7 +1051,28 @@ We can finally provide the proof for Kuratowski's theorem.
 	$$
 	Now we can construct $C'$ to be $C$ but replace $r$ with $r'$. $C'$ clearly contains both $x$ and $y$, and it also will have more edges on it's interior than $C$ did. This is a contradiction as $C$ is the cycle containing $x$ and $y$ with the most edges on the interior.
 	
-	Now by the pigeonhole principle there can not be any external bridges of $C$ with degree greater than 2. Further no external bridge may have $x$ or $y$ as a vertex of attachment as $x$ and $y$ are in both $p$ and $q$. This means that all external bridges of $C$ are degree two with one vertex of attachment in $p$ and one vertex of attachment in $q$ and neither in $\set{x,y}$. We also know there is at least one external bridge of $C$ as otherwise $x$ and $y$ would both be bordering the outer face so the edge $e$ can be drawn within the outer face yielding $G$ to be a planar graph. By similar logic there must be some internal bridge $I$ that has one vertex of attachment in $p\setminus\set{x,y}$ and one vertex of attachment in $q\setminus\set{x,y}$ (This is because if there was no such bridge $x$ and $y$ would share a face and we could draw in $e$ making $G$ planar).
+	Now by the pigeonhole principle there can not be any external bridges of $C$ with degree greater than 2. Further no external bridge may have $x$ or $y$ as a vertex of attachment as $x$ and $y$ are in both $p$ and $q$. This means that all external bridges of $C$ are degree two with one vertex of attachment in $p$ and one vertex of attachment in $q$ and neither in $\set{x,y}$. We also know there is at least one external bridge of $C$ as otherwise $x$ and $y$ would both be bordering the outer face so the edge $e$ can be drawn within the outer face yielding $G$ to be a planar graph. By similar logic there must be some internal bridge $I$ that has at least one vertex of attachment in $p\setminus\set{x,y}$ and at least one vertex of attachment in $q\setminus\set{x,y}$ (This is because if there was no such bridge $x$ and $y$ would share a face and we could draw in $e$ making $G$ planar).
+	
+	Let $E$ be an external bridge of $C$ with vertices of attachment $e_p$ and $e_q$ with $e_p$ in $p\setminus\set{x,y}$ and $e_q\setminus\set{x,y}$ in $q$. If we consider $C\setminus\set{e_p,e_q}$ we get two connected components. One of these components will have $x$ and the other will have $y$. Let us define $X(E)$ to be the component containing $x$ and $Y(E)$ to be the component containing $y$. Additionally there must be some internal bridge of $C$ with a vertex of attachment in both $X(E)$ and $Y(E)$ as otherwise $E$ could be redrawn on the inside of $C$.
+	
+	Claim: There must exist some external bridge $E$ of $C$ with a vertex of attachment in both $p\setminus\set{x,y}$ and $q\setminus\set{x,y}$ for which there is an internal bridge $B$ of $C$ with at least one vertex of attachment in all of the following:
+	\begin{enumerate}
+		\item $X(E)$
+		\item $Y(E)$
+		\item $p\setminus\set{x,y}$
+		\item $q\setminus\set{x,y}$.
+	\end{enumerate}
+
+	Proof: Assume there is no such bridge external bridge $E$. We know there must still be be an external bridge with a vertex of attachment in $p\setminus\set{x,y}$ and a vertex of attachment in $q\setminus\set{x,y}$, and let $A$ be one such bridge. We will show that we can add $e$ back into the interior of $C$ yielding a planar $G$.
+	
+	Start by letting $B$ be a bridge with no vertex of attachment in $p\setminus\set{x,y}$. This bridge clearly does not prevent us from drawing the edge $e$ into the interior of $C$. The same is true for a bridge $B$ with no vertex of attachment in $q\setminus\set{x,y}$.
+	
+	%Some more work needed on bridges that are skew one another
+	Now let $B$ be a bridge with a vertex of attachment in all of the above except $X(A)$. If there is no bridge that is skew with $B$ then $B$ can be redrawn on the exterior of $C$. If there is a bridge, $B'$, that is skew with $B$ then it's vertices of attachment must all be within $Y(A)\union\set{e_p,e_q}$ as otherwise it would be skew $A$ (see lemma \ref{skew}). We also know that all of $B'$'s vertices of attachment must be in either $e_q$ or in $e_p$ as otherwise if we let $E = B'$ we would find a contradiction to our initial assumption. This means we can redraw $B$ and $B'$ by switching which one is on the interior and exterior. Clearly $B'$ does not prevent us from redrawing $e$ on the interior of $C$.
+	
+	The only remaining type of bridge that could prevent us from redrawing $e$ on the interior of $C$ is a bridge with a vertex of attachment in all the above except $Y(A)$. The same exact argument as above will work for any such bridge.
+	
+	This means that any bridge on the interior does not prevent $e$ from being drawn, so we may 
 \end{proof}
 
 \end{document}
