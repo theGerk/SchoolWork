@@ -11,11 +11,11 @@
 
 
 \section{Introduction}
-Topological graph theory is an entire field within topology and as such this paper is by no means meant to cover all of topological graph theory in any depth. This paper instead will first cover a rather shallow overview of the field, followed by a more in depth study of graphs and their genus. The overview will mainly be focused on giving a thorough understanding of what topological graph theory is as well as to briefly cover the history of the field. In giving an overview of the field we will cover some of the basic concepts and definitions needed for the more rigorous part of the paper. After the overview we will dive into Kuratowski's Theorem, We will go through and attempt to have an intuitive understanding of a Kuratowski's Theorem and its proof. After proving Kuratowski's Theorem, we will continue onto talking about generalizations of the theorem and map colorings, however their coverage will be rather shallow and lacking proofs.
+Topological graph theory is an entire field within topology and as such this paper is by no means meant to cover all of topological graph theory in any depth. This paper instead will first cover a rather shallow overview of the field (section 2), followed by a more in depth study of graphs theory (section 3). The overview will mainly be focused on giving a thorough understanding of what topological graph theory is as well as to briefly cover the history of the field. After the overview we will spend section 3 building up definitions from graph theory that we will need for the later more rigorous parts of the paper. After this we will dive into Kuratowski's Theorem. We will start by defining $K_5$ and $K_{3,3}$ and showing that they are both nonplanar. Up until this point the paper is written to be accessible by anyone, no mater their level of math background. After we show the nonplanarity of $K_5$ and $K_{3,3}$ we continue onto thoroughly prove Kuratowkski's theorem. The audience for this part is expected to have at least an undergraduate understanding of topology and some exposure to graph theory. After Kuratowski's theorem we finish with a brief discussion of what lies beyond Kuratowski's theorem.
 
 \section{Overview}
 \subsection{Graphs}
-Before we talk about topological graph theory with any level of understanding we must first understand what a graph is.
+Before we talk about topological graph theory we must first understand what a graph is.
 
 A graph is generally defined as a set of vertices combined with a set of edges between vertices, however here it may be more useful to think about them visually with a simple representation.
 
@@ -545,7 +545,7 @@ This means that given any planar multigraph $G$, we can talk about the number of
 
 Now using this we can prove that $K_{3,3}$ and $K_5$ are nonplanar.
 
-\begin{theorem}
+\begin{theorem} \label{k5}
 	$K_5$ is nonplanar.
 \end{theorem}
 \begin{center}
@@ -584,7 +584,7 @@ Now using this we can prove that $K_{3,3}$ and $K_5$ are nonplanar.
 	Additionally every edge borders no more than two faces, so from this we know that in any graph $2e \ge 3f$ or $\frac23e\ge f$. Now $K_5$ has 10 edges and 5 vertices, so we know that $$\frac2310=\frac{20}3=6.\bar6\ge f$$ We know that $K_5$ is a connected graph (and thus also a connected multigraph) so if $K_5$ were planar then we would have $$2=v-e+f=5-10+f\le5-10+6.\bar6 = 1.\bar6$$ which is clearly false as $$2\not\le1.\bar6$$ Therefore $K_5$ must not be planar.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem} \label{k3,3}
 	$K_{3,3}$ is nonplanar.
 \end{theorem}
 \begin{center}
@@ -638,7 +638,7 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 	\item If there is an edge $e\in E$ between vertices $a$ and $b$ then there is a continuous injective function $\hat e:\ccint01\to S$ with $\hat e(0) = v(a)$ and $\hat e(1) = v(b)$ and the image of $e$ is contained within $D$.\footnote{In a multigraph drawing we may have $a=b$ and thus $\hat e(0) = \hat e(1)$ making $\hat e$ not injective, however it must still be injective in $\coint 01$.}
 	\item For any vertex $a\in V$ and edge $e\in E$ and any real number $x\in\ooint 01$, $\hat e(x)\not=v(a)$.
 	\item For any two edges $e\not=f$, $\hat e(x) \not= \hat f(y)$ for all $x,y \in\ooint01$.
-	\item for all $d\in D$ there exists either a vertex $a\in V$ such that $v(a) = d$ or there exists an edge $e\in E$ such that $d$ is in the image of $\hat e$.
+	\item For all $d\in D$ there exists either a vertex $a\in V$ such that $v(a) = d$ or there exists an edge $e\in E$ such that $d$ is in the image of $\hat e$.
 \end{itemize}
 \end{definition}
 
@@ -646,11 +646,11 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 \subsection{Subgraph lemmas}
 
 \begin{lemma} \label{subgraph}
-	If a graph $G$ has a nonplanar subgraph, then $G$ is nonplanar.
+	If a graph $G$ can be drawn in a space, $S$, then so can any subgraph of $G$.
 \end{lemma}
 
 \begin{proof}
-	If we have a graph $G$ with a nonplanar subgraph $H$ then when drawing $G$ there is a part of the drawing that is $H$. This part of the drawing can not be planar and therefore the drawing of $G$ can not be a plane drawing.
+	Let $D$ be a graph drawing of $G$ in $S$. Simply remove all edges and vertices from $D$ that $H$ does not have and we have a new drawing $D'\subset D$ that is a graph drawing of $H$ in $S$.
 \end{proof}
 
 \begin{definition}[contactable]
@@ -766,8 +766,7 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 	For any face, $F$, in a plane drawing, $D$, of a graph $G$, there is a corresponding drawing plane drawing of $G$, $D'$, where all edges and vertices that border $F$ in $D$, now border the outer face.
 \end{lemma}
 \begin{proof}
-	Let $G$ be a graph with face $F$ in plane drawing $D$. Now let $\inv f$ be a stereographic projection from the punctured sphere onto the plane. Therefore $f(D)$ is a drawing of $G$ on the punctured sphere. If $f(D)$ is a drawing of $G$ on the punctured sphere then it must also be a drawing of $G$ on the sphere. Now we pick a point on the interior of $F$ and puncture the sphere there rather than where our original puncture was.\footnote{There is a problem in this proof. How do we know that $F$ has an interior? Simply put if we have a finite number of vertices and never use any space filling curves for edges we will never fill space. We know that we are never forced to use a space filling curve as for any space filling curve $c$ we may create a new curve $c'$ that connects the same end points, stays within $c$'s image, and is not space filling. %TODO ask Shaw if maybe turn into lemma and prove
-	} We may now use a sterographic projection, $g$ to map $f(D)$ from the new punctured sphere back to $\mathbb R^2$ creating $D' = g(f(D))$. We know that in $D'$ the face that corresponds to $F$ is the outer face as it contained the punctured point in $\inv g(D')$. %TODO Ask shaw if I should prove that the puctured point in the sphere corresponds to a limit point
+	Let $G$ be a graph with face $F$ in plane drawing $D$. Now let $\inv f$ be a stereographic projection from the punctured sphere onto the plane. Therefore $f(D)$ is a drawing of $G$ on the punctured sphere. If $f(D)$ is a drawing of $G$ on the punctured sphere then it must also be a drawing of $G$ on the sphere. Now we pick a point on the interior of $F$ and puncture the sphere there rather than where our original puncture was.\footnote{There is a problem in this proof. How do we know that $F$ has an interior? Simply put if we have a finite number of vertices and never use any space filling curves for edges we will never fill space. We know that we are never forced to use a space filling curve as for any space filling curve $c$ we may create a new curve $c'$ that connects the same end points, stays within $c$'s image, and is not space filling.} We may now use a sterographic projection, $g$ to map $f(D)$ from the new punctured sphere back to $\mathbb R^2$ creating $D' = g(f(D))$. We know that in $D'$ the face that corresponds to $F$ is the outer face as it contained the punctured point in $\inv g(D')$. %TODO Ask shaw if I should prove that the puctured point in the sphere corresponds to a limit point
 \end{proof}
 
 \begin{definition}[cut set]
@@ -1039,7 +1038,7 @@ We can finally provide the proof for Kuratowski's theorem.
 	\end{enumerate}
 	We will try and show that $G$ does not exist.
 
-	First off we have lemma \ref{3connect} which says that $G$ must be at least 3 connected. Additionally we know that $G$ must be minimally nonplanar.\footnote{This was proved in the beginning of the proof for lemma \ref{3connect}.} Now choose an edge $e \in G$ between $x$ and $y$ and let $G' = G\setminus\set e$. Clearly $G'$ is planar. Because $G$ is 3 connected, by Menger's theorem (theorem \ref{menger}) we know that between any two vertices $a\not=b$ there are at least 3 internally disjoint paths in $G$. From this we can see that in $G'$ there must be at least 2 internally disjoint paths between $a$ and $b$. This means that every pair of paths in $G'$ lie upon a cycle, start at $a$ go down one path to $b$, then follow the other internally distinct path back to $a$. Let $\mathcal C$ be the set of all cycles that $x$ and $y$ lie on in $G'$. Let $\mathcal D$ be the set of all plane drawings of $G'$. By lemma \ref{JordansLemma} we know that every drawing $D\in\mathcal D$ we know that all cycles $C\in\mathcal C$ form a Jordan curve. Now choose a pair $\pair CD \in \mathcal C\cross\mathcal D$ such the curve created by $C$ in $D$ has the maximum possible number of edges in its interior. Now lets take a look at the bridges of $C$ in $D$.
+	First off we have lemma \ref{3connect} which says that $G$ must be at least 3 connected. Additionally we know that $G$ must be minimally nonplanar.\footnote{This was proved in the beginning of the proof for lemma \ref{3connect}.} Now choose an edge $e \in G$ between $x$ and $y$ and let $G' = G\setminus\set e$. Clearly $G'$ is planar. Because $G$ is 3 connected, by Menger's theorem (theorem \ref{menger}) we know that between any two vertices $a\not=b$ there are at least 3 internally disjoint paths in $G$. From this we can see that in $G'$ there must be at least 2 internally disjoint paths between $a$ and $b$. By Menger's theorem (theorem \ref{menger}) we know that $G'$ is 2 connected. This also means that every pair of paths in $G'$ lie upon a cycle, start at $a$ go down one path to $b$, then follow the other internally distinct path back to $a$. Let $\mathcal C$ be the set of all cycles that $x$ and $y$ lie on in $G'$. Let $\mathcal D$ be the set of all plane drawings of $G'$. By lemma \ref{JordansLemma} we know that every drawing $D\in\mathcal D$ we know that all cycles $C\in\mathcal C$ form a Jordan curve. Now choose a pair $\pair CD \in \mathcal C\cross\mathcal D$ such the curve created by $C$ in $D$ has the maximum possible number of edges in its interior. Now lets take a look at the bridges of $C$ in $D$.
 	
 	$C$ has no bridges of degree 1 as their vertex of attachment would be a single vertex cut set and we know $G'$ is at least 2 connected. Now we can break $C$ into two parts. If we start at $x$ and travel along $C$ to $y$ we get a path we are calling $p$. If we continue along $C$ from $y$ back to $x$ we get another path $q$.
 	
@@ -1055,7 +1054,7 @@ We can finally provide the proof for Kuratowski's theorem.
 	
 	Let $E$ be an external bridge of $C$ with vertices of attachment $e_p$ and $e_q$ with $e_p$ in $p\setminus\set{x,y}$ and $e_q\setminus\set{x,y}$ in $q$. If we consider $C\setminus\set{e_p,e_q}$ we get two connected components. One of these components will have $x$ and the other will have $y$. Let us define $X(E)$ to be the component containing $x$ and $Y(E)$ to be the component containing $y$. Additionally there must be some internal bridge of $C$ with a vertex of attachment in both $X(E)$ and $Y(E)$ as otherwise $E$ could be redrawn on the inside of $C$.
 	
-	Claim: There must exist some external bridge $E$ of $C$ with a vertex of attachment in both $p\setminus\set{x,y}$ and $q\setminus\set{x,y}$ for which there is an internal bridge $B$ of $C$ with at least one vertex of attachment in all of the following:
+	Claim: There must exist some external bridge $E$ of $C$ for which there is an internal bridge $B$ of $C$ with at least one vertex of attachment in all of the following:
 	\begin{enumerate}
 		\item $X(E)$
 		\item $Y(E)$
@@ -1063,16 +1062,55 @@ We can finally provide the proof for Kuratowski's theorem.
 		\item $q\setminus\set{x,y}$.
 	\end{enumerate}
 
-	Proof: Assume there is no such bridge external bridge $E$. We know there must still be be an external bridge with a vertex of attachment in $p\setminus\set{x,y}$ and a vertex of attachment in $q\setminus\set{x,y}$, and let $A$ be one such bridge. We will show that we can add $e$ back into the interior of $C$ yielding a planar $G$.
+	Proof: Assume there is no such bridge external bridge $E$. We will show a contradiction as we will be able to redraw $G'$ such that we can add $e$ in the interior of $C$.
 	
-	Start by letting $B$ be a bridge with no vertex of attachment in $p\setminus\set{x,y}$. This bridge clearly does not prevent us from drawing the edge $e$ into the interior of $C$. The same is true for a bridge $B$ with no vertex of attachment in $q\setminus\set{x,y}$.
+	For any bridge $B$ on the interior of $C$ that does not have a vertex of attachment in $p\setminus\set {x,y}$, $B$ does not prevent the edge $e$ from being added in the interior of $C$. The same is true for any bridge on the interior of $C$ with no vertex of attachment in $p\setminus\set{x,y}$ this means that if we can redraw $G'$ such that all bridges on the interior of $C$ have no vertices of attachment in $p\setminus\set{x,y}$ or no vertices of attachment in $q\setminus\set{x,y}$ then we will have shown a contradiction.
 	
-	%Some more work needed on bridges that are skew one another
-	Now let $B$ be a bridge with a vertex of attachment in all of the above except $X(A)$. If there is no bridge that is skew with $B$ then $B$ can be redrawn on the exterior of $C$. If there is a bridge, $B'$, that is skew with $B$ then it's vertices of attachment must all be within $Y(A)\union\set{e_p,e_q}$ as otherwise it would be skew $A$ (see lemma \ref{skew}). We also know that all of $B'$'s vertices of attachment must be in either $e_q$ or in $e_p$ as otherwise if we let $E = B'$ we would find a contradiction to our initial assumption. This means we can redraw $B$ and $B'$ by switching which one is on the interior and exterior. Clearly $B'$ does not prevent us from redrawing $e$ on the interior of $C$.
+	Let $B$ be a bridge on the interior of $C$ that has a vertex of attachment in both $q\setminus\set{x,y}$ and in $p\setminus\set{x,y}$. If there is any bridge, $E$, that is skew with $B$ then $E$ must be on the exterior and it's existence would contradict our initial assumption. As there may not be any bridges that are skew with $B$ we may simply redraw $B$ on the exterior of $C$. This then yields a contradiction, so the claim as been proved.
 	
-	The only remaining type of bridge that could prevent us from redrawing $e$ on the interior of $C$ is a bridge with a vertex of attachment in all the above except $Y(A)$. The same exact argument as above will work for any such bridge.
+	Now that we know there is some external bridge $E$ of $C$ for which there is an internal bridge $B$ of $C$ with at least one vertex of attachment in each of $X(E), Y(E), q\setminus\set{x,y},p\setminus\set{x,y}$. This means that the set $B\inter C$ (the set of all vertices of attachment of $B$) must intersect each of the following sets $X(E),Y(E),q\setminus\set{x,y},p\setminus\set{x,y}$. Choose $A\subset B\inter C$ such that $A$ intersects with each of $X(E),Y(E),q\setminus\set{x,y},p\setminus\set{x,y}$ and there is no $A'\subset B\inter C$ for which $\card{A'} < A$ and $A'$ intersects with each of $X(E),Y(E),q\setminus\set{x,y},p\setminus\set{x,y}$.
 	
-	This means that any bridge on the interior does not prevent $e$ from being drawn, so we may 
+	We know that $\card A\not=0$ as then it cant intersect anything. We know that $\card A\not= 1$ as then there exists only one $a\in A$ and we can not have both $a\in X(E)$ and $a\in Y(E)$ as $X(E)\inter Y(E) = \emptyset$. We know that $\card A < 5$ by the pigeonhole principle. This means that we only have three possibilities left: $\card A = 2$, $\card A = 3$, or $\card A = 4$. Lets go through them.
+	
+	\begin{enumerate}
+		\item If $\card A = 2$ then we may let $A = \set{u,v}$ with $u\in X(E)$ and $v\in Y(E)$. Now either $u\in q\setminus\set{x,y}$ and $v\in p\setminus\set{x,y}$, or $v\in q\setminus\set{x,y}$ and $u\in p\setminus\set{x,y}$. Either way this will result in $G$ containing a subgraph that contracts to $K_{3,3}$.
+		
+		\item If $\card A = 3$. There must be some $a\in A$ for which $a\in\set{x,y,e_p,e_q}$ as otherwise $A$ would contain a subset that fit our previous case. Whatever $a$'s value, it will be in exactly one of the four sets $X(E),Y(E),q\setminus\set{x,y},p\setminus\set{x,y}$. This means no other element can also be in whichever of these sets $a$ is in as then we could simply remove $a$ from $A$.
+		
+		
+		Suppose there is another element $b\in A$ with $b \in\set{x,y,e_p,e_q}$. We know that $\set{a,b}\not=\set{x,y}$ and $\set{a,b}\not=\set{e_p,e_q}$ as then we would have only one vertex left that would need to be in two disjoint sets. This means that we can say without loss of generality let $a \in\set{x,y}$ and $b\in\set{e_p,e_q}$. This leaves one last element $c\in A$ with $c$ along the path in $C$ between the element of $\set{x,y}\setminus\set a$ and the element of $\set{e_p,e_q}\setminus\set b$. By simply removing the path between $a$ and $b$ in $C$ we would get a graph that looks very similar to what we got when $\card A = 2$. This will result again in $G$ containing a subgraph that contracts to $K_{3,3}$.
+		
+		Suppose there is no other element in $A$ that is also in $\set{x,y,e_p,e_q}$. We know then that if $a\in\set{x,y}$ then the other two elements are on the paths in $C$ between the element in $\set{x,y}\setminus\set x$ and $e_p$ or $e_q$ respectively. Let $b\in A$ be on the path in $C$ between $e_p$ and the element of $\set{x,y}\setminus\set x$. Simply contract all the edges on $C$ between $e_p$ and $b$ and we have contracted to a graph that would be in our previous case. Then by lemma \ref{contractibleCarryOn} we know that $G$ must contain a subgraph that is a subdivision of $K_{3,3}$. If $a\in\set{e_p,e_q}$ then we can make the same argument that both the other elements of $A$ will be on paths between the element of $\set{e_p,e_q}\setminus a$ and $x$ or $y$ respectively. Then we may let $b\in A$ be on the path in $C$ between $x$ and the element of $\set{e_p,e_q}\setminus a$, and then contract all the edges on the path along $C$ between $b$ and $x$. This again leaves us at the previous case so $G$ will have a subgraph that contracts to $K_{3,3}$.
+		
+		\item If $\card A = 4$ then $A = \set{x,y,e_q,e_p}$ as otherwise one of the previous cases would be a subset of $A$. In this, when we add back in edge $e$ we find that $G$ contains a subgraph that is contactable to $K_5$.
+	\end{enumerate}
+
+	Now we have shown a contradiction with our original statement, so there is no graph $G$ that is nonplanar does not contain a subgraph that is contactable to $K_5$ or $K_{3,3}$. Further suppose $G$ is a graph that contains a subgraph $H$ that is contactable to either $K_5$ or $K_{3,3}$. We know that $K_5$ is nonplanar by theorem \ref{k5} and that $K_3$ is nonplanar by theorem \ref{k3,3}. It follows then from lemma \ref{contractible} that $H$ is nonplanar. Finally $G$ must also be nonplanar by lemma \ref{subgraph}.
 \end{proof}
+
+\section{Beyond Kuratowski's theorem}
+Kuratowski's theorem is an unexpectedly elegant statement that says there are only two base case nonplanar graphs, and that all other nonplanar graphs derive their nonplanarity from at least one of these two graphs. A logical next step might be to ask about different surfaces. We've found which graphs can be drawn on a plane, but what about a sphere or a torus? It turns out that the set of graphs that can be drawn on a sphere is the same set of graphs that can be drawn on the plane,\footnote{We actually showed most of what is needed to prove this in our proof for lemma \ref{outside}.} however this is not true for a torus and certainly not true in general. For example $K_{3,3}$ can be drawn on both a torus and a M\"obius strip. So the question naturally arises, do all surfaces have a set of base forbidden graphs like $\set{K_{3,3},K_5}$ is for the plane.
+
+The graph minor theorem answers this question, at least in part. It states that any countable set $\mathcal G$ of finite graphs, contains a finite subset $\mathcal H\subset\mathcal G$ such that for all $G\in\mathcal G$ there is some $H\in\mathcal H$ such that $G$ contains a subset that is contactable to $H$. %TODO cite https://arxiv.org/pdf/1608.04066.pdf
+This means that if a surface $S$ has the following property
+\begin{itemize}
+	\item For any graph $G$ that can be drawn in $S$, any graph produced by preforming an edge contraction on $G$ is able to be drawn in $S$.
+\end{itemize}
+then $S$ has a finite set of forbidden graphs.
+
+Another reasonable question is, now that we've talked so much about what can be drawn in $\mathbb R^2$, what about in $\mathbb R^k$. This turns out to be a rather disappointing line of inquiry. When $k=1$ we can only draw line graphs and unions thereof.\footnote{A line graph is any graph $G$ such that there is some path $p$ in $G$ that contains every vertex and every edge in $G$.} When $k\ge 3$ we can draw any graph whatsoever pretty easily. Simply make a drawing that allows for edges to cross in $\mathbb R^2$ and wherever there is a crossing simply lift ``up" one edge.\footnote{Up here refers to any direction perpendicular to the plane we initially drew the graph in.}
+
+
+\subsection{Genus of a graph}
+
+We can also flip the question we are asking and rather ask which surfaces can a given graph can be drawn on. The genus of a graph is one such way to characterize this. If we let $S_0$ be the sphere and $S_n$ be the sphere with $n$ handles attached to it. This would mean $S_1$ is a torus and $S_n$ is an $n$ holed torus. Now every graph $G$ can be drawn on some space $S_n$. To see this simply draw $G$ on a sphere and allow crossings. Now wherever there is a cross simply add a handle and draw one of the edges over the handle and the other going through the handle. Armed with this knowledge we can define the genus of a graph, $G$, to be the least possible $n$ such that $G$ can be drawn on $G_n$. There is also a nonorientable analog of this using a sequence of nonorientable spaces.
+
+\section{Conclusion}
+We have built up a basic understanding of graphs and graph theory. We've thoroughly proven Kuratowski's theorem, and hopefully in a way that is approachable. We then spent a bit of time talking about possible next steps. The graph minor theorem for example is a spectacular theorem that deserves far more attention then we are giving it. This however is where we end the paper. Thank you for reading. %TODO Make better?
+
+\section{Acknowledgments}
+I would like to thank Professor Shaw for his extreme patients while I wrote this paper. I would like to thank my family (especially my mother) who pushed me to continue writing the paper. Finally I would like to thank anyone who took time to help revise the paper. Thank you.
+
+
 
 \end{document}
