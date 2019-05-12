@@ -3,8 +3,8 @@
 \input{../topology}
 \usepackage{thmtools}
 \usepackage{thm-restate}
-%\usepackage{setspace}
-%\doublespacing
+\usepackage{setspace}
+\doublespacing
 \title{Topological Graph Theory}
 \begin{document}
 \maketitle
@@ -17,26 +17,23 @@ Topological graph theory is a field within topology, and therefore this paper is
 
 \section{Overview} \label{SoftOverview}
 \subsection{Graphs}
-Before we talk about topological graph theory we must first understand what a graph is.
+Before we talk about topological graph theory one must first understand what a graph is.
+A graph is generally defined as a set of vertices combined with a set of edges between vertices. However, here it may be more useful to think about of a graph visually with a simple representation.
+Consider first a set of points. This may be thought of as just dots on a sheet of paper. Each of these points will be called a vertex. Then we may start drawing lines between vertices. Lines may cross over each other, and need not be straight. There is no requirement that all vertices have a line going to them. These lines will be called edges. We will simply insist that no edge connect a vertex to itself and that we do not have multiple edges between the same pair of vertices.
 
-A graph is generally defined as a set of vertices combined with a set of edges between vertices, however here it may be more useful to think about them visually with a simple representation.
-
-Consider first a set of points, this may be thought of as just drawing dots on a sheet of paper. Each of these points will be called a vertex. Now we may start drawing lines between vertices. Lines may cross over each other and need not be straight. There is no requirement that all vertices have a line going to it. Each of these lines are called an edge. We will simply insist that no edge connects a vertex to itself and that we do not have multiple edges between the same pair of vertices.
-
-Once we have drawn this we have a representation of a graph. If we were to move the vertices around on the paper but leave them having the same edges (the same vertices are connected to the point as they were before). we would be left with the same graph. That is to say, it doesn't matter where we put a vertex on our sheet, the graph exists independently of the representation we draw.
+Once we have drawn this, we have a representation of a graph. If we were to move the vertices around on the paper but leave them with the same edges, we would be left with the same graph. That is to say, it doesn't matter where we put a vertex, the graph exists independently of the representation.
 
 \subsection{K\"onigsberg, and its seven bridges}
 
-Consider the following photo-realistic drawing of the city of K\"onigsberg.
+Consider the following drawing of the city of K\"onigsberg.
 
 \input{Konigsberg.pdf_tex}
 
 Now the question is, if we get to choose where we start, can we go for a stroll and cross every bridge exactly once?
 
-I first came across this question in the 8\textsuperscript{th} grade, and it was presented to us during geometry class. While undoubtedly an interesting problem, it is quite misleading to try and think of this as a geometry problem. Instead we will try and reduce it to a graph problem.
+I first came across this question in an 8\textsuperscript{th} grade geometry class. While undoubtedly an interesting problem, it is quite misleading to think of this as a geometry problem. Instead we will reduce it to a graph problem.
 
-Let us start by thinking of every island as a vertex and every bridge as an edge. We find the following graph.
-
+Let us start by thinking of every island as a vertex and every bridge as an edge. We find the following graph:
 \begin{center}
 \begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
                     thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
@@ -56,27 +53,31 @@ Let us start by thinking of every island as a vertex and every bridge as an edge
     (4) edge node [right] {$7$} (3);
 \end{tikzpicture}
 \end{center}
+%?
+It is worth noting two things about the above diagram. First, that the labels on the vertices and edges are unrelated to the problem, but have been added simply to make referring to parts of the graph much easier. Second, that whatever the above image depicts, does not fit our definition of a graph.
 
-It is worth noting two things about the above diagram. First that the labels on the vertices and edges are unrelated to the problem, but have been added simply to make referring to parts of the graph much easier. Second that whatever the above image depicts, does not fit our definition of a graph.
+Notice that edge $2$ and edge $3$ both connect vertex $A$ to $B$, just as $5$ and $6$ do for vertices $B$ and $C$. This is a strict violation of our definition for a graph. The issue, of course, then comes to what would one call this graph-like object where one is able to have any number of connections between any pair of vertices.
 
-Notice that edge $2$ and edge $3$ both connect vertex $A$ to $B$, as well edges $5$ and $6$ do for $B$ and $C$. This is a strict violation of our definition for a graph. The issue of course then comes to what would one call this graph like object one is able to have as many connections between any pair of vertices and could even have connections from a vertices to itself.
+This is what we will call a multigraph. A multigraph is like a graph, but can have an edge that connects a vertex to itself and can have two vertices that share multiple edges. It is worth noting that any graph is a multigraph, so anything shown to be true for all multigraphs must be true for all graphs.
 
-This is what we will call a multigraph. A multigraph is like a graph, but can have an edge that connects a vertex to itself and have two vertices share an edge. It is worth noting that graphs are a type of multigraph, so anything we show to be true for all multigraphs, is also true for all graphs.
+Now to solve the K\"onigsberg problem we need to make one simple observation about how we walk. If we are to go to an island (or vertex) we must also leave that island unless it is the last island we go to. This means, that with the exception of the island we start on and end on, each island must have an even number of bridges connected to it.
 
-Now to solve this problem we need to make one simple observation about how we walk. If we are to go to island (or vertex) we must also leave that island, unless it is the last island we arrive on. This means, that with the exception of the island we start on and end on, each island must have an even number of bridges connected to it. On the multigraph we would say that we need all vertices but a start and end vertex to have an even number of edges. If we look at the multigraph above, we have four vertices that have an odd number of edges connected to them. This means no matter where you start this is no way to take a stroll across every bridge without crossing any bridge twice.
+We now translate the K\"onigsberg problem into the language of multigraphs. The question becomes ``If we pick the right vertex and start going across edges to other vertices, is it possible to cross every edge exactly once?" We can translate what we've discovered about islands needing an even number of bridges to say that we can only make this sort of journey if all but two vertices (a start and end vertex) have an even number of edges. Looking at our multigraph representation of the city of K\"onigsberg we find that all four of the vertices have four edges. This means it is impossible to take a single walk and cross every bridge exactly once.
+
+
+%On the multigraph we would say that we need all vertices with the exception of a start and end vertex to have an even number of edges. If we look at the multigraph above, we have four vertices that have an odd number of edges connected to them. This means no matter where you start this is no way to take a stroll across every bridge without crossing any bridge twice.
 
 The seven bridges of K\"onigsberg problem was solved by Euler in 1736.\footnote{\url{https://en.wikipedia.org/wiki/Seven_Bridges_of_K\%C3\%B6nigsberg}} In the history of mathematics this problem is of some significance as it is considered to be the beginning of graph theory as well as a sort of precursor to topology.\footnote{\url{https://en.wikipedia.org/wiki/Seven_Bridges_of_K\%C3\%B6nigsberg}}
 
 \subsection{What is topological graph theory?}
 
-Topology the area of math where we deal with different spaces and fundamental concepts like continuity on these spaces. Much of topological graph theory has to do with the relationship between a graph and topological spaces. Once we have a bit more of an overview of graph theory we will dive into Kuratowski's theorem. We use Kuratowski's theorem as a sort of introduction to topological graph theory in this paper as it is a prime example of the relation between a graph and topological spaces.
+Topology is the area of math in which we deal with different spaces and their fundamental properties. Much of topological graph theory has to do with the relationship between graphs and spaces. For example this paper focuses on Kuratowski's theorem, which deals with which graphs are able to be drawn in a plane. This paper uses Kuratowski's theorem as an introduction to topological graph theory.
 
 \section{Graph Theory Background} \label{SoftBackground}
 
 \subsection{Planar Graphs}
 
 Consider the following graph.
-
 \begin{center}
 \begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
                     thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
@@ -95,8 +96,7 @@ Consider the following graph.
     (4) edge node {} (3);
 \end{tikzpicture}
 \end{center}
-
-This graph is called a complete as every vertex is connected to every other vertex by an edge; in fact this graph in particular is called $K_4$ as it is the complete four vertex graph. We would like to find out if we can draw this above graph without having any lines crossing. We can in fact draw this graph without any intersections and for any skeptics who may being reading this, the below is $K_4$ without any edges intersecting.
+This graph is called a complete graph as every vertex is connected to every other vertex by an edge. In fact this graph in particular is called $K_4$ as it is the complete graph on four vertices. We would like to find out if we can draw this graph without having any lines crossing. This is in fact possible, and for any skeptics who may be reading this the below is $K_4$ without any edges intersecting.
 
 \begin{center}
 \begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
@@ -117,17 +117,17 @@ This graph is called a complete as every vertex is connected to every other vert
 \end{tikzpicture}
 \end{center}
 
-So if this graph can be drawn without intersection, can any graph be drawn without intersections? If some can and some can't how do we tell which can be drawn and which can not? This is the question at the center of Kuratowski's theorem. The rest of this section will serve two purposes. This sections will serve to build up some familiarity with graph theory for those without any previous exposure. The second purpose of this section is to familiarize the reader with definitions and terms from graph theory that will be needed later in our proof of Kuratowski's theorem.
+So if this graph can be drawn without any intersection, can any graph be drawn without intersections? If some can and some can't, how do we tell which can be drawn and which can not? This is the question at the center of Kuratowski's theorem. The rest of this section will serve two purposes. The first purpose of this section is to build up familiarity with graph theory for those without any previous exposure. The second purpose of this section is to familiarize the reader with definitions and terms from graph theory that will be needed later in our proof of Kuratowski's theorem.
 
 \subsection{Graph Drawing}
-A graph drawing is exactly what it sounds like. We've already seen drawings of graphs like the one for K\"oingsberg and two drawings of $k_4$, this means there may be multiple distinct drawings for the same graph. Simply thinking of a drawing as a drawing on a sheet of paper good enough for the vast majority of this paper. We will return to formally define a drawing later in section \ref{Draw} when we need to.
+A graph drawing is exactly what it sounds like. We've already seen drawings of graphs like the one for K\"onigsberg and two drawings of $K_4$. The fact that there can be two distinct drawings of $K_4$ shows that there can be multiple distinct drawings for the same graph. Simply thinking of a drawing as a drawing on a sheet of paper will be good enough until section \ref{Draw} where we formally define a graph drawing.
 
-If a drawing has no edges intersecting it is said to be a plane drawing. If there exists such a drawing for a particular graph, then that graph is a planar graph.
+If a drawing has no edges intersecting, it is said to be a plane drawing. If there exists such a drawing for a particular graph, then that graph is a planar graph.
 
 \subsection{Face}
 Faces are a bit of an odd property here. Fundamentally faces are a property of plane drawings of a graph, not of the graph itself. A face is defined as a connected space that contains no edges or vertices and itself is bounded by edges and vertices.
 
-If you think back to high-school geometry and cubes you may recall that a each of the corners is a vertex, the lines connecting vertices are edges and the area between the edges are faces. In a graph we have vertices connected by edges and when we draw them there are empty areas enclosed by edges and vertices. For example the following would correspond with a cube
+If you think back to high-school geometry and cubes you may recall that a each of the corners is a vertex, the lines connecting vertices are edges, and the area between the edges are faces. In a graph we have vertices connected by edges, and when we draw them there are empty areas enclosed by edges and vertices. For example the following would correspond with a cube:
 \begin{center}
 	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
 	thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
@@ -156,21 +156,8 @@ If you think back to high-school geometry and cubes you may recall that a each o
 	(7) edge node {} (8);
 	\end{tikzpicture}
 \end{center}
-Now we can imagine that if we look at the cube straight on maybe $ABDC$ would be the face we are looking at. So too we see the area enclosed in $ABDC$ is a face by the definition we gave. The same is true for $ABFE$, $ACGE$, $DBFH$, and $DCGH$, however that leaves us with only five faces on this cube. The last face must logically come from $EFHG$, however the area enclosed by that contains all the other edges and vertices, so it doesn't fit our definition. However we may notice that the infinite space outside $EFHG$ does not contain any vertices, and therefore we get a sixth face.
 
-Consider then the following very simple graph:
-\begin{center}
-	\begin{tikzpicture}[auto, node distance=3cm, every loop/.style={},
-	thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
-	
-	\node[main node] (1) {$A$};
-	\node[main node] (2) [right of=1] {$B$};
-	
-	
-	\end{tikzpicture}
-\end{center}
-Now we still only have one face, however it doesn't have as nice a boundary as they did in the cube. However if we look at all of space excluding $A$ and $B$ then we still get a valid space by our definition.
-
+We can start going through the faces of the above graph drawing. We clearly see that $ABDC$ bounds an area that contains to vertices or edges. This means that this area is a face. We can see that $EABF$, $EACG$, $GCDH$, and $FBDH$ all have the same property on their interior. There is however one final remaining face. This face is bordered by $EFHG$, and is called the outer face. This is all the infinite space outside the bounds of the graph. Every plane drawing of a graph will have an outer face.
 
 \subsection{Walks}
 Now moving onto a more traditional graph property we have the concept of a walk. A walk can be thought of as if you were standing on some vertex $v_0$ and just kept following edges to neighboring vertices some number of times. We define it as follows.
@@ -179,7 +166,7 @@ Now moving onto a more traditional graph property we have the concept of a walk.
 	A walk is a finite sequence of vertices and edges with the following properties.
 	\begin{itemize}
 		\item Every odd element in the sequence is a vertex.
-		\item Every even element in the sequence is an edge that connects the vertex before and after it.
+		\item Every even element in the sequence is an edge that connects the vertices before and after it.
 		\item A walk always begins and ends with a vertex.
 	\end{itemize}
 \end{definition}
@@ -220,24 +207,21 @@ For example consider the following graph.
 	\end{tikzpicture}
 \end{center}
 
-Now the sequence $BeGjF$ is a walk as we can think of starting at vertex $B$, walking down $e$ to $G$, then down $j$ to $F$ and  finishing. The sequence $AaBaA$ is also a walk as we could start at $A$, go down edge $a$ to $B$, then back up $a$ to $A$ again. The sequence $CfEi$ however isn't a walk as it doesn't end with a vertex. 
+Now the sequence $BeGjF$ is a walk, as we can think of starting at vertex $B$, walking along edge $e$ to vertex $G$, then along edge $j$ to vertex $F$ and  finishing there. The sequence $AaBaA$ is also a walk as we could start at vertex $A$, go along edge $a$ to vertex $B$, then back along edge $a$ to vertex $A$ where we finish. The sequence $CfEi$ however isn't a walk, as it doesn't end with a vertex. 
 
 \subsubsection{Path}
 \begin{definition}[path]
-	A path is a walk where a vertex and edge can not appear twice in the sequence.
+	A path is a walk in which no vertex or edge can appear twice.
 \end{definition}
  
-You could think of a path as you start at some vertex and start building a path as you talk your walk. You aren't allows to have your path intersect with itself, so you always 
- 
-So for example with the above graph $BeGjF$ is not only a walk, but also a path. The sequence $AaBaA$, while it is a walk, it however is not a path as both edge $a$ and vertex $A$ are used twice.
+For example with the above graph $BeGjF$ is not only a walk, but also a path. However, the sequence $AaBaA$, while it is a walk, is not a path as both edge $a$ and vertex $A$ are used twice.
 
 \subsubsection{Cycle}
 \begin{definition}[cycle]
-	A cycle is a walk, of length greater than one, where a vertex and edge can not appear twice in the sequence with the exception of the first and last vertex which must be the same.
+	A cycle is a walk, of length greater than one, in which no vertex or edge can appear twice, with the exception of the first and last vertex which must be the same. 
 \end{definition}
 
-
-The definition for cycle is quite similar to that of a path, it effectively is a path that loops back to where it started at the end. The stipulation that a cycle must be "of length greater than one" simply means that the walk $A$ (just the vertex $A$ and nothing else) is not a cycle. Examples of a cycle would include $AbCgHkFcA$, $AbCfEoA$, and $FkHmJnIlGjF$. It is important to note that something like $FcAcF$ is not a cycle as it includes the edge $c$ twice.
+The definition of a cycle is quite similar to that of a path. It effectively is a path that loops back and ends where it started. The stipulation that a cycle must be ``of length greater than one" simply means that the walk $A$ (just the vertex $A$ and nothing else) is not a cycle. Examples of a cycle would include $AbCgHkFcA$, $AbCfEoA$, and $FkHmJnIlGjF$. It is important to note that something like $FcAcF$ is not a cycle as it includes the edge $c$ twice.
 
 \subsection{Connected}
 A graph is said to be connected if for any pair of vertices, $\pair ab$ there is a walk from $a$ to $b$. So if we consider the following graphs 
