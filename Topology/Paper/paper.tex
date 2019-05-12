@@ -3,8 +3,8 @@
 \input{../topology}
 \usepackage{thmtools}
 \usepackage{thm-restate}
-\usepackage{setspace}
-\doublespacing
+%\usepackage{setspace}
+%\doublespacing
 \title{Topological Graph Theory}
 \begin{document}
 \maketitle
@@ -13,7 +13,7 @@
 
 
 \section{Introduction}
-Topological graph theory is an entire field within topology and as such this paper is by no means meant to cover all of topological graph theory in any depth. This paper instead will first cover a rather shallow overview of the field (section \ref{SoftOverview}), followed by a more in depth study of graphs theory (section \ref{SoftBackground}). The overview will mainly be focused on giving a thorough understanding of what topological graph theory is as well as to briefly cover the history of the field. After the overview we will spend section \ref{SoftBackground} building up definitions from graph theory that we will need for the later more rigorous parts of the paper. After this we will dive into Kuratowski's Theorem. We will start by defining $K_5$ and $K_{3,3}$ and showing that they are both nonplanar. Up until this point the paper is written to be accessible by anyone, no mater their level of math background. After we show the nonplanarity of $K_5$ and $K_{3,3}$ we continue onto thoroughly prove Kuratowkski's theorem. The audience for this part is expected to have at least an undergraduate understanding of topology and some exposure to graph theory. After Kuratowski's theorem we finish with a brief discussion of what lies beyond Kuratowski's theorem.
+Topological graph theory is a field within topology, and therefore this paper is by no means meant to cover all of topological graph theory in any depth. This paper instead will first be concerned with a rather shallow overview of the field (section \ref{SoftOverview}), followed by a more in-depth study of graph theory (section \ref{SoftBackground}). The overview will mainly be focused on conveying a thorough understanding of what topological graph theory is, as well as briefly covering the history of the field. After the overview, section \ref{SoftBackground} of this paper will build up definitions from graph theory that will needed for the later, more rigorous parts of this paper. After that this paper will dive into Kuratowski's Theorem. It will start by defining $K_5$ and $K_{3,3}$ and showing that they are both nonplanar. Up to this point the paper is written to be accessible by anyone, no matter their level of math background. After discussing the nonplanarity of $K_5$ and $K_{3,3}$ this paper continues by thoroughly proving Kuratowski's theorem. The audience for this part is expected to have at least an undergraduate understanding of topology, and some exposure to graph theory. After Kuratowski's theorem, this paper finishes with a brief discussion of what lies beyond Kuratowski's theorem.
 
 \section{Overview} \label{SoftOverview}
 \subsection{Graphs}
@@ -23,7 +23,7 @@ A graph is generally defined as a set of vertices combined with a set of edges b
 
 Consider first a set of points, this may be thought of as just drawing dots on a sheet of paper. Each of these points will be called a vertex. Now we may start drawing lines between vertices. Lines may cross over each other and need not be straight. There is no requirement that all vertices have a line going to it. Each of these lines are called an edge. We will simply insist that no edge connects a vertex to itself and that we do not have multiple edges between the same pair of vertices.
 
-Once we have drawn this we have a representation of a graph. If we were to move the vertices around on the paper but leave them having the same edges (the same vertices are connected to the point as they were before). we would be left with the same graph. That is to say, it doesn't mater where we put a vertex on our sheet, the graph exists independently of the representation we draw.
+Once we have drawn this we have a representation of a graph. If we were to move the vertices around on the paper but leave them having the same edges (the same vertices are connected to the point as they were before). we would be left with the same graph. That is to say, it doesn't matter where we put a vertex on our sheet, the graph exists independently of the representation we draw.
 
 \subsection{K\"onigsberg, and its seven bridges}
 
@@ -63,7 +63,7 @@ Notice that edge $2$ and edge $3$ both connect vertex $A$ to $B$, as well edges 
 
 This is what we will call a multigraph. A multigraph is like a graph, but can have an edge that connects a vertex to itself and have two vertices share an edge. It is worth noting that graphs are a type of multigraph, so anything we show to be true for all multigraphs, is also true for all graphs.
 
-Now to solve this problem we need to make one simple observation about how we walk. If we are to go to island (or vertex) we must also leave that island, unless it is the last island we arrive on. This means, that with the exception of the island we start on and end on, each island must have an even number of bridges connected to it. On the multigraph we would say that we need all vertices but a start and end vertex to have an even number of edges. If we look at the multigraph above, we have four vertices that have an odd number of edges connected to them. This means no mater where you start this is no way to take a stroll across every bridge without crossing any bridge twice.
+Now to solve this problem we need to make one simple observation about how we walk. If we are to go to island (or vertex) we must also leave that island, unless it is the last island we arrive on. This means, that with the exception of the island we start on and end on, each island must have an even number of bridges connected to it. On the multigraph we would say that we need all vertices but a start and end vertex to have an even number of edges. If we look at the multigraph above, we have four vertices that have an odd number of edges connected to them. This means no matter where you start this is no way to take a stroll across every bridge without crossing any bridge twice.
 
 The seven bridges of K\"onigsberg problem was solved by Euler in 1736.\footnote{\url{https://en.wikipedia.org/wiki/Seven_Bridges_of_K\%C3\%B6nigsberg}} In the history of mathematics this problem is of some significance as it is considered to be the beginning of graph theory as well as a sort of precursor to topology.\footnote{\url{https://en.wikipedia.org/wiki/Seven_Bridges_of_K\%C3\%B6nigsberg}}
 
@@ -73,7 +73,7 @@ Topology the area of math where we deal with different spaces and fundamental co
 
 \section{Graph Theory Background} \label{SoftBackground}
 
-\subsection{Planer Graphs}
+\subsection{Planar Graphs}
 
 Consider the following graph.
 
@@ -523,7 +523,7 @@ Our first step is proving that $K_{3,3}$ and $K_5$ are nonplanar. To do this we 
 
 
 \begin{proof}\footnote{This proof comes from: \url{https://www.ics.uci.edu/~eppstein/junkyard/euler/iedge.html}.}
-	First consider a connected multigraph with no edges, as this is connected we may only have a single vertex. This produces a single and no edges so we find $$v-e+f=1-0+1=2$$ Now that we know that for 0 edges this rule fits, then either the rule ($v-e+f-2$) is true no mater the number of edges, or there is some number at which point this rule breaks, and $v-e+f\not=2$. If there is a number that breaks this rule, then there must be a lowest number (let's call it $k$) that breaks this rule. For any multigraph with $k$ edges, choose any edge $e$ in the graph.
+	First consider a connected multigraph with no edges, as this is connected we may only have a single vertex. This produces a single and no edges so we find $$v-e+f=1-0+1=2$$ Now that we know that for 0 edges this rule fits, then either the rule ($v-e+f-2$) is true no matter the number of edges, or there is some number at which point this rule breaks, and $v-e+f\not=2$. If there is a number that breaks this rule, then there must be a lowest number (let's call it $k$) that breaks this rule. For any multigraph with $k$ edges, choose any edge $e$ in the graph.
 	\begin{itemize}
 		\item If $e$ connects a vertex to itself it is a loop and its removal will result in the loss of one edge and one face (each loop creates a face\footnote{this is due to the Jordan curve theorem}). The resulting multigraph has less than $k$ edges and thus we know that for it \begin{align*}2&=v-e+f \\&= v-(e+1)+(f+1)\end{align*} and as the original graph had one more edge and one more face it too would fit this rule.
 		\item If $e$ is not a loop we may perform an edge contraction on it and this will reduce both the number of edges and the number of vertices by one. Again this gives us a multigraph with less than $k$ edges so we know that for it \begin{align*}2&=v-e+f\\&=(v+1)-(e+1)+f\end{align*} and as the original graph had one more edge and one more vertex it to would fit this rule.
@@ -538,7 +538,7 @@ This leads to a nice corollary, that will be helpful when talking about graphs.
 \begin{proof}
 	Any planar multigraph can be broken into connected components. Each component of a planar multigraph is a connected planar multigraph and thus any planar drawing of it fits the rule $v-e+f=2$.  Now any plane drawing we make of a planar multigraph will be made of parts that already have a constant number of faces.\footnote{This is not a complete proof, to complete it you simply make an induction on the number of components drawn and realize each time you add a component you add exactly $f_{i}-1$ new faces (if $f_i$ is the number of faces in the $i^{\text{th}}$ component drawn).}
 	
-	%Each drawing of every component has the same number of edges and vertices, and therefore by our equation the number of faces must also be the same in each component's drawing. Now we make a plane drawing of each component one by one to create a plane drawing of the full multigraph. Choose a component to draw first and when we draw it we know it will have some number $f_1$ of faces regardless of its drawing. Now if we have already drawn in $k$ components we can add the $k+1^{\text{th}}$ component. To do this we must draw it completely within one of the faces that already exists as it is a plane drawing. This adds exactly $f_{k+1}-1$ faces by drawing this component as it simply splits one already existing face into $f_{k+1}$ new faces. This means that no mater what order we add faces in 
+	%Each drawing of every component has the same number of edges and vertices, and therefore by our equation the number of faces must also be the same in each component's drawing. Now we make a plane drawing of each component one by one to create a plane drawing of the full multigraph. Choose a component to draw first and when we draw it we know it will have some number $f_1$ of faces regardless of its drawing. Now if we have already drawn in $k$ components we can add the $k+1^{\text{th}}$ component. To do this we must draw it completely within one of the faces that already exists as it is a plane drawing. This adds exactly $f_{k+1}-1$ faces by drawing this component as it simply splits one already existing face into $f_{k+1}$ new faces. This means that no matter what order we add faces in 
 \end{proof}
 
 This means that given any planar multigraph $G$, we can talk about the number of faces $G$ has without referring to any drawing of $G$, as all plane drawings will have the same number of faces.
