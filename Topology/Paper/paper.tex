@@ -3,6 +3,8 @@
 \input{../topology}
 \usepackage{thmtools}
 \usepackage{thm-restate}
+\usepackage{setspace}
+\doublespacing
 \title{Topological Graph Theory}
 \begin{document}
 \maketitle
@@ -11,15 +13,15 @@
 
 
 \section{Introduction}
-Topological graph theory is an entire field within topology and as such this paper is by no means meant to cover all of topological graph theory in any depth. This paper instead will first cover a rather shallow overview of the field (section 2), followed by a more in depth study of graphs theory (section 3). The overview will mainly be focused on giving a thorough understanding of what topological graph theory is as well as to briefly cover the history of the field. After the overview we will spend section 3 building up definitions from graph theory that we will need for the later more rigorous parts of the paper. After this we will dive into Kuratowski's Theorem. We will start by defining $K_5$ and $K_{3,3}$ and showing that they are both nonplanar. Up until this point the paper is written to be accessible by anyone, no mater their level of math background. After we show the nonplanarity of $K_5$ and $K_{3,3}$ we continue onto thoroughly prove Kuratowkski's theorem. The audience for this part is expected to have at least an undergraduate understanding of topology and some exposure to graph theory. After Kuratowski's theorem we finish with a brief discussion of what lies beyond Kuratowski's theorem.
+Topological graph theory is an entire field within topology and as such this paper is by no means meant to cover all of topological graph theory in any depth. This paper instead will first cover a rather shallow overview of the field (section \ref{SoftOverview}), followed by a more in depth study of graphs theory (section \ref{SoftBackground}). The overview will mainly be focused on giving a thorough understanding of what topological graph theory is as well as to briefly cover the history of the field. After the overview we will spend section \ref{SoftBackground} building up definitions from graph theory that we will need for the later more rigorous parts of the paper. After this we will dive into Kuratowski's Theorem. We will start by defining $K_5$ and $K_{3,3}$ and showing that they are both nonplanar. Up until this point the paper is written to be accessible by anyone, no mater their level of math background. After we show the nonplanarity of $K_5$ and $K_{3,3}$ we continue onto thoroughly prove Kuratowkski's theorem. The audience for this part is expected to have at least an undergraduate understanding of topology and some exposure to graph theory. After Kuratowski's theorem we finish with a brief discussion of what lies beyond Kuratowski's theorem.
 
-\section{Overview}
+\section{Overview} \label{SoftOverview}
 \subsection{Graphs}
 Before we talk about topological graph theory we must first understand what a graph is.
 
 A graph is generally defined as a set of vertices combined with a set of edges between vertices, however here it may be more useful to think about them visually with a simple representation.
 
-Consider first a set of points, this may be thought of as just drawing dots on a sheet of paper. Each of these points will be called a vertex. Now we may start drawing lines between vertices. Lines may cross over each other and need not be straight. There is no requirement that all vertices have a line going to it. Each of these lines are called an edge. We will simply insist that no edge connects two vertices and that we do not have multiple edges between the same pair of vertices.
+Consider first a set of points, this may be thought of as just drawing dots on a sheet of paper. Each of these points will be called a vertex. Now we may start drawing lines between vertices. Lines may cross over each other and need not be straight. There is no requirement that all vertices have a line going to it. Each of these lines are called an edge. We will simply insist that no edge connects a vertex to itself and that we do not have multiple edges between the same pair of vertices.
 
 Once we have drawn this we have a representation of a graph. If we were to move the vertices around on the paper but leave them having the same edges (the same vertices are connected to the point as they were before). we would be left with the same graph. That is to say, it doesn't mater where we put a vertex on our sheet, the graph exists independently of the representation we draw.
 
@@ -57,18 +59,19 @@ Let us start by thinking of every island as a vertex and every bridge as an edge
 
 It is worth noting two things about the above diagram. First that the labels on the vertices and edges are unrelated to the problem, but have been added simply to make referring to parts of the graph much easier. Second that whatever the above image depicts, does not fit our definition of a graph.
 
-Notice that edge $2$ and edge $3$ both connect vertex $A$ to $B$, as well edges $5$ and $6$ do for $B$ and $C$. This is a strict violation of our definition for a graph. The issue of course then comes to what would one call such a beast as this where, presumably, one is able to have as many connections between any pair of vertices and could even have connections from a vertices to itself.
+Notice that edge $2$ and edge $3$ both connect vertex $A$ to $B$, as well edges $5$ and $6$ do for $B$ and $C$. This is a strict violation of our definition for a graph. The issue of course then comes to what would one call this graph like object one is able to have as many connections between any pair of vertices and could even have connections from a vertices to itself.
 
-I am particularly glad that you're paying enough attention to notice that the diagram does not depict a graph. This is what we will refer to as a multigraph. It is worth noting that graphs are a type of multigraph, so anything we show to be true for all multigraphs, is also true for all graphs.
+This is what we will call a multigraph. A multigraph is like a graph, but can have an edge that connects a vertex to itself and have two vertices share an edge. It is worth noting that graphs are a type of multigraph, so anything we show to be true for all multigraphs, is also true for all graphs.
 
-Now to solve this problem we need to make one simple observation about how we walk. If we are to go to island (or vertex) we must also leave that island, unless it is the last island we arrive on. This means, that with the exception of the island we start on and end on, each island must have an even number of bridges connected to it. On the multigraph we would say that we need all vertices but a start and end vertex to have an even number of edges. If we look at the multigraph above, we have four vertices that have an odd number of edges connected to them.
+Now to solve this problem we need to make one simple observation about how we walk. If we are to go to island (or vertex) we must also leave that island, unless it is the last island we arrive on. This means, that with the exception of the island we start on and end on, each island must have an even number of bridges connected to it. On the multigraph we would say that we need all vertices but a start and end vertex to have an even number of edges. If we look at the multigraph above, we have four vertices that have an odd number of edges connected to them. This means no mater where you start this is no way to take a stroll across every bridge without crossing any bridge twice.
 
-\subsection{History}
-%TODO Make how short this is less obvious
-The seven bridges of K\"onigsberg problem was solved by Euler %TODO Citation (wikipedia for seven bridges of konigsberg)
-in 1736. In mathematics this problem is of great historical significance as it is considered to be the beginning of graph theory as well as a sort of precursor to topology. %TODO Citation 
+The seven bridges of K\"onigsberg problem was solved by Euler in 1736.\footnote{\url{https://en.wikipedia.org/wiki/Seven_Bridges_of_K\%C3\%B6nigsberg}} In the history of mathematics this problem is of some significance as it is considered to be the beginning of graph theory as well as a sort of precursor to topology.\footnote{\url{https://en.wikipedia.org/wiki/Seven_Bridges_of_K\%C3\%B6nigsberg}}
 
-\section{Graph Theory Background}
+\subsection{What is topological graph theory?}
+
+Topology the area of math where we deal with different spaces and fundamental concepts like continuity on these spaces. Much of topological graph theory has to do with the relationship between a graph and topological spaces. Once we have a bit more of an overview of graph theory we will dive into Kuratowski's theorem. We use Kuratowski's theorem as a sort of introduction to topological graph theory in this paper as it is a prime example of the relation between a graph and topological spaces.
+
+\section{Graph Theory Background} \label{SoftBackground}
 
 \subsection{Planer Graphs}
 
@@ -114,17 +117,15 @@ This graph is called a complete as every vertex is connected to every other vert
 \end{tikzpicture}
 \end{center}
 
-So if this graph can be drawn without intersection, can any graph be drawn without intersections? If some can and some can't how do we tell which can be drawn and which can not? The answer to this comes in Kuratowski's theorem, however before we can even state this theorem we need to build up a bit of terminology for graph theory.
+So if this graph can be drawn without intersection, can any graph be drawn without intersections? If some can and some can't how do we tell which can be drawn and which can not? This is the question at the center of Kuratowski's theorem. The rest of this section will serve two purposes. This sections will serve to build up some familiarity with graph theory for those without any previous exposure. The second purpose of this section is to familiarize the reader with definitions and terms from graph theory that will be needed later in our proof of Kuratowski's theorem.
 
 \subsection{Graph Drawing}
-A graph drawing is exactly what it sounds like. We've already seen drawings of graphs like the one for K\"oingsberg and two drawings of $k_4$, this means there may be multiple distinct drawings for the same graph. Now we don't need to be very worried about what defines a drawing, that won't be important to us. Simply think of it as the drawing.
+A graph drawing is exactly what it sounds like. We've already seen drawings of graphs like the one for K\"oingsberg and two drawings of $k_4$, this means there may be multiple distinct drawings for the same graph. Simply thinking of a drawing as a drawing on a sheet of paper good enough for the vast majority of this paper. We will return to formally define a drawing later in section \ref{Draw} when we need to.
 
 If a drawing has no edges intersecting it is said to be a plane drawing. If there exists such a drawing for a particular graph, then that graph is a planar graph.
 
 \subsection{Face}
-Faces are a bit of an odd property here as they fundamentally are actually properties only of plane drawings and not graphs themselves; however the number of faces, as we will see stays consistent between any plane drawing of a planar graph and as such the number of faces is a property that planar graphs have.
-
-A face is defined as a connected space that contains no edges or vertices and itself is bounded by edges and vertices.
+Faces are a bit of an odd property here. Fundamentally faces are a property of plane drawings of a graph, not of the graph itself. A face is defined as a connected space that contains no edges or vertices and itself is bounded by edges and vertices.
 
 If you think back to high-school geometry and cubes you may recall that a each of the corners is a vertex, the lines connecting vertices are edges and the area between the edges are faces. In a graph we have vertices connected by edges and when we draw them there are empty areas enclosed by edges and vertices. For example the following would correspond with a cube
 \begin{center}
@@ -169,6 +170,7 @@ Consider then the following very simple graph:
 	\end{tikzpicture}
 \end{center}
 Now we still only have one face, however it doesn't have as nice a boundary as they did in the cube. However if we look at all of space excluding $A$ and $B$ then we still get a valid space by our definition.
+
 
 \subsection{Walks}
 Now moving onto a more traditional graph property we have the concept of a walk. A walk can be thought of as if you were standing on some vertex $v_0$ and just kept following edges to neighboring vertices some number of times. We define it as follows.
@@ -284,7 +286,7 @@ A graph is said to be connected if for any pair of vertices, $\pair ab$ there is
 \end{center}
 We find that only the graph in the middle is connected. For the graph on the right consider any vertex on the bottom, there is no path to the vertex above it. The graph on the left is has the upper right vertex isolated from the rest of the graph.
 
-Any graph, connected or not, can be broken into connected components. To do this we simply take a vertex and every other vertex connected to it and call that one component, and then repeat with a vertex not in that component. This sort of breaking apart is nice as often we will prove things about connected graphs that are true about all graphs. For example if all components of a graph are planar then the entire graph must be planar, this will be proven below and it allows us to only deal with connected graphs.
+Any graph, connected or not, can be broken into connected components. To do this we simply take a vertex and every other vertex connected to it and call that one component, and then repeat with a vertex not in that component. This sort of breaking apart is nice as often we will prove things about connected graphs that are true about all graphs. For example if all components of a graph are planar then the entire graph must be planar, this will be proven in section \ref{SubGraphSec} and it allows us to only deal with connected graphs.
 
 %\subsection{Neighborhood}
 %Given some graph $G$ with vertex $v$. The neighborhood of $v$ within $G$ is the set of all vertices that share an edge with $v$, not including $v$.\footnote{If $G$ is a multigraph the definition stays the same, however $v$ maybe its own neighbor if it has an edge with itself or a loop} Given a subgraph $H$ of $G$, the neighborhood of $H$ within $G$ is a new subgraph of $G$ that includes $H$ as well as any vertex in $G$ that is adjacent to a vertex in $H$ and the edge that they share.
@@ -460,7 +462,7 @@ We can take any multigraph produced by an edge contraction and for any edge pair
 %A graph $G$ is said to be a subdivision of $H$ if $G$ can be obtained from $H$ via some series of edge subdivisions. For example consider the two following graphs.
 %This can be thought of as just adding vertices along an edge. Intuitively this shouldn't actually change the shape of a graph. This not changing the shape of a graph is something that will be touched on later in lemma \ref{subdivision}.
 
-\section{Kuratowski's Theorem}
+\section{Kuratowski's Theorem}\label{TheTheorem}
 \begin{restatable}[Kuratowski]{theorem}{THEBIGONE}\label{THEBIGONE}
 	A graph $G$ is nonplanar if and only if it contains a subgraph that is a subdivision of $K_{3,3}$ or $K_5$
 \end{restatable}
@@ -512,17 +514,15 @@ Here $K_5$ refers to the complete graph on 5 vertices, and $K_{3,3}$ is the comp
 	\end{tikzpicture}
 \end{center}
 
-\subsection{$K_5$ and $K_{3,3}$}
+\subsection{$K_5$ and $K_{3,3}$}\label{k5k33}
 Our first step is proving that $K_{3,3}$ and $K_5$ are nonplanar. To do this we are going to use the following theorem.
 
 \begin{theorem}[Euler's formula on planar multigraphs]
 	For any plane drawing of a multigraph (with the exception of a multigraph with no vertices), we have $$v-e+f=2$$, where $v$ is the number of vertices in the multigraph, $e$ is the number of edges in the multigraph, and $f$ is the number of faces in the plane drawing of the multigraph.
 \end{theorem}
 
-%TODO cite https://www.ics.uci.edu/~eppstein/junkyard/euler/iedge.html
 
-
-\begin{proof}
+\begin{proof}\footnote{This proof comes from: \url{https://www.ics.uci.edu/~eppstein/junkyard/euler/iedge.html}.}
 	First consider a connected multigraph with no edges, as this is connected we may only have a single vertex. This produces a single and no edges so we find $$v-e+f=1-0+1=2$$ Now that we know that for 0 edges this rule fits, then either the rule ($v-e+f-2$) is true no mater the number of edges, or there is some number at which point this rule breaks, and $v-e+f\not=2$. If there is a number that breaks this rule, then there must be a lowest number (let's call it $k$) that breaks this rule. For any multigraph with $k$ edges, choose any edge $e$ in the graph.
 	\begin{itemize}
 		\item If $e$ connects a vertex to itself it is a loop and its removal will result in the loss of one edge and one face (each loop creates a face\footnote{this is due to the Jordan curve theorem}). The resulting multigraph has less than $k$ edges and thus we know that for it \begin{align*}2&=v-e+f \\&= v-(e+1)+(f+1)\end{align*} and as the original graph had one more edge and one more face it too would fit this rule.
@@ -533,7 +533,7 @@ Our first step is proving that $K_{3,3}$ and $K_5$ are nonplanar. To do this we 
 \end{proof}
 This leads to a nice corollary, that will be helpful when talking about graphs.
 \begin{corallary}
-	Any plane drawing of any multigraph has the same number of faces.
+	Any plane drawing of a specific multigraph $G$ has the same number of faces.
 \end{corallary}
 \begin{proof}
 	Any planar multigraph can be broken into connected components. Each component of a planar multigraph is a connected planar multigraph and thus any planar drawing of it fits the rule $v-e+f=2$.  Now any plane drawing we make of a planar multigraph will be made of parts that already have a constant number of faces.\footnote{This is not a complete proof, to complete it you simply make an induction on the number of components drawn and realize each time you add a component you add exactly $f_{i}-1$ new faces (if $f_i$ is the number of faces in the $i^{\text{th}}$ component drawn).}
@@ -575,7 +575,7 @@ Now using this we can prove that $K_{3,3}$ and $K_5$ are nonplanar.
 
 	\scalebox{.9}{$K_5$}
 \end{center}
-\begin{proof}
+\begin{proof}\footnote{This proof comes from \url{http://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf}.}
 	$K_5$ is a graph\footnote{Recall that all graphs are multigraphs, but not all multigraphs are graphs.}, and as such an edge can not be a loop and two vertices can share at most one edge. This means that in any plane drawing of a graph, there must be at least 3 edges bordering every face.
 	\begin{itemize}
 		\item To only have one edge bordering a face would require that the edge be a loop (which we can't have in a graph).
@@ -614,13 +614,13 @@ Now using this we can prove that $K_{3,3}$ and $K_5$ are nonplanar.
 		
 	\scalebox{.9}{$K_{3,3}$}
 \end{center}
-\begin{proof}
+\begin{proof}\footnote{This proof comes from \url{http://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf}.}
 	$K_{3,3}$ is a bipartite graph, meaning that there is some way to break the graph into two collections of vertices, where there are no edges that stay within one of these collections. If we look at the drawing of $K_{3,3}$ above we see that the right and left works as these collections for us. There is no edge that goes between two vertices on the right or two vertices on the left. This means that if we can make a plane drawing of $K_{3,3}$ each face must have at least four edges on its boundary. We know from our proof of $K_5$'s nonplanarity that each face in a graph must have at least three edges on its boundary. If any face were to have three edges then the cycle bounding the face would have exactly three vertices as well. Each pair of vertices within these three vertices would share an edge and therefore there is no way to split them up into two groups such that neither group has an edge within it. Additionally every edge borders no more than two faces, so from this we know that in any bipartite graph $2e \ge 4f$ or $e\ge 2f$.
 	
 	Now $K_{3,3}$ has 6 vertices and 9 edges. $K_{3,3}$ is bipartite so the number of faces, $f \le \frac e2 = \frac92 = 4.5$. $K_{3,3}$ is connected, so if it were planar we would have Euler's formula giving us $$2=v-e+f=6-9+f\le6-9+4.5=1.5$$ and this is false as $$2\not\le1.5$$ Therefore $K_{3,3}$ is nonplanar.
 \end{proof}
 
-\subsection{Drawings}
+\subsection{Drawings} \label{Draw}
 Up to this point the paper has been writing such that anyone with a basic mathematical competency and interest could understand and work through the content. From this point on the paper moves a bit faster and assumes knowledge of basic mathematical notation and more experience with math.
 
 The purpose of the next couple sections is to build up the mathematical machinery that we need for our proof of Kuratowski's theorem (theorem \ref{THEBIGONE}). In this section we will be proving a slew of lemmas and theorems, as well as provide a couple definitions, all of which will be needed in our final proof.
@@ -643,7 +643,7 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 \end{definition}
 
 
-\subsection{Subgraph lemmas}
+\subsection{Subgraph lemmas} \label{SubGraphSec}
 
 \begin{lemma} \label{subgraph}
 	If a graph $G$ can be drawn in a space, $S$, then so can any subgraph of $G$.
@@ -738,8 +738,8 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 
 
 \subsection{The Jordan Curve Theorem}
-\begin{theorem}[Jordan curve theorem] %TODO cite wikipedia https://en.wikipedia.org/wiki/Jordan_curve_theorem#Definitions_and_the_statement_of_the_Jordan_theorem
-	Let $C$ be a Jordan curve in the plane $\mathbb R^2$. Then its complement, $\mathbb R^2 \setminus C$, consists of exactly two connected components. One of these components is bounded (the interior) and the other is unbounded (the exterior), and the curve C is the boundary of each component.
+\begin{theorem}[Jordan curve theorem]
+	Let $C$ be a Jordan curve in the plane $\mathbb R^2$. Then its complement, $\mathbb R^2 \setminus C$, consists of exactly two connected components. One of these components is bounded (the interior) and the other is unbounded (the exterior), and the curve C is the boundary of each component.\footnote{This statement of the Jordan curve theorem comes from \url{https://en.wikipedia.org/wiki/Jordan_curve_theorem\#Definitions_and_the_statement_of_the_Jordan_theorem}.}
 \end{theorem}
 
 \begin{definition}[Jordan curve]
@@ -754,7 +754,6 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 	For any plane drawing of a graph, $G$, containing cycle $C$, $C$ is a Jordan curve in the drawing.
 \end{lemma}
 \begin{proof}
-%TODO ask Shaw what he thinks
 	Consider a plane drawing of a graph $G$ with cycle $C$. We may write out $C$ as $v_1e_1v_2e_2\ldots v_ke_kv_1$. We know that each of these $e_i$s have a corresponding curve $\hat e_i$ that starts at the end of the previous ($\hat e_{i-1}$) curve and ends at the beginning of the next ($\hat e_{i+1}$) curve. This means we can construct a new continuous curve simply by stringing each of these together and then resize the domain. What we end with will then be a curve $f:\ccint 01\to\mathbb R^2$ that is continuous. We will also have $f(0) = f(1)$ as $v_1$ as $e_1$ starts at $v_1$ and $e_k$ ends at $v_1$. We will also have $f$ injective on $\coint{0}{1}$ as we know that edges do not overlap each other (this is formalized in the fourth bullet point of our definition for a drawing). This then means that our cycle creates a Jordan curve.
 \end{proof}
 
@@ -766,7 +765,7 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 	For any face, $F$, in a plane drawing, $D$, of a graph $G$, there is a corresponding drawing plane drawing of $G$, $D'$, where all edges and vertices that border $F$ in $D$, now border the outer face.
 \end{lemma}
 \begin{proof}
-	Let $G$ be a graph with face $F$ in plane drawing $D$. Now let $\inv f$ be a stereographic projection from the punctured sphere onto the plane. Therefore $f(D)$ is a drawing of $G$ on the punctured sphere. If $f(D)$ is a drawing of $G$ on the punctured sphere then it must also be a drawing of $G$ on the sphere. Now we pick a point on the interior of $F$ and puncture the sphere there rather than where our original puncture was.\footnote{There is a problem in this proof. How do we know that $F$ has an interior? Simply put if we have a finite number of vertices and never use any space filling curves for edges we will never fill space. We know that we are never forced to use a space filling curve as for any space filling curve $c$ we may create a new curve $c'$ that connects the same end points, stays within $c$'s image, and is not space filling.} We may now use a sterographic projection, $g$ to map $f(D)$ from the new punctured sphere back to $\mathbb R^2$ creating $D' = g(f(D))$. We know that in $D'$ the face that corresponds to $F$ is the outer face as it contained the punctured point in $\inv g(D')$. %TODO Ask shaw if I should prove that the puctured point in the sphere corresponds to a limit point
+	Let $G$ be a graph with face $F$ in plane drawing $D$. Now let $\inv f$ be a stereographic projection from the punctured sphere onto the plane. Therefore $f(D)$ is a drawing of $G$ on the punctured sphere. If $f(D)$ is a drawing of $G$ on the punctured sphere then it must also be a drawing of $G$ on the sphere. Now we pick a point on the interior of $F$ and puncture the sphere there rather than where our original puncture was.\footnote{There is a problem in this proof. How do we know that $F$ has an interior? Simply put if we have a finite number of vertices and never use any space filling curves for edges we will never fill space. We know that we are never forced to use a space filling curve as for any space filling curve $c$ we may create a new curve $c'$ that connects the same end points, stays within $c$'s image, and is not space filling.} We may now use a sterographic projection, $g$ to map $f(D)$ from the new punctured sphere back to $\mathbb R^2$ creating $D' = g(f(D))$. We know that in $D'$ the face that corresponds to $F$ is the outer face as it contained the punctured point in $\inv g(D')$.
 \end{proof}
 
 \begin{definition}[cut set]
@@ -801,8 +800,8 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 \begin{theorem}[Menger's theorem]\label{menger}
 	A non-empty graph is $n$ connected if and only if among all pairs of vertices $a\not=b$ in $G$ the least number of internally disjoint paths from $a$ to $b$ is $n$.
 \end{theorem}
-%TODO cite Wikipeida menger's theorem
 \begin{proof}
+	\footnote{This proof comes from \url{https://en.wikipedia.org/wiki/Menger\%27s_theorem\#Other_proofs}.}
 	This is trivially true on complete graphs, so for the rest of this proof we will only be considering graphs that are not complete.
 	
 	Let $A$ and $B$ be vertex sets in a finite graph $G$. Define an $AB$ path as any path that starts in $A$ and has no other vertices in $A$, and ends in $B$ and has no other vertices in $B$. Notice that if $v\in A\inter B$ then the path $v$ is an $AB$ path. Define an $AB$ separator as any vertex set, $S$, for which all $AB$ paths contain at least one member of $S$. Define an $AB$ connector a set of disjoint $AB$ paths.
@@ -849,8 +848,8 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 	Any connected minimal nonplanar graph is at least 2 connected.
 \end{lemma}
 
-\begin{proof}
-	First consider the complete graph. We know that $K_4$ is planar (see below), therefore by the contrapositive of lemma \ref{subgraph} all subsets of $K_4$, are planar. Any complete graph $K_i$ with $i < 4$ is a subgraph of $K_4$ (simply remove any $4-i$ vertices from $K_4$) so a nonplanar complete graph must be at least 4 connected.
+\begin{proof}\footnote{This proof comes from \url{http://math.uchicago.edu/~may/REU2017/REUPapers/Xu,Yifan.pdf}}
+	First consider the complete graph. We know that $K_4$ is planar (see below), therefore by lemma \ref{subgraph} all subsets of $K_4$, are planar. Any complete graph $K_i$ with $i < 4$ is a subgraph of $K_4$ (simply remove any $4-i$ vertices from $K_4$) so a nonplanar complete graph must be at least 4 connected.
 	
 	\begin{center}
 		\scalebox{.5}{
@@ -894,8 +893,8 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 \begin{lemma}\label{lobes}
 	Let $G$ be a nonplanar 2 connected graph with minimal cut set $S=\set{x,y}$. Further if $L$ is a lobe of $S$ let $L^+$ be the graph of $L$ with an edge added between $x$ and $y$. There exists some lobe $L$ of $S$ for which $L^+$ is nonplanar. 
 \end{lemma}
-%TODO cite http://www.cs.rpi.edu/~goldberg/14-GT/19-kurat.pdf
-\begin{proof}
+
+\begin{proof} \footnote{This proof comes from \url{http://www.cs.rpi.edu/~goldberg/14-GT/19-kurat.pdf}.}
 	Let $G$ be a graph with lobes $L_1, L_2, \ldots, L_n$ of separating set $S=\set{x,y}$. Suppose that for all $i$, $L_i^+$ is planar. We may then draw $L_1^+$ on the plane. If we have a planar drawing of $\unionfrom{j = 1}{i-1}{L_j^+}$ we can then embed a drawing of $L_i^+$ where the edge between $x$ and $y$ borders the outer edge into a face that is bordered by the edge between $x$ and $y$ in our planar drawing of $\unionfrom{j = 1}{i-1}{L_j^+}$. We then can redraw this embedding such that $x$ and $y$ in $L_i^+$ are at the same points as $x$ and $y$ in $\unionfrom{j = 1}{i-1}{L_j^+}$ yielding a planar drawing of $\unionfrom{j=1}{i}{L_j^+}$. By induction then $\unionfrom{i=1}{n}{L_i^+}$ is planar. Clearly $G \subset \unionfrom{i=1}{n}{L_i^+}$ so by lemma \ref{subgraph} we know $G$ must be planar.
 \end{proof}
 
@@ -908,9 +907,8 @@ Given a graph $G$, with vertex set $V$ and edge set $E$, a drawing $D$ is said t
 		\item Of all graphs satisfying properties (1), (2) and (3), $G$ has the least number of vertices.
 	\end{enumerate}
 \end{lemma}
-%TODO cite http://www.cs.rpi.edu/~goldberg/14-GT/19-kurat.pdf
 
-\begin{proof}
+\begin{proof}\footnote{This proof comes from \url{http://www.cs.rpi.edu/~goldberg/14-GT/19-kurat.pdf}.}
 	Let $G$ be a graph fitting the above properties. Any proper subgraph, $H$, of $G$ will be missing at least one vertex or one edge from $G$. If $H$ is missing a vertex from $G$, then $H$ must break one of the first 3 properties. $H$ can not contain a subgraph that is contactable to $K_{3,3}$ or $K_5$ as then $G$ would also contain it and $H$ can not have more vertices than $G$. This leaves only that $H$ must be planar. If $H$ is missing an edge from $G$, then $H$ must break one of the first 2 properties. Again $H$ can not contain a subgraph that is contactable to $K_{3,3}$ or $k_5$ as then $G$ would also contain it. This again leaves only that $H$ must be planar. This means that all proper subgraphs $H$ of $G$ are planar so $G$ is minimally nonplanar. Additionally we know that $G$ is not a complete graph as all complete graphs either contain $K_5$ or are planar.
 	
 	By lemma \ref{2connect} we know that $G$ is at least 2 connected. Suppose that $G$ is 2 connected. Let $\set xy = S$ be a cut set in $G$. We know by lemma \ref{lobes} that there is a lobe $L$ for which adding an edge between $x$ and $y$ would yield a nonplanar graph $L^+$. Clearly $L^+$ has less edges then $G$, so $L^+$ must contain a subgraph that is contractible to $K_{3,3}$ or $K_{5}$. Consider another lobe $M$ of $S$. There must be a path, $p$, from $x$ to $y$ in $M$ as otherwise $G$ would not be either 0 or 1 connected. Clearly $L\union p$ is a subgraph of $G$ and $L\union p$ is contractible to $L^+$. By lemma \ref{contractibleCarryOn} we then know that $L\union p$ contains a subgraph that is contractible to $K_{3,3}$ or $K_5$. This gives us a contradiction so $G$ can not be 2-connected and therefore must be at least 3 connected.
@@ -1028,7 +1026,7 @@ We can finally provide the proof for Kuratowski's theorem.
 
 \THEBIGONE*
 
-\begin{proof}
+\begin{proof}\footnote{This proof comes from \url{http://math.uchicago.edu/~may/REU2017/REUPapers/Xu,Yifan.pdf}. This paper also is where most of the structure of everything that has been written from the beginning of this section up to this point comes from.}
 	Suppose that $G$ is a graph with the following properties.
 	\begin{enumerate}
 		\item $G$ does not contain any subgraph that is contactable to of $K_{3,3}$ or $K_5$.
@@ -1088,10 +1086,10 @@ We can finally provide the proof for Kuratowski's theorem.
 	Now we have shown a contradiction with our original statement, so there is no graph $G$ that is nonplanar does not contain a subgraph that is contactable to $K_5$ or $K_{3,3}$. Further suppose $G$ is a graph that contains a subgraph $H$ that is contactable to either $K_5$ or $K_{3,3}$. We know that $K_5$ is nonplanar by theorem \ref{k5} and that $K_3$ is nonplanar by theorem \ref{k3,3}. It follows then from lemma \ref{contractible} that $H$ is nonplanar. Finally $G$ must also be nonplanar by lemma \ref{subgraph}.
 \end{proof}
 
-\section{Beyond Kuratowski's theorem}
+\section{Beyond Kuratowski's theorem} \label{Extension}
 Kuratowski's theorem is an unexpectedly elegant statement that says there are only two base case nonplanar graphs, and that all other nonplanar graphs derive their nonplanarity from at least one of these two graphs. A logical next step might be to ask about different surfaces. We've found which graphs can be drawn on a plane, but what about a sphere or a torus? It turns out that the set of graphs that can be drawn on a sphere is the same set of graphs that can be drawn on the plane,\footnote{We actually showed most of what is needed to prove this in our proof for lemma \ref{outside}.} however this is not true for a torus and certainly not true in general. For example $K_{3,3}$ can be drawn on both a torus and a M\"obius strip. So the question naturally arises, do all surfaces have a set of base forbidden graphs like $\set{K_{3,3},K_5}$ is for the plane.
 
-The graph minor theorem answers this question, at least in part. It states that any countable set $\mathcal G$ of finite graphs, contains a finite subset $\mathcal H\subset\mathcal G$ such that for all $G\in\mathcal G$ there is some $H\in\mathcal H$ such that $G$ contains a subset that is contactable to $H$. %TODO cite https://arxiv.org/pdf/1608.04066.pdf
+The graph minor theorem answers this question, at least in part. It states that any countable set $\mathcal G$ of finite graphs, contains a finite subset $\mathcal H\subset\mathcal G$ such that for all $G\in\mathcal G$ there is some $H\in\mathcal H$ such that $G$ contains a subset that is contactable to $H$.\footnote{This comes from \url{https://arxiv.org/pdf/1608.04066.pdf}.}
 This means that if a surface $S$ has the following property
 \begin{itemize}
 	\item For any graph $G$ that can be drawn in $S$, any graph produced by preforming an edge contraction on $G$ is able to be drawn in $S$.
